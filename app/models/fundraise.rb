@@ -1,0 +1,2 @@
+class Fundraise < ApplicationRecord
+end
