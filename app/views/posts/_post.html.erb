@@ -1,0 +1,11 @@
+<li>
+<span class="content">
+  <%= link_to post.subject, post %> | 
+  <%= link_to "delete",post,  method: :delete ,
+                                  data: { confirm: "You sure?" } %>
+  </span>
+  <br>
+  <span class="stamp">
+    Posted <%= time_ago_in_words(post.created_at) %> ago.
+  </span>
+</li>

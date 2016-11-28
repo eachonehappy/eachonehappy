@@ -1,0 +1,2 @@
+module FundraisesHelper
+end

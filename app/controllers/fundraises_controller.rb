@@ -1,0 +1,2 @@
+class FundraisesController < ApplicationController
+end
