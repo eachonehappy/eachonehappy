@@ -1,2 +1,9 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+<div class="center jumbotron">
+<center>
+    <h1>Welcome to Eachonehappy</h1>
+    <% unless user_signed_in? %>
+    <%= link_to "Sign up now", new_user_registration_path, class: "btn btn-lg btn-primary" %> 
+    <% end %> 
+  </center>
+  </div>
+ 

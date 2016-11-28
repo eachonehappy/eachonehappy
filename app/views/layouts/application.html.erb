@@ -9,14 +9,30 @@
   </head>
 
   <body>
-    <%= link_to "Home", pages_home_path %><br>
-    
-    <% if user_signed_in? %>
-      <%= link_to "Log Out", destroy_user_session_path, method: :delete %>
-    <% else %> 
-      <%= link_to "Sign In", new_user_session_path %><br>
-      <%= link_to "Sign Up", new_user_registration_path %><br>
-    <% end %>
+    <div class="navbar navbar-default navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <%= link_to "Eachonehappy", pages_home_path, :class => "navbar-brand" %>
+        </div>
+        <div class="navbar-collapse collapse" id="navbar-main">          
+          <ul class="nav navbar-nav navbar-right">
+            <% unless user_signed_in? %>
+              <li><%= link_to "Sign In", new_user_session_path %></li>
+              <li><%= link_to "Sign Up", new_user_registration_path %></li>
+            <% else %>  
+              <li class="dropdown">
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#" id="themes">My Account <span class="caret"></span></a>
+                <ul class="dropdown-menu" aria-labelledby="themes">
+                  <li><a>Profile</a></li>
+                  <li class="divider"></li>
+                  <li><%= link_to "Log Out", destroy_user_session_path, method: :delete %></li>
+                </ul>
+              </li>
+            <% end %>  
+          </ul>
+        </div>
+      </div>
+    </div>
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
     <%= yield %>
