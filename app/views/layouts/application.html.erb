@@ -33,8 +33,33 @@
         </div>
       </div>
     </div>
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
-    <%= yield %>
+    <div class="container">
+    <% if user_signed_in? %>
+      <div class="col-md-3">
+        <div class="page-header" id="banner"><br>
+          <div class="row">
+            <div class="list-group table-of-contents">
+              <%= link_to "Posts", posts_path, :class => "list-group-item" %>
+              <%= link_to "Categories", categories_path, :class => "list-group-item" %>
+              <%= link_to "Causes", causes_path, :class => "list-group-item" %>
+              <%= link_to "Comments", comments_path, :class => "list-group-item" %>
+              <%= link_to "Fundraises", fundraises_path, :class => "list-group-item" %>
+              <%= link_to "Jobs", jobs_path, :class => "list-group-item" %>
+              <%= link_to "Organizations", organizations_path, :class => "list-group-item" %>
+            </div>
+          </div>
+        </div>
+      </div>   
+      <div class="col-md-9">     
+        <p class="notice"><%= notice %></p>
+        <p class="alert"><%= alert %></p>
+        <%= yield %>
+      </div>
+    <% else %>
+      <p class="notice"><%= notice %></p>
+      <p class="alert"><%= alert %></p>
+      <%= yield %> 
+    <% end %>     
+    </div>  
   </body>
 </html>
