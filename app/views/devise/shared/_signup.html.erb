@@ -1,0 +1,46 @@
+<div style="display: none;" id="signupModal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+        <h2 class="text-center">Sign Up</h2>
+      </div>
+      <div class="modal-body">
+        <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+          <%= devise_error_messages! %>
+          <div class="form-group">
+            <%= f.label :email %><br />
+            <%= f.email_field :email, autofocus: true, :class=>"form-control input-lg", :placeholder=>"Email", :type=>"text" %>
+          </div>
+          <div class="form-group">
+            <%= f.label :password %>
+            <% if @minimum_password_length %>
+            <em>(<%= @minimum_password_length %> characters minimum)</em>
+            <% end %><br />
+            <%= f.password_field :password, autocomplete: "off", :class=>"form-control input-lg", :placeholder=>"password", :type=>"password" %>
+          </div>
+
+          <div class="form-group">
+            <%= f.label :password_confirmation %><br />
+            <%= f.password_field :password_confirmation, autocomplete: "off", :class=>"form-control input-lg", :placeholder=>"password confirmation", :type=>"password" %>
+          </div><br>
+           
+          <div class="actions">
+            <%= f.submit "Sign Up", :class=>"btn btn-primary btn-lg btn-block" %>
+          </div>
+          <br>
+          <div class="actions">
+            <div class="actions">
+            <a class="btn btn-primary btn-lg btn-block" href="#loginModal" role="button" data-toggle="modal">Log In</a>
+          </div>
+      </div>
+        <% end %>
+    </div>
+      <div class="modal-footer">
+        <div class="col-md-12">
+          <button class="btn" data-dismiss="modal" aria-hidden="true">Cancel</button>
+        </div>  
+      </div>
+    </div>
+  </div>
+</div>
