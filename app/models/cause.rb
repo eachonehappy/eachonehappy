@@ -1,5 +1,6 @@
 class Cause < ApplicationRecord
- # has_and_belongs_to_many :organizations
+  has_many :organizations, through: :cause_organizations
+  has_many :cause_organizations
   has_many :campaigns
 
 

@@ -1,0 +1,17 @@
+<h1>Add a Organization</h1>
+
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <%= form_for(@organization) do |f| %>
+    
+      <%= f.label :name %>
+      <%= f.text_field :name, class: 'form-control' %>
+      
+      <%= fields_for(@cause_organization) do |ab| %>
+      <%= ab.label 'All causes' %>
+      <%= collection_select(:causes, :id, @all_causes, :id, :subject, {}, {:multiple => true}) %>
+      <% end %>
+      <%= f.submit "Submit", class: "btn btn-primary" %>
+    <% end %>
+  </div>
+</div>

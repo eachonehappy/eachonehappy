@@ -1,8 +1,10 @@
 class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
-  has_and_belongs_to_many :organizations
-  has_and_belongs_to_many :campaign
+  has_many :organizations, through: :organization_users
+  has_many :organization_users
+  has_many :campaign, through: :campaign_users
+  has_many :campaign_users
   has_many :posts
   has_many :comments
   has_many :fundraises
