@@ -1,0 +1,2 @@
+class CampaignUser < ApplicationRecord
+end

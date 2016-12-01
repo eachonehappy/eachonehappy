@@ -1,54 +1,55 @@
-<div class="container">
-  <div class="col-sm-8">
-    <div class="panel panel-white post panel-shadow bgwhite">
-      <div class="post-heading">
-        <div class="pull-left image">
-          <img src="http://bootdey.com/img/Content/user_1.jpg" class="img-circle avatar" alt="user profile image">
-        </div>
-        <div class="pull-left meta">
-          <div class="title h5">
-            <a class="text-capitalize" href="#"><b><%= current_user.email %></b></a>
-            <a class="text-muted time small">posted <%= time_ago_in_words(post.created_at) %> ago</a>
+<div class="paddingleft15">
+  <div class="row">
+    <div class="col-sm-6">
+      <div class="panel panel-white post panel-shadow bgwhite">
+        <div class="post-heading">
+          <div class="pull-left image">
+            <img src="http://bootdey.com/img/Content/user_1.jpg" class="img-circle avatar" alt="user profile image">
           </div>
-          <br>
-          <h5 class="text-primary text-capitalize"><%= post.subject %></h5>
-        </div>
-      </div> 
-      <div class="post-description"> 
-        <p><%= post.description %></p>
-        <div class="stats">
-          <a href="#" class="btn btn-default stat-item">
-              <i class="fa fa-thumbs-up icon"></i>2
-          </a>
-          <a href="#" class="btn btn-default stat-item">
-              <i class="fa fa-share icon"></i>12
-          </a>
-        </div>
-      </div>
-      <div class="post-footer">
-        <div class="input-group"> 
-          <input class="form-control" placeholder="Add a comment" type="text">
-          <span class="input-group-addon">
-              <a href="#"><i class="fa fa-edit"></i></a>  
-          </span>
-        </div>
-        <ul class="comments-list">
-          <li class="comment">
-            <a class="pull-left" href="#">
-              <img class="avatar" src="http://bootdey.com/img/Content/user_1.jpg" alt="avatar">
-            </a>
-            <div class="comment-body">
-              <div class="comment-heading">
-                  <h4 class="user">Gavino Free</h4>
-                  <h5 class="time">5 minutes ago</h5>
-              </div>
-                <p>Sure, oooooooooooooooohhhhhhhhhhhhhhhh</p>
+          <div class="pull-left meta">
+            <div class="title h5">
+              <a class="text-capitalize" href="#"><b><%= current_user.email %></b></a>
+              <a class="text-muted time small">posted <%= time_ago_in_words(post.created_at) %> ago</a>
             </div>
-          </li>
-        </ul>
-      </div>
-      <%= link_to "delete",post,  method: :delete ,data: { confirm: "You sure?" }, :class=>"btn btn-danger btn-xs" %>
+            <br>
+            <h5 class="text-primary text-capitalize"><%= post.subject %></h5>
+          </div>
+        </div> 
+        <div class="post-description"> 
+          <p><%= post.description %></p>
+          <div class="stats">
+            <a href="#" class="btn btn-default stat-item">
+                <i class="fa fa-thumbs-up icon"></i>2
+            </a>
+            <a href="#" class="btn btn-default stat-item">
+                <i class="fa fa-share icon"></i>12
+            </a>
+          </div>
+        </div>
+        <div class="post-footer">
+          <div class="input-group"> 
+            <input class="form-control" placeholder="Add a comment" type="text">
+            <span class="input-group-addon">
+                <a href="#"><i class="fa fa-edit"></i></a>  
+            </span>
+          </div>
+          <ul class="comments-list">
+            <li class="comment">
+              <a class="pull-left" href="#">
+                <img class="avatar" src="http://bootdey.com/img/Content/user_1.jpg" alt="avatar">
+              </a>
+              <div class="comment-body">
+                <div class="comment-heading">
+                    <h4 class="user">Gavino Free</h4>
+                    <h5 class="time">5 minutes ago</h5>
+                </div>
+                  <p>Sure, oooooooooooooooohhhhhhhhhhhhhhhh</p>
+              </div>
+            </li>
+          </ul>
+        </div>
+        <%= link_to "delete",post,  method: :delete ,data: { confirm: "You sure?" }, :class=>"btn btn-danger btn-xs" %>
+      </div><br>
     </div>
   </div>
 </div>
-<br>

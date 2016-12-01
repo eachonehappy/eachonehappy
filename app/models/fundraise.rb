@@ -1,5 +1,5 @@
 class Fundraise < ApplicationRecord
-  belongs_to :cause
+  belongs_to :campaign
   belongs_to :user
 
 

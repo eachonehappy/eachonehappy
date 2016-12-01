@@ -8,7 +8,7 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
   <body style="background-color: #eee;">
-    <nav class="navbar navbar-light bg-faded">
+    <nav class="navbar navbar-light bg-faded navbar-fixed-top">
       <%= link_to "Eachonehappy", pages_home_path, :class => "navbar-brand" %>
       <form class="form-inline float-xs-left">      
         <input class="form-control " type="text" placeholder="Search">
@@ -36,45 +36,51 @@
         </li>        
         <% end %>
       </ul>      
-    </nav>                    
+    </nav>
+    <% if user_signed_in? %>                    
     <div class="container">
-      <% if user_signed_in? %>
-        <div class="col-md-3">
-          <br>
-          <ul class="nav nav-pills nav-stacked">
-            <li class="nav-item">
-              <%= link_to "Posts", posts_path, :class => "list-group-item" %>
-            </li>  
-            <li class="nav-item">
-              <%= link_to "Categories", categories_path, :class => "list-group-item" %>
+      <div class="col-md-1">
+        <div id="wrapper">
+          <div id="sidebar-wrapper">
+            <ul class="sidebar-nav">
+              <li>
+              <%= link_to "Posts", posts_path %>
+              </li>
+              <li>
+              <%= link_to "Campaigns", campaigns_path %>
+              </li>
+              <li>
+              <%= link_to "Causes", causes_path %>
               </li> 
-              <li class="nav-item">
-              <%= link_to "Causes", causes_path, :class => "list-group-item" %>
+              <li >
+              <%= link_to "Comments", comments_path %>
               </li> 
-              <li class="nav-item">
-              <%= link_to "Comments", comments_path, :class => "list-group-item" %>
+              <li >
+              <%= link_to "Fundraises", fundraises_path %>
               </li> 
-              <li class="nav-item">
-              <%= link_to "Fundraises", fundraises_path, :class => "list-group-item" %>
+              <li >
+              <%= link_to "Jobs", jobs_path %>
               </li> 
-              <li class="nav-item">
-              <%= link_to "Jobs", jobs_path, :class => "list-group-item" %>
-              </li> 
-              <li class="nav-item">
-              <%= link_to "Organizations", organizations_path, :class => "list-group-item" %>
-              </li>               
+              <li >
+              <%= link_to "Organizations", organizations_path %>
+              </li>  
             </ul>
-        </div>   
-        <div class="col-md-9">     
-          <p class="notice"><%= notice %></p>
-          <p class="alert"><%= alert %></p>
-          <%= yield %>
-        </div>
-      <% else %>
+          </div>
+        </div> 
+      </div>     
+      <div class="col-md-11">     
         <p class="notice"><%= notice %></p>
         <p class="alert"><%= alert %></p>
-        <%= yield %> 
-      <% end %>     
+        <%= yield %>
+      </div>
     </div>  
+    <% else %>
+    <p class="notice"><%= notice %></p>
+    <p class="alert"><%= alert %></p>
+    <%= yield %> 
+    <% end %> 
+      
   </body>
 </html>
+
+  

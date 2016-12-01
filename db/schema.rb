@@ -10,26 +10,29 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161130141644) do
+ActiveRecord::Schema.define(version: 20161201072423) do
 
-  create_table "categories", force: :cascade do |t|
-    t.string   "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+  create_table "campaign_users", force: :cascade do |t|
+    t.integer  "campaign_id"
+    t.integer  "user_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
   end
 
-  create_table "category_organizations", force: :cascade do |t|
-    t.integer  "category_id"
+  create_table "campaigns", force: :cascade do |t|
+    t.string   "subject"
+    t.text     "description"
     t.integer  "organization_id"
+    t.integer  "cause_id"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
   end
 
-  create_table "cause_users", force: :cascade do |t|
+  create_table "cause_organizations", force: :cascade do |t|
     t.integer  "cause_id"
-    t.integer  "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.integer  "organization_id"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
   end
 
   create_table "causes", force: :cascade do |t|
@@ -51,16 +54,16 @@ ActiveRecord::Schema.define(version: 20161130141644) do
   create_table "fundraises", force: :cascade do |t|
     t.string   "subject"
     t.integer  "target"
-    t.integer  "cause_id"
+    t.integer  "campaign_id"
     t.integer  "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
   end
 
   create_table "jobs", force: :cascade do |t|
     t.string   "subject"
     t.text     "description"
-    t.integer  "cause_id"
+    t.integer  "campaign_id"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
   end
