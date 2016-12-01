@@ -1,0 +1,2 @@
+class CauseOrganization < ApplicationRecord
+end

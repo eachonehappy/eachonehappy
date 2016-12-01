@@ -1,6 +1,5 @@
 class Job < ApplicationRecord
-	belongs_to :cause
-
+	belongs_to :campaign
 
 
 	validates :subject,  presence: true
