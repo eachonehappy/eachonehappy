@@ -1,0 +1,19 @@
+<h1>Add a Fundraise</h1>
+
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <%= form_for(@fundraise) do |f| %>
+    
+      <%= f.label :subject %>
+      <%= f.text_field :subject, class: 'form-control' %>
+
+      <%= f.label :target %>
+      <%= f.text_field :target, class: 'form-control' %>
+      
+      <%= f.label 'All campaign' %>
+      <%= collection_select(:campaign, :id, @all_campaign, :id, :subject) %>
+     
+      <%= f.submit "Submit", class: "btn btn-primary" %>
+    <% end %>
+  </div>
+</div>

@@ -5,6 +5,8 @@ class User < ApplicationRecord
   has_many :organization_users
   has_many :campaigns, through: :campaign_users
   has_many :campaign_users
+  has_many :jobs, through: :job_users
+  has_many :job_users
   has_many :posts
   has_many :comments
   has_many :fundraises
