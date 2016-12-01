@@ -9,14 +9,14 @@
           <div class="pull-left meta">
             <div class="title h5">
               <a class="text-capitalize" href="#"><b><%= current_user.email %></b></a>
-              <a class="text-muted time small"> created <%= time_ago_in_words(cause.created_at) %> ago</a>
+              <a class="text-muted time small">created <%= time_ago_in_words(campaign.created_at) %> ago</a>
             </div>
             <br>
-            <h5 class="text-primary text-capitalize"><%= cause.subject %></h5>
+            <h5 class="text-primary text-capitalize"><%= campaign.subject %></h5>
           </div>
         </div> 
         <div class="post-description"> 
-          <p><%= cause.description %></p>
+          <p><%= campaign.description %></p>
           <div class="stats">
             <a href="#" class="btn btn-default stat-item">
                 <i class="fa fa-thumbs-up icon"></i>2
@@ -26,7 +26,7 @@
             </a>
           </div>
         </div>
-        <%= link_to "delete",cause,  method: :delete ,data: { confirm: "You sure?" }, :class=>"btn btn-danger btn-xs" %>
+        <%= link_to "delete",campaign,  method: :delete ,data: { confirm: "You sure?" }, :class=>"btn btn-danger btn-xs" %>
       </div><br>
     </div>
   </div>
