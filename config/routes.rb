@@ -8,7 +8,8 @@ Rails.application.routes.draw do
 	get 'pages/contact_us'
 
 	devise_for :users, controllers: { sessions: 'users/sessions', registrations: 'users/registrations' }
-
+    resources :users, only: [:index]
+    
 	resources :posts
 	resources :campaigns
 	resources :causes
@@ -16,5 +17,7 @@ Rails.application.routes.draw do
 	resources :fundraises
 	resources :jobs
 	resources :organizations
+	post 'invite'=> 'users#invite_friend'
+	#resources :friendships
 	# For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

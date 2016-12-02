@@ -1,0 +1,22 @@
+<div class="col-md-4">
+  <% for user in @users %>
+   
+
+<div class="row">
+<div class="comment-heading">
+  <div class="pull-left image">
+    <img src="http://bootdey.com/img/Content/user_1.jpg" class="img-circle avatar" alt="user profile image">
+  </div>
+  <div class="pull-left meta">
+    <div class="title h5">
+      <a class="text-capitalize" href="#"><b><li><%= "#{user.first_name}  #{user.last_name}" %></li></b></a>
+      <a class="text-muted time small">joined <%= time_ago_in_words(user.created_at) %> ago</a>
+    </div>
+    <%= link_to "Add Friend", invite_path(:friend_id => user), :method => :post, :class=>"btn btn-info" %>
+    <br>
+  </div>
+  </div>
+</div>
+  <% end %>
+  </div>
+

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html ng-app >
   <head>
   <link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css">
     <title>Eachonehappy</title>
@@ -47,6 +47,9 @@
         <div id="wrapper">
           <div id="sidebar-wrapper">
             <ul class="sidebar-nav">
+              <li>
+              <%= link_to "Users", users_path %>
+              </li>
               <li>
               <%= link_to "Posts", posts_path %>
               </li>
