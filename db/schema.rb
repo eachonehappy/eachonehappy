@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161202081131) do
+ActiveRecord::Schema.define(version: 20161203151208) do
 
   create_table "campaign_users", force: :cascade do |t|
     t.integer  "campaign_id"
@@ -51,11 +51,13 @@ ActiveRecord::Schema.define(version: 20161202081131) do
   end
 
   create_table "friendships", force: :cascade do |t|
-    t.integer "friendable_id"
-    t.integer "friend_id"
-    t.integer "blocker_id"
-    t.boolean "pending",       default: true
-    t.index ["friendable_id", "friend_id"], name: "index_friendships_on_friendable_id_and_friend_id", unique: true
+    t.string   "friendable_type"
+    t.integer  "friendable_id"
+    t.integer  "friend_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "blocker_id"
+    t.integer  "status"
   end
 
   create_table "fundraises", force: :cascade do |t|

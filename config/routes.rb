@@ -18,6 +18,8 @@ Rails.application.routes.draw do
 	resources :jobs
 	resources :organizations
 	post 'invite'=> 'users#invite_friend'
+	post 'accept'=> 'users#accept_friend'
+	post 'remove'=> 'users#remove_friend'
 	#resources :friendships
 	# For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

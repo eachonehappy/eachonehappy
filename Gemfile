@@ -33,7 +33,7 @@ gem 'jbuilder', '~> 2.5'
 # Adding gem start 
 gem 'devise'
 gem 'bootstrap', '~> 4.0.0.alpha5'
-gem 'amistad'
+gem 'has_friendship'
 gem 'angularjs-rails'
 
 group :development, :test do

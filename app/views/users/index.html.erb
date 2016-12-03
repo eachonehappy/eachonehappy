@@ -12,7 +12,13 @@
       <a class="text-capitalize" href="#"><b><li><%= "#{user.first_name}  #{user.last_name}" %></li></b></a>
       <a class="text-muted time small">joined <%= time_ago_in_words(user.created_at) %> ago</a>
     </div>
+    <% if current_user.friends_with?(user)  %>
+    <%= link_to "Remove Friend", remove_path(:friend_id => user), :method => :post, :class=>"btn btn-danger" %>
+    <% elsif current_user.pending_friends.include?(user) %>
+    <button class="btn btn-primary">Friend request send</button>
+    <% else %>
     <%= link_to "Add Friend", invite_path(:friend_id => user), :method => :post, :class=>"btn btn-info" %>
+    <% end %>
     <br>
   </div>
   </div>

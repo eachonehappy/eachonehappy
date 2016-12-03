@@ -1,7 +1,7 @@
 class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
-  include Amistad::FriendModel
+  has_friendship
   has_many :organizations, through: :organization_users
   has_many :organization_users
   has_many :campaigns, through: :campaign_users
