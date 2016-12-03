@@ -16,6 +16,8 @@
     <%= link_to "Remove Friend", remove_path(:friend_id => user), :method => :post, :class=>"btn btn-danger" %>
     <% elsif current_user.pending_friends.include?(user) %>
     <button class="btn btn-primary">Friend request send</button>
+    <% elsif current_user.requested_friends.include?(user) %>
+    <%= link_to "Accept Request", accept_path(:friend_id => user), :method => :post, :class=>"btn btn-info" %>
     <% else %>
     <%= link_to "Add Friend", invite_path(:friend_id => user), :method => :post, :class=>"btn btn-info" %>
     <% end %>
