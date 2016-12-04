@@ -8,100 +8,11 @@
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
-  <body style="background-color: #eee;">
-  <% if user_signed_in? %>
-    <nav class="navbar navbar-light navbar-fixed-top" style="background-color: #eca81f;">
-    <% else %>
-     <nav class="navbar navbar-light bg-faded">
-    <% end %>
-      <%= link_to "Eachonehappy#eda135#ec971f", pages_home_path, :class => "navbar-brand" %>
-      <form class="form-inline float-xs-left">      
-        <input class="form-control " type="text" placeholder="Search">
-        <button class="btn btn-outline-primary" type="submit">Search</button>
-      </form>      
-      <ul class="nav navbar-nav float-xs-right">
-        <% unless user_signed_in? %>
-        <div class="btn-group">
-          <li class="nav-item">
-            <a class="btn btn-outline-primary" href="#loginModal" role="button" data-toggle="modal">Login</a>
-          </li>       
-          <li class="nav-item">
-            <a class="btn btn-outline-primary" href="#signupModal" role="button" data-toggle="modal">Sign Up</a>
-          </li>
-        </div>
-        <%= render 'devise/shared/login' %>
-        <%= render 'devise/shared/signup' %>       
-        <% else %> 
-        <li class="nav-item"><b>Welcome <%= current_user.first_name %></b></li>
-        <li class="nav-item dropdown" >
-        <button class="btn btn-outline-primary btn-md dropdown-toggle dropdown-toggle-split" id="supportedContentDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-user" aria-hidden="user"></span></button>
-          
-          <div class="dropdown-menu dropdown-menu-right" aria-labelledby="supportedContentDropdown">
-          <% current_user.requested_friends.each do |user| %>
-            <a class="dropdown-item" ><%= user.first_name %><%= link_to "Accept", accept_path(:friend_id => user), :method => :post, :class=>"btn btn-info btn-md" %> </a>
-          <% end %>
-            
-          </div>
-        </li>       
-        <li class="nav-item dropdown">        
-          <button class="btn btn-outline-primary btn-md dropdown-toggle dropdown-toggle-split" id="supportedContentDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">My Account</button>
-          <div class="dropdown-menu dropdown-menu-right" aria-labelledby="supportedContentDropdown">
-            <a class="dropdown-item" href="#">Profile</a>
-            <%= link_to "Log Out", destroy_user_session_path, method: :delete, :class=>"dropdown-item" %>
-          </div>
-        </li>        
-        <% end %>
-      </ul>      
-    </nav>
-    <% if user_signed_in? %>                    
-    <div class="container">
-      <div class="col-md-2">
-        <div id="wrapper">
-          <div id="sidebar-wrapper">
-            <ul class="sidebar-nav">
-              <li>
-              <%= link_to "Users", users_path %>
-              </li>
-              <li>
-              <%= link_to "Chats", chat_rooms_path %>
-              </li>
-              <li>
-              <%= link_to "Posts", posts_path %>
-              </li>
-              <li>
-              <%= link_to "Campaigns", campaigns_path %>
-              </li>
-              <li>
-              <%= link_to "Causes", causes_path %>
-              </li> 
-              <li >
-              <%= link_to "Comments", comments_path %>
-              </li> 
-              <li >
-              <%= link_to "Fundraises", fundraises_path %>
-              </li> 
-              <li >
-              <%= link_to "Jobs", jobs_path %>
-              </li> 
-              <li >
-              <%= link_to "Organizations", organizations_path %>
-              </li>  
-            </ul>
-          </div>
-        </div> 
-      </div>     
-      <div class="col-md-10">     
-        <p class="notice"><%= notice %></p>
-        <p class="alert"><%= alert %></p>
-        <%= yield %>
-      </div>
-    </div>  
-    <% else %>
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
-    <%= yield %> 
-    <% end %> 
-      
+  <body style="background-color: #e8e8e8;"">
+    
+    <%= render 'layouts/header' %> 
+    <%= render 'layouts/sidebar' %> 
+
   </body>
 </html>
 

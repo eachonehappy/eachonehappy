@@ -1,42 +1,12 @@
-<div style="display: none;" id="loginModal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-        <h2 class="text-center">Login</h2>
-      </div>
-      <div class="modal-body">
-        <%= form_for(resource, as: resource_name,:remote => true, url: session_path(resource_name)) do |f| %>
-        <div class="form-group">
-            <%= f.label :email %><br />
-            <%= f.email_field :email, autofocus: true, :class=>"form-control input-lg", :placeholder=>"Email", :type=>"text" %>
-        </div>
-        <div class="form-group">
-          <%= f.label :password %><br />
-          <%= f.password_field :password, autocomplete: "off", :class=>"form-control input-lg", :placeholder=>"password", :type=>"password" %>
-        </div>
-          <% if devise_mapping.rememberable? -%>
-            <div class="form-group">
-              <%= f.check_box :remember_me %>
-              <%= f.label :remember_me %>
-            </div>
-          <% end -%>
-          <div class="actions">
-            <%= f.submit "Log in", :class=>"btn btn-outline-primary btn-lg btn-block" %>
-          </div>
-          <br>
-          <div class="actions">
-            <div class="actions">
-             <a class="btn btn-outline-primary btn-lg btn-block" href="#signupModal" role="button" data-toggle="modal" data-dismiss="modal">Sign Up</a>
-            </div>
-          </div>
-        <% end %>
-    </div>
-      <div class="modal-footer">
-        <div class="col-md-12">
-          <button class="btn" data-dismiss="modal" aria-hidden="true">Cancel</button>
-        </div>  
-      </div>
-    </div>
+<div class="loginform float-xs-right">
+  <div class="form-inline loginform">
+  <%= form_for(resource, as: resource_name,:remote => true, url: session_path(resource_name)) do |f| %>
+    <label for="exampleInputName2">Email</label>  
+    <%= f.email_field :email, autofocus: true, :class=>"form-control", :placeholder=>"Email", :type=>"text" %>
+    <label for="exampleInputEmail2">Password</label>
+    <%= f.password_field :password, autocomplete: "off", :class=>"form-control", :placeholder=>"password", :type=>"password" %>    
+    <%= f.submit "Log in", :class=>"btn btn-warning" %>
+    <% end %>
   </div>
+  <a class="float-xs-right white" href="">forgot password</a>
 </div>
