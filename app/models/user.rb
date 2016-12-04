@@ -11,6 +11,8 @@ class User < ApplicationRecord
   has_many :posts
   has_many :comments
   has_many :fundraises
+  has_many :chat_rooms, dependent: :destroy
+  has_many :messages, dependent: :destroy
   #has_many :friendships
   #has_many :friends, :through => :friendships
 
@@ -20,4 +22,8 @@ class User < ApplicationRecord
 
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
+
+  def name
+    email.split('@')[0]
+  end       
 end

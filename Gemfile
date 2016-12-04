@@ -35,6 +35,7 @@ gem 'devise'
 gem 'bootstrap', '~> 4.0.0.alpha5'
 gem 'has_friendship'
 gem 'angularjs-rails'
+gem 'redis', '~> 3.2'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

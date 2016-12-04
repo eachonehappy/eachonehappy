@@ -9,7 +9,8 @@ Rails.application.routes.draw do
 
 	devise_for :users, controllers: { sessions: 'users/sessions', registrations: 'users/registrations' }
     resources :users, only: [:index]
-    
+    resources :chat_rooms, only: [:new, :create, :show, :index]
+    mount ActionCable.server => '/cable'
 	resources :posts
 	resources :campaigns
 	resources :causes
