@@ -1,0 +1,154 @@
+<div class="sidebar left hidden-xs">
+<%= link_to "Eachonehappy", pages_home_path, :id =>"brand" %>
+        
+        <div id="menu" data-scrollable>
+            <ul>
+                <li class="">
+                    <a href="../index.html">
+                        <i class="icon-paint-brush"></i> Themes
+                    </a>
+                </li>
+                <li class="category">Navigation</li>
+                <li class="hasSubmenu   open ">
+                    <a href="#timeline" data-toggle="collapse"><i class="icon-ship-wheel"></i> Timeline</a>
+                    <ul class="collapse  in " id="timeline">
+                        <li class="active">
+                            <a href="index.html"><i class="fa fa-circle-o"></i> Blocks</a>
+                        </li>
+                        <li>
+                            <a href="timeline-list.html"><i class="fa fa-circle-o"></i> Listing</a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="">
+                    <%= link_to '<i class="icon-user-1"></i> Posts'.html_safe, posts_path %>
+                </li>
+                
+                <li class="">
+                    <%= link_to '<i class="fa fa-group"></i>Users'.html_safe, users_path %>
+                </li>
+                <li class="">
+                    <%= link_to '<i class="icon-comment-fill-1"></i>  Comments'.html_safe, comments_path %>
+                </li>
+                <li class="">
+                    <%= link_to '<i class="icon-lock-fill"></i>  Campaigns'.html_safe, campaigns_path %>
+                </li>
+                <li class="">
+                    <%= link_to '<i class="icon-lock-fill"></i>  Causes'.html_safe, causes_path %>
+                </li>
+                <li class="">
+                    <%= link_to '<i class="icon-lock-fill"></i>  Fundraises'.html_safe, fundraises_path %>
+                </li>
+                <li class="">
+                    <%= link_to '<i class="icon-lock-fill"></i>  Jobs'.html_safe, jobs_path %>
+                </li>
+                <li class="">
+                    <%= link_to '<i class="icon-lock-fill"></i>  Organizations'.html_safe, organizations_path %>
+                </li>
+                <li class="hasSubmenu ">
+                    <a href="#components" data-toggle="collapse"><i class="icon-paint-brushes"></i>UI Components</a>
+                    <ul class="collapse " id="components">
+                        <li class="">
+                            <a href="buttons.html"><i class="fa fa-circle-o"></i> Buttons</a>
+                        </li>
+                        <li class="">
+                            <a href="icons.html"><i class="fa fa-circle-o"></i> Icons</a>
+                        </li>
+                        <li class="">
+                            <a href="progress.html"><i class="fa fa-circle-o"></i> Progress</a>
+                        </li>
+                        <li class="">
+                            <a href="grid.html"><i class="fa fa-circle-o"></i> Grid</a>
+                        </li>
+                        <li class="">
+                            <a href="forms.html"><i class="fa fa-circle-o"></i> Forms</a>
+                        </li>
+                        <li class="">
+                            <a href="tables.html"><i class="fa fa-circle-o"></i> Tables</a>
+                        </li>
+                    </ul>
+                </li>
+
+                <!-- Sample 2 Level Collapse -->
+                <li class="hasSubmenu">
+                    <a href="#collapse" data-toggle="collapse">
+                        <i class="fa fa-chevron-circle-down"></i> Collapse
+                    </a>
+                    <ul class="collapse" id="collapse">
+                        <li class="hasSubmenu">
+                            <a href="#collapse-1" data-toggle="collapse"><i class="fa fa-circle-o"></i> Submenu</a>
+                            <ul class="collapse" id="collapse-1">
+                                <li><a href="#">Regular Link</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li><a href="#"><i class="fa fa-circle-o"></i> Regular Link</a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="category border top">News Feeds</li>
+                <li class="reset">
+                    <ul>
+                        <li class="media news-item">
+                            <span class="news-item-success pull-right "><i class="fa fa-circle"></i></span>
+                            <span class="pull-left media-object">
+                            <i class="fa fa-fw fa-bell"></i>
+                        </span>
+                            <div class="media-body">
+                                <a href="" class="text-white">Adrian</a> just logged in
+                                <span class="time">2 min ago</span>
+                            </div>
+                        </li>
+                        <li class="media news-item">
+                            <span class="news-item-success pull-right "><i class="fa fa-circle"></i></span>
+                            <span class="pull-left media-object">
+                            <i class="fa fa-fw fa-bell"></i>
+                        </span>
+                            <div class="media-body">
+                                <a href="" class="text-white">Adrian</a> just added <a href="" class="text-white">mosaicpro</a> as their office
+                                <span class="time">2 min ago</span>
+                            </div>
+                        </li>
+                        <li class="media news-item">
+                            <span class="pull-left media-object">
+                            <i class="fa fa-fw fa-bell"></i>
+                        </span>
+                            <div class="media-body">
+                                <a href="" class="text-white">Adrian</a> just logged in
+                                <span class="time">2 min ago</span>
+                            </div>
+                        </li>
+                        <li class="media news-item">
+                            <span class="pull-left media-object">
+                            <i class="fa fa-fw fa-bell"></i>
+                        </span>
+                            <div class="media-body">
+                                <a href="" class="text-white">Adrian</a> just logged in
+                                <span class="time">2 min ago</span>
+                            </div>
+                        </li>
+                        <li class="media news-item">
+                            <span class="pull-left media-object">
+                            <i class="fa fa-fw fa-bell"></i>
+                        </span>
+                            <div class="media-body">
+                                <a href="" class="text-white">Adrian</a> just logged in
+                                <span class="time">2 min ago</span>
+                            </div>
+                        </li>
+                    </ul>
+                </li>
+                <li class="category">Filter</li>
+                <li class="reset">
+                    <ul>
+                        <li><a href="#"><span class="fa fa-fw fa-circle-o text-success"></span> Work Related</a>
+                        </li>
+                        <li><a href="#"><span class="fa fa-fw fa-circle-o text-primary"></span> Very Important</a>
+                        </li>
+                        <li><a href="#"><span class="fa fa-fw fa-circle-o text-info"></span> Friends &amp; Family</a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>

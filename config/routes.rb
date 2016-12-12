@@ -16,6 +16,7 @@ Rails.application.routes.draw do
     resources :users, only: [:index]
     resources :chat_rooms, only: [:new, :create, :show, :index]
     mount ActionCable.server => '/cable'
+    resources :messages
 	resources :posts
 	resources :campaigns
 	resources :causes
@@ -26,6 +27,8 @@ Rails.application.routes.draw do
 	post 'invite'=> 'users#invite_friend'
 	post 'accept'=> 'users#accept_friend'
 	post 'remove'=> 'users#remove_friend'
+	get 'messages/index' => 'chat_rooms#index'
+	get 'application/messages' => 'application#messages'
 	#resources :friendships
 	# For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

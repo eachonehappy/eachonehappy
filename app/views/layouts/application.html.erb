@@ -1,18 +1,26 @@
 <!DOCTYPE html>
-<html ng-app >
+<html lang="en">
   <head>
-  <link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  
+  <meta name="description" content="app, web app, responsive, responsive layout, admin, admin panel, admin dashboard, flat, flat ui, ui kit, AngularJS, ui route, charts, widgets, components" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+
+
     <title>Eachonehappy</title>
     <%= csrf_meta_tags %>
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
-  <body style="background-color: #e8e8e8;"">
-    
-    <%= render 'layouts/header' %> 
-    <%= render 'layouts/sidebar' %> 
+    <%= action_cable_meta_tag %>
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+     <%= javascript_include_tag 'application' %>
 
+  </head>
+  <body>
+ <%= render 'layouts/leftsidebar'%>
+ <%= render 'layouts/header'%>
+ <%= render 'layouts/rightsidebar'%>
+ <%= render 'layouts/main'%>
+
+    <script src="/js/vendor.js"></script>
+    <script src="/js/scripts.js"></script>
   </body>
 </html>
 

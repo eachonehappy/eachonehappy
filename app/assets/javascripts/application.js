@@ -11,13 +11,8 @@
 // about supported directives.
 //
 //= require jquery
-//= require angular
-//= require bootstrap
 //= require jquery_ujs
-//= require cable
-//= require angular-animate
-//= require angular-resource
-//= require turbolinks
+//= require_tree ./channels
 //= require_tree .
 
 

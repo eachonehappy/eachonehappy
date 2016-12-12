@@ -32,9 +32,7 @@ gem 'jbuilder', '~> 2.5'
 
 # Adding gem start 
 gem 'devise'
-gem 'bootstrap', '~> 4.0.0.alpha5'
 gem 'has_friendship'
-gem 'angularjs-rails'
 gem 'redis', '~> 3.2'
 
 group :development, :test do

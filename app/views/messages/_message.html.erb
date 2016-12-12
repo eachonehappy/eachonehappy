@@ -1,16 +1,30 @@
-<div class="card">
-  <div class="card-block">
-    <div class="row">
-      <div class="col-md-1">
-        <%= gravatar_for message.user %>
-      </div>
-      <div class="col-md-11">
-        <p class="card-text">
-          <span class="text-muted"><%= message.user.name %> at <%= message.timestamp %> says</span><br>
-          <%= message.body %>
-        </p>
+<div class="box-row bg-light lt">
+  <div class="box-cell">
+    <div class="box-inner">
+      <div class="p-md">
+
+    
+      <div class="m-b">
+          <a href class="pull-left w-40 m-r-sm"><img alt="..." class="w-full img-circle"></a>
+          <div class="clear">
+            <div class="p p-v-sm bg-warning inline r">
+              <%= message.body %>
+            </div>
+            <div class="text-muted-lt text-xs m-t-xs"><i class="fa fa-ok text-success"></i><%= message.user.first_name %> 2 minutes ago</div>
+          </div>
+        </div>
+       
+        <div class="m-b">
+          <a href class="pull-right w-40 m-l-sm"><img class="w-full img-circle" alt="..."></a>
+          <div class="clear text-right">
+            <div class="p p-v-sm bg-info inline text-left r">
+              Lorem ipsum dolor soe rooke..
+            </div>
+            <div class="text-muted-lt text-xs m-t-xs">1 minutes ago</div>
+          </div>
+        </div>
+        
       </div>
     </div>
-
   </div>
 </div>

@@ -8,10 +8,11 @@ class User < ApplicationRecord
   has_many :campaign_users
   has_many :jobs, through: :job_users
   has_many :job_users
+  has_many :chat_rooms, through: :chat_room_users
+  has_many :chat_room_users
   has_many :posts
   has_many :comments
   has_many :fundraises
-  has_many :chat_rooms, dependent: :destroy
   has_many :messages, dependent: :destroy
   #has_many :friendships
   #has_many :friends, :through => :friendships
