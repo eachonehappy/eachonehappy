@@ -1,10 +1,19 @@
 <div class="navbar navbar-main navbar-default navbar-fixed-top" role="navigation">
         <div class="container-fluid">
             <a href="#" data-toggle="sidebar-menu" id="toggle-sidebar-menu" class="visible-xs"><i class="fa fa-bars fa-2x"></i></a>
+           
+          
             <ul class="nav navbar-nav hidden-xs">
 
-                <!-- Notifications -->
-                <li class="dropdown notifications">
+                <!-- Search -->
+                <div class="input-group pull-left">
+                    <span class="input-group-addon"><i class="icon-search"></i></span>
+                    <input type="text" class="form-control" placeholder="Search a friend">
+                </div>
+                
+            </ul>
+            <ul class="nav navbar-nav navbar-right navbar-user">
+            <li class="dropdown notifications">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                         <i class="icon-envelope-1"></i>
                     </a>
@@ -41,18 +50,22 @@
                         </li>
                     </ul>
                 </li>
-            </ul>
-<% if user_signed_in? %>
-            <ul class="nav navbar-nav navbar-user">
-
-                <!-- User -->
+                <li >
+                    <%= link_to 'Home', root_path  %>
+                        
+                
+                </li>
+               <li>
+                    <%= link_to user_path(current_user) do  %>
+                        <img src="/images/people/50/guy-5.jpg" width="20" alt="Bill" class="img-circle" /> <%= "#{current_user.first_name}" %>
+                    <%end%>
+                </li>
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                        <img src="/images/people/50/guy-5.jpg" width="35" alt="Bill" class="img-circle" /> <%= "#{current_user.first_name}" %> <span class="caret"></span>
+                       <span class="caret"></span>
                     </a>
                     <ul class="dropdown-menu" role="menu">
-                        <li><a href="profile.html">Profile</a>
-                        </li>
+                        
                         <li><a href="messages.html">Messages</a>
                         </li>
                         
@@ -62,43 +75,10 @@
                         
                     </ul>
                 </li>
-            </ul><%end%>
-            <ul class="nav navbar-nav hidden-xs">
-
-                <!-- Search -->
-                <div class="input-group pull-left">
-                    <span class="input-group-addon"><i class="icon-search"></i></span>
-                    <input type="text" class="form-control" placeholder="Search a friend">
-                </div>
-                <div class="pull-left visible-md visible-lg" data-toggle="tooltip" data-placement="bottom" title="A few Color Examples. Download includes CSS Files for all color examples & the tools to Generate any Color combination. This Color-Switcher is for previewing purposes only.">
-                    <ul class="skins">
-                        <li><span data-skin="default" style="background: #16ae9f "></span>
-                        </li>
-                        <li><span data-skin="orange" style="background: #e74c3c "></span>
-                        </li>
-                        <li><span data-skin="blue" style="background: #4687ce "></span>
-                        </li>
-                        <li><span data-skin="purple" style="background: #af86b9 "></span>
-                        </li>
-                        <li><span data-skin="brown" style="background: #c3a961 "></span>
-                        </li>
-                    </ul>
-                </div>
-            </ul>
-            <ul class="nav navbar-nav navbar-right">
-                <li class="alert hidden-xs">
-                    <a href="#" data-toggle="chat-box" data-hide>
-                        <span class="hidden-sm">
-                    New message from
-                    <strong>Jonathan</strong>
-                </span>
-                        <span class="visible-sm">New <strong>message</strong></span>
-                    </a>
-                </li>
+                
                 <li class="pull-right">
-                    <a href="#" data-toggle="sidebar-chat">
-                        <i class="fa fa-comments"></i>
-                    </a>
+                <%= link_to '<i class="fa fa-comments"></i>'.html_safe, chat_rooms_path %>
+                    
                 </li>
             </ul>
         </div>

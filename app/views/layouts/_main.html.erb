@@ -1,9 +1,12 @@
+<% if user_signed_in? %>
 <div id="content">
         <div class="container-fluid">
 <%= yield %>
 </div>
 </div>
- 
+<%else%>
+<%= yield %>
+ <%end%>
 
 
 

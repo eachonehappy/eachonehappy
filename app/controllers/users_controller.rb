@@ -16,6 +16,9 @@ class UsersController < ApplicationController
     @message = Message.new
     
   end
+  def show
+    
+  end
 
   def invite_friend
   	@user = User.find(params[:friend_id])

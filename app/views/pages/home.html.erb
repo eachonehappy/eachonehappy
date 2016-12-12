@@ -1,4 +1,8 @@
-<% unless user_signed_in? %>
-<%= render 'devise/shared/login' %>
-<%= render 'shared/signup' %> 
-<% end %>
+<%= render 'users/timeline'%> 
+<div class="col-md-6" style="
+    padding-left: 0px;
+    padding-right: 0px;
+">
+	<%= render 'users/timeline'%>
+	<%= render 'users/timeline'%>
+</div>

@@ -13,6 +13,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require_tree ./channels
+//= require turbolinks
 //= require_tree .
 
 

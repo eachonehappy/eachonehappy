@@ -11792,9 +11792,7 @@ fieldset[disabled] .btn-inverse.active {
 .nav-tabs > li.active > a:hover {
   border-top-color: #fff;
 }
-.tab-content {
-  padding: 15px;
-}
+
 .panel .nav-tabs {
   margin-left: -1px;
 }
@@ -16641,7 +16639,7 @@ ul.friends-list li:nth-child(6n) {
 }
 body.login {
   position: initial;
-  background: url('../images/lock-1.jpg');
+  background: url('/images/lock-1.jpg');
   padding-top: 0;
 }
 body.login #content {
@@ -18045,5 +18043,5 @@ fieldset[disabled] .cover.overlay .btn-cover.active {
   bottom: 0;
   width: 250px;
   background: #303030;
-  z-index: 1050;
+  z-index: 1029;
 }

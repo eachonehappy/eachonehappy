@@ -1,0 +1,53 @@
+<body class="login">
+    <div id="content">
+        <div class="container-fluid">
+            <div class="lock-container">
+                <h1>Account Access</h1>
+                <div class="panel panel-default text-center">
+                    <img src="/images/people/110/guy-5.jpg" class="img-circle">
+                    <div class="panel-body">
+                    <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+                      <%= devise_error_messages! %>
+                         <div class="row">
+                          <div class="col-md-6">
+                            <div class="form-group">
+                              <%= f.text_field :first_name, autofocus: true, :class=>"form-control", :placeholder=>"First name", :type=>"text" %>
+                            </div>
+                          </div>
+                          <div class="col-md-6">
+                            <div class="form-group">
+                              <%= f.text_field :last_name, autofocus: true, :class=>"form-control", :placeholder=>"Last name", :type=>"text" %>
+                            </div>
+                          </div>
+                        </div>
+                         <div class="form-group">
+              <%= f.email_field :email, autofocus: true, :class=>"form-control", :placeholder=>"Email", :type=>"text" %>
+            </div>
+             <div class="form-group">
+              
+              <%= f.password_field :password, autocomplete: "off", :class=>"form-control", :placeholder=>"password", :type=>"password" %>
+            </div>
+            <div class="form-group">
+              <%= f.password_field :password_confirmation, autocomplete: "off", :class=>"form-control", :placeholder=>"password confirmation", :type=>"password" %>
+            </div>          
+            <div class="actions">
+              <%= f.submit "Sign Up", :class=>"btn btn-primary" %>
+            </div>         
+         
+                      <% end %>
+                      
+                        <%= link_to 'Already a Member? <b> Sign In </b>'.html_safe , new_user_session_path, :class=>"forgot-password"%>
+                      
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+
+  
+
+
+

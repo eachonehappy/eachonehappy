@@ -8,12 +8,10 @@ Rails.application.routes.draw do
 	get 'pages/contact_us'
 
 	devise_for :users, controllers: { sessions: 'users/sessions', registrations: 'users/registrations' }
-  devise_scope :user do
-	  unauthenticated do
-	  root to: "pages#home", :as => "unauthenticated"
+    devise_scope :user do
+	  root to: "devise/sessions#new"
 	end
-	end
-    resources :users, only: [:index]
+    resources :users, only: [:index,:show]
     resources :chat_rooms, only: [:new, :create, :show, :index]
     mount ActionCable.server => '/cable'
     resources :messages
