@@ -15,7 +15,7 @@ class JobsController < ApplicationController
   
   def create
   	@job = Job.new(job_params)
-  	@job.campaign_id = params[:campaign][:id]
+  	@job.campaign_id = job_params[:campaign_id]
   	@job.job_users.build(:user_id => current_user.id)
     if @job.save
       flash[:success] = "job created!"
@@ -34,6 +34,6 @@ class JobsController < ApplicationController
   private
     
     def job_params
-      params.require(:job).permit(:subject, :description, :campaign)
+      params.require(:job).permit(:subject, :description, :campaign_id)
     end
 end

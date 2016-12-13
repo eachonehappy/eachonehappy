@@ -1,4 +1,4 @@
-<div class="navbar navbar-main navbar-default navbar-fixed-top" role="navigation">
+<div class="navbar navbar-main navbar-default navbar-fixed-top" role="navigation" style="left: 200px;">
         <div class="container-fluid">
             <a href="#" data-toggle="sidebar-menu" id="toggle-sidebar-menu" class="visible-xs"><i class="fa fa-bars fa-2x"></i></a>
            
@@ -66,7 +66,9 @@
                     </a>
                     <ul class="dropdown-menu" role="menu">
                         
-                        <li><a href="messages.html">Messages</a>
+                        
+                        <li>
+                            <%= link_to 'Add a Cause'.html_safe, new_cause_path %>
                         </li>
                         
                         <li><%= link_to "Log Out", destroy_user_session_path,

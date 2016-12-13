@@ -1,17 +1,39 @@
-<h1>Add a Organization</h1>
+<div class="col-md-7">
+  <div class="panel panel-default">
+      <div class="panel-heading panel-heading-gray">Add a Organization</div>
+      <div class="panel-body">
+     
+          <div class="form-horizontal" role="form">
+          <%= form_for(@organization) do |f| %>
+              <div class="form-group">
+                  <label for="inputEmail3" class="col-sm-3 control-label">Name</label>
+                  <div class="col-sm-9">
+                  <%= f.text_field :name, class: 'form-control', :id=>"inputEmail3", :placeholder=>"Name" %>
+                    
+                  </div>
+              </div>
+              <div class="form-group">
+                  <label class="col-sm-3 control-label">Causes</label>
+                  <div class="col-sm-9">
+                 
 
-<div class="row">
-  <div class="col-md-6 col-md-offset-3">
-    <%= form_for(@organization) do |f| %>
-    
-      <%= f.label :name %>
-      <%= f.text_field :name, class: 'form-control' %>
-      
-      <%= fields_for(@cause_organization) do |ab| %>
-      <%= ab.label 'All causes' %>
-      <%= collection_select(:causes, :id, @all_causes, :id, :subject, {}, {:multiple => true}) %>
-      <% end %>
-      <%= f.submit "Submit", class: "btn btn-primary" %>
-    <% end %>
+              <%= f.select(:cause_ids, @all_causes.collect {|c| c.subject},{},
+                                   { :multiple => true, :size => 5,:class=>"selectpicker","data-live-search" =>"true","multiple data-style"=>"btn-white" }
+                                 ) %>
+                  </div>
+              </div>
+              
+                     
+              <div class="form-group">
+                    <div class="col-sm-offset-3 col-sm-9">
+                        <%= f.submit "Submit", class: "btn btn-primary" %>
+                    </div>
+                </div>
+              
+              <% end %>
+          </div>
+          
+      </div>
   </div>
+               
 </div>

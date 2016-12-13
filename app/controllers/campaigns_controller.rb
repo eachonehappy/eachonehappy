@@ -16,8 +16,8 @@ class CampaignsController < ApplicationController
   
   def create
   	@campaign = Campaign.new(campaign_params)
-  	@campaign.organization_id = params[:organization][:id]
-  	@campaign.cause_id = params[:cause][:id]
+  	@campaign.organization_id = campaign_params[:organization_id]
+  	@campaign.cause_id = campaign_params[:cause_id]
   	@campaign.campaign_users.build(:user_id => current_user.id)
     if @campaign.save
       flash[:success] = "campaign created!"
@@ -36,6 +36,6 @@ class CampaignsController < ApplicationController
   private
     
     def campaign_params
-      params.require(:campaign).permit(:subject, :description, :cause, :organization)
+      params.require(:campaign).permit(:subject, :description, :cause_id, :organization_id)
     end
 end

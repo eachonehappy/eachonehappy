@@ -17,8 +17,9 @@ class OrganizationsController < ApplicationController
   def create
   	@organization = Organization.new(organization_params)
   	@organization.organization_users.build(:user_id => current_user.id)
-  	params[:causes][:id].reject(&:empty?).each do |cause|
-    @organization.cause_organizations.build(:cause_id => cause)
+  	params[:organization][:cause_ids].reject(&:empty?).each do |cause|
+      @cause_id = Cause.find_by_subject(cause).id
+    @organization.cause_organizations.build(:cause_id => @cause_id)
     end
     if @organization.save 
       flash[:success] = "organization created!"
@@ -37,6 +38,6 @@ class OrganizationsController < ApplicationController
   private
     
     def organization_params
-      params.require(:organization).permit(:name, :cause_id)
+      params.require(:organization).permit(:name, :cause_ids)
     end
 end

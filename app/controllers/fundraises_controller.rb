@@ -15,7 +15,7 @@ class FundraisesController < ApplicationController
   
   def create
   	@fundraise = Fundraise.new(fundraise_params)
-  	@fundraise.campaign_id = params[:campaign][:id]
+  	@fundraise.campaign_id = fundraise_params[:campaign_id]
   	@fundraise.user_id = current_user.id
     if @fundraise.save
       flash[:success] = "fundraise created!"
@@ -34,6 +34,6 @@ class FundraisesController < ApplicationController
   private
     
     def fundraise_params
-      params.require(:fundraise).permit(:subject, :target, :campaign)
+      params.require(:fundraise).permit(:subject, :target, :campaign_id)
     end
 end

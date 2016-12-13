@@ -1,75 +1,80 @@
-<div class="sidebar left hidden-xs">
-<%= link_to "Eachonehappy", pages_home_path, :id =>"brand" %>
-        
+<div class="sidebar left hidden-xs" style="width: 200px;">
+
+<%= link_to "Eachonehappy", pages_home_path, :id =>"brand", :style=>"width: 200px;" %>
+       
         <div id="menu" data-scrollable>
             <ul>
-                <li class="category">Navigation</li>
-                <li class="">
-                    <%= link_to '<i class="icon-user-1"></i> Posts'.html_safe, posts_path %>
-                </li>
                 
-                <li class="">
-                    <%= link_to '<i class="fa fa-group"></i>Users'.html_safe, users_path %>
-                </li>
-                <li class="">
-                    <%= link_to '<i class="icon-comment-fill-1"></i>  Comments'.html_safe, comments_path %>
-                </li>
-                <li class="">
-                    <%= link_to '<i class="icon-lock-fill"></i>  Campaigns'.html_safe, campaigns_path %>
-                </li>
-                <li class="">
-                    <%= link_to '<i class="icon-lock-fill"></i>  Causes'.html_safe, causes_path %>
-                </li>
-                <li class="">
-                    <%= link_to '<i class="icon-lock-fill"></i>  Fundraises'.html_safe, fundraises_path %>
-                </li>
-                <li class="">
-                    <%= link_to '<i class="icon-lock-fill"></i>  Jobs'.html_safe, jobs_path %>
-                </li>
-                <li class="">
-                    <%= link_to '<i class="icon-lock-fill"></i>  Organizations'.html_safe, organizations_path %>
+                
+                
+                <li class="hasSubmenu ">
+                    <a href="#causes" data-toggle="collapse"><i class="icon-paint-brushes"></i>Causes</a>
+                    <ul class="collapse " id="causes">
+                        <li class="">
+                            <%= link_to '<i class="icon-lock-fill"></i> All Causes'.html_safe, causes_path %>
+                           
+                        </li>
+                        <li class="">
+                            <%= link_to '<i class="icon-lock-fill"></i> Add a Cause'.html_safe, new_cause_path %>
+                        </li>
+                    </ul>
                 </li>
                 <li class="hasSubmenu ">
-                    <a href="#components" data-toggle="collapse"><i class="icon-paint-brushes"></i>UI Components</a>
-                    <ul class="collapse " id="components">
+                    <a href="#fundraises" data-toggle="collapse"><i class="icon-paint-brushes"></i>Fundraisess</a>
+                    <ul class="collapse " id="fundraises">
                         <li class="">
-                            <a href="buttons.html"><i class="fa fa-circle-o"></i> Buttons</a>
+                            <%= link_to '<i class="icon-lock-fill"></i> All Fundraises'.html_safe, fundraises_path %>
+                           
                         </li>
                         <li class="">
-                            <a href="icons.html"><i class="fa fa-circle-o"></i> Icons</a>
-                        </li>
-                        <li class="">
-                            <a href="progress.html"><i class="fa fa-circle-o"></i> Progress</a>
-                        </li>
-                        <li class="">
-                            <a href="grid.html"><i class="fa fa-circle-o"></i> Grid</a>
-                        </li>
-                        <li class="">
-                            <a href="forms.html"><i class="fa fa-circle-o"></i> Forms</a>
-                        </li>
-                        <li class="">
-                            <a href="tables.html"><i class="fa fa-circle-o"></i> Tables</a>
+                            <%= link_to '<i class="icon-lock-fill"></i> Start a Fundraise'.html_safe, new_fundraise_path %>
                         </li>
                     </ul>
                 </li>
 
-                <!-- Sample 2 Level Collapse -->
-                <li class="hasSubmenu">
-                    <a href="#collapse" data-toggle="collapse">
-                        <i class="fa fa-chevron-circle-down"></i> Collapse
-                    </a>
-                    <ul class="collapse" id="collapse">
-                        <li class="hasSubmenu">
-                            <a href="#collapse-1" data-toggle="collapse"><i class="fa fa-circle-o"></i> Submenu</a>
-                            <ul class="collapse" id="collapse-1">
-                                <li><a href="#">Regular Link</a>
-                                </li>
-                            </ul>
+                
+                <li class="hasSubmenu ">
+                    <a href="#jobs" data-toggle="collapse"><i class="icon-paint-brushes"></i>jobs</a>
+                    <ul class="collapse " id="jobs">
+                        <li class="">
+                            <%= link_to '<i class="icon-lock-fill"></i> All jobs'.html_safe, jobs_path %>
+                           
                         </li>
-                        <li><a href="#"><i class="fa fa-circle-o"></i> Regular Link</a>
+                        <li class="">
+                            <%= link_to '<i class="icon-lock-fill"></i> Create a Job'.html_safe, new_job_path %>
                         </li>
                     </ul>
                 </li>
+                
+                <li class="hasSubmenu ">
+                    <a href="#organizations" data-toggle="collapse"><i class="icon-paint-brushes"></i>Organizations</a>
+                    <ul class="collapse " id="organizations">
+                        <li class="">
+                            <%= link_to '<i class="icon-lock-fill"></i> All Organizations'.html_safe, organizations_path %>
+                           
+                        </li>
+                        <li class="">
+                            <%= link_to '<i class="icon-lock-fill"></i> Start a Organization'.html_safe, new_organization_path %>
+                        </li>
+                    </ul>
+                </li>
+                <li class="hasSubmenu ">
+                    <a href="#campaigns" data-toggle="collapse"><i class="icon-paint-brushes"></i>Campaigns</a>
+                    <ul class="collapse " id="campaigns">
+                        <li class="">
+                            <%= link_to '<i class="icon-lock-fill"></i> All Campaigns'.html_safe, campaigns_path %>
+                           
+                        </li>
+                        <li class="">
+                            <%= link_to '<i class="icon-lock-fill"></i> Start a Campaigns'.html_safe, new_campaign_path %>
+                        </li>
+                    </ul>
+                </li>
+                <li class="">
+                    <%= link_to '<i class="fa fa-group"></i>Find Friends'.html_safe, users_path %>
+                </li>
+
+               
                 <li class="category border top">News Feeds</li>
                 <li class="reset">
                     <ul>

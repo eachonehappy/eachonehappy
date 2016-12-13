@@ -34,6 +34,7 @@ gem 'jbuilder', '~> 2.5'
 gem 'devise'
 gem 'has_friendship'
 gem 'redis', '~> 3.2'
+gem 'carrierwave', '>= 1.0.0.rc', '< 2.0'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
