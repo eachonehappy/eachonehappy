@@ -14,11 +14,11 @@ class CommentsController < ApplicationController
   
   def create
   	@comment = Comment.new(comment_params)
-  	@comment.post_id = 1
+  	@comment.post_id = params[:post_id]
   	@comment.user_id = current_user.id
     if @comment.save
       flash[:success] = "comment created!"
-      redirect_to comments_path
+      redirect_to root_path
     else
       render 'new'
     end
@@ -33,7 +33,7 @@ class CommentsController < ApplicationController
   private
     
     def comment_params
-      params.require(:comment).permit(:description)
+      params.require(:comment).permit(:description, :post_id)
     end
 end
 
