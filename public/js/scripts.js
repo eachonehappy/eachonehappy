@@ -378,7 +378,7 @@ require('./_minicolors');
 (function ($) {
     "use strict";
 
-    var nice = $('.messages-list .panel').niceScroll({cursorborder: 0, cursorcolor: "#25ad9f", zindex: 1});
+    var nice = $('.messages-list .panel').niceScroll({cursorborder: 0, cursorcolor: "#ffe042", zindex: 1});
 
     var _super = nice.getContentSize;
 
@@ -391,7 +391,6 @@ require('./_minicolors');
 })(jQuery);
 },{}],"/Applications/MAMP/htdocs/social-2/dev/dev/app/js/components/messages/main.js":[function(require,module,exports){
 require('./_breakpoints');
-require('./_nicescroll');
 },{"./_breakpoints":"/Applications/MAMP/htdocs/social-2/dev/dev/app/js/components/messages/_breakpoints.js","./_nicescroll":"/Applications/MAMP/htdocs/social-2/dev/dev/app/js/components/messages/_nicescroll.js"}],"/Applications/MAMP/htdocs/social-2/dev/dev/app/js/components/other/_dropdown.js":[function(require,module,exports){
 (function ($) {
     "use strict";
@@ -454,7 +453,7 @@ require('./_nicescroll');
 },{}],"/Applications/MAMP/htdocs/social-2/dev/dev/app/js/components/sidebar/_sidebar-menu.js":[function(require,module,exports){
 (function ($) {
     // Scroll
-    $('[data-scrollable]').niceScroll({cursorborder: 0, cursorcolor: "#25ad9f"});
+    $('[data-scrollable]').niceScroll({cursorborder: 0, cursorcolor: "#ffe042"});
     $('[data-scrollable]').getNiceScroll().resize();
     $('#menu ul.collapse').on('shown.bs.collapse', function (e) {
         $('#menu').getNiceScroll().resize();
@@ -498,7 +497,6 @@ require('./_nicescroll');
 })(jQuery);
 },{"../chat/_check-chat":"/Applications/MAMP/htdocs/social-2/dev/dev/app/js/components/chat/_check-chat.js"}],"/Applications/MAMP/htdocs/social-2/dev/dev/app/js/components/sidebar/main.js":[function(require,module,exports){
 require('./_breakpoints');
-require('./_sidebar-menu');
 require('./_sidebar-toggle');
 },{"./_breakpoints":"/Applications/MAMP/htdocs/social-2/dev/dev/app/js/components/sidebar/_breakpoints.js","./_sidebar-menu":"/Applications/MAMP/htdocs/social-2/dev/dev/app/js/components/sidebar/_sidebar-menu.js","./_sidebar-toggle":"/Applications/MAMP/htdocs/social-2/dev/dev/app/js/components/sidebar/_sidebar-toggle.js"}],"/Applications/MAMP/htdocs/social-2/dev/dev/app/js/components/tables/_check-all.js":[function(require,module,exports){
 (function ($) {

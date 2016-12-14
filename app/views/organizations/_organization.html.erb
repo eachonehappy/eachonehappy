@@ -1,33 +1,16 @@
-<div class="paddingleft15">
-  <div class="row">
-    <div class="col-sm-6">
-      <div class="panel panel-white post panel-shadow bgwhite">
-        <div class="post-heading">
-          <div class="pull-left image">
-            <img src="http://bootdey.com/img/Content/user_1.jpg" class="img-circle avatar" alt="user profile image">
-          </div>
-          <div class="pull-left meta">
-            <div class="title h5">
-              <a class="text-capitalize" href="#"><b><%= current_user.email %></b></a>
-              <a class="text-muted time small">created <%= time_ago_in_words(organization.created_at) %> ago</a>
-            </div>
-            <br>
-            <h5 class="text-primary text-capitalize"><%= organization.name %></h5>
-          </div>
-        </div> 
-        <div class="post-description"> 
-          <p><%= organization.name %></p>
-          <div class="stats">
-            <a href="#" class="btn btn-default stat-item">
-                <i class="fa fa-thumbs-up icon"></i>2
-            </a>
-            <a href="#" class="btn btn-default stat-item">
-                <i class="fa fa-share icon"></i>12
-            </a>
-          </div>
-        </div>
-        <%= link_to "delete",organization,  method: :delete ,data: { confirm: "You sure?" }, :class=>"btn btn-danger btn-xs" %>
-      </div><br>
-    </div>
-  </div>
-</div>
+<div class="timeline-block">
+                  <div class="panel panel-default profile-user-box">
+                        <div class="avatar">
+                            <img src="images/people/110/guy-5.jpg" alt="" class="img-circle pull-left" />
+                            <h3><%= organization.name%></h3>
+                            <a href="#" class="btn btn-success">Following <i class="fa fa-check-circle fa-fw"></i></a>
+                        </div>
+                        <div class="profile-icons">
+                            <span><i class="fa fa-users"></i> 372</span> <span><i class="fa fa-photo"></i> 43</span> <span><i class="fa fa-video-camera"></i> 3 </span>
+                        </div>
+                        <p>Hi! I'm Adrian the Senior UI Designer at
+                            <strong>MOSAICPRO</strong>. We hope you enjoy the design and quality of Social.</p>
+                    </div>
+                    </div>
+
+

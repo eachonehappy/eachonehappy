@@ -2659,7 +2659,7 @@
   background-clip: padding-box;
   *border-right-width: 2px;
   *border-bottom-width: 2px;
-  color: #333333;
+  color: #000000;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 13px;
   line-height: 20px;
@@ -4164,8 +4164,8 @@ body {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 14px;
   line-height: 1.42857143;
-  color: #333333;
-  background-color: #f6f6f6;
+  color: #000000;
+  background-color: #e4e4e4;
 }
 input,
 button,
@@ -4211,7 +4211,7 @@ img {
 .img-thumbnail {
   padding: 4px;
   line-height: 1.42857143;
-  background-color: #f6f6f6;
+  background-color: #e4e4e4;
   border: 1px solid #dddddd;
   border-radius: 4px;
   -webkit-transition: all 0.2s ease-in-out;
@@ -4619,7 +4619,7 @@ kbd {
   padding: 2px 4px;
   font-size: 90%;
   color: #ffffff;
-  background-color: #333333;
+  background-color: #000000;
   border-radius: 3px;
   box-shadow: inset 0 -1px 0 rgba(0, 0, 0, 0.25);
 }
@@ -4636,7 +4636,7 @@ pre {
   line-height: 1.42857143;
   word-break: break-all;
   word-wrap: break-word;
-  color: #333333;
+  color: #000000;
   background-color: #f5f5f5;
   border: 1px solid #cccccc;
   border-radius: 4px;
@@ -5358,7 +5358,7 @@ th {
   border-top: 2px solid #dddddd;
 }
 .table .table {
-  background-color: #f6f6f6;
+  background-color: #e4e4e4;
 }
 .table-condensed > thead > tr > th,
 .table-condensed > tbody > tr > th,
@@ -5567,7 +5567,7 @@ legend {
   margin-bottom: 20px;
   font-size: 21px;
   line-height: inherit;
-  color: #333333;
+  color: #000000;
   border: 0;
   border-bottom: 1px solid #e5e5e5;
 }
@@ -5609,7 +5609,7 @@ output {
   padding-top: 7px;
   font-size: 14px;
   line-height: 1.42857143;
-  color: #333333;
+  color: #000000;
 }
 .form-control {
   display: block;
@@ -5618,7 +5618,7 @@ output {
   padding: 6px 12px;
   font-size: 14px;
   line-height: 1.42857143;
-  color: #333333;
+  color: #000000;
   background-color: #f7f7f7;
   background-image: none;
   border: 1px solid #efefef;
@@ -6408,7 +6408,7 @@ tbody.collapse.in {
   clear: both;
   font-weight: normal;
   line-height: 1.42857143;
-  color: #333333;
+  color: #000000;
   white-space: nowrap;
 }
 .dropdown-menu > li > a:hover,
@@ -6747,7 +6747,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   font-size: 14px;
   font-weight: normal;
   line-height: 1;
-  color: #333333;
+  color: #000000;
   text-align: center;
   background-color: #eeeeee;
   border: 1px solid #efefef;
@@ -6927,7 +6927,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   .nav-tabs.nav-justified > .active > a,
   .nav-tabs.nav-justified > .active > a:hover,
   .nav-tabs.nav-justified > .active > a:focus {
-    border-bottom-color: #f6f6f6;
+    border-bottom-color: #e4e4e4;
   }
 }
 .nav-pills > li {
@@ -6995,7 +6995,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   .nav-tabs-justified > .active > a,
   .nav-tabs-justified > .active > a:hover,
   .nav-tabs-justified > .active > a:focus {
-    border-bottom-color: #f6f6f6;
+    border-bottom-color: #e4e4e4;
   }
 }
 .tab-content > .tab-pane {
@@ -7350,7 +7350,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 }
 .navbar-default .navbar-nav > li > a:hover,
 .navbar-default .navbar-nav > li > a:focus {
-  color: #333333;
+  color: #000000;
   background-color: transparent;
 }
 .navbar-default .navbar-nav > .active > a,
@@ -7391,7 +7391,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   }
   .navbar-default .navbar-nav .open .dropdown-menu > li > a:hover,
   .navbar-default .navbar-nav .open .dropdown-menu > li > a:focus {
-    color: #333333;
+    color: #000000;
     background-color: transparent;
   }
   .navbar-default .navbar-nav .open .dropdown-menu > .active > a,
@@ -7411,14 +7411,14 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   color: #777777;
 }
 .navbar-default .navbar-link:hover {
-  color: #333333;
+  color: #000000;
 }
 .navbar-default .btn-link {
   color: #777777;
 }
 .navbar-default .btn-link:hover,
 .navbar-default .btn-link:focus {
-  color: #333333;
+  color: #000000;
 }
 .navbar-default .btn-link[disabled]:hover,
 fieldset[disabled] .navbar-default .btn-link:hover,
@@ -7462,11 +7462,11 @@ fieldset[disabled] .navbar-default .btn-link:focus {
   background-color: transparent;
 }
 .navbar-inverse .navbar-toggle {
-  border-color: #333333;
+  border-color: #000000;
 }
 .navbar-inverse .navbar-toggle:hover,
 .navbar-inverse .navbar-toggle:focus {
-  background-color: #333333;
+  background-color: #000000;
 }
 .navbar-inverse .navbar-toggle .icon-bar {
   background-color: #ffffff;
@@ -7826,7 +7826,7 @@ a.list-group-item.active > .badge,
   padding: 4px;
   margin-bottom: 20px;
   line-height: 1.42857143;
-  background-color: #f6f6f6;
+  background-color: #e4e4e4;
   border: 1px solid #dddddd;
   border-radius: 4px;
   -webkit-transition: all 0.2s ease-in-out;
@@ -7844,7 +7844,7 @@ a.thumbnail.active {
 }
 .thumbnail .caption {
   padding: 9px;
-  color: #333333;
+  color: #000000;
 }
 .alert {
   padding: 15px;
@@ -8067,7 +8067,7 @@ a.list-group-item {
   color: #555555;
 }
 a.list-group-item .list-group-item-heading {
-  color: #333333;
+  color: #000000;
 }
 a.list-group-item:hover,
 a.list-group-item:focus {
@@ -8414,7 +8414,7 @@ a.list-group-item-danger.active:focus {
   border-color: #efefef;
 }
 .panel-default > .panel-heading {
-  color: #333333;
+  color: #000000;
   background-color: #25ad9f;
   border-color: #efefef;
 }
@@ -8423,7 +8423,7 @@ a.list-group-item-danger.active:focus {
 }
 .panel-default > .panel-heading .badge {
   color: #25ad9f;
-  background-color: #333333;
+  background-color: #000000;
 }
 .panel-default > .panel-footer + .panel-collapse > .panel-body {
   border-bottom-color: #efefef;
@@ -11098,7 +11098,7 @@ button.close {
   width: 220px;
 }
 .bootstrap-select .btn:focus {
-  outline: thin dotted #333333 !important;
+  outline: thin dotted #000000 !important;
   outline: 5px auto -webkit-focus-ring-color !important;
   outline-offset: -2px;
 }
@@ -11466,7 +11466,7 @@ body > .container > .media {
   border-color: #efefef;
 }
 .btn-white:hover i {
-  color: #333333 !important;
+  color: #000000 !important;
 }
 .btn-white {
   color: #444444;
@@ -11786,7 +11786,7 @@ fieldset[disabled] .btn-inverse.active {
 }
 .nav-tabs > li.active > a {
   background: #fff;
-  color: #333333;
+  color: #000000;
 }
 .nav-tabs > li.active > a,
 .nav-tabs > li.active > a:hover {
@@ -15878,7 +15878,7 @@ ul.icon-list.bordered li:not(:last-of-type) {
 }
 .label-gray {
   background-color: #e2e2e2;
-  color: #333333;
+  color: #000000;
 }
 .label-gray[href]:hover,
 .label-gray[href]:focus {
@@ -16404,7 +16404,7 @@ ul.timeline-list .media-body.fixed {
 .profile-user-box p {
   text-align: center;
   padding: 0 15px 0px;
-  color: #333333;
+  color: #000000;
 }
 .profile-user-box .profile-icons {
   border-top: 1px solid #efefef;
@@ -16465,7 +16465,7 @@ ul.friends-list li:nth-child(6n) {
   padding: 5px;
   font-weight: 500;
   font-size: 18px;
-  color: #333333;
+  color: #000000;
 }
 .user-box .panel-body.bordered {
   background: #f9f9f9;
@@ -16492,7 +16492,7 @@ ul.friends-list li:nth-child(6n) {
   padding: 0;
 }
 .messages-container .messages-list .list-group-item a {
-  color: #333333;
+  color: #000000;
   display: block;
   text-decoration: none;
 }
@@ -16709,7 +16709,7 @@ body.login .lock-container .panel .forgot-password {
   margin-right: 250px;
 }
 .sidebar.right {
-  background: #303030;
+  background: #e4e4e4;
 }
 .chat-search {
   padding: 10px;
@@ -16740,7 +16740,7 @@ body.login .lock-container .panel .forgot-password {
   padding: 5px 5px 5px 10px;
   color: #dfdfdf;
   background: #383838;
-  border-bottom: 1px solid #303030;
+  border-bottom: 1px solid #e4e4e4;
 }
 .chat-filter li a {
   padding: 3px 5px;
@@ -17069,7 +17069,7 @@ fieldset[disabled] .cover.overlay .btn-cover.active {
 @media (max-width: 480px) {
   .cover.overlay ul {
     bottom: -40px;
-    background: #303030;
+    background: #e4e4e4;
     border-top: none;
   }
   .cover.overlay ul li a {
@@ -17300,7 +17300,7 @@ fieldset[disabled] .cover.overlay .btn-cover.active {
     top: 10px;
   }
   .cover.profile .wrapper .name a {
-    color: #333333;
+    color: #000000;
   }
   .cover.profile .wrapper .nav {
     left: 0;
@@ -17358,7 +17358,7 @@ fieldset[disabled] .cover.overlay .btn-cover.active {
     top: 3px;
   }
   .cover.profile .cover-info .name a {
-    color: #333333;
+    color: #000000;
     font-size: 18px;
   }
   .cover.profile .cover-info .cover-nav {
@@ -17730,7 +17730,7 @@ fieldset[disabled] .cover.overlay .btn-cover.active {
   position: fixed;
   bottom: 0;
   width: 250px;
-  background: #303030;
+  background: #e4e4e4;
   z-index: 1;
 }
 .sidebar.left {
@@ -17798,14 +17798,14 @@ fieldset[disabled] .cover.overlay .btn-cover.active {
 }
 #menu ul li a {
   display: block;
-  color: #676767;
+  color: #000000;
   font-weight: 600;
   font-size: 14px;
   text-decoration: none;
 }
 #menu ul li a [class*="icon-"] {
   vertical-align: middle;
-  color: #676767;
+  color: #000000;
   font-size: 1.4em;
 }
 #menu ul li a [class*="icon-"]:before {
@@ -17815,7 +17815,7 @@ fieldset[disabled] .cover.overlay .btn-cover.active {
 #menu ul li a [class*="fa fa-"] {
   width: 26px;
   font-size: 18px;
-  color: #676767;
+  color: #000000;
 }
 #menu ul li a [class*="fa fa-"]:before {
   margin-left: 2px;
@@ -17892,7 +17892,7 @@ fieldset[disabled] .cover.overlay .btn-cover.active {
   font-size: 14px;
 }
 #menu ul li ul li.open {
-  background: #303030;
+  background: #e4e4e4;
 }
 #menu ul li ul li.open > a {
   background: #232323;
@@ -17940,7 +17940,7 @@ fieldset[disabled] .cover.overlay .btn-cover.active {
 }
 #menu ul .news-item {
   font-size: 12px !important;
-  color: #676767;
+  color: #000000;
   font-weight: 600;
   background: #353535;
   padding: 5px 0;
@@ -18005,7 +18005,7 @@ fieldset[disabled] .cover.overlay .btn-cover.active {
   height: 45px;
   line-height: 45px;
   z-index: 1030;
-  border-top: 5px solid #f6f6f6;
+  border-top: 5px solid #e4e4e4;
   display: block;
 }
 
@@ -18042,6 +18042,6 @@ fieldset[disabled] .cover.overlay .btn-cover.active {
   position: fixed;
   bottom: 0;
   width: 250px;
-  background: #303030;
+  background: #e4e4e4;
   z-index: 1029;
 }
