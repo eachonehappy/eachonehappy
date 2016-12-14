@@ -1,15 +1,66 @@
-<div class="row">
-  <aside class="col-md-4">
-    <section class="user_info">
-      <h1>
-        <%= @cause.subject %>
-      </h1>
-    </section>
-  </aside>
-  <div class="col-md-8">
-      <h3>
-        <%= @cause.description %>
-      </h3>
-  
-   </div>
+<div class="col-md-9">
+<div class="cover profile">
+ 
+      <img src="/images/profile-cover.jpg" alt="people" class="img-responsive" />
+    
+  <div class="cover-info">
+    <div class="avatar">
+      <img src="/images/people/110/guy-5.jpg" alt="people" />
+    </div>
+    <div class="name">
+      <a href="#">
+        Bill Demian
+      </a>
+    </div>
+      <ul class="cover-nav" role="tablist">
+          <li class="active"><a href="#time_line" role="tab" data-toggle="tab"><i class="fa fa-fw icon-ship-wheel"></i> Timeline</a>
+          </li>
+          <li><a href="#about" role="tab" data-toggle="tab"><i class="fa fa-fw icon-user-1"></i> About</a>
+          </li>
+          <li><a href="#friends" role="tab" data-toggle="tab"><i class="fa fa-fw fa-users"></i> Friends</a>
+          </li>
+      </ul>       
+  </div>
 </div>
+
+<div class="tab-content">
+  <%= render 'users/about'%>    
+  <%= render 'users/friends'%> 
+  <div class="tab-pane fade active in" id="time_line">  
+    <%= render 'users/timeline'%> 
+  </div>                      
+</div>
+
+
+</div>
+    
+          
+              
+            
+      
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+       
+         
+
+
+
+
+    
+
+
+
+
+

@@ -2,7 +2,7 @@
                   <div class="panel panel-default profile-user-box">
                         <div class="avatar">
                             <img src="images/people/110/guy-5.jpg" alt="" class="img-circle pull-left" />
-                            <h3><%= organization.name%></h3>
+                            <h3><%= link_to "#{organization.name}" , organization_path(organization)%></h3>
                             <a href="#" class="btn btn-success">Following <i class="fa fa-check-circle fa-fw"></i></a>
                         </div>
                         <div class="profile-icons">

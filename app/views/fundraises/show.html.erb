@@ -1,15 +1,26 @@
-<div class="row">
-  <aside class="col-md-4">
-    <section class="user_info">
-      <h1>
-        <%= @cause.subject %>
-      </h1>
-    </section>
-  </aside>
-  <div class="col-md-8">
-      <h3>
-        <%= @cause.description %>
-      </h3>
-  
-   </div>
-</div>
+<div class="timeline-block">
+                    <div class="panel panel-default">
+                        
+                        <div class="panel-body">
+                            <div class="boxed">
+                                <a href="#" class="h4 margin-none"><%= link_to "#{@fundraise.subject}" , fundraise_path(@fundraise)%></a>
+                                
+                                <div class="media">
+                                    <a href="#" class="media-object pull-left">
+                                        <img src="/images/place1-full.jpg" class="img-responsive" />
+                                    </a>
+                                    <div class="media-body">
+                                        <p><%=@fundraise.target%></p>
+                                    </div>
+                                </div>
+                                <ul class="icon-list">
+                                    <li><i class="fa fa-star fa-fw"></i> 4.8</li>
+                                    <li><i class="fa fa-clock-o fa-fw"></i> 20 min</li>
+                                    <li><i class="fa fa-graduation-cap fa-fw"></i> Rs.<%=@fundraise.target%></li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                       
+                    </div>
+                </div>

@@ -3,11 +3,11 @@
                         
                         <div class="panel-body">
                             <div class="boxed">
-                                <a href="#" class="h4 margin-none"><%= campaign.subject%></a>
+                                <a href="#" class="h4 margin-none"><%= link_to "#{campaign.subject}" , campaign_path(campaign)%></a>
                                 
                                 <div class="media">
                                     <a href="#" class="media-object pull-left">
-                                        <img src="images/food1.jpg" alt="" width="80" />
+                                        <img src="/images/food1.jpg" alt="" width="80" />
                                     </a>
                                     <div class="media-body">
                                         <p><%=campaign.description%></p>
