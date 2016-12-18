@@ -1,13 +1,25 @@
 <div class="col-md-9">
-  <div class="cover profile ">     
-    <img src="/images/profile-cover.jpg" alt="people" class="img-responsive" />  
+  <div class="cover profile "> 
+  <div style="position:relative;
+    display:inline-block;
+    text-align:center;
+    ">  
+    <%= image_tag @user.cover_image_url.to_s, :class=>"img-responsive" %>  
+     <a style="position:absolute;
+    background-color: rgba(255, 255, 255, 0.48);
+    top:10px;
+    left:10px;
+    " class="btn btn-cover" data-toggle="modal" data-target="#modal-slide-down"><i class="fa fa-pencil fa-fw"></i></a> 
+   </div>
+ 
     <div class="cover-info">
       <div class="avatar">
-        <img src="/images/people/110/guy-5.jpg" alt="people" />
+      <%= image_tag @user.profile_image_url.to_s, :class=>"img-responsive" %>
+     
       </div>
       <div class="name">
-        <a href="#">
-          Bill Demian
+        <a class="text-capitalize">
+          <%= "#{@user.first_name} #{@user.last_name}"%>
         </a>
       </div>
       <ul class="cover-nav" role="tablist">
@@ -17,24 +29,41 @@
           </li>
           <li><a href="#friends" role="tab" data-toggle="tab"><i class="fa fa-fw fa-users"></i> Friends</a>
           </li>
-      </ul>       
+      </ul>
+        <% unless (@user == current_user) %>
+        <div class="btn-group pull-right">
+          <% if current_user.friends_with?(@user)  %>
+          <%= link_to "Remove Friend", remove_path(:friend_id => @user), :method => :post, :class=>"btn btn-danger" %>
+          <% elsif current_user.pending_friends.include?(@user) %>
+          <button class="btn btn-primary">Friend request send</button>
+          <% elsif current_user.requested_friends.include?(@user) %>
+          <%= link_to "Accept Request", accept_path(:friend_id => @user), :method => :post, :class=>"btn btn-info" %>
+          <% else %>
+          <%= link_to "Add Friend", invite_path(:friend_id => @user), :method => :post, :class=>"btn btn-info" %>
+          <% end %>
+       
+        </div>
+        <%end%>
+            
     </div>
   </div>
   <div class="tab-content" style="padding: 0px;">
     <%= render 'users/about'%>    
     <%= render 'users/friends'%> 
     <div class="tab-pane active" id="time_line" >  
-      <%= render 'users/timeline'%> 
+      <div class="col-md-6 " style="padding-left: 0px; padding-right: 8px;">
+        <%= render :partial => 'shared/post', :collection => @posts%>
+      </div> 
     </div>                      
   </div>
 </div>
     
-          
+<%= render 'users/picture_modal'%>       
               
             
       
 
- 
+
 
 
 

@@ -11,7 +11,7 @@ Rails.application.routes.draw do
     devise_scope :user do
 	  root to: "devise/sessions#new"
 	end
-    resources :users, only: [:index,:show]
+    resources :users, only: [:index,:show, :update]
     resources :chat_rooms, only: [:new, :create, :show, :index]
     mount ActionCable.server => '/cable'
     resources :messages

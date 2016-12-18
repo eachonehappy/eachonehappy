@@ -9,7 +9,8 @@
   </div>
   <div class="pull-left meta">
     <div class="title h5">
-      <a class="text-capitalize" href="#"><b><li><%= "#{user.first_name}  #{user.last_name}" %></li></b></a>
+    <%= link_to "#{user.first_name}  #{user.last_name}", user_path(user), :class=>"text-capitalize" %>
+      
       <a class="text-muted time small">joined <%= time_ago_in_words(user.created_at) %> ago</a>
     </div>
     <% if current_user.friends_with?(user)  %>

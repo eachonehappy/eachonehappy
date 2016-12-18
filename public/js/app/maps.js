@@ -270,6 +270,7 @@ function initScripts() {
         "js/vendor/maps/google/jquery-ui-map/ui/jquery.ui.map.overlays.js",
         "js/vendor/maps/google/jquery-ui-map/ui/jquery.ui.map.rdfa.js",
         "js/vendor/maps/google/jquery-ui-map/addons/infobox_packed.js",
+        "js/vendor/maps/google/jquery-ui-map/addons/markerclusterer.min.js"
     ];
 
     $.each($scripts, function (k, v) {

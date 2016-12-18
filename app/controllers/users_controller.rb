@@ -17,7 +17,28 @@ class UsersController < ApplicationController
     
   end
   def show
+    @comment = Comment.new
     @user = User.find(params[:id])
+    @posts = @user.posts
+    
+  end
+
+  def update
+    @user = User.find(params[:id])
+    if params[:user][:cover_image].present?
+      @user.cover_image = params[:user][:cover_image]
+    end
+    
+    if params[:user][:profile_image].present? 
+      @user.profile_image = params[:user][:profile_image]
+    end
+      
+    if @user.save
+      flash[:success] = "Profile updated"
+      redirect_to @user
+    else
+      render 'edit'
+    end
   end
 
   def invite_friend
