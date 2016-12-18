@@ -18,7 +18,7 @@
  
     <div class="cover-info">
       <div class="avatar">
-      <% if @user.cover_image_url %> 
+      <% if @user.profile_image_url %> 
         <%= image_tag @user.profile_image_url.to_s, :class=>"img-responsive" %>
         <% else %>
         <img src="/images/profile.png" class="img-responsive">
