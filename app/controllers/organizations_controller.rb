@@ -34,6 +34,13 @@ class OrganizationsController < ApplicationController
     flash[:success] = "Organization deleted"
     redirect_to organizations_path
   end
+
+  def follow
+    @organization = Organization.find(params[:organization_id])
+    if current_user.follow!(@organization)
+      redirect_to organizations_path
+    end
+  end
   
   private
     

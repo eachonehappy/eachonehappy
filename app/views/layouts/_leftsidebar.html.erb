@@ -1,12 +1,18 @@
-<div class="sidebar left" style="width: 200px;">
-
-<%= link_to "Eachonehappy", pages_home_path, :id =>"brand", :style=>"width: 200px;" %>
-       
-        <div id="menu" data-scrollable>
-            <ul>
-                
-                
-                
+<div class="sidebar left sidebar-size-2 sidebar-offset-0 sidebar-skin-blue sidebar-visible-desktop" id=sidebar-menu data-type=collapse>
+  <div class="split-vertical">    
+    <div class="split-vertical-body">
+      <div class="split-vertical-cell">
+        <div class="tab-content">
+          <div class="tab-pane active" id="sidebar-tabs-menu">
+            <div data-scrollable>
+              <ul class="sidebar-menu sm-icons-right sm-icons-block">
+                <li class="active"><a href="index.html"><i class="fa fa-home"></i> <span>Dashboard</span></a></li>
+                <li><a href="email.html"><i class="fa fa-envelope"></i> <span>Email</span></a></li>
+                <li><a href="chat.html"><i class="fa fa-comments"></i> <span>Chat</span></a></li>
+              </ul>
+              <h4 class="category">Components</h4>
+              <ul class="sidebar-menu sm-bordered sm-active-item-bg">
+                                                                                                                        
                 <li class="hasSubmenu ">
                     <a href="#causes" data-toggle="collapse"><i class="icon-paint-brushes"></i>Causes</a>
                     <ul class="collapse " id="causes">
@@ -31,8 +37,6 @@
                         </li>
                     </ul>
                 </li>
-
-                
                 <li class="hasSubmenu ">
                     <a href="#jobs" data-toggle="collapse"><i class="icon-paint-brushes"></i>jobs</a>
                     <ul class="collapse " id="jobs">
@@ -44,8 +48,7 @@
                             <%= link_to '<i class="icon-lock-fill"></i> Create a Job'.html_safe, new_job_path %>
                         </li>
                     </ul>
-                </li>
-                
+                </li>                
                 <li class="hasSubmenu ">
                     <a href="#organizations" data-toggle="collapse"><i class="icon-paint-brushes"></i>Organizations</a>
                     <ul class="collapse " id="organizations">
@@ -73,12 +76,14 @@
                 <li class="">
                     <%= link_to '<i class="fa fa-group"></i>Find Friends'.html_safe, users_path %>
                 </li>
-
-               
-               
-                
-            </ul>
+              </ul>
+            </div>
+          </div>
         </div>
+      </div>
     </div>
+  </div>
+</div>
+
 
   

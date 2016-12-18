@@ -1,6 +1,8 @@
 class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
+  mount_uploader :profile_image, ImageUploader
+  mount_uploader :cover_image, ImageUploader
   has_friendship
   has_many :organizations, through: :organization_users
   has_many :organization_users
@@ -20,7 +22,7 @@ class User < ApplicationRecord
   #has_many :inverse_friendships, :class_name => "Friendship", :foreign_key => "friend_id"
   #has_many :inverse_friends, :through => :inverse_friendships, :source => :user
 
-
+  acts_as_follower
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 

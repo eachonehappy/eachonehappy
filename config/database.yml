@@ -23,4 +23,6 @@ test:
  host: localhost  
  database: eachonehappy_test
 
-
+ production:
+ <<: *default
+ 

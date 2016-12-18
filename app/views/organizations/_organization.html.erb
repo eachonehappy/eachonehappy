@@ -3,7 +3,12 @@
                         <div class="avatar">
                             <img src="images/people/110/guy-5.jpg" alt="" class="img-circle pull-left" />
                             <h3><%= link_to "#{organization.name}" , organization_path(organization)%></h3>
-                            <a href="#" class="btn btn-success">Following <i class="fa fa-check-circle fa-fw"></i></a>
+                            <% if current_user.follows?(organization)%>
+                            <a class="btn btn-success">Following <i class="fa fa-check-circle fa-fw"></i></a>
+                            <%else%>
+                            <%= link_to '<i class="fa fa-check-circle fa-fw"></i>Follow'.html_safe,follow_organization_path(:organization_id => organization.id), :method => :post, :class=>"btn btn-success" %>
+                            <%end%>
+                            
                         </div>
                         <div class="profile-icons">
                             <span><i class="fa fa-users"></i> 372</span> <span><i class="fa fa-photo"></i> 43</span> <span><i class="fa fa-video-camera"></i> 3 </span>

@@ -1,12 +1,15 @@
 <% if user_signed_in? %>
-<div id="content" style="margin-left: 200px;">
-        <div class="container-fluid" >
-<%= yield %>
-</div>
-</div>
-<%else%>
-<%= yield %>
- <%end%>
+  <div class="st-pusher">
+    <%= render 'layouts/leftsidebar'%> 
+    <div class="st-content" id="content">
+      <div class="st-content-inner">
+        <div class="container-fluid">
+          <%= yield %>
+        </div>
+      </div>
+    </div>
+  </div>
+<%end%>
 
 
 

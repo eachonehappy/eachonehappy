@@ -1,72 +1,51 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-  
-  <meta name="description" content="app, web app, responsive, responsive layout, admin, admin panel, admin dashboard, flat, flat ui, ui kit, AngularJS, ui route, charts, widgets, components" />
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-
+<html class="st-layout ls-top-navbar ls-bottom-footer show-sidebar sidebar-l2" lang="en">
+  <head> 
+    <meta name="description" content="app, web app, responsive, responsive layout, admin, admin panel, admin dashboard, flat, flat ui, ui kit, AngularJS, ui route, charts, widgets, components" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <link href="/css/vendor/all.css" rel="stylesheet">
+    <link href="/css/app/app.css" rel="stylesheet">
 
     <title>Eachonehappy</title>
     <%= csrf_meta_tags %>
     <%= action_cable_meta_tag %>
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
   <body>
-  <% if user_signed_in? %>
-    <%= render 'layouts/leftsidebar'%>
-    <%= render 'layouts/header'%>
-    <%= render 'layouts/rightsidebar'%>
-    <%end%>
-    <%= render 'layouts/main'%>
-
-    <script src="/js/vendor.js"></script>
-    <script src="/js/scripts.js"></script>
-      <script type="text/javascript">
-        (function ($) {
-    "use strict";
-
-    var nice = $('.messages-list .panel').niceScroll({cursorborder: 0, cursorcolor: "#c7c7c7", zindex: 1});
-
-    var _super = nice.getContentSize;
-
-    nice.getContentSize = function () {
-        var page = _super.call(nice);
-        page.h = nice.win.height();
-        return page;
-    };
-
-})(jQuery);
-
-    </script>
-
-    <script type="text/javascript">
-        (function ($) {
-    // Scroll
-    $('[data-scrollable]').niceScroll({cursorborder: 0, cursorcolor: "#c7c7c7"});
-    $('[data-scrollable]').getNiceScroll().resize();
-    $('#menu ul.collapse').on('shown.bs.collapse', function (e) {
-        $('#menu').getNiceScroll().resize();
-    });
-
-    // Collapse
-    $('#menu ul.collapse').on('show.bs.collapse', function (e) {
-        e.stopPropagation();
-        var parents = $(this).parents('ul:first').find('> li.open [data-toggle="collapse"]');
-        if (parents.length) {
-            parents.trigger('click');
+    <% if user_signed_in? %>
+      <div class="st-container">
+        <%= render 'layouts/header'%>
+        <%= render 'layouts/main'%>
+      </div>
+    <%else%>
+      <%= yield %>  
+    <%end%>    
+    <script>
+      var colors = {
+        "danger-color": "#e74c3c",
+        "success-color": "#81b53e",
+        "warning-color": "#f0ad4e",
+        "inverse-color": "#2c3e50",
+        "info-color": "#2d7cb5",
+        "default-color": "#6e7882",
+        "default-light-color": "#cfd9db",
+        "purple-color": "#9D8AC7",
+        "mustard-color": "#d4d171",
+        "lightred-color": "#e15258",
+        "body-bg": "#f6f6f6"
+      };
+      var config = {
+        theme: "admin",
+        skins: {
+          "default": {
+            "primary-color": "#3498db"
+          }
         }
-        $(this).parent().addClass("open");
-    });
-
-    $('#menu ul.collapse').on('hidden.bs.collapse', function (e) {
-        e.stopPropagation();
-        $(this).parent().removeClass("open");
-    });
-
-}(jQuery));
+      };
     </script>
+    <script src="/js/vendor/all.js"></script>
+    <script src="/js/app/app.js"></script>
   </body>
 </html>
 
