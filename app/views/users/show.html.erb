@@ -7,7 +7,7 @@
     <% if @user.cover_image_url %> 
     <%= image_tag @user.cover_image_url.to_s, :class=>"img-responsive" %>
     <% else %>
-    <img src="/image/cover.png" class="img-responsive">
+    <img src="/images/cover.png" class="img-responsive">
     <% end %>  
      <a style="position:absolute;
     background-color: rgba(255, 255, 255, 0.48);
@@ -18,7 +18,12 @@
  
     <div class="cover-info">
       <div class="avatar">
-      <%= image_tag @user.profile_image_url.to_s, :class=>"img-responsive" %>
+      <% if @user.cover_image_url %> 
+        <%= image_tag @user.profile_image_url.to_s, :class=>"img-responsive" %>
+        <% else %>
+        <img src="/images/profile.png" class="img-responsive">
+        <% end %>
+      
      
       </div>
       <div class="name">
