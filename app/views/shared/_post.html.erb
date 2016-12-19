@@ -25,7 +25,9 @@
       <a href="#" class="btn"><i class="fa fa-user"></i> Share</a>
     </div>
     <div class="view-all-comments">
-    	<a data-toggle="collapse" data-target="#collapseExample<%=post.id%>" aria-expanded="false" aria-controls="collapseExample"><i class="fa fa-comments-o">  </i> View all</a> 10 comments  <%= post.likers_count%>  likes
+    	 <%= post.comments.count%> comments <%= post.likers_count%>  likes
+       <a data-toggle="collapse" data-target="#collapseExample<%=post.id%>" aria-expanded="false" aria-controls="collapseExample"><i class="fa fa-comments-o">  </i> View all</a>
+        
   	</div>   
     <div class="collapse" id="collapseExample<%=post.id%>">
       <ul class="comments">
