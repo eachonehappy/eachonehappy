@@ -28,6 +28,7 @@ Rails.application.routes.draw do
 	get 'messages/index' => 'chat_rooms#index'
 	get 'application/messages' => 'application#messages'
 	post 'follow_organization' => 'organizations#follow'
+	post 'post_like' => 'posts#post_like'
 	#resources :friendships
 	# For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

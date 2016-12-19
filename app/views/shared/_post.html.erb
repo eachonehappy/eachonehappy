@@ -15,11 +15,17 @@
     <p style="margin-bottom: 5px;margin-top: 5px;;margin-left: 5px;"><%=post.description%></p>
     <%= image_tag post.image_url.to_s, :class=>"img-responsive" %>  
     <div class="btn-group btn-group-footer btn-group-justified" style="    border-bottom: 1px solid #eeeeee;">
-      <a href="#" class="btn"><i class="fa fa-heart"></i> Like</a>
+    <% if current_user.likes?(post)%>
+    <%= link_to '<i class="fa fa-heart"></i>  Unlike'.html_safe, post_like_path(
+      :post_id => post.id),:method => :post, :class=>"btn" %>
+    <%else%>
+      <%= link_to '<i class="fa fa-heart"></i>  Like'.html_safe, post_like_path(
+      :post_id => post.id),:method => :post, :class=>"btn" %>
+      <%end%>
       <a href="#" class="btn"><i class="fa fa-user"></i> Share</a>
     </div>
     <div class="view-all-comments">
-    	<a data-toggle="collapse" data-target="#collapseExample<%=post.id%>" aria-expanded="false" aria-controls="collapseExample"><i class="fa fa-comments-o">  </i> View all</a> 10 comments
+    	<a data-toggle="collapse" data-target="#collapseExample<%=post.id%>" aria-expanded="false" aria-controls="collapseExample"><i class="fa fa-comments-o">  </i> View all</a> 10 comments  <%= post.likers_count%>  likes
   	</div>   
     <div class="collapse" id="collapseExample<%=post.id%>">
       <ul class="comments">

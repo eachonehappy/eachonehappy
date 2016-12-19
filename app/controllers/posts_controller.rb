@@ -29,6 +29,25 @@ class PostsController < ApplicationController
     flash[:success] = "Post deleted"
     redirect_to posts_path
   end
+
+  def post_like
+    @post = Post.find(params[:post_id])
+    if current_user.likes?(@post)
+      if current_user.unlike!(@post)
+        flash[:success] = "post created!"
+        redirect_to root_path
+      else
+        render 'new'
+      end
+    else
+      if current_user.like!(@post)
+        flash[:success] = "post created!"
+        redirect_to root_path
+      else
+        render 'new'
+      end
+    end
+  end
   
   private
     
