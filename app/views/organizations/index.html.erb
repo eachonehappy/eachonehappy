@@ -1,23 +1,15 @@
 <div class="col-md-9">
-<div class="ibox-title" style="background-color: white;">
-      <h1 class="title pull-left" style="margin-top: 10px;
-    margin-bottom: 10px; margin-left: 10px;">
-        <%= "Organizations" %>
-      </h1>
-     
-        <%= link_to "Add New Organization", new_organization_path, class: 'btn btn-primary pull-right ', :style=> "margin-top: 10px;
-    margin-right: 10px;"%>
-    
-      <div class="clearfix"></div>
-   
-</div>
-
-<div class="timeline row" data-toggle="gridalicious" style="padding-top: 10px;">
-<%= render @organizations %>
-
-               
-</div>
-
-  
-
+	<div class="ibox-title" style="background-color: white;">
+    <h1 class="title pull-left" style="margin-top: 10px;
+  margin-bottom: 10px; margin-left: 10px;">
+      <%= "Organizations" %>
+    </h1>
+	     
+    <%= link_to "Add New Organization", new_organization_path, class: 'btn btn-primary pull-right ', :style=> "margin-top: 10px;
+	    margin-right: 10px;"%>
+	  <div class="clearfix"></div>   
+	</div>
+	<div class="timeline row" data-toggle="gridalicious" style="padding-top: 10px;">
+	 <%= render @organizations %>               
+	</div>
 </div>

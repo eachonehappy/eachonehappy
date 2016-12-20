@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161219084624) do
+ActiveRecord::Schema.define(version: 20161220105244) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -27,8 +27,10 @@ ActiveRecord::Schema.define(version: 20161219084624) do
     t.text     "description"
     t.integer  "organization_id"
     t.integer  "cause_id"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
+    t.integer  "followers_count", default: 0
+    t.integer  "likers_count",    default: 0
   end
 
   create_table "cause_organizations", force: :cascade do |t|
@@ -41,8 +43,10 @@ ActiveRecord::Schema.define(version: 20161219084624) do
   create_table "causes", force: :cascade do |t|
     t.string   "subject"
     t.text     "description"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
+    t.integer  "followers_count", default: 0
+    t.integer  "likers_count",    default: 0
   end
 
   create_table "chat_room_users", force: :cascade do |t|
@@ -94,8 +98,10 @@ ActiveRecord::Schema.define(version: 20161219084624) do
     t.integer  "target"
     t.integer  "campaign_id"
     t.integer  "user_id"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
+    t.integer  "followers_count", default: 0
+    t.integer  "likers_count",    default: 0
   end
 
   create_table "job_users", force: :cascade do |t|
@@ -152,8 +158,12 @@ ActiveRecord::Schema.define(version: 20161219084624) do
 
   create_table "organizations", force: :cascade do |t|
     t.string   "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
+    t.string   "profile_image"
+    t.string   "cover_image"
+    t.integer  "followers_count", default: 0
+    t.integer  "likers_count",    default: 0
   end
 
   create_table "posts", force: :cascade do |t|
@@ -183,6 +193,7 @@ ActiveRecord::Schema.define(version: 20161219084624) do
     t.string   "last_name"
     t.string   "profile_image"
     t.string   "cover_image"
+    t.integer  "followers_count",        default: 0
     t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end

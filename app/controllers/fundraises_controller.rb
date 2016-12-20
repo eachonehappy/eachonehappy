@@ -30,6 +30,44 @@ class FundraisesController < ApplicationController
     flash[:success] = "Fundraise deleted"
     redirect_to fundraises_path
   end
+
+  def follow
+    @fundraise = Fundraise.find(params[:fundraise_id])
+    if current_user.follows?(@fundraise)
+      if current_user.unfollow!(@fundraise)
+        flash[:success] = "user created!"
+        redirect_to request.referer
+      else
+        render 'new'
+      end
+    else
+      if current_user.follow!(@fundraise)
+        flash[:success] = "fundraise created!"
+        redirect_to request.referer
+      else
+        render 'new'
+      end
+    end
+  end
+
+  def like
+    @fundraise = Fundraise.find(params[:fundraise_id])
+    if current_user.likes?(@fundraise)
+      if current_user.unlike!(@fundraise)
+        flash[:success] = "fundraise created!"
+        redirect_to @fundraise
+      else
+        render 'new'
+      end
+    else
+      if current_user.like!(@fundraise)
+        flash[:success] = "fundraise created!"
+        redirect_to @fundraise
+      else
+        render 'new'
+      end
+    end
+  end
   
   private
     

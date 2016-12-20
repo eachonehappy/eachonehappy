@@ -1,6 +1,9 @@
 class Fundraise < ApplicationRecord
   belongs_to :campaign
   belongs_to :user
+  acts_as_followable
+  acts_as_likeable
+  acts_as_mentioner
 
 
 

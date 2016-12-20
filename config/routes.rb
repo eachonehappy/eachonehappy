@@ -29,6 +29,14 @@ Rails.application.routes.draw do
 	get 'application/messages' => 'application#messages'
 	post 'follow_organization' => 'organizations#follow'
 	post 'post_like' => 'posts#post_like'
+	post 'follow_unfollow' => 'users#follow_unfollow'
+	post 'like_organization' => 'organizations#like_unlike'
+	post 'like_fundraise' => 'fundraises#like'
+	post 'follow_fundraise' => 'fundraises#follow'
+	post 'like_campaign' => 'campaigns#like'
+	post 'follow_campaign' => 'campaigns#follow'
+	post 'like_cause' => 'causes#like'
+	post 'follow_cause' => 'causes#follow'
 	#resources :friendships
 	# For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

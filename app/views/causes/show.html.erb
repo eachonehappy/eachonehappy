@@ -1,15 +1,48 @@
-<div class="row">
-  <aside class="col-md-4">
-    <section class="user_info">
-      <h1>
-        <%= @cause.subject %>
-      </h1>
-    </section>
-  </aside>
-  <div class="col-md-8">
-      <h3>
-        <%= @cause.description %>
-      </h3>
-  
-   </div>
-</div>
+<div class="timeline-block">
+                    <div class="panel panel-default">
+                        
+                        <div class="panel-body">
+                            <div class="boxed">
+                                <a href="#" class="h4 margin-none"><%= link_to "#{@cause.subject}" , cause_path(@cause)%></a>
+                                
+                                <div class="media">
+                                    <a href="#" class="media-object pull-left">
+                                        <img src="/images/place1-full.jpg" class="img-responsive" />
+                                    </a>
+                                    <div class="media-body">
+                                        <p><%=@cause.description%></p>
+                                        <%= @cause.followers_count %> Followers 
+                                        <br>
+                                        <%= @cause.likers_count %> Likes
+
+                                         <div class="btn-group">
+                                          <div class="btn-group pull-right">
+                                      <% if current_user.likes?(@cause)  %>
+                                        <%= link_to "Unlike", like_cause_path(:cause_id => @cause.id), :method => :post, :class=>"btn btn-danger" %>
+                                        <% else %>
+                                        <%= link_to "Like", like_cause_path(:cause_id => @cause), :method => :post, :class=>"btn btn-info" %>
+                                        <% end %>
+                                        </div>
+                                        </div>
+                                        <div class="btn-group">
+                                          <div class="btn-group pull-right">
+                                            <% if current_user.follows?(@cause)  %>
+                                            <%= link_to "Unfollow", follow_cause_path(:cause_id => @cause.id), :method => :post, :class=>"btn btn-danger" %>
+                                            <% else %>
+                                            <%= link_to "Follow", follow_cause_path(:cause_id => @cause), :method => :post, :class=>"btn btn-info" %>
+                                            <% end %>         
+                                          </div>       
+                                        </div>
+                                    </div>
+                                </div>
+                                <ul class="icon-list">
+                                    <li><i class="fa fa-star fa-fw"></i> 4.8</li>
+                                    <li><i class="fa fa-clock-o fa-fw"></i> 20 min</li>
+                                    <li><i class="fa fa-graduation-cap fa-fw"></i> Beginner</li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                       
+                    </div>
+                </div>

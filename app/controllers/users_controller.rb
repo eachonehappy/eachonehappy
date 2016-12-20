@@ -79,4 +79,24 @@ class UsersController < ApplicationController
       redirect_to users_path
     end  
   end
+
+  def follow_unfollow   
+    @user = User.find(params[:user_id])
+    if current_user.follows?(@user)
+      if current_user.unfollow!(@user)
+        flash[:success] = "user created!"
+        redirect_to @user
+      else
+        render 'new'
+      end
+    else
+      if current_user.follow!(@user)
+        flash[:success] = "post created!"
+        redirect_to @user
+      else
+        render 'new'
+      end
+    end
+  end
+
 end

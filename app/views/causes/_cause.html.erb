@@ -2,8 +2,11 @@
                     <div class="panel panel-default">
                         
                         <div class="panel-body">
-                            <div class="boxed">
-                                <a href="#" class="h4 margin-none"><%= cause.subject%></a>
+                            <div class="boxed" style="
+                                            padding-bottom: 0px;
+                                        ">
+                                <a href="#" class="h4 margin-none">
+                                <%= link_to "#{cause.subject}" , cause_path(cause)%>
                                 
                                 <div class="media">
                                     <a href="#" class="media-object pull-left">
@@ -18,9 +21,15 @@
                                     <li><i class="fa fa-clock-o fa-fw"></i> 20 min</li>
                                     <li><i class="fa fa-graduation-cap fa-fw"></i> Beginner</li>
                                 </ul>
+                                <div class="btn-group btn-group-footer btn-group-justified" >
+                    <a href="#" class="btn"><i class="fa fa-love"></i> Like</a>
+                      <a href="#" class="btn"><i class="fa fa-user"></i> Share</a>
+                    </div>
                             </div>
+
                         </div>
                         
                        
                     </div>
+                    
                 </div>

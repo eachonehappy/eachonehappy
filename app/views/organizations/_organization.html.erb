@@ -1,21 +1,29 @@
 <div class="timeline-block">
-                  <div class="panel panel-default profile-user-box">
-                        <div class="avatar">
-                            <img src="images/people/110/guy-5.jpg" alt="" class="img-circle pull-left" />
-                            <h3><%= link_to "#{organization.name}" , organization_path(organization)%></h3>
-                            <% if current_user.follows?(organization)%>
-                            <a class="btn btn-success">Following <i class="fa fa-check-circle fa-fw"></i></a>
-                            <%else%>
-                            <%= link_to '<i class="fa fa-check-circle fa-fw"></i>Follow'.html_safe,follow_organization_path(:organization_id => organization.id), :method => :post, :class=>"btn btn-success" %>
-                            <%end%>
-                            
-                        </div>
-                        <div class="profile-icons">
-                            <span><i class="fa fa-users"></i> 372</span> <span><i class="fa fa-photo"></i> 43</span> <span><i class="fa fa-video-camera"></i> 3 </span>
-                        </div>
-                        <p>Hi! I'm Adrian the Senior UI Designer at
-                            <strong>MOSAICPRO</strong>. We hope you enjoy the design and quality of Social.</p>
-                    </div>
-                    </div>
-
-
+  <div class="panel panel-default widget-user-1 text-center">
+    <div class="avatar">
+      <img src="/images/people/110/guy-5.jpg" alt="" class="img-circle pull-left">
+      <h3><%= link_to "#{organization.name}" , organization_path(organization), :class=> "text-capitalize"%></h3>
+        <% if current_user.follows?(organization)%>
+        <%= link_to '<i class="fa fa-check-circle fa-fw"></i>UnFollow'.html_safe,follow_organization_path(:organization_id => organization.id), :method => :post, :class=>"btn btn-danger" %>
+        <%else%>
+        <%= link_to '<i class="fa fa-check-circle fa-fw"></i>Follow'.html_safe,follow_organization_path(:organization_id => organization.id), :method => :post, :class=>"btn btn-success" %>
+        <%end%>
+    </div>
+    <div class="profile-icons margin-none">
+      <span><i class="fa fa-users"></i> 372</span>
+      <span><i class="fa fa-photo"></i> 43</span>
+      <span><i class="fa fa-video-camera"></i> 3</span>
+    </div>
+    <div class="panel-body">
+      <div class="expandable expandable-indicator-white expandable-trigger">
+        <div class="expandable-content">
+          <p>Hi! I'm Adrian the Senior UI Designer at
+            <strong>MOSAICPRO</strong>. We hope you enjoy the design and quality of Social.</p>
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut autem delectus dolorum necessitatibus neque odio quam quas qui quod soluta? Aliquid eius esse minima.</p>
+          <div class="expandable-indicator">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>  

@@ -37,8 +37,57 @@ class OrganizationsController < ApplicationController
 
   def follow
     @organization = Organization.find(params[:organization_id])
-    if current_user.follow!(@organization)
-      redirect_to organizations_path
+    if current_user.follows?(@organization)
+      if current_user.unfollow!(@organization)
+        flash[:success] = "user created!"
+        redirect_to request.referer
+      else
+        render 'new'
+      end
+    else
+      if current_user.follow!(@organization)
+        flash[:success] = "organization created!"
+        redirect_to request.referer
+      else
+        render 'new'
+      end
+    end
+  end
+
+  def update
+    @organization = Organization.find(params[:id])
+    if params[:organization][:cover_image].present?
+      @organization.cover_image = params[:organization][:cover_image]
+    end
+    
+    if params[:organization][:profile_image].present? 
+      @organization.profile_image = params[:organization][:profile_image]
+    end
+      
+    if @organization.save
+      flash[:success] = "Profile updated"
+      redirect_to @organization
+    else
+      render 'edit'
+    end
+  end
+
+  def like_unlike
+    @organization = Organization.find(params[:organization_id])
+    if current_user.likes?(@organization)
+      if current_user.unlike!(@organization)
+        flash[:success] = "organization created!"
+        redirect_to @organization
+      else
+        render 'new'
+      end
+    else
+      if current_user.like!(@organization)
+        flash[:success] = "organization created!"
+        redirect_to @organization
+      else
+        render 'new'
+      end
     end
   end
   

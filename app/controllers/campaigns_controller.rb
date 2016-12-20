@@ -32,6 +32,44 @@ class CampaignsController < ApplicationController
     flash[:success] = "Campaign deleted"
     redirect_to campaigns_path
   end
+
+  def follow
+    @campaign = Campaign.find(params[:campaign_id])
+    if current_user.follows?(@campaign)
+      if current_user.unfollow!(@campaign)
+        flash[:success] = "user created!"
+        redirect_to request.referer
+      else
+        render 'new'
+      end
+    else
+      if current_user.follow!(@campaign)
+        flash[:success] = "campaign created!"
+        redirect_to request.referer
+      else
+        render 'new'
+      end
+    end
+  end
+
+  def like
+    @campaign = Campaign.find(params[:campaign_id])
+    if current_user.likes?(@campaign)
+      if current_user.unlike!(@campaign)
+        flash[:success] = "campaign created!"
+        redirect_to @campaign
+      else
+        render 'new'
+      end
+    else
+      if current_user.like!(@campaign)
+        flash[:success] = "campaign created!"
+        redirect_to @campaign
+      else
+        render 'new'
+      end
+    end
+  end
   
   private
     

@@ -1,17 +1,53 @@
 <div class="col-md-9">
-<div class="cover profile">
- 
-      <img src="/images/profile-cover.jpg" alt="people" class="img-responsive" />
-    
-  <div class="cover-info">
-    <div class="avatar">
-      <img src="/images/people/110/guy-5.jpg" alt="people" />
+  <div class="cover profile">
+    <div style="position:relative;display:inline-block;text-align:center;"> 
+      <% if @organization.cover_image_url %> 
+        <%= image_tag @organization.cover_image_url.to_s, :class=>"img-responsive" %>
+      <% else %>
+        <img src="/images/cover.png" class="img-responsive">
+      <% end %>  
+      <a style="position:absolute;background-color: rgba(255, 255, 255, 0.48);top:10px;left:10px;" class="btn btn-cover" data-toggle="modal" data-target="#modal-slide-down"><i class="fa fa-pencil fa-fw"></i></a> 
+      <div style="position:absolute;background-color: rgba(255, 255, 255, 0);right:10px;bottom:50px;">
+        <%= @organization.followers_count %> Followers 
+        <br>
+        <%= @organization.likers_count %> Likes
+      </div>
+      <div style="position:absolute;background-color: rgba(255, 255, 255, 0);right:10px; bottom:10px; ">  
+        <% unless (@organization == current_user) %>
+          <div class="btn-group">
+            <div class="btn-group pull-right">
+              <% if current_user.likes?(@organization)  %>
+              <%= link_to "Unlike", like_organization_path(:organization_id => @organization.id), :method => :post, :class=>"btn btn-danger" %>
+              <% else %>
+              <%= link_to "Like", like_organization_path(:organization_id => @organization), :method => :post, :class=>"btn btn-info" %>
+              <% end %>         
+            </div>       
+          </div>
+          <div class="btn-group">
+            <div class="btn-group pull-right">
+              <% if current_user.follows?(@organization)  %>
+              <%= link_to "Unfollow", follow_organization_path(:organization_id => @organization.id), :method => :post, :class=>"btn btn-danger" %>
+              <% else %>
+              <%= link_to "Follow", follow_organization_path(:organization_id => @organization), :method => :post, :class=>"btn btn-info" %>
+              <% end %>         
+            </div>       
+          </div>
+        <%end%>
+      </div>
     </div>
-    <div class="name">
-      <a href="#">
-        Bill Demian
-      </a>
-    </div>
+    <div class="cover-info">
+      <div class="avatar">
+        <% if @organization.profile_image_url %> 
+        <%= image_tag @organization.profile_image_url.to_s, :class=>"img-responsive" %>
+        <% else %>
+        <img src="/images/profile.png" class="img-responsive">
+        <% end %>
+      </div>
+      <div class="name">
+        <a href="#">
+          Bill Demian
+        </a>
+      </div>
       <ul class="cover-nav" role="tablist">
           <li class="active"><a href="#time_line" role="tab" data-toggle="tab"><i class="fa fa-fw icon-ship-wheel"></i> Timeline</a>
           </li>
@@ -20,20 +56,17 @@
           <li><a href="#friends" role="tab" data-toggle="tab"><i class="fa fa-fw fa-users"></i> Friends</a>
           </li>
       </ul>       
+    </div>
+  </div>
+  <div class="tab-content" style="padding: 0px;">
+    <%= render 'users/about'%>    
+    <%= render 'users/friends'%> 
+    <div class="tab-pane fade active in" id="time_line">  
+      <%= render 'users/timeline'%> 
+    </div>                      
   </div>
 </div>
-
-<div class="tab-content" style="padding: 0px;">
-  <%= render 'users/about'%>    
-  <%= render 'users/friends'%> 
-  <div class="tab-pane fade active in" id="time_line">  
-    <%= render 'users/timeline'%> 
-  </div>                      
-</div>
-
-
-</div>
-    
+<%= render 'organizations/picture_modal'%>         
           
               
             

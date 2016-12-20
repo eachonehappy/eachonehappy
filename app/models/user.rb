@@ -23,6 +23,8 @@ class User < ApplicationRecord
   #has_many :inverse_friends, :through => :inverse_friendships, :source => :user
   acts_as_liker
   acts_as_follower
+  acts_as_followable
+  acts_as_mentionable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
