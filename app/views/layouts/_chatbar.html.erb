@@ -1,4 +1,5 @@
-<div class="sidebar sidebar-chat right sidebar-size-2 sidebar-offset-0 chat-skin-white" id=sidebar-chat>
+<% if request.original_url.include?("/chat_rooms")%>
+<div class="sidebar sidebar-chat left sidebar-size-2 sidebar-offset-2 chat-skin-white sidebar-visible-desktop" style="bottom:0px;">
       <div class="split-vertical">
         <div class="chat-search">
           <input type="text" class="form-control" placeholder="Search" />
@@ -55,4 +56,4 @@
         </div>
       </div>
     </div>
-    
+<%end%>

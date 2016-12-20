@@ -16,6 +16,10 @@ class PostsController < ApplicationController
   	@post = Post.new(post_params)
     @post.user_id = current_user.id
     @post.subject = "test"
+    params[:post][:user_id].reject(&:empty?).each do |user_id|
+      @user = User.find(user_id)
+    @post.mention!(@user)
+    end
     if @post.save
       flash[:success] = "post created!"
       redirect_to root_path

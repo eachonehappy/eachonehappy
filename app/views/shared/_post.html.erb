@@ -7,7 +7,10 @@
         </a>
         <div class="media-body">
           <a href="#" class="pull-right text-muted"><i class="icon-reply-all-fill fa fa-2x "></i></a>
-          <a href=""><%=post.user.first_name%></a>
+          <a href=""><%=post.user.first_name%>  with <%post.mentionees(User).each do |user|%>
+            <%= user.first_name%>
+            <%end%></a>
+          
           <span>on 15th January, 2014</span>
         </div>
       </div>

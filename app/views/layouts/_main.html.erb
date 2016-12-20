@@ -1,6 +1,8 @@
 <% if user_signed_in? %>
+ <%= render 'layouts/chatbar'%>
   <div class="st-pusher">
     <%= render 'layouts/leftsidebar'%> 
+    <%= render 'layouts/rightsidebar'%>
     <div class="st-content" id="content">
       <div class="st-content-inner">
         <div class="container-fluid">

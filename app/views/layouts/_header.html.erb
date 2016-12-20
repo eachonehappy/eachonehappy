@@ -2,7 +2,8 @@
   <div class="container-fluid">
     <div class="navbar-header">
       <a href="#sidebar-menu" data-toggle="sidebar-menu" data-effect="st-effect-3" class="toggle pull-left visible-xs"><i class="fa fa-bars"></i></a>
-     <%= link_to '<i class="fa fa-comments"></i>'.html_safe, chat_rooms_path, :class => "toggle pull-right" %>
+     <a href="#sidebar-chat" data-toggle="sidebar-menu" class="toggle pull-right visible-xs"><i class="fa fa-comments"></i></a>
+     <%= link_to '<i class="fa fa-comments"></i>'.html_safe, chat_rooms_path, :class => "toggle pull-right visible-lg" %>
       <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#collapse">
         <span class="sr-only">Toggle navigation</span>
         <span class="icon-bar"></span>

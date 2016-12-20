@@ -4425,7 +4425,7 @@
   }
 }
 .ls-bottom-footer .st-container > .sidebar {
-  bottom: 45px;
+  bottom: 0px;
 }
 .sidebar ul {
   list-style: none;

@@ -29,10 +29,7 @@ def reject_current_user(room)
   return @user.first
 end
 
-def current_user_message?(message)
-	message.user == current_user
-	
-end
+
 
 def include_messages(room)
   room.include(:messages)

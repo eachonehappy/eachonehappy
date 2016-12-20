@@ -12,6 +12,7 @@ class CampaignsController < ApplicationController
     @campaign = Campaign.new
     @all_causes = Cause.all
     @all_organizations = Organization.all
+    @users = User.all
   end
   
   def create
@@ -19,6 +20,10 @@ class CampaignsController < ApplicationController
   	@campaign.organization_id = campaign_params[:organization_id]
   	@campaign.cause_id = campaign_params[:cause_id]
   	@campaign.campaign_users.build(:user_id => current_user.id)
+    params[:campaign][:user_ids].reject(&:empty?).each do |user_id|
+      @user = User.find(user_id)
+    @campaign.mention!(@user)
+    end
     if @campaign.save
       flash[:success] = "campaign created!"
       redirect_to campaigns_path

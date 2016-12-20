@@ -14,6 +14,12 @@
                                         <%= @campaign.followers_count %> Followers 
                                         <br>
                                         <%= @campaign.likers_count %> Likes
+                                        <br>
+                                    with
+                                    <%@campaign.mentionees(User).each do |user|%>
+              
+                                      <%= link_to "#{user.first_name} #{user.last_name}", user_path(user), :class => "text-capitalize"%>
+                                      <%end%><br>
 
                                          <div class="btn-group">
                                           <div class="btn-group pull-right">

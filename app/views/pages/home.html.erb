@@ -1,26 +1,33 @@
-<div class="col-md-6" style="padding-left: 0px;padding-right: 0px;">
+<div class="col-md-6" style="padding-left: 0px;padding-right: 0px;">  
   <div class="timeline-block">
-		<div class="panel panel-default share">
-	    <div class="panel-heading panel-heading-gray title">
-	      What&acute;s new
-	    </div>
-      <%= form_for @post, :html =>{:multipart => true} do |f| %>
+	  <div class="panel panel-default share">
+		  <%= form_for @post, :html =>{:multipart => true} do |f| %>
+	      <div class="panel-heading panel-heading-gray title">
+	        What&acute;s new
+	      </div>
 		    <div class="panel-body">
-		    <%= f.text_area :description, class: 'form-control share-text', :rows=>"3", :placeholder=>"Whats in Your Mind..." %>
-		       
+		      <%= f.text_area :description, class: 'form-control share-text', :rows=>"3", :placeholder=>"Whats in Your Mind..." %>      
 		    </div>
-		    <div class="panel-footer share-buttons">
-		       
-		        <%= f.file_field :image , :class=>"btn btn-default btn-sm pull-left"%>
-		        <a href="#">
-		            
-		        </a>
-		        <%= f.submit "Post", :class=> "btn btn-primary btn-sm pull-right" %>
-		        
+		    <div class="container-fluid collapse" id="collapseExample1" style="padding-bottom:10px;">
+			    <div class="form-group" >
+	          <label class="col-sm-3 control-label">Tag friends</label>
+	          <div class="col-sm-6">
+	            <%= f.select(:user_id, @all_user.collect {|c| [c.first_name, c.id]},{},
+	               { :multiple => true, :size => 5,:class=>"selectpicker","data-live-search" =>"true","multiple data-style"=>"btn-white" }
+	             ) %>
+	          </div>
+	        </div>
+        </div>
+		    <div class="panel-footer share-buttons"> 
+	        <%= f.file_field :image , :class=>"btn btn-default btn-sm pull-left"%>
+	        <a style="width: 90px;" data-toggle="collapse" data-target="#collapseExample1" aria-expanded="false" aria-controls="collapseExample" >
+	            <i class="fa fa-user"></i>Tag friends
+	        </a>
+	        <%= f.submit "Post", :class=> "btn btn-primary btn-sm pull-right" %>
 		    </div>
-	    <%end%>
-		</div>
-	</div>
+		  <%end%>  
+      </div>
+    </div>    
 	<%= render :partial => 'shared/post', :collection => @posts%>
 </div>
                 

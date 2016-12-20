@@ -11,12 +11,17 @@ class JobsController < ApplicationController
   def new
     @job = Job.new
     @all_campaign = Campaign.all
+    @all_user = User.all
   end
   
   def create
   	@job = Job.new(job_params)
   	@job.campaign_id = job_params[:campaign_id]
   	@job.job_users.build(:user_id => current_user.id)
+    params[:job][:user_ids].reject(&:empty?).each do |user_id|
+      @user = User.find(user_id)
+    @job.mention!(@user)
+    end
     if @job.save
       flash[:success] = "job created!"
       redirect_to jobs_path

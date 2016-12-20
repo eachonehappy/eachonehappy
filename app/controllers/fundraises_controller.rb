@@ -11,12 +11,17 @@ class FundraisesController < ApplicationController
   def new
     @fundraise = Fundraise.new
     @all_campaign = Campaign.all
+    @users = User.all
   end
   
   def create
   	@fundraise = Fundraise.new(fundraise_params)
   	@fundraise.campaign_id = fundraise_params[:campaign_id]
   	@fundraise.user_id = current_user.id
+    params[:fundraise][:user_id].reject(&:empty?).each do |user_id|
+      @user = User.find(user_id)
+    @fundraise.mention!(@user)
+    end
     if @fundraise.save
       flash[:success] = "fundraise created!"
       redirect_to fundraises_path

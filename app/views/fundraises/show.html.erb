@@ -14,6 +14,13 @@
                       <%= @fundraise.followers_count %> Followers 
                         <br>
                         <%= @fundraise.likers_count %> Likes
+                        <br>
+                        with
+                        <%@fundraise.mentionees(User).each do |user|%>
+  
+                          <%= link_to "#{user.first_name} #{user.last_name}", user_path(user), :class => "text-capitalize"%>
+                          <%end%><br>
+                          
                       <div class="btn-group">
                           <div class="btn-group pull-right">
                       <% if current_user.likes?(@fundraise)  %>

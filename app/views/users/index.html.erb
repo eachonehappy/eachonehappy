@@ -1,31 +1,30 @@
-<div class="col-md-5">
-  <% for user in @users %>
-   
+<div class="col-md-9">
 
-<div class="row">
-<div class="comment-heading">
-  <div class="pull-left image">
-    <img src="http://bootdey.com/img/Content/user_1.jpg" class="img-circle avatar" alt="user profile image">
-  </div>
-  <div class="pull-left meta">
-    <div class="title h5">
-    <%= link_to "#{user.first_name}  #{user.last_name}", user_path(user), :class=>"text-capitalize" %>
-      
-      <a class="text-muted time small">joined <%= time_ago_in_words(user.created_at) %> ago</a>
-    </div>
-    <% if current_user.friends_with?(user)  %>
-    <%= link_to "Remove Friend", remove_path(:friend_id => user), :method => :post, :class=>"btn btn-danger" %>
-    <% elsif current_user.pending_friends.include?(user) %>
-    <button class="btn btn-primary">Friend request send</button>
-    <% elsif current_user.requested_friends.include?(user) %>
-    <%= link_to "Accept Request", accept_path(:friend_id => user), :method => :post, :class=>"btn btn-info" %>
-    <% else %>
-    <%= link_to "Add Friend", invite_path(:friend_id => user), :method => :post, :class=>"btn btn-info" %>
-    <% end %>
-    <br>
-  </div>
-  </div>
-</div>
-  <% end %>
-  </div>
 
+
+<div class="panel panel-default">
+    <!-- Data table -->
+    <table data-toggle="data-table" class="table" cellspacing="0" width="100%">
+      <thead>
+        <tr>
+          <th>Title</th>
+          <th>Description</th>
+          <th>Office</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tfoot>
+        <tr>
+          <th>Title</th>
+          <th>Description</th>
+          <th>Office</th>
+          <th>Action</th>
+        </tr>
+      </tfoot>
+      <tbody>
+      <%= render @users%>
+      </tbody>
+    </table>
+    <!-- // Data table -->
+  </div>
+  </div>
