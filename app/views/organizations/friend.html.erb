@@ -1,0 +1,44 @@
+<div class="col-md-9">
+
+
+
+<div class="panel panel-default">
+    <!-- Data table -->
+    <table data-toggle="data-table" class="table" cellspacing="0" width="100%">
+      <thead>
+        <tr>
+          <th>Title</th>
+          <th>Description</th>
+          <th>Office</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tfoot>
+        <tr>
+          <th>Title</th>
+          <th>Description</th>
+          <th>Office</th>
+          <th>Action</th>
+        </tr>
+      </tfoot>
+      <tbody>
+      <% @users.each do |user|%>
+      <tr>
+  <td><%= link_to "#{user.first_name}  #{user.last_name}", user_path(user), :class=>"text-capitalize" %></td>
+  <td><img src="http://bootdey.com/img/Content/user_1.jpg" class="img-circle avatar" alt="user profile image"></td>
+  <td><%= user.email%>
+  </td>
+  <td>
+    <%unless user.organization_users.where(:organization_id => @organization_id).present?%>
+    <%= link_to "Invite", organization_invite_path(:user_id => user.id, :organization_id => @organization_id), :method => :post, :class=>"btn btn-primary" %>
+    <%else%>
+    <a class="btn btn-danger"> Request Send</a>
+    <%end%>
+  </td>
+</tr>
+      <%end%>
+      </tbody>
+    </table>
+    <!-- // Data table -->
+  </div>
+  </div>

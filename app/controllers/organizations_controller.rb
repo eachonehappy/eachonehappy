@@ -5,7 +5,9 @@ class OrganizationsController < ApplicationController
   end
   
   def show
-    @organization = Organization.find(params[:id]) 
+    @organization = Organization.find(params[:id])
+    @pending_requests_ids = @organization.organization_users.send_by_user.map(&:user_id) 
+    @users = User.where( id: @pending_requests_ids)
   end
   
   def new
@@ -16,7 +18,7 @@ class OrganizationsController < ApplicationController
   
   def create
   	@organization = Organization.new(organization_params)
-  	@organization.organization_users.build(:user_id => current_user.id)
+  	@organization.organization_users.build(:user_id => current_user.id, :role=>"owner",:status=>"accepted")
   	params[:organization][:cause_ids].reject(&:empty?).each do |cause|
       @cause_id = Cause.find_by_subject(cause).id
     @organization.cause_organizations.build(:cause_id => @cause_id)
@@ -89,6 +91,43 @@ class OrganizationsController < ApplicationController
         render 'new'
       end
     end
+  end
+
+  def organization_invitation
+    @organization = Organization.find(params[:organization_id])
+    if current_user.organization_users.where(:organization_id => @organization.id).where(:status=>"accepted").present?
+      @organization.organization_users.where(:user_id => current_user.id).first.destroy
+      redirect_to request.referer
+    elsif current_user.organization_users.where(:organization_id => @organization.id).where(:status=>"send_by_owner").present?
+      @organization_user = OrganizationUser.where(:user_id => current_user.id).where(:organization_id=>@organization.id).first
+      @organization_user.status = "accepted"
+      @organization_user.save 
+      redirect_to request.referer
+      else
+      @organization.organization_users.build(:user_id => current_user.id, :role=>"coworker",:status=>"send_by_user") 
+      @organization.save
+      redirect_to request.referer
+    end
+  end
+
+  def accept_organization
+    @organization_user = OrganizationUser.where(:organization_id => params[:organization_id]).where(:user_id => params[:user_id])
+    @organization_user = @organization_user.first
+    @organization_user.status = "accepted"
+    @organization_user.save
+    redirect_to request.referer
+  end
+
+  def friend
+    @organization_id = params[:organization_id]
+    @users = User.all
+  end
+
+  def organization_invite
+    @organization = Organization.find(params[:organization_id])
+    @organization.organization_users.build(:user_id => params[:user_id], :role=>"coworker",:status=>"send_by_owner")    
+    @organization.save
+    redirect_to request.referer
   end
   
   private

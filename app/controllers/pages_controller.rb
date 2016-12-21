@@ -4,6 +4,7 @@ class PagesController < ApplicationController
   	@comment = Comment.new
   	@posts = Post.all.sort_by(&:created_at).reverse
   	@all_user = User.all
+
   end
 
   def about_us

@@ -13,7 +13,7 @@
           <div class="split-vertical-cell">
             <div data-scrollable>
               <ul class="chat-contacts">
-              <%current_user.chat_rooms.each do |chat_room|%>
+              <% chat_rooms.each do |chat_room|%>
                     
                 <li class="online">
                   <%= link_to chat_room_path(chat_room) do  %>
@@ -25,7 +25,7 @@
                       </div>
                       <div class="media-body">
 
-                        <div class="contact-name">Jonathan S.<%= chat_room.id%></div>
+                        <div class="contact-name"><%= full_name(reject_current_user(chat_room)) %></div>
                         <small>"Free Today"</small>
                       </div>
                     </div>
@@ -34,21 +34,6 @@
                 
                 <%end%>
              
-                <li class="online away" data-user-id="2">
-                  <a href="#">
-
-                    <div class="media">
-                      <div class="pull-left">
-                        <span class="status"></span>
-                        <img src="/images/people/110/woman-5.jpg" width="40" class="img-circle" />
-                      </div>
-                      <div class="media-body">
-                        <div class="contact-name">Mary A.</div>
-                        <small>"Feeling Groovy"</small>
-                      </div>
-                    </div>
-                  </a>
-                </li>
               </ul>
             </div>
           </div>

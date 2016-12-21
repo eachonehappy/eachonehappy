@@ -37,6 +37,10 @@ Rails.application.routes.draw do
 	post 'follow_campaign' => 'campaigns#follow'
 	post 'like_cause' => 'causes#like'
 	post 'follow_cause' => 'causes#follow'
+	post 'organization_invitation' => 'organizations#organization_invitation'
+	post 'accept_organization' => 'organizations#accept_organization'
+	get 'organization_friend' => 'organizations#friend'
+	post 'organization_invite' => 'organizations#organization_invite'
 	#resources :friendships
 	# For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

@@ -6,8 +6,10 @@
       <% else %>
         <img src="/images/cover.png" class="img-responsive">
       <% end %>  
-      <a style="position:absolute;background-color: rgba(255, 255, 255, 0.48);top:10px;left:10px;" class="btn btn-cover" data-toggle="modal" data-target="#modal-slide-down"><i class="fa fa-pencil fa-fw"></i></a> 
+      <a style="position:absolute;background-color: rgba(255, 255, 255, 0.48);top:10px;left:10px;" class="btn btn-cover" data-toggle="modal" data-target="#modal-slide-down"><i class="fa fa-pencil fa-fw"></i></a>
+
       <div style="position:absolute;background-color: rgba(255, 255, 255, 0);right:10px;bottom:50px;">
+
         <%= @organization.followers_count %> Followers 
         <br>
         <%= @organization.likers_count %> Likes
@@ -23,6 +25,7 @@
               <% end %>         
             </div>       
           </div>
+
           <div class="btn-group">
             <div class="btn-group pull-right">
               <% if current_user.follows?(@organization)  %>
@@ -44,8 +47,8 @@
         <% end %>
       </div>
       <div class="name">
-        <a href="#">
-          Bill Demian
+        <a href="#" class="text-capitalize">
+          <%= @organization.name  %>
         </a>
       </div>
       <ul class="cover-nav" role="tablist">
@@ -53,14 +56,34 @@
           </li>
           <li><a href="#about" role="tab" data-toggle="tab"><i class="fa fa-fw icon-user-1"></i> About</a>
           </li>
-          <li><a href="#friends" role="tab" data-toggle="tab"><i class="fa fa-fw fa-users"></i> Friends</a>
+          <li><a href="#friends" role="tab" data-toggle="tab"><i class="fa fa-fw fa-users"></i> Members</a>
           </li>
-      </ul>       
+          <% if owner?(@organization) %>
+          <li><a href="#members" role="tab" data-toggle="tab"><i class="fa fa-fw fa-users"></i> Requests</a>
+          </li>
+          <%end%>
+      </ul> 
+      <div class="pull-right">
+      <%unless owner?(@organization) %>
+        <% if organization_member?(@organization)  %>
+          <%= link_to "Leave", organization_invitation_path(:organization_id => @organization.id), :method => :post, :class=>"btn btn-danger" %>
+          <% elsif invitation_send?(@organization)%>
+          <a class="btn btn-danger">Request Sent</a>
+          <% elsif invitation_came?(@organization)%>
+          <%= link_to "Accept", organization_invitation_path(:organization_id => @organization), :method => :post, :class=>"btn btn-info" %>
+          <%else%>
+          <%= link_to "Join", organization_invitation_path(:organization_id => @organization), :method => :post, :class=>"btn btn-info" %>
+          <% end %> 
+          <% else %>
+          <%= link_to "Invite friends", organization_friend_path(:organization_id => @organization), :class=>"btn btn-info" %>
+        <% end %>           
+      </div>      
     </div>
   </div>
   <div class="tab-content" style="padding: 0px;">
     <%= render 'users/about'%>    
     <%= render 'users/friends'%> 
+    <%= render 'organizations/members'%>
     <div class="tab-pane fade active in" id="time_line">  
       <%= render 'users/timeline'%> 
     </div>                      
