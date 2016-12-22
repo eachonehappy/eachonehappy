@@ -1,22 +1,28 @@
 <div class="timeline-block">
-  <div class="panel panel-default">
-    <div class="panel-heading">
+  <div class="panel panel-default" style="margin-bottom: 10px;border-radius: 2px;">
+    <div class="panel-heading" style="border-radius: 2px;">
       <div class="media">
         <a href="" class="pull-left">
           <img src="/images/people/50/woman-5.jpg" class="media-object">
         </a>
         <div class="media-body">
           <a href="#" class="pull-right text-muted"><i class="icon-reply-all-fill fa fa-2x "></i></a>
-          <a href=""><%=post.user.first_name%>  with <%post.mentionees(User).each do |user|%>
-            <%= user.first_name%>
-            <%end%></a>
+          <%= link_to "#{full_name(post.user)}", user_path(post.user), :class=>"text-capitalize"%>
           
-          <span>on 15th January, 2014</span>
+          <span>posted <%= time_ago_in_words(post.created_at) %> ago</span>
         </div>
       </div>
     </div> 
-    <p style="margin-bottom: 5px;margin-top: 5px;;margin-left: 5px;"><%=post.description%></p>
-    <%= image_tag post.image_url.to_s, :class=>"img-responsive" %>  
+    <div style="margin-bottom: 5px;margin-top: 5px;;margin-left: 5px;">
+    <%if post.mentionees(User).any?%>
+    with <%post.mentionees(User).each do |user|%>
+
+      <%= link_to "#{full_name(user)}", user_path(user), :class=>"text-capitalize"%>
+      <%end%>
+      <%end%>
+      <p ><%=post.description%></p>
+      </div>
+    <%= image_tag post.image_url.to_s, :class=>"img-responsive", :style=> "padding: 10px;" %>  
     <div class="btn-group btn-group-footer btn-group-justified" style="    border-bottom: 1px solid #eeeeee;">
     <% if current_user.likes?(post)%>
     <%= link_to '<i class="fa fa-heart"></i>  Unlike'.html_safe, post_like_path(

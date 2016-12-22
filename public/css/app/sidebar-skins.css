@@ -520,14 +520,11 @@ fieldset[disabled] .sidebar.sidebar-skin-dark .btn-default.active {
 .sidebar.sidebar-skin-blue {
   background: #2b3f4f;
 }
-.sidebar.sidebar-skin-blue.left {
-  border-right: 1px solid #354c5f;
-}
 .sidebar.sidebar-skin-blue.right {
-  border-left: 1px solid #354c5f;
+  border-left: 1px solid #cacaca;
 }
 .sidebar.sidebar-skin-blue .sidebar-link {
-  color: #b0c4d4;
+  color: #000000;
 }
 .sidebar.sidebar-skin-blue .sidebar-block {
   border-color: #334a5c;
@@ -608,7 +605,7 @@ fieldset[disabled] .sidebar.sidebar-skin-blue .btn-default.active {
   color: #a9a9a9;
 }
 .sidebar.sidebar-skin-blue .list-group-menu .list-group-item a {
-  color: #b0c4d4;
+  color: #000000;
 }
 .sidebar.sidebar-skin-blue .list-group-menu .list-group-item a:hover {
   color: #fff;
@@ -630,16 +627,16 @@ fieldset[disabled] .sidebar.sidebar-skin-blue .btn-default.active {
   background: #2383c4;
 }
 .sidebar.sidebar-skin-blue .sidebar-menu {
-  border-color: #354c5f;
+  border-color: #cacaca;
 }
 .sidebar.sidebar-skin-blue .sidebar-menu a {
-  color: #b0c4d4;
+  color: #000000;
 }
 .sidebar.sidebar-skin-blue .sidebar-menu i {
-  color: #b0c4d4;
+  color: #000000;
 }
 .sidebar.sidebar-skin-blue .sidebar-menu > li {
-  border-color: #354c5f;
+  border-color: #cacaca;
 }
 .sidebar.sidebar-skin-blue .sidebar-menu > li a:hover {
   color: #ffffff;
@@ -650,10 +647,10 @@ fieldset[disabled] .sidebar.sidebar-skin-blue .btn-default.active {
 .nav > .sidebar.sidebar-skin-blue .sidebar-menu > li.open > a,
 .nav > .sidebar.sidebar-skin-blue .sidebar-menu > li > a:hover,
 .nav > .sidebar.sidebar-skin-blue .sidebar-menu > li > a:focus {
-  background: #22323f;
+  background: #adadad;
 }
 .sidebar.sidebar-skin-blue .sidebar-menu li.hasSubmenu > a:before {
-  color: #b0c4d4;
+  color: #000000;
 }
 .sidebar.sidebar-skin-blue .sidebar-menu li.active > a {
   color: #ffffff;
@@ -676,24 +673,24 @@ fieldset[disabled] .sidebar.sidebar-skin-blue .btn-default.active {
   color: #ffffff;
 }
 .sidebar.sidebar-skin-blue .sidebar-menu li.open > ul {
-  background: #22323f;
+  background: #adadad;
   border-color: transparent;
 }
 .sidebar.sidebar-skin-blue .sidebar-menu li ul li.open > a {
-  background: #22323f;
+  background: #adadad;
 }
 .sidebar.sidebar-skin-blue .sidebar-menu li ul li.open > ul {
   background: #1b2831;
   border-color: transparent;
 }
 .sidebar.sidebar-skin-blue .sidebar-menu li ul li ul li.open {
-  background: #22323f;
+  background: #adadad;
 }
 .sidebar.sidebar-skin-blue .category {
   color: #42a5f5;
 }
 .sidebar.sidebar-skin-blue hr {
-  border-color: #354c5f;
+  border-color: #cacaca;
 }
 .sidebar.sidebar-skin-blue .sidebar-feed li {
   color: #b7c9d7;
@@ -709,20 +706,20 @@ fieldset[disabled] .sidebar.sidebar-skin-blue .btn-default.active {
   color: #ffffff;
 }
 .sidebar.sidebar-skin-blue .checkbox label {
-  color: #b0c4d4;
+  color: #000000;
 }
 .sidebar.sidebar-skin-blue .slider {
-  color: #b0c4d4;
+  color: #000000;
 }
 .sidebar.sidebar-skin-blue .slider .tooltip-inner {
-  background: #354c5f;
+  background: #cacaca;
 }
 .sidebar.sidebar-skin-blue .slider .tooltip-arrow {
-  border-top-color: #354c5f;
+  border-top-color: #cacaca;
 }
 .sidebar.sidebar-skin-blue .slider .slider-track {
-  border: 1px solid #22323f;
-  background: #22323f;
+  border: 1px solid #adadad;
+  background: #adadad;
 }
 .sidebar.sidebar-skin-blue .slider .slider-handle {
   color: #2196f3;
@@ -738,7 +735,7 @@ fieldset[disabled] .sidebar.sidebar-skin-blue .btn-default.active {
 .sidebar.sidebar-skin-blue .datepicker table tr td.day,
 .sidebar.sidebar-skin-blue .datepicker table tr td .month,
 .sidebar.sidebar-skin-blue .datepicker table tr td .year {
-  color: #b0c4d4;
+  color: #000000;
 }
 .sidebar.sidebar-skin-blue .datepicker table tr td.day.old,
 .sidebar.sidebar-skin-blue .datepicker table tr td .month.old,
@@ -757,7 +754,7 @@ fieldset[disabled] .sidebar.sidebar-skin-blue .btn-default.active {
   background: #19252e;
 }
 .sidebar.sidebar-skin-blue .progress {
-  background-color: #22323f;
+  background-color: #adadad;
 }
 .sidebar.sidebar-skin-blue .badge {
   background: #1f2d38;
@@ -772,10 +769,10 @@ fieldset[disabled] .sidebar.sidebar-skin-blue .btn-default.active {
   background-color: #243542;
 }
 .sidebar.sidebar-skin-blue .list-about li {
-  color: #b0c4d4;
+  color: #000000;
 }
 .sidebar.sidebar-skin-blue .list-about li a {
-  color: #b0c4d4;
+  color: #000000;
 }
 .sidebar.sidebar-skin-blue .list-about li a:hover {
   color: #ffffff;

@@ -1,7 +1,12 @@
 class CausesController < ApplicationController
 	before_action :authenticate_user!
 	def index
-    @causes = Cause.all
+    if params[:search]
+      @causes = Cause.all
+      @causes = @causes.where("subject LIKE ?" , "%#{params[:search]}%")
+    else
+      @causes = Cause.all
+    end
   end
   
   def show

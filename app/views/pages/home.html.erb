@@ -1,8 +1,8 @@
 <div class="col-md-6" style="padding-left: 0px;padding-right: 0px;">  
   <div class="timeline-block">
-	  <div class="panel panel-default share">
+	  <div class="panel panel-default share" style="margin-bottom: 10px; border-radius: 2px;">
 		  <%= form_for @post, :html =>{:multipart => true} do |f| %>
-	      <div class="panel-heading panel-heading-gray title">
+	      <div class="panel-heading panel-heading-gray title" style="border-radius: 2px;">
 	        What&acute;s new
 	      </div>
 		    <div class="panel-body">
@@ -19,9 +19,9 @@
 	        </div>
         </div>
 		    <div class="panel-footer share-buttons"> 
-	        <%= f.file_field :image , :class=>"btn btn-default btn-sm pull-left"%>
-	        <a style="width: 90px;" data-toggle="collapse" data-target="#collapseExample1" aria-expanded="false" aria-controls="collapseExample" >
-	            <i class="fa fa-user"></i>Tag friends
+	        <%= f.file_field :image , :class=>"btn btn-sm pull-left"%>
+	        <a style="width: 120px;padding-top:0px;" data-toggle="collapse" data-target="#collapseExample1" aria-expanded="false" aria-controls="collapseExample" class="btn" >
+	            <b>Tag Friends</b>
 	        </a>
 	        <%= f.submit "Post", :class=> "btn btn-primary btn-sm pull-right" %>
 		    </div>
@@ -32,7 +32,8 @@
 </div>
                 
                
-<div class="col-md-6">
+<div class="col-md-6" style="padding-left: 10px;
+    padding-right: 5px;">
 	<%= render 'users/timeline'%>
 	<%= render 'users/timeline'%>
 </div>

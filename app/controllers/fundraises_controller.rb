@@ -1,7 +1,12 @@
 class FundraisesController < ApplicationController
 	before_action :authenticate_user!
 	def index
-    @fundraises = Fundraise.all
+    if params[:search]
+      @fundraises = Fundraise.all
+      @fundraises = @fundraises.where("subject LIKE ?" , "%#{params[:search]}%")
+    else
+      @fundraises = Fundraise.all
+    end
   end
   
   def show

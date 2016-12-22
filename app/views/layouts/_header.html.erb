@@ -12,23 +12,44 @@
       </button>
       <%= link_to "Eachonehappy", root_path, :class=>"navbar-brand hidden-xs navbar-brand-primary" %>  
     </div>
-    <div class="navbar-collapse collapse" id="collapse">
-      <form class="navbar-form navbar-left hidden-xs" role="search">
-        <div class="search-2">
-          <div class="input-group">
-            <input type="text" class="form-control form-control-w-150" placeholder="Search ..">
-            <span class="input-group-btn">
-             <button class="btn btn-primary" type="button"><i class="fa fa-search"></i></button>
-            </span>
-          </div>
-        </div>
-      </form>
+    <div class="navbar-collapse collapse" id="collapse" style="padding-right:40px;">
       <ul class="nav navbar-nav navbar-right">
+        <li class="dropdown user">          
+          <%= link_to '<i class="fa fa-home"></i> <span>Home</span>'.html_safe, root_path  %>          
+        </li>
+        <li class="dropdown notifications updates">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+            <i class="fa fa-users"></i>
+            <span class="badge floating badge-primary"><%= current_user.requested_friends.count %></span>
+          </a>
+          <ul class="dropdown-menu" role="notification">
+            <li class="dropdown-header">Friend Requests</li>
+            <% current_user.requested_friends.each do |friend| %>
+            <li class="media">
+              <div class="pull-right">
+               <%= link_to "Accept", accept_path(:friend_id => friend.id), :method => :post, :class =>"btn btn-primary"%>
+               <%= link_to "Decline", decline_path(:friend_id => friend.id), :method => :post, :class =>"btn btn-danger"%>
+              </div>
+              <div class="media-left">
+                <img src="/images/people/50/guy-2.jpg" alt="people" class="img-circle" width="30">
+              </div>
+              <div class="media-body">
+                <a href="#"><%=friend.name%></a>
+              </div>
+            </li>
+            <%end%>
+            <li class="media">
+            <center>
+            <%= link_to "Find More Friends", users_path %>
+              </center>
+            </li>
+          </ul>
+        </li>
         <!-- notifications -->
-        <li class="dropdown notifications updates hidden-xs hidden-sm">
+        <li class="dropdown notifications updates">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown">
             <i class="fa fa-bell-o"></i>
-            <span class="badge badge-primary">4</span>
+            <span class="badge floating badge-primary">4</span>
           </a>
           <ul class="dropdown-menu" role="notification">
             <li class="dropdown-header">Notifications</li>
@@ -79,63 +100,35 @@
         </li>
         <!-- // END notifications -->
         <!-- messages -->
-        <li class="dropdown notifications hidden-xs hidden-sm">
+        <li class="dropdown notifications ">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown">
             <i class="fa fa-envelope-o"></i>
-
-            <span class="badge floating badge-danger">12</span>
-
+            <span class="badge floating badge-danger"><%= current_user.messages.last(5).count %></span>
           </a>
           <ul class="dropdown-menu">
-            <li class="media">
-              <div class="media-left">
-                <a href="#">
-                  <img class="media-object thumb" src="/images/people/50/guy-2.jpg" alt="people">
-                </a>
-              </div>
-              <div class="media-body">
-                <div class="pull-right">
-                  <span class="label label-default">5 min</span>
-                </div>
-                <h5 class="media-heading">Adrian D.</h5>
-
-                <p class="margin-none">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-              </div>
-            </li>
+            <% current_user.messages.last(5).reverse.each do |message| %>
             <li class="media">
               <div class="media-left">
                 <a href="#">
                   <img class="media-object thumb" src="/images/people/50/woman-7.jpg" alt="people">
                 </a>
               </div>
-
               <div class="media-body">
                 <div class="pull-right">
                   <span class="label label-default">2 days</span>
                 </div>
-                <h5 class="media-heading">Jane B.</h5>
-                <p class="margin-none">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+                <h5 class="media-heading text-capitalize"><%= full_name(message.user)%></h5>
+                <p class="margin-none"><%= message.body%></p>
               </div>
             </li>
+            <%end%>
             <li class="media">
-              <div class="media-left">
-                <a href="#">
-                  <img class="media-object thumb" src="/images/people/50/guy-8.jpg" alt="people">
-                </a>
-              </div>
-
-              <div class="media-body">
-                <div class="pull-right">
-                  <span class="label label-default">3 days</span>
-                </div>
-                <h5 class="media-heading">Andrew M.</h5>
-                <p class="margin-none">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-              </div>
+            <center>
+            <%= link_to "View all Messages", chat_rooms_path %>
+              </center>
             </li>
+            
           </ul>
-        </li>
-        <li class="dropdown user">          
-          <%= link_to 'Home', root_path  %>          
         </li>
         <li class="dropdown user">          
           <%= link_to user_path(current_user) do  %>
@@ -147,9 +140,7 @@
             <span class="caret"></span>
           </a>
           <ul class="dropdown-menu" role="menu">
-          
-            <li><a href="#"><i class="fa fa-user"></i>Profile</a></li>
-            
+            <li><%= link_to '<i class="fa fa-user"></i>Profile'.html_safe, user_path(current_user) %></li>
             <li><%= link_to '<i class="fa fa-wrench"></i>Add a Cause'.html_safe, new_cause_path %></li>
             <li><%= link_to '<i class="fa fa-sign-out"></i>Log Out'.html_safe, destroy_user_session_path,
                         :method => :delete %></li>

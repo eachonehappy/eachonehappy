@@ -510,7 +510,7 @@ ul.timeline-list .media-body.fixed {
   vertical-align: middle;
 }
 .panel .share-buttons a:hover {
-  background: #fff;
+  background: #cacaca;
   border-left: 1px solid transparent;
   border-right: 1px solid transparent;
 }

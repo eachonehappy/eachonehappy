@@ -23,6 +23,7 @@ Rails.application.routes.draw do
 	resources :jobs
 	resources :organizations
 	post 'invite'=> 'users#invite_friend'
+	post 'decline'=> 'users#decline_friend'
 	post 'accept'=> 'users#accept_friend'
 	post 'remove'=> 'users#remove_friend'
 	get 'messages/index' => 'chat_rooms#index'
@@ -39,7 +40,7 @@ Rails.application.routes.draw do
 	post 'follow_cause' => 'causes#follow'
 	post 'organization_invitation' => 'organizations#organization_invitation'
 	post 'accept_organization' => 'organizations#accept_organization'
-	get 'organization_friend' => 'organizations#friend'
+	get  'organization_friend' => 'organizations#friend'
 	post 'organization_invite' => 'organizations#organization_invite'
 	#resources :friendships
 	# For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

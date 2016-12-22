@@ -1,10 +1,25 @@
-<div class="col-md-9">
+<div class="col-md-9" style="padding:0px;">
 <div class="ibox-title" style="background-color: white;">
       <h1 class="title pull-left" style="margin-top: 10px;
     margin-bottom: 10px; margin-left: 10px;">
         <%= "Fundraises" %>
       </h1>
-     
+     <form class="navbar-form navbar-left hidden-xs" role="search">
+      <%= form_tag fundraises_path, :method => 'get' do%>
+        <div class="search-2">
+          <div class="input-group">
+           
+            <%= text_field_tag :search, params[:search],:class=>"form-control form-control-w-150", :placeholder=>"Search .."  %>
+            
+            <span class="input-group-btn">
+            <%= submit_tag 'Search', :class=>"btn btn-primary"%>
+             
+            </span>
+          </div>
+        </div>
+        <%end%>
+      </form>
+      
         <%= link_to "Start a Fundraise", new_fundraise_path, class: 'btn btn-primary pull-right ', :style=> "margin-top: 10px;
     margin-right: 10px;"%>
     
@@ -12,17 +27,9 @@
    
 </div>
 
-<div class="timeline row" data-toggle="gridalicious" style="padding-top: 10px;">
-
-
-
-
-
-
- <div class="timeline-block">
                   
 <%= render @fundraises %>
-</div>
+
 
   
 

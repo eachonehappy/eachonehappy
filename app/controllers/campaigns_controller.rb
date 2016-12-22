@@ -1,7 +1,12 @@
 class CampaignsController < ApplicationController
   before_action :authenticate_user!
 	def index
-    @campaigns = Campaign.all
+    if params[:search]
+      @campaigns = Campaign.all
+      @campaigns = @campaigns.where("subject LIKE ?" , "%#{params[:search]}%")
+    else
+      @campaigns = Campaign.all
+    end
   end
   
   def show

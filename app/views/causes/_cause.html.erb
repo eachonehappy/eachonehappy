@@ -1,35 +1,20 @@
 <div class="timeline-block">
-                    <div class="panel panel-default">
-                        
-                        <div class="panel-body">
-                            <div class="boxed" style="
-                                            padding-bottom: 0px;
-                                        ">
-                                <a href="#" class="h4 margin-none">
-                                <%= link_to "#{cause.subject}" , cause_path(cause)%>
-                                
-                                <div class="media">
-                                    <a href="#" class="media-object pull-left">
-                                        <img src="/images/food1.jpg" alt="" width="80" />
-                                    </a>
-                                    <div class="media-body">
-                                        <p><%=cause.description%></p>
-                                    </div>
-                                </div>
-                                <ul class="icon-list">
-                                    <li><i class="fa fa-star fa-fw"></i> 4.8</li>
-                                    <li><i class="fa fa-clock-o fa-fw"></i> 20 min</li>
-                                    <li><i class="fa fa-graduation-cap fa-fw"></i> Beginner</li>
-                                </ul>
-                                <div class="btn-group btn-group-footer btn-group-justified" >
-                    <a href="#" class="btn"><i class="fa fa-love"></i> Like</a>
-                      <a href="#" class="btn"><i class="fa fa-user"></i> Share</a>
-                    </div>
-                            </div>
-
-                        </div>
-                        
-                       
-                    </div>
-                    
-                </div>
+  <div class="panel panel-default">
+    <div class="panel-body text-center" style="padding-bottom:5px;">
+      <%= link_to "#{cause.subject}" , cause_path(cause), :class => "h4 margin-none text-capitalize"%>
+      
+    </div>
+      <img src="images/food1-full.jpg" alt="image" class="img-responsive" style="padding:5px;" />
+    <div class="panel-body" style="padding-bottom:5px;padding-top:5px;">
+      <p class="text-capitalize"><%=cause.description%></p>
+      <div>
+        <a href="#" class="text-muted"> <i class="fa fa-comments"></i> 6</a>
+      </div>
+    </div>
+    <div class="btn-group btn-group-footer btn-group-justified" >
+      <a href="#" class="btn"><i class="fa fa-heart"></i> Like</a>
+      <a href="#" class="btn"><i class="fa fa-user"></i> Follow</a>
+      <a href="#" class="btn"><i class="fa fa-user"></i> Share</a>
+    </div>
+  </div>                
+</div>

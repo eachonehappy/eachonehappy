@@ -6838,7 +6838,7 @@ html.app-mobile #content .container-fluid .sidebar {
   text-align: center;
 }
 .sidebar-menu > li > a {
-  line-height: 48px;
+  line-height: 25px;
   padding-left: 16px;
   font-size: 1.15rem;
 }

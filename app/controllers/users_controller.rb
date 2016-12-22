@@ -20,6 +20,7 @@ class UsersController < ApplicationController
     @comment = Comment.new
     @user = User.find(params[:id])
     @posts = @user.posts
+    @users = current_user.friends
     
   end
 
@@ -62,11 +63,16 @@ class UsersController < ApplicationController
       @chat_room_user2 = @chat_room.chat_room_users.build(:user_id => current_user.id)
       @chat_room_user2.save
       flash[:success] = "U r freinds"
-      redirect_to users_path
+      redirect_to request.referer
     else
       flash[:failure] = "U r not freinds"
-      redirect_to users_path
+      redirect_to request.referer
     end  
+  end
+  def decline
+    @user = User.find(params[:friend_id])
+    current_user.decline_request @user
+    redirect_to request.referer
   end
 
   def remove_friend

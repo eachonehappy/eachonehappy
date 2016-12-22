@@ -1,26 +1,32 @@
-<div class="timeline-block">
-                    <div class="panel panel-default">
-                        
-                        <div class="panel-body">
-                            <div class="boxed">
-                                <a href="#" class="h4 margin-none"><%= link_to "#{campaign.subject}" , campaign_path(campaign)%></a>
-                                
-                                <div class="media">
-                                    <a href="#" class="media-object pull-left">
-                                        <img src="/images/food1.jpg" alt="" width="80" />
-                                    </a>
-                                    <div class="media-body">
-                                        <p><%=campaign.description%></p>
-                                    </div>
-                                </div>
-                                <ul class="icon-list">
-                                    <li><i class="fa fa-star fa-fw"></i> 4.8</li>
-                                    <li><i class="fa fa-clock-o fa-fw"></i> 20 min</li>
-                                    <li><i class="fa fa-graduation-cap fa-fw"></i> Beginner</li>
-                                </ul>
-                            </div>
-                        </div>
-                        
-                       
-                    </div>
-                </div>
+<div class="col-md-4 animated pulse" style="margin-top:7px;padding:0px;">
+  <div style="margin-right:3px;margin-left:3px;background-color:white;padding:5px;">
+    <img src="https://static-files-ketto.netdna-ssl.com/3/media/campaign/22000/22408/image/wid098993fa011b4178a854ecb80ca89decfc2ebca4.jpg" class="img-responsive">
+    <div style="padding-left:10px;padding-right:10px;">
+      <h5 class="text-capitalize" ><%= link_to "#{campaign.subject}" , campaign_path(campaign)%></h5>
+      <p >by
+        <%= link_to "#{full_name(campaign.users.first)}", user_path(campaign.users.first), :class=> "text-capitalize"%>
+      </p>
+      <p class="text-capitalize"><%=campaign.description%></p>
+      <div class="numbers clearfix text-center">
+        <div class="col-md-4 trophy pull-left " style="padding:5px;">
+          <i class="fa fa-inr"></i><span><span>45</span><p style="margin:0px;">Followers</p></span>
+        </div>
+        <div class="col-md-4 backers pull-left " style="padding:5px;">
+            <i class="fa fa-lg fa-heart"></i>
+            <span>7<p style="margin:0px;">supporters</p></span>
+        </div>
+        <div class="col-md-4 days pull-left" style="padding:5px;">
+          <i class="fa fa-lg fa-clock-o"></i>
+          <span>
+              56<p style="margin:0px;"> days left</p>                    
+          </span>
+        </div>
+      </div> 
+      <div class="btn-group btn-group-footer btn-group-justified" >
+        <a href="#" class="btn"><i class="fa fa-heart"></i> Like</a>
+        <a href="#" class="btn"><i class="fa fa-user"></i> Share</a>
+        <a href="#" class="btn"><i class="fa fa-user"></i> Follow</a>
+      </div>                    
+    </div>
+  </div>
+</div>

@@ -1,7 +1,12 @@
 class OrganizationsController < ApplicationController
   before_action :authenticate_user!
   def index
-    @organizations = Organization.all
+    if params[:search]
+      @organizations = Organization.all
+      @organizations = @organizations.where("name LIKE ?" , "%#{params[:search]}%")
+    else
+      @organizations = Organization.all
+    end
   end
   
   def show
