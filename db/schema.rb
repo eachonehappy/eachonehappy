@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161221085929) do
+ActiveRecord::Schema.define(version: 20161223140859) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -20,6 +20,8 @@ ActiveRecord::Schema.define(version: 20161221085929) do
     t.integer  "user_id"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+    t.index ["campaign_id"], name: "index_campaign_users_on_campaign_id", using: :btree
+    t.index ["user_id"], name: "index_campaign_users_on_user_id", using: :btree
   end
 
   create_table "campaigns", force: :cascade do |t|
@@ -27,10 +29,14 @@ ActiveRecord::Schema.define(version: 20161221085929) do
     t.text     "description"
     t.integer  "organization_id"
     t.integer  "cause_id"
-    t.datetime "created_at",                  null: false
-    t.datetime "updated_at",                  null: false
-    t.integer  "followers_count", default: 0
-    t.integer  "likers_count",    default: 0
+    t.datetime "created_at",                    null: false
+    t.datetime "updated_at",                    null: false
+    t.integer  "followers_count",   default: 0
+    t.integer  "likers_count",      default: 0
+    t.string   "small_description"
+    t.string   "image"
+    t.index ["cause_id"], name: "index_campaigns_on_cause_id", using: :btree
+    t.index ["organization_id"], name: "index_campaigns_on_organization_id", using: :btree
   end
 
   create_table "cause_organizations", force: :cascade do |t|
@@ -38,15 +44,19 @@ ActiveRecord::Schema.define(version: 20161221085929) do
     t.integer  "organization_id"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
+    t.index ["cause_id"], name: "index_cause_organizations_on_cause_id", using: :btree
+    t.index ["organization_id"], name: "index_cause_organizations_on_organization_id", using: :btree
   end
 
   create_table "causes", force: :cascade do |t|
     t.string   "subject"
     t.text     "description"
-    t.datetime "created_at",                  null: false
-    t.datetime "updated_at",                  null: false
-    t.integer  "followers_count", default: 0
-    t.integer  "likers_count",    default: 0
+    t.datetime "created_at",                    null: false
+    t.datetime "updated_at",                    null: false
+    t.integer  "followers_count",   default: 0
+    t.integer  "likers_count",      default: 0
+    t.string   "small_description"
+    t.string   "image"
   end
 
   create_table "chat_room_users", force: :cascade do |t|
@@ -54,6 +64,8 @@ ActiveRecord::Schema.define(version: 20161221085929) do
     t.integer  "user_id"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
+    t.index ["chat_room_id"], name: "index_chat_room_users_on_chat_room_id", using: :btree
+    t.index ["user_id"], name: "index_chat_room_users_on_user_id", using: :btree
   end
 
   create_table "chat_rooms", force: :cascade do |t|
@@ -71,6 +83,8 @@ ActiveRecord::Schema.define(version: 20161221085929) do
     t.integer  "user_id"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+    t.index ["post_id"], name: "index_comments_on_post_id", using: :btree
+    t.index ["user_id"], name: "index_comments_on_user_id", using: :btree
   end
 
   create_table "follows", force: :cascade do |t|
@@ -91,6 +105,8 @@ ActiveRecord::Schema.define(version: 20161221085929) do
     t.datetime "updated_at"
     t.integer  "blocker_id"
     t.integer  "status"
+    t.index ["friend_id"], name: "index_friendships_on_friend_id", using: :btree
+    t.index ["friendable_id", "friendable_type"], name: "index_friendships_on_friendable_id_and_friendable_type", using: :btree
   end
 
   create_table "fundraises", force: :cascade do |t|
@@ -98,10 +114,16 @@ ActiveRecord::Schema.define(version: 20161221085929) do
     t.integer  "target"
     t.integer  "campaign_id"
     t.integer  "user_id"
-    t.datetime "created_at",                  null: false
-    t.datetime "updated_at",                  null: false
-    t.integer  "followers_count", default: 0
-    t.integer  "likers_count",    default: 0
+    t.datetime "created_at",                    null: false
+    t.datetime "updated_at",                    null: false
+    t.integer  "followers_count",   default: 0
+    t.integer  "likers_count",      default: 0
+    t.string   "small_description"
+    t.text     "description"
+    t.string   "image"
+    t.integer  "raised_amount",     default: 0
+    t.index ["campaign_id"], name: "index_fundraises_on_campaign_id", using: :btree
+    t.index ["user_id"], name: "index_fundraises_on_user_id", using: :btree
   end
 
   create_table "job_users", force: :cascade do |t|
@@ -109,6 +131,8 @@ ActiveRecord::Schema.define(version: 20161221085929) do
     t.integer  "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["job_id"], name: "index_job_users_on_job_id", using: :btree
+    t.index ["user_id"], name: "index_job_users_on_user_id", using: :btree
   end
 
   create_table "jobs", force: :cascade do |t|
@@ -117,6 +141,7 @@ ActiveRecord::Schema.define(version: 20161221085929) do
     t.integer  "campaign_id"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+    t.index ["campaign_id"], name: "index_jobs_on_campaign_id", using: :btree
   end
 
   create_table "likes", force: :cascade do |t|
@@ -156,6 +181,8 @@ ActiveRecord::Schema.define(version: 20161221085929) do
     t.datetime "updated_at",      null: false
     t.string   "role"
     t.string   "status"
+    t.index ["organization_id"], name: "index_organization_users_on_organization_id", using: :btree
+    t.index ["user_id"], name: "index_organization_users_on_user_id", using: :btree
   end
 
   create_table "organizations", force: :cascade do |t|
@@ -166,6 +193,7 @@ ActiveRecord::Schema.define(version: 20161221085929) do
     t.string   "cover_image"
     t.integer  "followers_count", default: 0
     t.integer  "likers_count",    default: 0
+    t.text     "description"
   end
 
   create_table "posts", force: :cascade do |t|
@@ -176,6 +204,7 @@ ActiveRecord::Schema.define(version: 20161221085929) do
     t.datetime "updated_at",               null: false
     t.string   "image"
     t.integer  "likers_count", default: 0
+    t.index ["user_id"], name: "index_posts_on_user_id", using: :btree
   end
 
   create_table "users", force: :cascade do |t|

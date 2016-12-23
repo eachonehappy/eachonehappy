@@ -1,4 +1,5 @@
 class Campaign < ApplicationRecord
+  mount_uploader :image, ImageUploader
 	belongs_to :organization
 	belongs_to :cause
   has_many :users, through: :campaign_users

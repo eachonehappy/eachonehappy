@@ -34,6 +34,16 @@
                
 <div class="col-md-6" style="padding-left: 10px;
     padding-right: 5px;">
-	<%= render 'users/timeline'%>
-	<%= render 'users/timeline'%>
+    <div class="col-md-6" style="padding: 0px;">
+    <div style="margin-right:3px;margin-left:3px">
+    <h3 class="margin-none text-capitalize text-center" style="background-color:white;;padding-bottom:5px;">Top Fundraises</h3>
+    </div>
+	<%= render :partial => 'shared/fundraise', :collection => @fundraises %>
+	</div>
+	<div class="col-md-6" style="padding: 0px;">
+	<div style="margin-right:3px;margin-left:3px;">
+    <h3 class="margin-none text-capitalize text-center" style="background-color:white;;padding-bottom:5px;">Top Campaign</h3>
+    </div>
+	<%= render :partial => 'shared/campaign', :collection => @campaigns %>
+	</div>
 </div>

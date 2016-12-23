@@ -13,58 +13,58 @@
               </ul>
               <ul class="sidebar-menu sm-active-item-bg">
                 <li class="padding">
-                  <%= link_to '<i class="icon-circle-chevron-right pull-right"></i><b>Causes</b>'.html_safe, causes_path %>   
-                </li> 
-                <li>
-                  <%= link_to '<i class="fa fa-plus"></i>Add a Cause'.html_safe, new_cause_path %>
-                </li>                               
-                <li class="padding">
-                  <%= link_to '<i class="icon-circle-chevron-right pull-right"></i><b>Fundraises</b>'.html_safe, fundraises_path %>
-                </li>
-                <li>
-                <%current_user.fundraises.each do |fundraise|%>
-                  <%= link_to fundraise_path(fundraise) do %>
-                    <i class="icon-lock-fill"></i><%=fundraise.subject%>
-                  <%end%>
-                 <%end%>  
-                </li>
-                <li>
-                  <%= link_to '<i class="fa fa-plus"></i>Start a Fundraise'.html_safe, new_fundraise_path %>
-                </li>
-                <li class="padding">
-                  <%= link_to '<i class="icon-circle-chevron-right pull-right"></i><b>Jobs</b>'.html_safe, jobs_path %>
-                </li> 
-                <li>
-                  <%= link_to '<i class="fa fa-plus"></i>Create a Job'.html_safe, new_job_path %>
-                </li>               
-                <li class="padding">
                   <%= link_to '<i class="icon-circle-chevron-right pull-right"></i><b>Organizations</b>'.html_safe, organizations_path %>
                 </li>
                 <li>
-                <%current_user.organizations.each do |organization|%>
-                    <%= link_to organization_path(organization) do %>
+                  <%current_user.organizations.each do |organization|%>
+                    <%= link_to organization_path(organization), data: { turbolinks: false } do %>
                       <i class="icon-lock-fill"></i><%=organization.name%>
                     <%end%>
                   <%end%>  
                 </li>
                 <li>
-                  <%= link_to '<i class="fa fa-plus"></i>Start a Organization'.html_safe, new_organization_path %>
+                  <%= link_to '<i class="fa fa-plus"></i>Start a Organization'.html_safe, new_organization_path, data: { turbolinks: false } %>
                 </li>
                 <li class="padding">
                   <%= link_to '<i class="icon-circle-chevron-right pull-right"></i><b>Campaigns</b>'.html_safe, campaigns_path %>
                 </li>
                 <li>
                 <%current_user.campaigns.each do |campaign|%>
-                    <%= link_to campaign_path(campaign) do %>
+                    <%= link_to campaign_path(campaign), data: { turbolinks: false } do %>
                       <i class="icon-lock-fill"></i><%=campaign.subject%>
                     <%end%>
                  <%end%>  
                 </li>
                 <li>
-                  <%= link_to '<i class="fa fa-plus"></i>Start a Campaigns'.html_safe, new_campaign_path %>
+                  <%= link_to '<i class="fa fa-plus"></i>Start a Campaigns'.html_safe, new_campaign_path, data: { turbolinks: false } %>
+                </li>                             
+                <li class="padding">
+                  <%= link_to '<i class="icon-circle-chevron-right pull-right"></i><b>Fundraises</b>'.html_safe, fundraises_path, data: { turbolinks: false } %>
+                </li>
+                <li>
+                <%current_user.fundraises.each do |fundraise|%>
+                  <%= link_to fundraise_path(fundraise), data: { turbolinks: false } do %>
+                    <i class="icon-lock-fill"></i><%=fundraise.subject%>
+                  <%end%>
+                 <%end%>  
+                </li>
+                <li>
+                  <%= link_to '<i class="fa fa-plus"></i>Start a Fundraise'.html_safe, new_fundraise_path, data: { turbolinks: false } %>
                 </li>
                 <li class="padding">
-                  <%= link_to '<i class="icon-group pull-right"></i>Find Friends'.html_safe, users_path %>
+                  <%= link_to '<i class="icon-circle-chevron-right pull-right"></i><b>Jobs</b>'.html_safe, jobs_path, data: { turbolinks: false } %>
+                </li> 
+                <li>
+                  <%= link_to '<i class="fa fa-plus"></i>Create a Job'.html_safe, new_job_path, data: { turbolinks: false } %>
+                </li>
+                <li class="padding">
+                  <%= link_to '<i class="icon-circle-chevron-right pull-right"></i><b>Causes</b>'.html_safe, causes_path, data: { turbolinks: false } %>   
+                </li> 
+                <li>
+                  <%= link_to '<i class="fa fa-plus"></i>Add a Cause'.html_safe, new_cause_path, data: { turbolinks: false } %>
+                </li>               
+                <li class="padding">
+                  <%= link_to '<i class="icon-group pull-right"></i>Find Friends'.html_safe, users_path, data: { turbolinks: false } %>
                 </li>
               </ul>
             </div>

@@ -1,4 +1,5 @@
 class Fundraise < ApplicationRecord
+	mount_uploader :image, ImageUploader
   belongs_to :campaign
   belongs_to :user
   acts_as_followable

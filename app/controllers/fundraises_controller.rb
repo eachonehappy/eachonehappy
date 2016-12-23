@@ -24,14 +24,14 @@ class FundraisesController < ApplicationController
   	@fundraise.campaign_id = fundraise_params[:campaign_id]
   	@fundraise.user_id = current_user.id
     params[:fundraise][:user_id].reject(&:empty?).each do |user_id|
-      @user = User.find(user_id)
+      @user = User.find(user_id)   
     @fundraise.mention!(@user)
     end
     if @fundraise.save
       flash[:success] = "fundraise created!"
       redirect_to fundraises_path
     else
-      render 'new'
+      redirect_to new_fundraise_path
     end
   end
   
@@ -65,14 +65,14 @@ class FundraisesController < ApplicationController
     if current_user.likes?(@fundraise)
       if current_user.unlike!(@fundraise)
         flash[:success] = "fundraise created!"
-        redirect_to @fundraise
+        redirect_to request.referer
       else
         render 'new'
       end
     else
       if current_user.like!(@fundraise)
         flash[:success] = "fundraise created!"
-        redirect_to @fundraise
+        redirect_to request.referer
       else
         render 'new'
       end
@@ -82,6 +82,6 @@ class FundraisesController < ApplicationController
   private
     
     def fundraise_params
-      params.require(:fundraise).permit(:subject, :target, :campaign_id)
+      params.require(:fundraise).permit(:subject, :target, :campaign_id, :small_description, :description, :image)
     end
 end

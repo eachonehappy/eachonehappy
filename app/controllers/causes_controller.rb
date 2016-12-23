@@ -57,14 +57,14 @@ class CausesController < ApplicationController
     if current_user.likes?(@cause)
       if current_user.unlike!(@cause)
         flash[:success] = "cause created!"
-        redirect_to @cause
+        redirect_to request.referer
       else
         render 'new'
       end
     else
       if current_user.like!(@cause)
         flash[:success] = "cause created!"
-        redirect_to @cause
+        redirect_to request.referer
       else
         render 'new'
       end
@@ -74,6 +74,6 @@ class CausesController < ApplicationController
   private
     
     def cause_params
-      params.require(:cause).permit(:subject, :description)
+      params.require(:cause).permit(:subject, :description, :small_description, :image)
     end
 end

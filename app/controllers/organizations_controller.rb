@@ -84,14 +84,14 @@ class OrganizationsController < ApplicationController
     if current_user.likes?(@organization)
       if current_user.unlike!(@organization)
         flash[:success] = "organization created!"
-        redirect_to @organization
+        redirect_to request.referer
       else
         render 'new'
       end
     else
       if current_user.like!(@organization)
         flash[:success] = "organization created!"
-        redirect_to @organization
+        redirect_to request.referer
       else
         render 'new'
       end
@@ -138,6 +138,6 @@ class OrganizationsController < ApplicationController
   private
     
     def organization_params
-      params.require(:organization).permit(:name, :cause_ids)
+      params.require(:organization).permit(:name, :cause_ids, :description,:profile_image)
     end
 end

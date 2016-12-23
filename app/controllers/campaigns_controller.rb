@@ -67,14 +67,14 @@ class CampaignsController < ApplicationController
     if current_user.likes?(@campaign)
       if current_user.unlike!(@campaign)
         flash[:success] = "campaign created!"
-        redirect_to @campaign
+        redirect_to request.referer
       else
         render 'new'
       end
     else
       if current_user.like!(@campaign)
         flash[:success] = "campaign created!"
-        redirect_to @campaign
+        redirect_to request.referer
       else
         render 'new'
       end
@@ -84,6 +84,6 @@ class CampaignsController < ApplicationController
   private
     
     def campaign_params
-      params.require(:campaign).permit(:subject, :description, :cause_id, :organization_id)
+      params.require(:campaign).permit(:subject, :description, :cause_id, :organization_id, :small_description, :image)
     end
 end

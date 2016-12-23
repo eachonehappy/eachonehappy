@@ -10,10 +10,12 @@
       <a style="position:absolute;background-color: rgba(255, 255, 255, 0.48);top:10px;left:10px;" class="btn btn-cover" data-toggle="modal" data-target="#modal-slide-down"><i class="fa fa-pencil fa-fw"></i></a>
 
       <div style="position:absolute;background-color: rgba(255, 255, 255, 0);right:10px;bottom:50px;">
-
-        <%= @organization.followers_count %> Followers 
-        <br>
-        <%= @organization.likers_count %> Likes
+        <p class="blockquote-reverse h4"><%= @organization.likers_count %> Likes 
+        </p>
+        <p class="blockquote-reverse h4"><%= @organization.followers_count %> Followers 
+        </p>
+        
+        
       </div>
       <div style="position:absolute;background-color: rgba(255, 255, 255, 0);right:10px; bottom:10px; ">  
         <% unless (@organization == current_user) %>

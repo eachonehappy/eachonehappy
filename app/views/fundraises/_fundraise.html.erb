@@ -1,12 +1,16 @@
 <div class="col-md-4 animated pulse" style="margin-top:7px;padding:0px;">
   <div style="margin-right:3px;margin-left:3px;background-color:white;padding:5px;">
-    <img src="https://static-files-ketto.netdna-ssl.com/3/media/campaign/22000/22408/image/wid098993fa011b4178a854ecb80ca89decfc2ebca4.jpg" class="img-responsive">
+    <% if fundraise.image_url %> 
+      <%= image_tag fundraise.image_url :medium, :class=>"img-responsive"%>
+    <% else %>
+       <img src="https://static-files-ketto.netdna-ssl.com/3/media/campaign/22000/22408/image/wid098993fa011b4178a854ecb80ca89decfc2ebca4.jpg" class="img-responsive">
+    <% end %>
     <div style="padding-left:10px;padding-right:10px;">
-      <h5 class="text-capitalize" ><%= link_to "#{fundraise.subject}" , fundraise_path(fundraise)%></h5>
+      <h5 class="text-capitalize" ><%= link_to "#{fundraise.subject}" , fundraise_path(fundraise), data: { turbolinks: false }%></h5>
       <p >by
         <%= link_to "#{full_name(fundraise.user)}", user_path(fundraise.user), :class=> "text-capitalize"%>
       </p>
-      <p>Master JAI GUPTA is battling blood cancer and he needs your support!</p>
+      <p class = "text-capitalize"><%=fundraise.small_description%></p>
       <div class="clearfix">
         <span class="pull-left">Raised <i class="fa fa-inr"></i> <span>1,57,835</span></span>
         <span class="pull-right">52%</span>
@@ -21,19 +25,27 @@
         </div>
         <div class="col-md-4 backers pull-left " style="padding:5px;">
             <i class="fa fa-lg fa-heart"></i>
-            <span>7<p style="margin:0px;">supporters</p></span>
+            <span><%= fundraise.likers_count %><p style="margin:0px;">supporters</p></span>
         </div>
         <div class="col-md-4 days pull-left" style="padding:5px;">
-          <i class="fa fa-lg fa-clock-o"></i>
+          <i class="fa fa-lg fa-user"></i>
           <span>
-              56<p style="margin:0px;"> days left</p>                    
+              <%= fundraise.followers_count %><p style="margin:0px;"> followes</p>                    
           </span>
         </div>
       </div> 
       <div class="btn-group btn-group-footer btn-group-justified" >
-        <a href="#" class="btn"><i class="fa fa-heart"></i> Like</a>
+        <% if current_user.likes?(fundraise)  %>
+          <%= link_to '<i class="fa fa-heart"></i>Unlike'.html_safe, like_fundraise_path(:fundraise_id => fundraise.id), :method => :post, :class=>"btn" %>
+        <% else %>
+          <%= link_to '<i class="fa fa-heart"></i>Like'.html_safe, like_fundraise_path(:fundraise_id => fundraise), :method => :post, :class=>"btn" %>
+        <% end %>
+        <% if current_user.follows?(fundraise)  %>
+          <%= link_to '<i class="fa fa-user"></i> Unfollow'.html_safe, follow_fundraise_path(:fundraise_id => fundraise.id), :method => :post, :class=>"btn" %>
+        <% else %>
+          <%= link_to '<i class="fa fa-user"></i> Follow'.html_safe, follow_fundraise_path(:fundraise_id => fundraise), :method => :post, :class=>"btn" %>
+        <% end %>
         <a href="#" class="btn"><i class="fa fa-user"></i> Share</a>
-        <a href="#" class="btn"><i class="fa fa-user"></i> Follow</a>
       </div>                    
     </div>
   </div>

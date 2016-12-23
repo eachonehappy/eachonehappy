@@ -1,4 +1,5 @@
 class Cause < ApplicationRecord
+	mount_uploader :image, ImageUploader
   has_many :organizations, through: :cause_organizations
   has_many :cause_organizations
   has_many :campaigns
