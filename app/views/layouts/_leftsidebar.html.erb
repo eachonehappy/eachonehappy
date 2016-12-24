@@ -7,9 +7,9 @@
             <div data-scrollable>
               <ul class="sidebar-menu" style="padding-top: 10px;">
                 <li>
-                <%= link_to '<i class="fa fa-home"></i> <span>Home</span>'.html_safe, root_path %></li>
-                <li><%= link_to '<i class="fa fa-user"></i> <span>Profile</span>'.html_safe, user_path(current_user) %></li>
-                <li class="visible-lg"><%= link_to '<i class="fa fa-comments"></i> <span>Chat with Friends</span>'.html_safe, chat_rooms_path %></li></li>
+                <%= link_to '<i class="fa fa-home"></i> <span>Home</span>'.html_safe, root_path, data: { turbolinks: false } %></li>
+                <li><%= link_to '<i class="fa fa-user"></i> <span>Profile</span>'.html_safe, user_path(current_user), data: { turbolinks: false } %></li>
+                <li class="visible-lg"><%= link_to '<i class="fa fa-comments"></i> <span>Chat with Friends</span>'.html_safe, chat_rooms_path, data: { turbolinks: false } %></li></li>
               </ul>
               <ul class="sidebar-menu sm-active-item-bg">
                 <li class="padding">

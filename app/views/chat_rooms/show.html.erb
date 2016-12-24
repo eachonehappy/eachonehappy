@@ -1,6 +1,6 @@
-<div class="col-md-3">
+<div class="col-md-2">
 </div>
-<div class="col-md-6">
+<div class="col-md-6" style="margin-left:20px;">
 <div class="media-body"> 
   <div id="messages" data-chat-room-id="<%= @chat_room.id %>">
   <%= render :partial => 'messages/message', :collection => @chat_room.messages %>
@@ -25,3 +25,4 @@
     </div>
   </div>
 </div>
+
