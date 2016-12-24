@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
 	root 'pages#home'
 	
 	get 'pages/home'
@@ -42,6 +43,7 @@ Rails.application.routes.draw do
 	post 'accept_organization' => 'organizations#accept_organization'
 	get  'organization_friend' => 'organizations#friend'
 	post 'organization_invite' => 'organizations#organization_invite'
+	post 'job_status' => 'jobs#job_status'
 	#resources :friendships
 	# For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

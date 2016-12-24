@@ -10,9 +10,25 @@ class OrganizationsController < ApplicationController
   end
   
   def show
+    @comment = Comment.new
     @organization = Organization.find(params[:id])
     @pending_requests_ids = @organization.organization_users.send_by_user.map(&:user_id) 
-    @users = User.where( id: @pending_requests_ids)
+    @pending_users = User.where( id: @pending_requests_ids)
+    @members_ids = @organization.organization_users.accepted.map(&:user_id) 
+    @members = User.where( id: @members_ids)
+    @organization_posts = []
+    @members.each do |member|
+      member.posts.each do |post|
+        @organization_posts << post
+      end  
+    end
+    @campaigns =  @organization.campaigns
+    @organization_fundraise = []
+    @campaigns.each do |campaign|
+      campaign.fundraises.each do |fundraise|
+        @organization_fundraise << fundraise
+      end  
+    end  
   end
   
   def new

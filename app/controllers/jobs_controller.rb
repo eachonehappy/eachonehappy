@@ -1,7 +1,17 @@
 class JobsController < ApplicationController
 	before_action :authenticate_user!
 	def index
-    @jobs = Job.all
+    if params[:format].present?
+      if params[:format] == "all"
+        @jobs = Job.all
+      elsif params[:format] == "completed"
+        @jobs = Job.where(:is_completed => true)
+      else 
+        @jobs = Job.where(:is_completed => false)
+      end    
+    else
+      @jobs = Job.all
+    end
   end
   
   def show
@@ -34,6 +44,12 @@ class JobsController < ApplicationController
     Job.find(params[:id]).destroy
     flash[:success] = "Job deleted"
     redirect_to jobs_path
+  end
+
+  def job_status
+    @job = Job.find(params[:job_id])
+    @job.toggle!(:is_completed)
+    redirect_to request.referer
   end
   
   private

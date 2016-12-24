@@ -46,10 +46,10 @@ class UsersController < ApplicationController
   	@user = User.find(params[:friend_id])
     if current_user.friend_request @user
       flash[:success] = "Freind request send"
-      redirect_to users_path
+      redirect_to request.referer
     else
     	flash[:failure] = "Freind request not send"
-      redirect_to users_path
+      redirect_to request.referer
     end  
   end
 
@@ -79,10 +79,10 @@ class UsersController < ApplicationController
     @user = User.find(params[:friend_id])
     if current_user.remove_friend @user
       flash[:success] = "U r freinds"
-      redirect_to users_path
+      redirect_to request.referer
     else
       flash[:failure] = "U r not freinds"
-      redirect_to users_path
+      redirect_to request.referer
     end  
   end
 
@@ -91,14 +91,14 @@ class UsersController < ApplicationController
     if current_user.follows?(@user)
       if current_user.unfollow!(@user)
         flash[:success] = "user created!"
-        redirect_to @user
+        redirect_to request.referer
       else
         render 'new'
       end
     else
       if current_user.follow!(@user)
         flash[:success] = "post created!"
-        redirect_to @user
+        redirect_to request.referer
       else
         render 'new'
       end

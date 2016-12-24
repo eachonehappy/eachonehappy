@@ -133,7 +133,7 @@
         <li class="dropdown user">          
           <%= link_to user_path(current_user), data: { turbolinks: false } do  %>
             <% if current_user.profile_image_url %> 
-            <%= image_tag current_user.profile_image_url :thumb, :class=>"img-circle" %>
+            <%= image_tag(current_user.profile_image_url(:thumb)) %>
             <% else %>
             <img src="/images/people/50/guy-5.jpg" width="20" alt="Bill" class="img-circle" />
             <% end %>

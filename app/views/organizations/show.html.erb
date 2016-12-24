@@ -1,14 +1,15 @@
 <div class="col-md-9" style="padding-left: 0px;
     padding-right: 0px;">
-  <div class="cover profile">
+  <div class="cover profile" style="margin-bottom: 10px;">
     <div style="position:relative;display:inline-block;text-align:center;"> 
       <% if @organization.cover_image_url %> 
         <%= image_tag @organization.cover_image_url.to_s, :class=>"img-responsive" %>
       <% else %>
         <img src="/images/cover.png" class="img-responsive">
-      <% end %>  
+      <% end %>
+      <% if organization_member?(@organization) %>  
       <a style="position:absolute;background-color: rgba(255, 255, 255, 0.48);top:10px;left:10px;" class="btn btn-cover" data-toggle="modal" data-target="#modal-slide-down"><i class="fa fa-pencil fa-fw"></i></a>
-
+      <% end %>
       <div style="position:absolute;background-color: rgba(255, 255, 255, 0);right:10px;bottom:50px;">
         <p class="blockquote-reverse h4"><%= @organization.likers_count %> Likes 
         </p>
@@ -57,16 +58,16 @@
       <ul class="cover-nav" role="tablist">
           <li class="active"><a href="#time_line" role="tab" data-toggle="tab"><i class="fa fa-fw icon-ship-wheel"></i> Timeline</a>
           </li>
-          <li><a href="#about" role="tab" data-toggle="tab"><i class="fa fa-fw icon-user-1"></i> About</a>
+          <li><a href="#campaign" role="tab" data-toggle="tab"><i class="fa fa-fw icon-user-1"></i>Campaign</a>
           </li>
-          <li><a href="#friends" role="tab" data-toggle="tab"><i class="fa fa-fw fa-users"></i> Members</a>
+          <li><a href="#fundraise" role="tab" data-toggle="tab"><i class="fa fa-fw icon-user-1"></i>Fundraises</a>
           </li>
-          <% if owner?(@organization) %>
-          <li><a href="#members" role="tab" data-toggle="tab"><i class="fa fa-fw fa-users"></i> Requests</a>
+          <li><a href="#friends" role="tab" data-toggle="tab"><i class="fa fa-fw fa-users"></i>Members</a>
           </li>
-          <%end%>
+          
       </ul> 
       <div class="pull-right">
+      <div class="btn-group" style="padding-right:10px;padding-top:10px;">
       <%unless owner?(@organization) %>
         <% if organization_member?(@organization)  %>
           <%= link_to "Leave", organization_invitation_path(:organization_id => @organization.id), :method => :post, :class=>"btn btn-danger" %>
@@ -77,19 +78,86 @@
           <%else%>
           <%= link_to "Join", organization_invitation_path(:organization_id => @organization), :method => :post, :class=>"btn btn-info" %>
           <% end %> 
-          <% else %>
-          <%= link_to "Invite friends", organization_friend_path(:organization_id => @organization), :class=>"btn btn-info" %>
-        <% end %>           
+          <% else %>        
+          <%= link_to "Invite friends", organization_friend_path(:organization_id => @organization), :class=>"btn btn-info" %> 
+        <% end %> 
+        </div>          
       </div>      
     </div>
   </div>
   <div class="tab-content" style="padding: 0px;">
-    <%= render 'users/about'%>    
-    <%= render 'users/friends'%> 
-    <%= render 'organizations/members'%>
-    <div class="tab-pane fade active in" id="time_line">  
-      <%= render 'users/timeline'%> 
+  <%= render :partial => 'users/friends', :collection => @users = @members%>    
+    <div class="tab-pane fade" id="fundraise" >
+    <%= render :partial => 'fundraises/fundraise', :collection => @organization_fundraise %>
+  </div>
+  <div class="tab-pane fade" id="campaign" >
+    <%= render :partial => 'campaigns/campaign', :collection => @campaigns%>
+  </div>
+    <div class="tab-pane active" id="time_line" > 
+    <div class="col-md-6" style="padding-left: 0px; padding-right: 8px;">
+        <div class="panel panel-default" style="margin-bottom: 10px;"">
+            <div class="panel-heading panel-heading-gray">
+                <a href="#" class="btn btn-white btn-xs pull-right"><i class="fa fa-pencil"></i></a>
+                <i class="fa fa-info-circle"></i> About
+            </div>
+            <div class="panel-body">
+                <ul class="list-unstyled profile-about">
+                    <li>
+                        <div class="row">
+                            <div class="col-sm-4"><span class="text-muted">Name</span>
+                            </div>
+                            <div class="col-sm-8 text-capitalize"><%= @organization.name %></div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="row">
+                            <div class="col-sm-4"><span class="text-muted">Causes</span>
+                            </div>
+                            <div class="col-sm-8 text-capitalize"><% @organization.causes.each do |cause| %>
+                              <%= link_to "#{cause.subject}", cause_path(cause)%>
+                              <% end %>
+                            </div>
+                        </div>
+                    </li>
+                     
+                    <li>
+                        <div class="row">
+                            <div class="col-sm-4"><span class="text-muted">Description</span>
+                            </div>
+                            <div class="col-sm-8 text-capitalize"><%= @organization.description %></div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <% if owner?(@organization) %>
+          <div class="panel panel-default" style="margin-bottom: 10px;"">
+              <div class="panel-heading panel-heading-gray">
+                Pending Join Requests
+              </div>
+              <div class="panel-body">
+                  <ul class="list-unstyled profile-about">
+                  <%@pending_users.each do |user|%>
+                    
+                      <li>
+                          <div class="row" style="margin-bottom:3px;">
+                              <div class="col-sm-8"><%= link_to "#{full_name(user)}", user_path(user), :class=>"text-capitalize"%>
+                              </div>
+                              <div class="col-sm-4 text-capitalize"><%= link_to "accept" , accept_organization_path(:user_id => user.id,:organization_id => @organization.id), :method => :post, :class => "btn btn-primary btn-sm"%>
+                            </div>
+                          </div>
+                      </li>
+                      <%end%>
+                  </ul>
+              </div>
+          </div>
+        <%end%>
+    </div> 
+      <div class="col-md-6 " style="padding-left: 0px; padding-right: 0px;">
+        <%= render :partial => 'shared/post', :collection => @organization_posts %>
+      </div> 
     </div>                      
+  </div>                      
   </div>
 </div>
 <%= render 'organizations/picture_modal'%>         

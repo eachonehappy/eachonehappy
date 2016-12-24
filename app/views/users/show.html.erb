@@ -1,6 +1,6 @@
 <div class="col-md-9" style="padding-left: 0px;
     padding-right: 0px;">
-  <div class="cover profile "> 
+  <div class="cover profile" style="margin-bottom: 10px;"> 
   <div style="position:relative;
     display:inline-block;
     text-align:center;
@@ -9,12 +9,14 @@
     <%= image_tag @user.cover_image_url.to_s, :class=>"img-responsive" %>
     <% else %>
     <img src="/images/cover.png" class="img-responsive">
-    <% end %>  
+    <% end %> 
+    <% if (@user == current_user) %> 
      <a style="position:absolute;
     background-color: rgba(255, 255, 255, 0.48);
     top:10px;
     left:10px;
     " class="btn btn-cover" data-toggle="modal" data-target="#modal-slide-down"><i class="fa fa-pencil fa-fw"></i></a> 
+    <% end %>
     <div style="position:absolute;
     background-color: rgba(255, 255, 255, 0);
     right:10px;
@@ -75,19 +77,57 @@
       <ul class="cover-nav" role="tablist">
           <li class="active"><a href="#time_line" role="tab" data-toggle="tab"><i class="fa fa-fw icon-ship-wheel"></i> Timeline</a>
           </li>
-          <li><a href="#about" role="tab" data-toggle="tab"><i class="fa fa-fw icon-user-1"></i> About</a>
-          </li>
           <li><a href="#friends" role="tab" data-toggle="tab"><i class="fa fa-fw fa-users"></i> Friends</a>
           </li>
+          <li><a href="#fundraise" role="tab" data-toggle="tab"><i class="fa fa-fw icon-user-1"></i>Fundrasies</a>
+          </li>
+          <li><a href="#campaign" role="tab" data-toggle="tab"><i class="fa fa-fw icon-user-1"></i>Campaign</a>
+          </li>      
       </ul>
             
     </div>
   </div>
   <div class="tab-content" style="padding: 0px;">
-    <%= render 'users/about'%>    
+  <div class="tab-pane fade" id="fundraise" >
+    <%= render :partial => 'fundraises/fundraise', :collection => @user.fundraises%>
+  </div>
+  <div class="tab-pane fade" id="campaign" >
+    <%= render :partial => 'campaigns/campaign', :collection => @user.campaigns%>
+  </div>     
     <%= render 'users/friends'%> 
-    <div class="tab-pane active" id="time_line" >  
-      <div class="col-md-6 " style="padding-left: 0px; padding-right: 8px;">
+  <div class="tab-pane active" id="time_line" > 
+    <div class="col-md-6" style="padding-left: 0px; padding-right: 8px;">
+        <div class="panel panel-default" style="margin-bottom: 10px;"">
+            <div class="panel-heading panel-heading-gray">
+                <a href="#" class="btn btn-white btn-xs pull-right"><i class="fa fa-pencil"></i></a>
+                <i class="fa fa-info-circle"></i> About
+            </div>
+            <div class="panel-body">
+                <ul class="list-unstyled profile-about">
+                    <li>
+                        <div class="row">
+                            <div class="col-sm-4"><span class="text-muted">Full Name</span>
+                            </div>
+                            <div class="col-sm-8 text-capitalize"><%= full_name(@user) %></div>
+                        </div>
+                    </li>
+                     
+                    <li>
+                        <div class="row">
+                            <div class="col-sm-4"><span class="text-muted">Email</span>
+                            </div>
+                            <div class="col-sm-8 text-capitalize"><%= @user.email %></div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        
+        <h3 class="margin-none text-capitalize text-center" style="background-color:white;;padding-bottom:5px;">Organizations</h3>
+        
+        <%= render :partial => 'organizations/organization', :collection => @user.organizations%>
+    </div> 
+      <div class="col-md-6 " style="padding-left: 0px; padding-right: 0px;">
         <%= render :partial => 'shared/post', :collection => @posts%>
       </div> 
     </div>                      

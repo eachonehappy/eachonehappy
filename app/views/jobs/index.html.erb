@@ -4,10 +4,16 @@
     margin-bottom: 10px; margin-left: 10px;">
         <%= "Jobs" %>
       </h1>
-     
+      <div class="pull-right">
+      <%= link_to "All Jobs", jobs_path("all"), data: { turbolinks: false }, class: 'btn btn-primary', :style=> "margin-top: 10px;
+    margin-right: 10px;"%>
+    <%= link_to "Completed Jobs", jobs_path("completed"), data: { turbolinks: false }, class: 'btn btn-primary', :style=> "margin-top: 10px;
+    margin-right: 10px;"%>
+    <%= link_to "Unompleted Jobs", jobs_path("uncompleted"), data: { turbolinks: false }, class: 'btn btn-primary', :style=> "margin-top: 10px;
+    margin-right: 10px;"%>
         <%= link_to "Create a Job", new_job_path, data: { turbolinks: false }, class: 'btn btn-primary pull-right ', :style=> "margin-top: 10px;
     margin-right: 10px;"%>
-    
+    </div>
       <div class="clearfix"></div>
    
 </div>
@@ -19,7 +25,7 @@
         <tr>
           <th>Title</th>
           <th>Description</th>
-          <th>Office</th>
+          <th>Assigned To</th>
           <th>Action</th>
         </tr>
       </thead>
@@ -27,7 +33,7 @@
         <tr>
           <th>Title</th>
           <th>Description</th>
-          <th>Office</th>
+          <th>Assigned To</th>
           <th>Action</th>
         </tr>
       </tfoot>
