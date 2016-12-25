@@ -11,19 +11,19 @@
     </div>
     <div style="padding-bottom:10px;">
         <% if current_user.follows?(organization)%>
-        <%= link_to '<i class="fa fa-check-circle fa-fw"></i>UnFollow'.html_safe,follow_organization_path(:organization_id => organization.id), :method => :post, :class=>"btn btn-danger" %>
+        <%= link_to 'UnFollow'.html_safe,follow_organization_path(organization), method: :put, :class=>"follow btn btn-danger", remote: true, data: { toggle_text: 'Follow', toggle_href: follow_organization_path(organization), id: organization.id } %>
         <%else%>
-        <%= link_to '<i class="fa fa-check-circle fa-fw"></i>Follow'.html_safe,follow_organization_path(:organization_id => organization.id), :method => :post, :class=>"btn btn-success" %>
+        <%= link_to 'Follow'.html_safe,follow_organization_path(organization), method: :put, :class=>"follow btn btn-success", remote: true, data: { toggle_text: 'Unfollow', toggle_href: follow_organization_path(organization), id: organization.id } %>
         <%end%>
         <% if current_user.likes?(organization)%>
-        <%= link_to '<i class="fa fa-check-circle fa-fw"></i>Unlike'.html_safe,like_organization_path(:organization_id => organization.id), :method => :post, :class=>"btn btn-danger" %>
+        <%= link_to 'Unlike'.html_safe,like_organization_path(organization), method: :put, :class=>"vote btn btn-danger", remote: true, data: { toggle_text: 'Like', toggle_href: like_organization_path(organization), id: organization.id } %>
         <%else%>
-        <%= link_to '<i class="fa fa-check-circle fa-fw"></i>Like'.html_safe,like_organization_path(:organization_id => organization.id), :method => :post, :class=>"btn btn-success" %>
+        <%= link_to 'Like'.html_safe,like_organization_path(organization), method: :put, :class=>"vote btn btn-success", remote: true, data: { toggle_text: 'Unlike', toggle_href: like_organization_path(organization), id: organization.id } %>
         <%end%>
     </div>
     <div class="profile-icons margin-none">
-      <span><i class="fa fa-heart"></i> <%= organization.likers_count %></span>
-      <span><i class="fa fa-user"></i> <%= organization.followers_count %></span>
+      <span><i class="fa fa-heart"></i><span class="votes-count" data-id="<%= organization.id %>"><%= organization.likers_count %></span></span>
+      <span><i class="fa fa-user"></i> <span class="follow-count" data-id="<%= organization.id %>"> <%= organization.followers_count %></span></span>
       <span><i class="fa fa-users"></i> 372</span>
     </div>
     <div class="panel-body" style="padding-bottom:0px;">

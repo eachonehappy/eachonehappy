@@ -35,18 +35,26 @@ class PostsController < ApplicationController
   end
 
   def post_like
-    @post = Post.find(params[:post_id])
+    @post = Post.find(params[:format])
     if current_user.likes?(@post)
       if current_user.unlike!(@post)
-        flash[:success] = "post created!"
-        redirect_to root_path
+        if request.xhr?
+          @post = Post.find(params[:format])
+          render json: { count: @post.likers_count , id: params[:format] }
+        else
+          redirect_to request.referer_path
+        end    
       else
         render 'new'
       end
     else
       if current_user.like!(@post)
-        flash[:success] = "post created!"
-        redirect_to root_path
+        if request.xhr?
+          @post = Post.find(params[:format])
+          render json: { count: @post.likers_count , id: params[:format] }
+        else
+          redirect_to request.referer_path
+        end
       else
         render 'new'
       end

@@ -17,12 +17,12 @@
     left:10px;
     " class="btn btn-cover" data-toggle="modal" data-target="#modal-slide-down"><i class="fa fa-pencil fa-fw"></i></a> 
     <% end %>
-    <div style="position:absolute;
+   <div style="position:absolute;
     background-color: rgba(255, 255, 255, 0);
     right:10px;
     bottom:50px;
     ">
-     <p class="blockquote-reverse h4"><%= @user.followers_count %> Followers 
+     <p class="blockquote-reverse h4"><span class="follow-count" data-id="<%= @user.id %>"> <%= @user.followers_count %></span> Followers 
         </p> 
     </div>
     <div style="position:absolute;
@@ -34,9 +34,9 @@
     <% unless (@user == current_user) %>
         <div class="btn-group pull-right">
           <% if current_user.follows?(@user)  %>
-          <%= link_to "Unfollow", follow_unfollow_path(:user_id => @user.id), :method => :post, :class=>"btn btn-danger" %>
+          <%= link_to "Unfollow", follow_user_path(@user), method: :put, :class=>"follow btn btn-success", remote: true, data: { toggle_text: 'Follow', toggle_href: follow_user_path(@user), id: @user.id } %>
           <% else %>
-          <%= link_to "Follow", follow_unfollow_path(:user_id => @user), :method => :post, :class=>"btn btn-info" %>
+          <%= link_to "Follow", follow_user_path(@user), method: :put, :class=>"follow btn btn-primary", remote: true, data: { toggle_text: 'Unfollow', toggle_href: follow_user_path(@user), id: @user.id } %>
           <% end %>
                 
         </div>       
@@ -44,13 +44,13 @@
         <div class="btn-group">
         <div class="btn-group pull-right">
           <% if current_user.friends_with?(@user)  %>
-          <%= link_to "Remove Friend", remove_path(:friend_id => @user), :method => :post, :class=>"btn btn-danger" %>
+          <%= link_to "Friends",nil, :disabled=> true, :class=>"btn btn-info" %>
           <% elsif current_user.pending_friends.include?(@user) %>
-          <button class="btn btn-primary">Friend request send</button>
+          <%= link_to "Friend request send ",nil, :disabled=> true, :class=>"btn btn-info" %>
           <% elsif current_user.requested_friends.include?(@user) %>
-          <%= link_to "Accept Request", accept_path(:friend_id => @user), :method => :post, :class=>"btn btn-info" %>
+          <%= link_to "Accept Request", accept_path(@user), :method => :post, :class =>"acceptfriend btn btn-primary",remote: true, data: { toggle_text: 'Friends',turbolinks: false , toggle_href: accept_path(@user), id: @user.id } %>
           <% else %>
-          <%= link_to "Add Friend", invite_path(:friend_id => @user), :method => :post, :class=>"btn btn-info" %>
+          <%= link_to "Add Friend", invite_path(@user), :method => :post, :class=>"friend btn btn-info", remote: true, data: { toggle_text: 'Friend request send', toggle_href: invite_path(@user), id: @user.id } %>
           <% end %>
        
         </div>

@@ -1,7 +1,7 @@
 <div class="animated pulse" style="margin-bottom:7px;padding:0px;">
   <div style="margin-right:3px;margin-left:3px;background-color:white;padding:5px;">
-  <% if campaign.image_url %> 
-      <%= image_tag(campaign.image_url(:medium), :class=>"img-responsive", :style=>"max-width:247px;")%>
+    <% if campaign.image_url %> 
+      <%= image_tag campaign.image_url :medium, :class=>"img-responsive"%>
     <% else %>
        <img src="https://static-files-ketto.netdna-ssl.com/3/media/campaign/22000/22408/image/wid098993fa011b4178a854ecb80ca89decfc2ebca4.jpg" class="img-responsive">
     <% end %>
@@ -12,12 +12,12 @@
       </p>
       <p class="text-capitalize"><%=campaign.description%></p>
       <div class="numbers clearfix text-center">
-        <div class="col-md-4 trophy pull-left " style="padding:5px;">
-          <i class="fa fa-lg fa-user"></i><span><span> <%= campaign.followers_count %></span><p style="margin:0px;">Followers</p></span>
-        </div>
         <div class="col-md-4 backers pull-left " style="padding:5px;">
             <i class="fa fa-lg fa-heart"></i>
-            <span><%= campaign.likers_count %><p style="margin:0px;">supporters</p></span>
+            <span class="votes-count" data-id="<%= campaign.id %>"><%= campaign.likers_count %></span><p style="margin:0px;">supporters</p>
+        </div>
+        <div class="col-md-4 trophy pull-left " style="padding:5px;">
+          <i class="fa fa-lg fa-user"></i><span><span class="follow-count" data-id="<%= campaign.id %>"> <%= campaign.followers_count %></span><p style="margin:0px;">Followers</p></span>
         </div>
         <div class="col-md-4 days pull-left" style="padding:5px;">
           <i class="fa fa-lg fa-clock-o"></i>
@@ -28,14 +28,14 @@
       </div> 
       <div class="btn-group btn-group-footer btn-group-justified" >
         <% if current_user.likes?(campaign)  %>
-          <%= link_to '<i class="fa fa-heart"></i>Unlike'.html_safe, like_campaign_path(:campaign_id => campaign.id), :method => :post, :class=>"btn" %>
+          <%= link_to '<i class="fa fa-heart"></i>Unlike'.html_safe, like_campaign_path(campaign), method: :put, :class=>"vote btn", remote: true, data: { toggle_text: 'Like', toggle_href: like_campaign_path(campaign), id: campaign.id } %>
         <% else %>
-          <%= link_to '<i class="fa fa-heart"></i>Like'.html_safe, like_campaign_path(:campaign_id => campaign), :method => :post, :class=>"btn" %>
+          <%= link_to '<i class="fa fa-heart"></i>Like'.html_safe, like_campaign_path(campaign), method: :put, :class=>"vote btn", remote: true, data: { toggle_text: 'Unlike', toggle_href: like_campaign_path(campaign), id: campaign.id } %>
         <% end %>
         <% if current_user.follows?(campaign)  %>
-          <%= link_to '<i class="fa fa-user"></i> Unfollow'.html_safe, follow_campaign_path(:campaign_id => campaign.id), :method => :post, :class=>"btn" %>
+          <%= link_to '<i class="fa fa-user"></i> Unfollow'.html_safe, follow_campaign_path(campaign), method: :put, :class=>"follow btn", remote: true, data: { toggle_text: 'Follow', toggle_href: follow_campaign_path(campaign), id: campaign.id } %>
         <% else %>
-          <%= link_to '<i class="fa fa-user"></i> Follow'.html_safe, follow_campaign_path(:campaign_id => campaign), :method => :post, :class=>"btn" %>
+          <%= link_to '<i class="fa fa-user"></i> Follow'.html_safe, follow_campaign_path(campaign), method: :put, :class=>"follow btn", remote: true, data: { toggle_text: 'Unfollow', toggle_href: follow_campaign_path(campaign), id: campaign.id } %>
         <% end %>
         
         <a href="#" class="btn"><i class="fa fa-user"></i> Share</a>

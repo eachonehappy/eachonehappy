@@ -11,35 +11,34 @@
       <a style="position:absolute;background-color: rgba(255, 255, 255, 0.48);top:10px;left:10px;" class="btn btn-cover" data-toggle="modal" data-target="#modal-slide-down"><i class="fa fa-pencil fa-fw"></i></a>
       <% end %>
       <div style="position:absolute;background-color: rgba(255, 255, 255, 0);right:10px;bottom:50px;">
-        <p class="blockquote-reverse h4"><%= @organization.likers_count %> Likes 
+        <p class="blockquote-reverse h4"><span class="votes-count" data-id="<%= 
+        @organization.id %>"><%= @organization.likers_count %></span> Likes 
         </p>
-        <p class="blockquote-reverse h4"><%= @organization.followers_count %> Followers 
+        <p class="blockquote-reverse h4"><span class="follow-count" data-id="<%= @organization.id %>"> <%= @organization.followers_count %></span> Followers 
         </p>
         
         
       </div>
       <div style="position:absolute;background-color: rgba(255, 255, 255, 0);right:10px; bottom:10px; ">  
-        <% unless (@organization == current_user) %>
           <div class="btn-group">
             <div class="btn-group pull-right">
-              <% if current_user.likes?(@organization)  %>
-              <%= link_to "Unlike", like_organization_path(:organization_id => @organization.id), :method => :post, :class=>"btn btn-danger" %>
-              <% else %>
-              <%= link_to "Like", like_organization_path(:organization_id => @organization), :method => :post, :class=>"btn btn-info" %>
-              <% end %>         
+              <% if current_user.follows?(@organization)%>
+              <%= link_to 'UnFollow'.html_safe,follow_organization_path(@organization), method: :put, :class=>"follow btn btn-danger", remote: true, data: { toggle_text: 'Follow', toggle_href: follow_organization_path(@organization), id: @organization.id } %>
+              <%else%>
+              <%= link_to 'Follow'.html_safe,follow_organization_path(@organization), method: :put, :class=>"follow btn btn-success", remote: true, data: { toggle_text: 'Unfollow', toggle_href: follow_organization_path(@organization), id: @organization.id } %>
+              <%end%>         
             </div>       
           </div>
 
           <div class="btn-group">
             <div class="btn-group pull-right">
-              <% if current_user.follows?(@organization)  %>
-              <%= link_to "Unfollow", follow_organization_path(:organization_id => @organization.id), :method => :post, :class=>"btn btn-danger" %>
-              <% else %>
-              <%= link_to "Follow", follow_organization_path(:organization_id => @organization), :method => :post, :class=>"btn btn-info" %>
-              <% end %>         
+              <% if current_user.likes?(@organization)%>
+              <%= link_to 'Unlike'.html_safe,like_organization_path(@organization), method: :put, :class=>"vote btn btn-danger", remote: true, data: { toggle_text: 'Like', toggle_href: like_organization_path(@organization), id: @organization.id } %>
+              <%else%>
+              <%= link_to 'Like'.html_safe,like_organization_path(@organization), method: :put, :class=>"vote btn btn-success", remote: true, data: { toggle_text: 'Unlike', toggle_href: like_organization_path(@organization), id: @organization.id } %>
+              <%end%>         
             </div>       
           </div>
-        <%end%>
       </div>
     </div>
     <div class="cover-info">

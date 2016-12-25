@@ -13,20 +13,20 @@
     <div class="panel-body" style="padding-bottom:5px;padding-top:5px;">
       <p class="text-capitalize"><%=cause.small_description%></p>
       <div>
-        <a  class="text-muted"> <%= cause.likers_count %> Likes <i class="fa fa-heart"></i></a>
-        <a  class="text-muted">  <%= cause.followers_count %> Followers <i class="fa fa-user"></i></a>
+        <a  class="text-muted"> <span class="votes-count" data-id="<%= cause.id %>"><%= cause.likers_count %></span> Likes <i class="fa fa-heart"></i></a>
+        <a  class="text-muted">  <span class="follow-count" data-id="<%= cause.id %>"> <%= cause.followers_count %></span> Followers <i class="fa fa-user"></i></a>
       </div>
     </div>
     <div class="btn-group btn-group-footer btn-group-justified" >
       <% if current_user.likes?(cause)  %>
-      <%= link_to '<i class="fa fa-heart"></i>Unlike'.html_safe, like_cause_path(:cause_id => cause.id), :method => :post, :class=>"btn" %>
+      <%= link_to '<i class="fa fa-heart"></i>Unlike'.html_safe, like_cause_path(cause), method: :put, :class=>"vote btn", remote: true, data: { toggle_text: 'Like', toggle_href: like_cause_path(cause), id: cause.id } %>
       <% else %>
-      <%= link_to '<i class="fa fa-heart"></i>Like'.html_safe, like_cause_path(:cause_id => cause), :method => :post, :class=>"btn" %>
+      <%= link_to '<i class="fa fa-heart"></i>Like'.html_safe, like_cause_path(cause), method: :put, :class=>"vote btn", remote: true, data: { toggle_text: 'Unlike', toggle_href: like_cause_path(cause), id: cause.id } %>
       <% end %>
       <% if current_user.follows?(cause)  %>
-      <%= link_to '<i class="fa fa-user"></i> Unfollow'.html_safe, follow_cause_path(:cause_id => cause.id), :method => :post, :class=>"btn" %>
+      <%= link_to '<i class="fa fa-user"></i> Unfollow'.html_safe, follow_cause_path(cause), method: :put, :class=>"follow btn", remote: true, data: { toggle_text: 'Follow', toggle_href: follow_cause_path(cause), id: cause.id } %>
       <% else %>
-      <%= link_to '<i class="fa fa-user"></i> Follow'.html_safe, follow_cause_path(:cause_id => cause), :method => :post, :class=>"btn" %>
+      <%= link_to '<i class="fa fa-user"></i> Follow'.html_safe, follow_cause_path(cause), method: :put, :class=>"follow btn", remote: true, data: { toggle_text: 'Unfollow', toggle_href: follow_cause_path(cause), id: cause.id } %>
       <% end %>
       <a href="#" class="btn"><i class="fa fa-user"></i> Share</a>
     </div>

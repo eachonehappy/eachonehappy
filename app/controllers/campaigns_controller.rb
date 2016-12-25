@@ -44,18 +44,26 @@ class CampaignsController < ApplicationController
   end
 
   def follow
-    @campaign = Campaign.find(params[:campaign_id])
+    @campaign = Campaign.find(params[:format])
     if current_user.follows?(@campaign)
       if current_user.unfollow!(@campaign)
-        flash[:success] = "user created!"
-        redirect_to request.referer
+        if request.xhr?
+          @campaign = Campaign.find(params[:format])
+          render json: { count: @campaign.followers_count , id: params[:format] }
+        else
+          redirect_to request.referer_path
+        end
       else
         render 'new'
       end
     else
       if current_user.follow!(@campaign)
-        flash[:success] = "campaign created!"
-        redirect_to request.referer
+        if request.xhr?
+          @campaign = Campaign.find(params[:format])
+          render json: { count: @campaign.followers_count , id: params[:format] }
+        else
+          redirect_to request.referer_path
+        end
       else
         render 'new'
       end
@@ -63,18 +71,26 @@ class CampaignsController < ApplicationController
   end
 
   def like
-    @campaign = Campaign.find(params[:campaign_id])
+    @campaign = Campaign.find(params[:format])
     if current_user.likes?(@campaign)
       if current_user.unlike!(@campaign)
-        flash[:success] = "campaign created!"
-        redirect_to request.referer
+        if request.xhr?
+          @campaign = Campaign.find(params[:format])
+          render json: { count: @campaign.likers_count , id: params[:format] }
+        else
+          redirect_to request.referer_path
+        end    
       else
         render 'new'
       end
     else
       if current_user.like!(@campaign)
-        flash[:success] = "campaign created!"
-        redirect_to request.referer
+        if request.xhr?
+          @campaign = Campaign.find(params[:format])
+          render json: { count: @campaign.likers_count , id: params[:format] }
+        else
+          redirect_to request.referer_path
+        end
       else
         render 'new'
       end

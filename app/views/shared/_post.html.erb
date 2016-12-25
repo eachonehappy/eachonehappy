@@ -26,15 +26,15 @@
     <div class="btn-group btn-group-footer btn-group-justified" style="    border-bottom: 1px solid #eeeeee;">
     <% if current_user.likes?(post)%>
     <%= link_to '<i class="fa fa-heart"></i>  Unlike'.html_safe, post_like_path(
-      :post_id => post.id),:method => :post, :class=>"btn" %>
+      post), method: :put, :class=>"vote btn", remote: true, data: { toggle_text: 'Like', toggle_href: post_like_path(post), id: post.id }  %>
     <%else%>
       <%= link_to '<i class="fa fa-heart"></i>  Like'.html_safe, post_like_path(
-      :post_id => post.id),:method => :post, :class=>"btn" %>
+      post), method: :put, :class=>"vote btn", remote: true, data: { toggle_text: 'Unlike', toggle_href: post_like_path(post), id: post.id }  %>
       <%end%>
       <a href="#" class="btn"><i class="fa fa-user"></i> Share</a>
     </div>
     <div class="view-all-comments">
-    	 <%= post.comments.count%> comments <%= post.likers_count%>  likes
+    	 <%= post.comments.count%> comments <span class="votes-count" data-id="<%= post.id %>"> <%= post.likers_count%></span>  likes
        <a data-toggle="collapse" data-target="#collapseExample<%=post.id%>" aria-expanded="false" aria-controls="collapseExample"><i class="fa fa-comments-o">  </i> View all or Write a Comment</a>
         
   	</div>   

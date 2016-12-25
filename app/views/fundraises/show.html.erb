@@ -24,21 +24,22 @@
           <%end%>
           <br><br>
           <h3 class="margin-none text-capitalize"> Goal : Rs. <%=@fundraise.target%></h3><br>
-          <h3><%= @fundraise.followers_count %> Followers</h3>
-          <h3><%= @fundraise.likers_count %> Likes</h3>     
+          <h3><span class="follow-count" data-id="<%= @fundraise.id %>" >
+              <%= @fundraise.followers_count %></span> Followers</h3>
+          <h3><span class="votes-count" data-id="<%= @fundraise.id %>" ><%= @fundraise.likers_count %></span> Likes</h3>     
         </div>
       </div>
       <div class="btn-group btn-group-footer btn-group-justified" style="margin-top:10px;">
-        <% if current_user.likes?(@fundraise)  %>
-          <%= link_to '<i class="fa fa-heart"></i>Unlike'.html_safe, like_fundraise_path(:fundraise_id => @fundraise.id), :method => :post, :class=>"btn" %>
-        <% else %>
-          <%= link_to '<i class="fa fa-heart"></i>Like'.html_safe, like_fundraise_path(:fundraise_id => @fundraise), :method => :post, :class=>"btn" %>
-        <% end %>
-        <% if current_user.follows?(@fundraise)  %>
-          <%= link_to '<i class="fa fa-user"></i> Unfollow'.html_safe, follow_fundraise_path(:fundraise_id => @fundraise.id), :method => :post, :class=>"btn" %>
-        <% else %>
-          <%= link_to '<i class="fa fa-user"></i> Follow'.html_safe, follow_fundraise_path(:fundraise_id => @fundraise), :method => :post, :class=>"btn" %>
-        <% end %>                  
+         <% if current_user.likes?(@fundraise)  %>
+          <%= link_to '<i class="fa fa-heart"></i>Unlike'.html_safe, like_fundraise_path(@fundraise), method: :put, :class=>"vote btn", remote: true, data: { toggle_text: 'Like', toggle_href: like_fundraise_path(@fundraise), id: @fundraise.id } %>
+          <% else %>
+            <%= link_to '<i class="fa fa-heart"></i>Like'.html_safe, like_fundraise_path(@fundraise), method: :put, :class=>"vote btn", remote: true, data: { toggle_text: 'Unlike', toggle_href: like_fundraise_path(@fundraise), id: @fundraise.id } %>
+          <% end %>
+          <% if current_user.follows?(@fundraise)  %>
+            <%= link_to '<i class="fa fa-user"></i> Unfollow'.html_safe, follow_fundraise_path(@fundraise), method: :put, :class=>"follow btn", remote: true, data: { toggle_text: 'Follow', toggle_href: follow_fundraise_path(@fundraise), id: @fundraise.id } %>
+          <% else %>
+            <%= link_to '<i class="fa fa-user"></i> Follow'.html_safe, follow_fundraise_path(@fundraise), method: :put, :class=>"follow btn", remote: true, data: { toggle_text: 'Unfollow', toggle_href: follow_fundraise_path(@fundraise), id: @fundraise.id } %>
+          <% end %>                  
         <a href="#" class="btn"><i class="fa fa-user"></i> Share</a>
       </div>
     </div>

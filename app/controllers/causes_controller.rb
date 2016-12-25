@@ -34,18 +34,26 @@ class CausesController < ApplicationController
   end
 
   def follow
-    @cause = Cause.find(params[:cause_id])
+    @cause = Cause.find(params[:format])
     if current_user.follows?(@cause)
       if current_user.unfollow!(@cause)
-        flash[:success] = "user created!"
-        redirect_to request.referer
+        if request.xhr?
+          @cause = Cause.find(params[:format])
+          render json: { count: @cause.followers_count , id: params[:format] }
+        else
+          redirect_to request.referer_path
+        end
       else
         render 'new'
       end
     else
       if current_user.follow!(@cause)
-        flash[:success] = "cause created!"
-        redirect_to request.referer
+        if request.xhr?
+          @cause = Cause.find(params[:format])
+          render json: { count: @cause.followers_count , id: params[:format] }
+        else
+          redirect_to request.referer_path
+        end
       else
         render 'new'
       end
@@ -53,18 +61,26 @@ class CausesController < ApplicationController
   end
 
   def like
-    @cause = Cause.find(params[:cause_id])
+    @cause = Cause.find(params[:format])
     if current_user.likes?(@cause)
       if current_user.unlike!(@cause)
-        flash[:success] = "cause created!"
-        redirect_to request.referer
+        if request.xhr?
+          @cause = Cause.find(params[:format])
+          render json: { count: @cause.likers_count , id: params[:format] }
+        else
+          redirect_to request.referer_path
+        end    
       else
         render 'new'
       end
     else
       if current_user.like!(@cause)
-        flash[:success] = "cause created!"
-        redirect_to request.referer
+        if request.xhr?
+          @cause = Cause.find(params[:format])
+          render json: { count: @cause.likers_count , id: params[:format] }
+        else
+          redirect_to request.referer_path
+        end
       else
         render 'new'
       end

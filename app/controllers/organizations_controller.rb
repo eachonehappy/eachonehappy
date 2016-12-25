@@ -59,18 +59,26 @@ class OrganizationsController < ApplicationController
   end
 
   def follow
-    @organization = Organization.find(params[:organization_id])
+    @organization = Organization.find(params[:format])
     if current_user.follows?(@organization)
       if current_user.unfollow!(@organization)
-        flash[:success] = "user created!"
-        redirect_to request.referer
+        if request.xhr?
+          @organization = Organization.find(params[:format])
+          render json: { count: @organization.followers_count , id: params[:format] }
+        else
+          redirect_to request.referer_path
+        end
       else
         render 'new'
       end
     else
       if current_user.follow!(@organization)
-        flash[:success] = "organization created!"
-        redirect_to request.referer
+        if request.xhr?
+          @organization = Organization.find(params[:format])
+          render json: { count: @organization.followers_count , id: params[:format] }
+        else
+          redirect_to request.referer_path
+        end
       else
         render 'new'
       end
@@ -96,18 +104,26 @@ class OrganizationsController < ApplicationController
   end
 
   def like_unlike
-    @organization = Organization.find(params[:organization_id])
+    @organization = Organization.find(params[:format])
     if current_user.likes?(@organization)
       if current_user.unlike!(@organization)
-        flash[:success] = "organization created!"
-        redirect_to request.referer
+        if request.xhr?
+          @organization = Organization.find(params[:format])
+          render json: { count: @organization.likers_count , id: params[:format] }
+        else
+          redirect_to request.referer_path
+        end    
       else
         render 'new'
       end
     else
       if current_user.like!(@organization)
-        flash[:success] = "organization created!"
-        redirect_to request.referer
+        if request.xhr?
+          @organization = Organization.find(params[:format])
+          render json: { count: @organization.likers_count , id: params[:format] }
+        else
+          redirect_to request.referer_path
+        end
       else
         render 'new'
       end
