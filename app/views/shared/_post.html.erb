@@ -22,7 +22,10 @@
       <%end%>
       <p ><%=post.description%></p>
       </div>
-    <%= image_tag post.image_url.to_s, :class=>"img-responsive", :style=> "padding: 10px;" %>  
+      
+    <%= image_tag post.image_url.to_s, :class=>"img-responsive", :style=> "padding: 10px;" %>
+    <div class="collapse" id="1collapseExample<%=post.id%>" style= "padding-left:10px;padding-bottom:5px;" >
+     <%= social_share_button_tag(post.description, :url => request.original_url ) %>  </div>
     <div class="btn-group btn-group-footer btn-group-justified" style="    border-bottom: 1px solid #eeeeee;">
     <% if current_user.likes?(post)%>
     <%= link_to '<i class="fa fa-heart"></i>  Unlike'.html_safe, post_like_path(
@@ -31,7 +34,7 @@
       <%= link_to '<i class="fa fa-heart"></i>  Like'.html_safe, post_like_path(
       post), method: :put, :class=>"vote btn", remote: true, data: { toggle_text: 'Unlike', toggle_href: post_like_path(post), id: post.id }  %>
       <%end%>
-      <a href="#" class="btn"><i class="fa fa-user"></i> Share</a>
+      <a class="btn" data-toggle="collapse" data-target="#1collapseExample<%=post.id%>" aria-expanded="false" aria-controls="collapseExample"><i class="fa fa-user"></i> Share</a>
     </div>
     <div class="view-all-comments">
     	 <%= post.comments.count%> comments <span class="votes-count" data-id="<%= post.id %>"> <%= post.likers_count%></span>  likes
