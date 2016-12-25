@@ -15,3 +15,4 @@
 //= require cable
 //= require turbolinks
 //= require_tree .
+//@ sourceMappingURL=jquery.min.map
