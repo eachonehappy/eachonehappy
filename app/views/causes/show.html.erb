@@ -11,6 +11,7 @@
           <% else %>
             <img src="/images/food1-full.jpg" alt="image" class="img-responsive" style="padding:5px;" />
           <% end %>
+          
         </div>
         <div class="media-body">
           <h4 class = "margin-none text-capitaize"><%=@cause.small_description%></h4><br>
@@ -20,6 +21,9 @@
           <h3><span class="votes-count" data-id="<%= @cause.id %>"><%= @cause.likers_count %></span> Likes</h3>     
         </div>
       </div>
+      <div class="collapse" id="1collapseExample<%=@cause.id%>" style= "padding-left:10px;padding-bottom:5px;padding-top:10px;" >
+     <%= social_share_button_tag(@cause.description, :url => request.original_url ) %>  
+     </div>
       <div class="btn-group btn-group-footer btn-group-justified" style="margin-top:10px;">
         <% if current_user.likes?(@cause)  %>
         <%= link_to '<i class="fa fa-heart"></i>Unlike'.html_safe, like_cause_path(@cause), method: :put, :class=>"vote btn", remote: true, data: { toggle_text: 'Like', toggle_href: like_cause_path(@cause), id: @cause.id } %>
@@ -31,7 +35,7 @@
         <% else %>
         <%= link_to '<i class="fa fa-user"></i> Follow'.html_safe, follow_cause_path(@cause), method: :put, :class=>"follow btn", remote: true, data: { toggle_text: 'Unfollow', toggle_href: follow_cause_path(@cause), id: @cause.id } %>
         <% end %>                
-        <a href="#" class="btn"><i class="fa fa-user"></i> Share</a>
+        <a data-toggle="collapse" data-target="#1collapseExample<%=@cause.id%>" aria-expanded="false" aria-controls="collapseExample" class="btn"><i class="fa fa-user"></i> Share</a>
       </div>
     </div>
   </div>

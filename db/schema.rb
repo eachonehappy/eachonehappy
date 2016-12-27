@@ -10,10 +10,26 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161224131146) do
+ActiveRecord::Schema.define(version: 20161227104813) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "activities", force: :cascade do |t|
+    t.string   "trackable_type"
+    t.integer  "trackable_id"
+    t.string   "owner_type"
+    t.integer  "owner_id"
+    t.string   "key"
+    t.text     "parameters"
+    t.string   "recipient_type"
+    t.integer  "recipient_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.index ["owner_id", "owner_type"], name: "index_activities_on_owner_id_and_owner_type", using: :btree
+    t.index ["recipient_id", "recipient_type"], name: "index_activities_on_recipient_id_and_recipient_type", using: :btree
+    t.index ["trackable_id", "trackable_type"], name: "index_activities_on_trackable_id_and_trackable_type", using: :btree
+  end
 
   create_table "campaign_users", force: :cascade do |t|
     t.integer  "campaign_id"
@@ -109,19 +125,29 @@ ActiveRecord::Schema.define(version: 20161224131146) do
     t.index ["friendable_id", "friendable_type"], name: "index_friendships_on_friendable_id_and_friendable_type", using: :btree
   end
 
+  create_table "fundraise_payment_details", force: :cascade do |t|
+    t.string   "full_name"
+    t.integer  "account_number"
+    t.string   "ifsc_code"
+    t.integer  "fundraise_id"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+  end
+
   create_table "fundraises", force: :cascade do |t|
     t.string   "subject"
     t.integer  "target"
     t.integer  "campaign_id"
     t.integer  "user_id"
-    t.datetime "created_at",                    null: false
-    t.datetime "updated_at",                    null: false
-    t.integer  "followers_count",   default: 0
-    t.integer  "likers_count",      default: 0
+    t.datetime "created_at",                     null: false
+    t.datetime "updated_at",                     null: false
+    t.integer  "followers_count",    default: 0
+    t.integer  "likers_count",       default: 0
     t.string   "small_description"
     t.text     "description"
     t.string   "image"
-    t.integer  "raised_amount",     default: 0
+    t.integer  "raised_amount",      default: 0
+    t.boolean  "payment_is_pending"
     t.index ["campaign_id"], name: "index_fundraises_on_campaign_id", using: :btree
     t.index ["user_id"], name: "index_fundraises_on_user_id", using: :btree
   end
@@ -197,6 +223,14 @@ ActiveRecord::Schema.define(version: 20161224131146) do
     t.text     "description"
   end
 
+  create_table "payments", force: :cascade do |t|
+    t.float    "amount"
+    t.integer  "fundraise_id"
+    t.integer  "user_id"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+  end
+
   create_table "posts", force: :cascade do |t|
     t.string   "subject"
     t.text     "description"
@@ -227,6 +261,8 @@ ActiveRecord::Schema.define(version: 20161224131146) do
     t.string   "cover_image"
     t.integer  "followers_count",        default: 0
     t.boolean  "admin",                  default: false
+    t.float    "wallet_amount",          default: 0.0
+    t.integer  "notification_count",     default: 0
     t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end

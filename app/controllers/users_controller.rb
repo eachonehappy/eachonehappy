@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   before_action :authenticate_user!
+  before_action :load_activities, only: [:index, :show, :new, :edit]
   def index
     @users = User.all.reject { |u| u.id == current_user.id }
     @chat_room = current_user.chat_rooms
@@ -21,6 +22,7 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @posts = @user.posts
     @users = current_user.friends
+    @payment = Payment.new 
     
   end
 

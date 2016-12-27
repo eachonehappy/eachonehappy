@@ -22,7 +22,9 @@ Rails.application.routes.draw do
 	resources :comments
 	resources :fundraises
 	resources :jobs
+	resources :payments
 	resources :organizations
+	resources :fundraise_payment_details
 	post 'invite'=> 'users#invite_friend'
 	post 'decline'=> 'users#decline_friend'
 	post 'accept'=> 'users#accept_friend'
@@ -30,7 +32,7 @@ Rails.application.routes.draw do
 	get 'messages/index' => 'chat_rooms#index'
 	get 'application/messages' => 'application#messages'
 	put 'follow_organization' => 'organizations#follow'
-	put 'post_like' => 'posts#post_like'
+	put 'like_post' => 'posts#post_like'
 	put 'follow_user' => 'users#follow_unfollow'
 	put 'like_organization' => 'organizations#like_unlike'
 	put 'like_fundraise' => 'fundraises#like'
@@ -44,6 +46,9 @@ Rails.application.routes.draw do
 	get  'organization_friend' => 'organizations#friend'
 	post 'organization_invite' => 'organizations#organization_invite'
 	post 'job_status' => 'jobs#job_status'
+	get 'notification' => 'pages#notification'
+	get 'my_fundraises' => 'fundraises#my_fundraise'
+	put 'fundraise_status' => 'fundraises#fundraise_status'
 	#resources :friendships
 	# For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

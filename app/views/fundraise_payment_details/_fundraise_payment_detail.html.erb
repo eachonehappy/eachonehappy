@@ -1,0 +1,25 @@
+<tr>
+  <td><%= link_to "#{full_name(fundraise_payment_detail.fundraise.user)}", user_path(fundraise_payment_detail.fundraise.user), :class=>"text-capitalize" %></td>
+  
+  <td>
+   
+    <%= link_to "#{fundraise_payment_detail.fundraise.subject}", fundraise_path(fundraise_payment_detail.fundraise) %>
+    
+  </td>
+  <td>Rs. <%= fundraise_payment_detail.full_name %>
+  </td>
+  <td>Rs. <%= fundraise_payment_detail.account_number %>
+  </td>
+  <td>Rs. <%= fundraise_payment_detail.ifsc_code %>
+  </td>
+  <td>
+   <% if fundraise_payment_detail.fundraise.payment_is_pending == false%>
+   <%= link_to "Transfered", nil, :disabled => true, :class => "btn btn-success" %>
+   <% elsif fundraise_payment_detail.fundraise.payment_is_pending %>
+    
+   <%= link_to "Pending...", fundraise_status_path(fundraise_payment_detail.fundraise) , :method => :put, :class=>"fundraise btn btn-info", remote: true, data: { toggle_text: 'Transfered', toggle_href: fundraise_status_path(fundraise_payment_detail.fundraise), id: fundraise_payment_detail.fundraise.id } %>
+   <% else %>
+    <%= link_to "redeem", nil, :disabled => true, :class => "btn btn-success" %>
+    <% end %>
+  </td>
+</tr>

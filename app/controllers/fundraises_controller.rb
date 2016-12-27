@@ -1,5 +1,6 @@
 class FundraisesController < ApplicationController
 	before_action :authenticate_user!
+  before_action :load_activities, only: [:index, :show, :new, :edit, :my_fundraise]
 	def index
     if params[:search]
       @fundraises = Fundraise.all
@@ -7,9 +8,11 @@ class FundraisesController < ApplicationController
     else
       @fundraises = Fundraise.all
     end
+  @payment = Payment.new  
   end
   
   def show
+    @payment = Payment.new
     @fundraise = Fundraise.find(params[:id]) 
   end
   
@@ -39,6 +42,24 @@ class FundraisesController < ApplicationController
     Fundraise.find(params[:id]).destroy
     flash[:success] = "Fundraise deleted"
     redirect_to fundraises_path
+  end
+
+  def my_fundraise
+    @my_fundraises = current_user.fundraises
+    @payment = Payment.new 
+  end
+
+  def fundraise_status
+    @fundraise = Fundraise.find(params[:format])
+    if @fundraise.payment_is_pending
+      @fundraise.payment_is_pending = false
+      @fundraise.save
+       if request.xhr?
+        render json: { id: params[:format] }
+      else
+        redirect_to request.referer_path
+      end   
+    end  
   end
 
   def follow

@@ -15,6 +15,7 @@ class User < ApplicationRecord
   has_many :posts
   has_many :comments
   has_many :fundraises
+  has_many :payments
   has_many :messages, dependent: :destroy
   #has_many :friendships
   #has_many :friends, :through => :friendships
@@ -27,8 +28,15 @@ class User < ApplicationRecord
   acts_as_mentionable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
-
+  include PublicActivity::Model
+  tracked
+  scope :online, lambda{ where("updated_at > ?", 10.minutes.ago) }
+  
   def name
     email.split('@')[0]
-  end       
+  end 
+
+  def online?
+    updated_at > 10.minutes.ago
+  end  
 end

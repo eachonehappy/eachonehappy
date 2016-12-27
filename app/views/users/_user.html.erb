@@ -11,7 +11,7 @@
     <% if current_user.pending_friends.include?(user) %>
      <%= link_to "Friend request send",nil ,:class=>"btn btn-info", remote: true, :disabled=> true %>
     <%else%>
-    <%= link_to "Add Friend", invite_path(user), :method => :post, :class=>"friend btn btn-info", remote: true, data: { toggle_text: 'Friend request send', toggle_href: invite_path(user), id: user.id } %>
+    <%= link_to "Add Friend", invite_path(user), :method => :post, :class=>"friend btn btn-info", remote: true, data: { disable_with: 'adding' ,toggle_text: 'Friend request send', toggle_href: invite_path(user), id: user.id } %>
     <% end %>
   </td>
 </tr>

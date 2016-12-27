@@ -1,5 +1,6 @@
 class CommentsController < ApplicationController
 	before_action :authenticate_user!
+  before_action :load_activities, only: [:index, :show, :new, :edit]
 	def index
     @comments = Comment.all
   end
@@ -18,7 +19,7 @@ class CommentsController < ApplicationController
   	@comment.user_id = current_user.id
     if @comment.save
       flash[:success] = "comment created!"
-      redirect_to root_path
+      redirect_to request.referer
     else
       render 'new'
     end
@@ -27,7 +28,7 @@ class CommentsController < ApplicationController
   def destroy
     Comment.find(params[:id]).destroy
     flash[:success] = "Comment deleted"
-    redirect_to comments_path
+    redirect_to request.referer
   end
   
   private

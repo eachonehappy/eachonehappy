@@ -1,0 +1,18 @@
+<li class="media">
+  <div class="media-left">
+    <% if a.trackable.profile_image_url %> 
+    <%= image_tag(a.trackable.profile_image_url(:thumb)) %>
+    <% else %>
+    <img src="/images/people/50/guy-2.jpg" alt="people" class="img-circle" width="30">
+    <% end %>
+  </div>
+  <div class="media-body">
+    <% if a.trackable %>
+	    <%= link_to full_name(a.trackable) , user_path(a.trackable), data: { turbolinks: false } %> updated his details .
+	  <% else %>
+	    added the story that is currently deleted.
+	  <% end %> on his timeline.
+    <br/>
+    <span class="text-caption text-muted"><%= a.created_at.strftime('%H:%M:%S %-d %B %Y') %></span>
+  </div>
+</li>

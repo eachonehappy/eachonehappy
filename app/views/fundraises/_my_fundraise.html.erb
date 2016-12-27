@@ -1,0 +1,23 @@
+<tr>
+  <td><%= link_to "#{full_name(my_fundraise.user)}", user_path(my_fundraise.user), :class=>"text-capitalize" %></td>
+  
+  <td>
+   
+    <%= link_to "#{my_fundraise.subject}", fundraise_path(my_fundraise) %>
+    
+  </td>
+  <td>Rs. <%= my_fundraise.target %>
+  </td>
+  <td>Rs. <%= my_fundraise.raised_amount %>
+  </td>
+  <td>
+   <% if my_fundraise.payment_is_pending == false%>
+   <%= link_to "Transfered", nil, :disabled => true, :class => "btn btn-success" %>
+   <% elsif my_fundraise.payment_is_pending %>
+    
+   <%= link_to "Pending...", nil, :disabled => true, :class => "btn btn-success" %>
+   <% else %>
+    <%= link_to "redeem", new_fundraise_payment_detail_path(my_fundraise), :class=>"btn btn-info" %>
+    <% end %>
+  </td>
+</tr>

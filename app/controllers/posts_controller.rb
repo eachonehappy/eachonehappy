@@ -1,11 +1,13 @@
 class PostsController < ApplicationController
   before_action :authenticate_user!
+  before_action :load_activities, only: [:index, :show, :new, :edit]
 	def index
     @posts = Post.all
   end
   
   def show
     @post = Post.find(params[:id]) 
+    @comment = Comment.new
   end
   
   def new

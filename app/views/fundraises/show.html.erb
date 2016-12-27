@@ -13,6 +13,9 @@
           <% end %>
         </div>
         <div class="media-body">
+        
+        <a data-toggle="collapse" data-target="#collapseExample<%=@fundraise.id%>" aria-expanded="false" aria-controls="collapseExample" class="btn btn-primary btn-lg" style="margin-bottom:10px;">Make a Contribution</a>
+        
           <h4 class = "margin-none text-capitalize"><%=@fundraise.small_description%></h4><br>
           <h3 class = "margin-none text-capitalize"><%=@fundraise.description%></h3>
           <br>
@@ -26,9 +29,29 @@
           <h3 class="margin-none text-capitalize"> Goal : Rs. <%=@fundraise.target%></h3><br>
           <h3><span class="follow-count" data-id="<%= @fundraise.id %>" >
               <%= @fundraise.followers_count %></span> Followers</h3>
-          <h3><span class="votes-count" data-id="<%= @fundraise.id %>" ><%= @fundraise.likers_count %></span> Likes</h3>     
+          <h3><span class="votes-count" data-id="<%= @fundraise.id %>" ><%= @fundraise.likers_count %></span> Likes</h3>
+          
         </div>
       </div>
+      <div class="collapse" id="collapseExample<%=@fundraise.id%>" >
+          <div class="form-horizontal" role="form">
+            <%= form_for(@payment) do |f| %>
+            <%= hidden_field_tag 'fundraise_id', @fundraise.id %>
+                <div class="form-group">
+      
+                  <div class="col-md-10" style="padding-left:0px;padding-right:0px;width:83%;padding-top:10px;">
+                  <%= f.number_field :amount, :class=>'form-control', :id=>"touch-spin-2", :placeholder=>"enter donation amount...", "data-toggle"=>"touch-spin", "data-min"=>"0", "data-max"=>"1000000", "data-prefix"=>"Rs", "data-step"=>"50", :value=>"200" %>
+                  </div>
+                  <div class="col-md-2" style="padding-left:10px;padding-top:10px;">
+                   <%= f.submit "Contribute", class: "btn btn-primary" %>
+                   </div>
+                </div>                  
+                <% end %>
+        </div>            
+      </div>    
+      <div class="collapse" id="1collapseExample<%=@fundraise.id%>" style= "padding-left:10px;padding-bottom:5px;padding-top:10px;" >
+     <%= social_share_button_tag(@fundraise.description, :url => request.original_url ) %>  
+     </div>
       <div class="btn-group btn-group-footer btn-group-justified" style="margin-top:10px;">
          <% if current_user.likes?(@fundraise)  %>
           <%= link_to '<i class="fa fa-heart"></i>Unlike'.html_safe, like_fundraise_path(@fundraise), method: :put, :class=>"vote btn", remote: true, data: { toggle_text: 'Like', toggle_href: like_fundraise_path(@fundraise), id: @fundraise.id } %>
@@ -40,7 +63,7 @@
           <% else %>
             <%= link_to '<i class="fa fa-user"></i> Follow'.html_safe, follow_fundraise_path(@fundraise), method: :put, :class=>"follow btn", remote: true, data: { toggle_text: 'Unfollow', toggle_href: follow_fundraise_path(@fundraise), id: @fundraise.id } %>
           <% end %>                  
-        <a href="#" class="btn"><i class="fa fa-user"></i> Share</a>
+        <a data-toggle="collapse" data-target="#1collapseExample<%=@fundraise.id%>" aria-expanded="false" aria-controls="collapseExample" class="btn"><i class="fa fa-user"></i> Share</a>
       </div>
     </div>
   </div>

@@ -1,5 +1,6 @@
 class JobsController < ApplicationController
 	before_action :authenticate_user!
+  before_action :load_activities, only: [:index, :show, :new, :edit]
 	def index
     if params[:format].present?
       if params[:format] == "all"

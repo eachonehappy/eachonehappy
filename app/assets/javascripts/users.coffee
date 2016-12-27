@@ -19,7 +19,7 @@ $(document).on 'ajax:success', 'a.friend', (status,data,xhr)->
 $(document).on 'ajax:success', 'a.acceptfriend', (status,data,xhr)->
   $(".friend-message[data-id=#{data.id}]").text data.count
 
-  $("a.friend[data-id=#{data.id}]").each ->
+  $("a.acceptfriend[data-id=#{data.id}]").each ->
     $a = $(this)
     href = $a.attr("disabled", true);
     text = $a.text()

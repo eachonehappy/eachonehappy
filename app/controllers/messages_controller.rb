@@ -1,4 +1,6 @@
 class MessagesController < ApplicationController
+  before_action :authenticate_user!
+  before_action :load_activities, only: [:index, :show, :new, :edit]
 	def index
   #  @user = User.find(params[:friend_id])
    # @a = @user.chat_rooms

@@ -1,0 +1,48 @@
+<div class="col-md-9" >
+<div class="ibox-title" style="background-color: white;">
+      <h1 class="title pull-left" style="margin-top: 10px;
+    margin-bottom: 10px; margin-left: 10px;">
+        <%= "Jobs" %>
+      </h1>
+      <div class="pull-right">
+      <%= link_to "Pending payment", fundraise_payment_details_path("pending"), data: { turbolinks: false }, class: 'btn btn-primary', :style=> "margin-top: 10px;
+    margin-right: 10px;"%>
+    <%= link_to "Transfered payment", fundraise_payment_details_path("transfered"), data: { turbolinks: false }, class: 'btn btn-primary', :style=> "margin-top: 10px;
+    margin-right: 10px;"%>
+    <%= link_to "All payment", fundraise_payment_details_path("all"), data: { turbolinks: false }, class: 'btn btn-primary', :style=> "margin-top: 10px;
+    margin-right: 10px;"%>
+      
+    </div>
+      <div class="clearfix"></div>
+   
+</div>
+<div class="panel panel-default">
+    <!-- Data table -->
+    <table data-toggle="data-table" class="table" cellspacing="0" width="100%">
+      <thead>
+        <tr>
+          <th>User</th>
+          <th>Amount</th>
+          <th>Fundraise</th>
+          <th>Campaign</th>
+          <th>Campaign</th>
+          <th>Campaign</th>
+        </tr>
+      </thead>
+      <tfoot>
+        <tr>
+          <th>User</th>
+          <th>Amount</th>
+          <th>Fundraise</th>
+          <th>Campaign</th>
+          <th>Campaign</th>
+          <th>Campaign</th>
+        </tr>
+      </tfoot>
+      <tbody>
+      <%= render :partial => 'fundraise_payment_details/fundraise_payment_detail', :collection => @fundraise_payment_details %>
+      </tbody>
+    </table>
+    <!-- // Data table -->
+  </div>
+  </div>

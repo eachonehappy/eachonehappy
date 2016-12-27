@@ -26,6 +26,9 @@
           </span>
         </div>
       </div> 
+      <div class="collapse" id="1collapseExample<%=campaign.id%>" style= "padding-left:10px;padding-bottom:5px;padding-top:10px;" >
+     <%= social_share_button_tag(campaign.description, :url => request.original_url ) %>  
+     </div>
       <div class="btn-group btn-group-footer btn-group-justified" >
         <% if current_user.likes?(campaign)  %>
           <%= link_to '<i class="fa fa-heart"></i>Unlike'.html_safe, like_campaign_path(campaign), method: :put, :class=>"vote btn", remote: true, data: { toggle_text: 'Like', toggle_href: like_campaign_path(campaign), id: campaign.id } %>
@@ -38,7 +41,7 @@
           <%= link_to '<i class="fa fa-user"></i> Follow'.html_safe, follow_campaign_path(campaign), method: :put, :class=>"follow btn", remote: true, data: { toggle_text: 'Unfollow', toggle_href: follow_campaign_path(campaign), id: campaign.id } %>
         <% end %>
         
-        <a href="#" class="btn"><i class="fa fa-user"></i> Share</a>
+        <a data-toggle="collapse" data-target="#1collapseExample<%=campaign.id%>" aria-expanded="false" aria-controls="collapseExample" class="btn"><i class="fa fa-user"></i> Share</a>
       </div>                    
     </div>
   </div>

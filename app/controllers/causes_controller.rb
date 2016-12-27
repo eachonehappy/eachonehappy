@@ -1,5 +1,6 @@
 class CausesController < ApplicationController
 	before_action :authenticate_user!
+  before_action :load_activities, only: [:index, :show, :new, :edit]
 	def index
     if params[:search]
       @causes = Cause.all

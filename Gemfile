@@ -40,6 +40,7 @@ gem "lol_dba"
 gem 'mini_magick', '3.8.0'
 gem 'rails_admin', '~> 1.0'
 gem 'social-share-button'
+gem 'public_activity'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

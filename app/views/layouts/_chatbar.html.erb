@@ -15,7 +15,7 @@
             <div data-scrollable>
               <ul class="chat-contacts">
               <% chat_rooms.each do |chat_room|%>
-                    
+                <% if reject_current_user(chat_room).online? %>  
                 <li class="online">
                   <%= link_to chat_room_path(chat_room) do  %>
                   
@@ -32,7 +32,24 @@
                     </div>
                   <%end%>
                 </li>
-                
+                <% else %>
+                  <li class="offline">
+                  <%= link_to chat_room_path(chat_room) do  %>
+                  
+                    <div class="media">
+                      <div class="pull-left">
+                        <span class="status"></span>
+                        <img src="/images/people/110/guy-6.jpg" width="40" class="img-circle" />
+                      </div>
+                      <div class="media-body">
+
+                        <div class="contact-name text-capitalize"><%= full_name(reject_current_user(chat_room)) %></div>
+                        <small>"Free Today"</small>
+                      </div>
+                    </div>
+                  <%end%>
+                </li>
+                <%end%>
                 <%end%>
              
               </ul>

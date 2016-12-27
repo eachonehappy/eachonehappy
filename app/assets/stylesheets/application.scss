@@ -44,4 +44,13 @@ html {
     background: #FF0000;
 }
 
+$size: 29px;
+
+.social-share-button {
+  .ssb-icon {
+    background-size: $size $size;
+    height: $size;
+    width: $size;
+  }
+}
 

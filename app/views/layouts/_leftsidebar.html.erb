@@ -26,7 +26,7 @@
                   <%= link_to '<i class="fa fa-plus"></i>Start a Organization'.html_safe, new_organization_path, data: { turbolinks: false } %>
                 </li>
                 <li class="padding">
-                  <%= link_to '<i class="icon-circle-chevron-right pull-right"></i><b>Campaigns</b>'.html_safe, campaigns_path %>
+                  <%= link_to '<i class="icon-circle-chevron-right pull-right"></i><b>Campaigns</b>'.html_safe, campaigns_path, data: { turbolinks: false } %>
                 </li>
                 <li>
                 <%current_user.campaigns.each do |campaign|%>
