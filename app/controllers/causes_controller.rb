@@ -22,9 +22,26 @@ class CausesController < ApplicationController
   	@cause = Cause.new(cause_params)
     if @cause.save
       flash[:success] = "cause created!"
-      redirect_to causes_path
+      redirect_to @cause
     else
       render 'new'
+    end
+  end
+
+  def edit
+    @cause = Cause.find(params[:id])
+  end
+
+  def update
+    @cause = Cause.find(params[:id])
+    @cause.subject = cause_params[:subject]
+    @cause.description = cause_params[:description]
+    @cause.small_description = cause_params[:small_description]
+  
+    if @cause.save
+      redirect_to @cause
+    else
+      render 'edit'
     end
   end
   

@@ -29,6 +29,7 @@ Rails.application.routes.draw do
 	post 'decline'=> 'users#decline_friend'
 	post 'accept'=> 'users#accept_friend'
 	post 'remove'=> 'users#remove_friend'
+	get 'edit_user'=> 'users#edit'
 	get 'messages/index' => 'chat_rooms#index'
 	get 'application/messages' => 'application#messages'
 	put 'follow_organization' => 'organizations#follow'

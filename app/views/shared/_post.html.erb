@@ -6,7 +6,9 @@
           <img src="/images/people/50/woman-5.jpg" class="media-object">
         </a>
         <div class="media-body">
-          <a href="#" class="pull-right text-muted"><i class="icon-reply-all-fill fa fa-2x "></i></a>
+          <% if (post.user == current_user) %>
+          <%= link_to '<i class="fa fa-pencil"></i>'.html_safe , edit_post_path(post), data: { turbolinks: false }, :class => "btn btn-cover pull-right", :style=>"padding-top:2px;" %> 
+          <% end %>
           <%= link_to "#{full_name(post.user)}", user_path(post.user), :class=>"text-capitalize"%>
           
           <span>posted <%= time_ago_in_words(post.created_at) %> ago</span>

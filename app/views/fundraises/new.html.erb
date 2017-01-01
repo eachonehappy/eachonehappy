@@ -3,22 +3,27 @@
     <div class="panel-heading panel-heading-gray">Start a Fundraise</div>
       <div class="panel-body">
         <div class="form-horizontal" role="form">
-          <%= form_for(@fundraise) do |f| %>
+          <% flash.each do |key, value| %>
+            <div class="alert alert-info alert-dismissable">
+            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+            <%= value %></div>
+          <% end %>
+          <%= form_for(@fundraise, validate: true) do |f| %>
               <div class="form-group">
-                  <label for="inputEmail3" class="col-sm-3 control-label">Subject</label>
+                  <div for="inputEmail3" class="col-sm-3 control-label text-bold"><strong> Title</strong></div>
                   <div class="col-sm-9">
-                  <%= f.text_field :subject, class: 'form-control', :id=>"inputEmail3", :placeholder=>"Subject" %>
+                  <%= f.text_field :subject, class: 'form-control', :placeholder=>"Subject" %>
                     
                   </div>
               </div>
               <div class="form-group">
-                <label for="touch-spin-2" class="col-sm-3 control-label">Goal</label>
+                <div for="inputEmail3" class="col-sm-3 control-label text-bold"><strong> Goal</strong></div>
                 <div class="col-sm-9">
                 <%= f.text_field :target, :class=>'form-control', :id=>"touch-spin-2", :placeholder=>"enter funraise goal...", "data-toggle"=>"touch-spin", "data-min"=>"-1000000", "data-max"=>"1000000", "data-prefix"=>"$", "data-step"=>"50", :value=>"200" %>
                 </div>
               </div>
               <div class="form-group">
-                  <label class="col-sm-3 control-label">Campaign</label>
+                 <div for="inputEmail3" class="col-sm-3 control-label text-bold"><strong> Campaign</strong></div>
                   <div class="col-sm-9">
                  
 
@@ -29,26 +34,26 @@
                   </div>
               </div>
               <div class="form-group">
-                  <label class="col-sm-3 control-label">Small Description</label>
+                 <div for="inputEmail3" class="col-sm-3 control-label text-bold"><strong> Small Description</strong></div>
                   <div class="col-sm-9">
                   <%= f.text_field :small_description, class: 'form-control', :placeholder=>"Small Description..." %>    
                   </div>
               </div>
               <div class="form-group">
-                  <label class="col-sm-3 control-label">Large Description</label>
+                  <div for="inputEmail3" class="col-sm-3 control-label text-bold"><strong> Description</strong></div>
                   <div class="col-sm-9">
                   <%= f.text_area :description, class: 'form-control', :rows=>"4", :placeholder=>"Large Description" %>   
                   </div>
               </div>
               <div class="form-group"> 
-                <label for="inputEmail3" class="col-sm-3 control-label">Add a Picture</label> 
+                <div for="inputEmail3" class="col-sm-3 control-label text-bold"><strong> Add a Picture</strong></div>
                 <div class="col-sm-9">          
                   <%= f.file_field :image , :class=>"btn btn-primary btn-sm pull-left"%>
                 </div>
               </div>
               
               <div class="form-group">
-              <label class="col-sm-3 control-label">Tag Friends</label>
+              <div for="inputEmail3" class="col-sm-3 control-label text-bold"><strong> Tag Friends</strong></div>
                   <div class="col-sm-9">
                 <%= f.select(:user_id, @users.collect {|c| [c.first_name, c.id]},{},
                    { :multiple => true, :size => 5,:class=>"selectpicker","data-live-search" =>"true","multiple data-style"=>"btn-white" }

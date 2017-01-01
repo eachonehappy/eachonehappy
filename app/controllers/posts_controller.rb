@@ -17,16 +17,40 @@ class PostsController < ApplicationController
   def create
   	@post = Post.new(post_params)
     @post.user_id = current_user.id
-    @post.subject = "test"
-    params[:post][:user_id].reject(&:empty?).each do |user_id|
-      @user = User.find(user_id)
-    @post.mention!(@user)
+    if params[:post][:user_id].reject(&:empty?).present?
+      params[:post][:user_id].reject(&:empty?).each do |user_id|
+        @user = User.find(user_id)
+      @post.mention!(@user)
+      end  
     end
     if @post.save
-      flash[:success] = "post created!"
-      redirect_to root_path
+      redirect_to request.referer
     else
       render 'new'
+    end
+  end
+
+  def edit
+    @post = Post.find(params[:id])
+    @all_user = User.all
+  end
+  
+  def update
+    @post = Post.find(params[:id])
+    if params[:post][:user_id].reject(&:empty?).present?
+      @post.mentionees(User).each do |user|
+        @post.unmention!(user)
+      end  
+      params[:post][:user_id].reject(&:empty?).each do |user_id|
+        @user = User.find(user_id)
+      @post.mention!(@user)
+      end
+    end
+    @post.description = post_params[:description]
+    if @post.save
+      redirect_to root_url
+    else
+      render 'edit'
     end
   end
   
@@ -66,6 +90,6 @@ class PostsController < ApplicationController
   private
     
     def post_params
-      params.require(:post).permit(:subject, :description, :image)
+      params.require(:post).permit(:description, :image)
     end
 end

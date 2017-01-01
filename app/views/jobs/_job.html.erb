@@ -12,7 +12,7 @@
     <% else %>
     <%= link_to '<i class="fa fa-check-circle"></i>'.html_safe, job_status_path(:job_id => job.id), :method => :post, :class=>"btn btn-danger btn-xs","data-toggle"=>"tooltip", "data-placement"=>"top", :title=>"Mark as Uncompleted"  %>
     <% end %>
-    <a href="#" class="btn btn-default btn-xs" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fa fa-pencil"></i></a>
+    <%= link_to '<i class="fa fa-pencil"></i>'.html_safe , edit_job_path(job), :class=>"btn btn-default btn-xs" %>
   </td>
 </tr>
 

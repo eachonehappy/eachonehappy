@@ -11,7 +11,8 @@ class Campaign < ApplicationRecord
   acts_as_mentioner
 
   validates :subject,  presence: true
-  validates :description,  presence: true
+  validates :description,  presence: true, length: { minimum: 30 }
+  validates :small_description,  presence: true, length: { minimum: 10 }
   include PublicActivity::Model
   tracked
   tracked owner: Proc.new { |controller, model| controller.current_user ? controller.current_user : nil }

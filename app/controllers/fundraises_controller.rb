@@ -23,18 +23,52 @@ class FundraisesController < ApplicationController
   end
   
   def create
-  	@fundraise = Fundraise.new(fundraise_params)
-  	@fundraise.campaign_id = fundraise_params[:campaign_id]
-  	@fundraise.user_id = current_user.id
-    params[:fundraise][:user_id].reject(&:empty?).each do |user_id|
-      @user = User.find(user_id)   
-    @fundraise.mention!(@user)
-    end
+    @fundraise = Fundraise.new(fundraise_params)
+    if fundraise_params[:campaign_id].present?	
+    	@fundraise.campaign_id = fundraise_params[:campaign_id]
+    	@fundraise.user_id = current_user.id
+      if params[:fundraise][:user_id].reject(&:empty?).present?
+        params[:fundraise][:user_id].reject(&:empty?).each do |user_id|
+          @user = User.find(user_id)   
+        @fundraise.mention!(@user)
+        end
+      end
+      if @fundraise.save
+        redirect_to @fundraise
+      else
+        render 'new'
+      end
+    else 
+      flash[:failure] = "Select Campaign"
+      @all_campaign = Campaign.all
+      @users = User.all
+      render 'new'
+    end 
+  end
+
+  def edit
+    @users = User.all
+    @fundraise = Fundraise.find(params[:id])
+  end
+
+  def update
+    @fundraise = Fundraise.find(params[:id])
+    @fundraise.subject = fundraise_params[:subject]
+    @fundraise.description = fundraise_params[:description]
+    @fundraise.small_description = fundraise_params[:small_description]
+    if params[:fundraise][:user_id].reject(&:empty?).present?
+        params[:fundraise][:user_id].reject(&:empty?).each do |user_id|
+        @user = User.find(user_id)
+          unless @fundraise.mentions?(@user)
+            @fundraise.mention!(@user)
+          end
+        end
+      end
+  
     if @fundraise.save
-      flash[:success] = "fundraise created!"
-      redirect_to fundraises_path
+      redirect_to @fundraise
     else
-      redirect_to new_fundraise_path
+      render 'edit'
     end
   end
   

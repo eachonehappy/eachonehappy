@@ -22,19 +22,54 @@ class CampaignsController < ApplicationController
   end
   
   def create
-  	@campaign = Campaign.new(campaign_params)
-  	@campaign.organization_id = campaign_params[:organization_id]
-  	@campaign.cause_id = campaign_params[:cause_id]
-  	@campaign.campaign_users.build(:user_id => current_user.id)
-    params[:campaign][:user_ids].reject(&:empty?).each do |user_id|
-      @user = User.find(user_id)
-    @campaign.mention!(@user)
-    end
-    if @campaign.save
-      flash[:success] = "campaign created!"
-      redirect_to campaigns_path
+    @campaign = Campaign.new(campaign_params)
+    if campaign_params[:organization_id].present? && campaign_params[:cause_id].present?
+    	@campaign.organization_id = campaign_params[:organization_id]
+    	@campaign.cause_id = campaign_params[:cause_id]
+    	@campaign.campaign_users.build(:user_id => current_user.id)
+      if params[:campaign][:user_ids].reject(&:empty?).present?
+        params[:campaign][:user_ids].reject(&:empty?).each do |user_id|
+        @user = User.find(user_id)
+        @campaign.mention!(@user)
+        end
+      end
+      if @campaign.save
+        redirect_to @campaign
+      else
+        render 'new'
+      end
     else
-      render 'new'
+      flash[:failure] = "Select One Organization & One Cause"
+      @all_causes = Cause.all
+      @all_organizations = Organization.all
+      @users = User.all
+      render 'new' 
+    end   
+  end
+
+  def edit
+    @users = User.all
+    @campaign = Campaign.find(params[:id])
+  end
+
+  def update
+    @campaign = Campaign.find(params[:id])
+    @campaign.subject = campaign_params[:subject]
+    @campaign.description = campaign_params[:description]
+    @campaign.small_description = campaign_params[:small_description]
+    if params[:campaign][:user_ids].reject(&:empty?).present?
+        params[:campaign][:user_ids].reject(&:empty?).each do |user_id|
+        @user = User.find(user_id)
+          unless @campaign.mentions?(@user)
+            @campaign.mention!(@user)
+          end
+        end
+      end
+  
+    if @campaign.save
+      redirect_to @campaign
+    else
+      render 'edit'
     end
   end
   

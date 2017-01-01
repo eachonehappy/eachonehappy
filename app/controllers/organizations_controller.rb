@@ -32,27 +32,60 @@ class OrganizationsController < ApplicationController
     end  
   end
   
-  def new
-    @organization = Organization.new
+  def new 
     @all_causes = Cause.all
-    @cause_organization = @organization.cause_organizations.build
+    @organization = Organization.new
+    #@cause_organization = @organization.cause_organizations.build  
   end
   
   def create
-  	@organization = Organization.new(organization_params)
-  	@organization.organization_users.build(:user_id => current_user.id, :role=>"owner",:status=>"accepted")
-  	params[:organization][:cause_ids].reject(&:empty?).each do |cause|
-      @cause_id = Cause.find_by_subject(cause).id
-    @organization.cause_organizations.build(:cause_id => @cause_id)
-    end
-    if @organization.save 
-      flash[:success] = "organization created!"
-      redirect_to organizations_path
+    @organization = Organization.new(organization_params)
+    if params[:organization][:cause_ids].reject(&:empty?).present?
+    	@organization.organization_users.build(:user_id => current_user.id, :role=>"owner",:status=>"accepted")
+    	params[:organization][:cause_ids].reject(&:empty?).each do |cause|
+        @cause_id = Cause.find_by_subject(cause).id
+      @organization.cause_organizations.build(:cause_id => @cause_id)
+      end
+      if @organization.save 
+        redirect_to @organization
+      else
+        render 'new'
+      end
     else
+      @all_causes = Cause.all
+      flash[:failure] = "Select Atleast One Cause"  
       render 'new'
-    end
+    end  
+  end
+
+  def edit
+    @all_causes = Cause.all
+    @organization = Organization.find(params[:id])
   end
   
+  def update
+    @organization = Organization.find(params[:id])
+    if organization_params[:description].present? && organization_params[:name].present?
+      @organization.name = organization_params[:name]
+      @organization.description = organization_params[:description]
+    else
+      
+      if params[:organization][:cover_image].present?
+        @organization.cover_image = params[:organization][:cover_image]
+      end
+      
+      if params[:organization][:profile_image].present? 
+        @organization.profile_image = params[:organization][:profile_image]
+      end
+    end  
+    if @organization.save
+      flash[:success] = "Profile updated"
+      redirect_to @organization
+    else
+      render 'edit'
+    end
+  end
+
   def destroy
     Organization.find(params[:id]).destroy
     flash[:success] = "Organization deleted"
@@ -83,24 +116,6 @@ class OrganizationsController < ApplicationController
       else
         render 'new'
       end
-    end
-  end
-
-  def update
-    @organization = Organization.find(params[:id])
-    if params[:organization][:cover_image].present?
-      @organization.cover_image = params[:organization][:cover_image]
-    end
-    
-    if params[:organization][:profile_image].present? 
-      @organization.profile_image = params[:organization][:profile_image]
-    end
-      
-    if @organization.save
-      flash[:success] = "Profile updated"
-      redirect_to @organization
-    else
-      render 'edit'
     end
   end
 

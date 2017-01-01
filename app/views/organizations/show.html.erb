@@ -96,7 +96,9 @@
     <div class="col-md-6" style="padding-left: 0px; padding-right: 8px;">
         <div class="panel panel-default" style="margin-bottom: 10px;"">
             <div class="panel-heading panel-heading-gray">
-                <a href="#" class="btn btn-white btn-xs pull-right"><i class="fa fa-pencil"></i></a>
+            <% if @organization.user.include?(current_user) %>
+            <%= link_to '<i class="fa fa-pencil"></i>'.html_safe , edit_organization_path(@organization), :class=>"btn btn-white btn-xs pull-right" %>
+            <% end %>
                 <i class="fa fa-info-circle"></i> About
             </div>
             <div class="panel-body">

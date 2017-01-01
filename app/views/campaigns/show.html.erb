@@ -2,8 +2,13 @@
   <div class="panel panel-default" style="margin-bottom: 10px;border-radius: 2px;">
     <div class="panel-body" style="padding-bottom:0px;padding-top:10px;">
       <center>
-        <h3 class = "margin-none text-uppercase"><b><%=@campaign.subject%></b></h3> 
+        <h3 class = "margin-none text-uppercase"><b><%=@campaign.subject%>
+        <% if @campaign.users.include?(current_user) %>
+        <%= link_to '<i class="fa fa-pencil"></i>'.html_safe , edit_campaign_path(@campaign), :class=>"btn btn-white btn-md pull-right" %>
+          <% end %>
+        </b></h3> 
       </center>
+
       <div class="media">
         <div class="media-object pull-left">
           <% if @campaign.image_url %> 
