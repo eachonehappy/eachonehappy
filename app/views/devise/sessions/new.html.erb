@@ -1,4 +1,4 @@
-<body class="login">
+<div class="login" style="padding-bottom:100px;">
   <div class="container-fluid">
     <div class="brand-logo">
       <img src="/images/people/110/guy-5.jpg" alt="guy" />
@@ -8,7 +8,8 @@
       <div class="col-sm-4 col-sm-offset-4">
         <div class="panel panel-default">
           <div class="panel-body">
-            <%= form_for(resource, as: resource_name,:remote => true, url: session_path(resource_name)) do |f| %> 
+            <%= form_for(resource, as: resource_name,:remote => true, url: session_path(resource_name)) do |f| %>
+            <%= devise_error_messages! %> 
               <div class="form-group">
                 <div class="input-group">
                   <span class="input-group-addon"><i class="fa fa-user"></i></span>
@@ -31,4 +32,9 @@
       </div>
     </div>
   </div>
-</body>
+</div>  
+<%= render 'devise/shared/main_page_footer'%>
+
+
+  
+

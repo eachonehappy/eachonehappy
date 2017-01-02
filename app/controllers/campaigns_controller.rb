@@ -57,6 +57,7 @@ class CampaignsController < ApplicationController
     @campaign.subject = campaign_params[:subject]
     @campaign.description = campaign_params[:description]
     @campaign.small_description = campaign_params[:small_description]
+    @campaign.image = campaign_params[:image]
     if params[:campaign][:user_ids].reject(&:empty?).present?
         params[:campaign][:user_ids].reject(&:empty?).each do |user_id|
         @user = User.find(user_id)

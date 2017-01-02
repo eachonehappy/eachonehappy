@@ -1,4 +1,4 @@
-<body class="login">
+<div class="login" style="padding-bottom:100px;">
   <div class="container-fluid">
     <div class="brand-logo">
       <i class="fa fa-pencil"></i>
@@ -9,7 +9,7 @@
         <div class="panel panel-default">
           <div class="panel-body">
             <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-                      <%= devise_error_messages! %>
+                <%= devise_error_messages! %>
               <div class="row">
                 <div class="col-md-6">
                   <div class="form-group">
@@ -47,10 +47,10 @@
       </div>
     </div>
   </div>
-</body>
 
+</div>
 
-  
+<%= render 'devise/shared/main_page_footer'%>
 
 
 
