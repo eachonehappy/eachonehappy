@@ -1,6 +1,6 @@
 GIT
   remote: git://github.com/DavyJonesLocker/client_side_validations.git
-  revision: d943787dc53cdc1dd98fd23adcca3cc07fb5905a
+  revision: fe23ff15e115e7fe2e1ee07c129608e6468c7b24
   branch: rails5
   specs:
     client_side_validations (5.0.0)
