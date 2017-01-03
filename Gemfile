@@ -22,10 +22,18 @@ gem 'public_activity'
 gem 'client_side_validations', github: 'DavyJonesLocker/client_side_validations', branch: 'rails5'
 gem 'execjs'
 gem 'therubyracer'
-gem 'unicorn'
-gem 'capistrano-rails'
+
 group :development, :test do
   gem 'byebug', platform: :mri
+  gem 'capistrano'
+  gem 'capistrano-rvm'
+  gem 'capistrano-nginx'
+  gem 'capistrano3-puma'
+  gem 'capistrano-rails'
+  gem 'capistrano-rails-db'
+  gem 'capistrano-rails-console'
+  gem 'capistrano-upload-config'
+  gem 'sshkit-sudo'
 end
 
 group :development do
