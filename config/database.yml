@@ -26,7 +26,7 @@ test:
  production:
  adapter: postgresql
  encoding: utf8
- username: postgres
+ username: deployer
  password: postgres
  database: eachonehappy_production
  
