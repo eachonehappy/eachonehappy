@@ -32,7 +32,7 @@ lock "3.7.1"
 # config valid only for current version of Capistrano
 
 
-set :repo_url, 'git@github.com:eachonehappy/eachonehappy.git'
+set :repo_url, 'https://github.com/eachonehappy/eachonehappy.git'
 # ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
 
 set :user, 'deployer'
