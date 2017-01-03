@@ -2,7 +2,7 @@
 lock "3.7.1"
 
 set :application, 'takestand'
-set :repo_url, 'git@github.com:eachonehappy/eachonehappy.git'
+set :repo_url, 'https://eachonehappy:iamhappy@2016@github.com:eachonehappy/eachonehappy.git'
 set :deploy_to, '/opt/www/takestand'
 set :user , 'takestand'
 set :linked_dirs, %w{log tmp/pids tmp/cache tmp/sockets}
