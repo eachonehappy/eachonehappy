@@ -19,7 +19,7 @@ gem 'mini_magick', '3.8.0'
 gem 'rails_admin', '~> 1.0'
 gem 'social-share-button'
 gem 'public_activity'
-gem 'client_side_validations', github: 'DavyJonesLocker/client_side_validations', branch: 'rails5'
+gem 'client_side_validations'
 gem 'execjs'
 gem 'therubyracer'
 group :development, :test do
