@@ -23,6 +23,7 @@ class UsersController < ApplicationController
     @posts = @user.posts
     @users = current_user.friends
     @payment = Payment.new 
+    @all_user = User.all
     
   end
 

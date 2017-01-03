@@ -15,11 +15,21 @@ class CommentsController < ApplicationController
   
   def create
   	@comment = Comment.new(comment_params)
+    if params[:comment][:user_id].reject(&:empty?).present?
+      params[:comment][:user_id].reject(&:empty?).each do |user_id|
+        @user = User.find(user_id)
+      @comment.mention!(@user)
+      end  
+    end
   	@comment.post_id = params[:post_id]
   	@comment.user_id = current_user.id
     if @comment.save
-      flash[:success] = "comment created!"
-      redirect_to request.referer
+      @post = @comment.post
+      respond_to do |format|
+        format.html { redirect_to request.referer }
+        format.js 
+      end
+      
     else
       render 'new'
     end

@@ -8,8 +8,14 @@
       <div class="col-sm-4 col-sm-offset-4">
         <div class="panel panel-default">
           <div class="panel-body">
+          <% flash.each do |key, value| %>
+            <div class="alert alert-info alert-dismissable">
+            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+            <%= value %></div>
+          <% end %>
+          
             <%= form_for(resource, as: resource_name,:remote => true, url: session_path(resource_name)) do |f| %>
-            <%= devise_error_messages! %> 
+             
               <div class="form-group">
                 <div class="input-group">
                   <span class="input-group-addon"><i class="fa fa-user"></i></span>
@@ -33,7 +39,7 @@
     </div>
   </div>
 </div>  
-<%= render 'devise/shared/main_page_footer'%>
+
 
 
   

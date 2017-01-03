@@ -12,6 +12,7 @@ class OrganizationsController < ApplicationController
   
   def show
     @comment = Comment.new
+    @all_user = User.all
     @organization = Organization.find(params[:id])
     @pending_requests_ids = @organization.organization_users.send_by_user.map(&:user_id) 
     @pending_users = User.where( id: @pending_requests_ids)

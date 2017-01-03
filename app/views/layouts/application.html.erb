@@ -19,7 +19,8 @@
         <%= render 'layouts/main'%>
       </div>
     <%else%>
-      <%= yield %>  
+      <%= yield %>
+      <%= render 'devise/shared/main_page_footer'%>  
     <%end%>    
     <script>
       var colors = {

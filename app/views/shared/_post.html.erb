@@ -45,27 +45,28 @@
   	</div>   
     <div class="collapse" id="collapseExample<%=post.id%>">
       <ul class="comments">
-        <%post.comments.each do |comment|%>
-	        <li>
-	          <div class="media">
-	            <a href="" class="pull-left">
-	              <img src="/images/people/50/guy-5.jpg" class="media-object">
-	            </a>
-	            <div class="media-body">
-	              <a href="" class="comment-author"><%= comment.user.first_name %></a>
-	              <span><%= comment.description %></span>
-	              <div class="comment-date">21st September
-	              </div>
-	            </div>
-	          </div>
-	        </li>
-	      <%end%>  	        
+      <div id="comments">
+        <%= render :partial => 'comments/comment', :collection => post.comments %>  	
+      </div>          
         <li class="comment-form">                                           
-          <%= form_for @comment do |f| %>                      
-            <div class="input-group">  
+          <%= form_for(@comment, remote: true) do |f| %> 
+           <div class="container-fluid collapse" id="collapseExample2<%=post.id%>" style="padding-bottom:10px;">
+              <div class="form-group" >
+                <label class="col-sm-3 control-label">Tag friends</label>
+                <div class="col-sm-9">
+                  <%= f.select(:user_id, @all_user.collect {|c| [c.first_name, c.id]},{},
+                     { :multiple => true, :size => 5,:class=>"selectpicker","data-live-search" =>"true","multiple data-style"=>"btn-white" }
+                   ) %>
+                </div>
+              </div>
+            </div>                     
+            <div class="input-group panel-footer share-buttons">  
               <%= hidden_field_tag 'post_id', post.id %> 
               <%= f.text_field :description, class: 'form-control', :placeholder=>"write a comment" %>
-              <span class="input-group-btn">          
+              <span class="input-group-btn"> 
+              <a style="width: 120px;padding-top:0px;" data-toggle="collapse" data-target="#collapseExample2<%=post.id%>" aria-expanded="false" aria-controls="collapseExample" class="btn" >
+                <b>Tag Friends</b>
+              </a>         
               	<%= f.submit "Comment", class: "btn btn-primary" %>
  						  </span>
             </div>
