@@ -24,9 +24,9 @@ test:
  database: eachonehappy_test
 
  production:
- <<: *default
+ adapter: postgresql
+ encoding: utf8
  username: postgres
  password: postgres
- host: 148.72.244.107
  database: eachonehappy_production
  
