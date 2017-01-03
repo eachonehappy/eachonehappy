@@ -27,5 +27,6 @@ test:
  <<: *default
  username: postgres
  password: postgres
+ host: 148.72.244.107
  database: eachonehappy_production
  
