@@ -22,6 +22,8 @@ gem 'public_activity'
 gem 'client_side_validations', github: 'DavyJonesLocker/client_side_validations', branch: 'rails5'
 gem 'execjs'
 gem 'therubyracer'
+gem 'unicorn'
+gem 'capistrano-rails'
 group :development, :test do
   gem 'byebug', platform: :mri
 end
