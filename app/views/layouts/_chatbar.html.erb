@@ -15,19 +15,24 @@
             <div data-scrollable>
               <ul class="chat-contacts">
               <% chat_rooms.each do |chat_room|%>
-                <% if reject_current_user(chat_room).online? %>  
+              <%friend = reject_current_user(chat_room) %>
+                <% if friend.online? %>  
                 <li class="online">
-                  <%= link_to chat_room_path(chat_room) do  %>
-                  
-                    <div class="media">
-                      <div class="pull-left">
-                        <span class="status"></span>
-                        <img src="/images/people/110/guy-6.jpg" width="40" class="img-circle" />
+                
+                  <%= link_to chat_room_path(chat_room) do  %>        
+                    <div class="media" style="height: 45px;">
+                      <div class="pull-left" style="padding-top: 8px;padding-bottom: 7px;">
+                        <span class="status" style="margin-top: 12px;"></span>
+                        <% if friend.profile_image_url %> 
+                          <%= image_tag(friend.profile_image_url(:thumb), :class=>"img-circle" , :width=>"30") %>
+                          <% else %>
+                          <img src="/images/people/50/guy-5.jpg" width="30" alt="Bill" class="img-circle" />
+                          <% end %>
                       </div>
                       <div class="media-body">
 
-                        <div class="contact-name text-capitalize"><%= full_name(reject_current_user(chat_room)) %></div>
-                        <small>"Free Today"</small>
+                        <div class="contact-name text-capitalize"><%= full_name(friend) %></div>
+                        
                       </div>
                     </div>
                   <%end%>
@@ -35,16 +40,19 @@
                 <% else %>
                   <li class="offline">
                   <%= link_to chat_room_path(chat_room) do  %>
-                  
-                    <div class="media">
-                      <div class="pull-left">
-                        <span class="status"></span>
-                        <img src="/images/people/110/guy-6.jpg" width="40" class="img-circle" />
+                    <div class="media" style="height: 45px;">
+                      <div class="pull-left" style="padding-top: 8px;padding-bottom: 7px;">
+                        <span class="status" style="margin-top: 12px;"></span>
+                        <% if friend.profile_image_url %> 
+                          <%= image_tag(friend.profile_image_url(:thumb), :class=>"img-circle" , :width=>"30") %>
+                          <% else %>
+                          <img src="/images/people/50/guy-5.jpg" width="30" alt="Bill" class="img-circle" />
+                          <% end %>
                       </div>
                       <div class="media-body">
 
-                        <div class="contact-name text-capitalize"><%= full_name(reject_current_user(chat_room)) %></div>
-                        <small>"Free Today"</small>
+                        <div class="contact-name text-capitalize"><%= full_name(friend) %></div>
+                        
                       </div>
                     </div>
                   <%end%>

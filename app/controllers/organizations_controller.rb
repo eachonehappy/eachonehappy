@@ -12,12 +12,12 @@ class OrganizationsController < ApplicationController
   
   def show
     @comment = Comment.new
-    @all_user = User.all
     @organization = Organization.find(params[:id])
     @pending_requests_ids = @organization.organization_users.send_by_user.map(&:user_id) 
     @pending_users = User.where( id: @pending_requests_ids)
     @members_ids = @organization.organization_users.accepted.map(&:user_id) 
-    @members = User.where( id: @members_ids)
+    @members = User.where( id: @members_ids) 
+    @members = @members - [current_user]
     @organization_posts = []
     @members.each do |member|
       member.posts.each do |post|
@@ -30,13 +30,13 @@ class OrganizationsController < ApplicationController
       campaign.fundraises.each do |fundraise|
         @organization_fundraise << fundraise
       end  
-    end  
+    end
+    @payment = Payment.new   
   end
   
-  def new 
+  def new
     @all_causes = Cause.all
-    @organization = Organization.new
-    #@cause_organization = @organization.cause_organizations.build  
+    @organization = Organization.new 
   end
   
   def create
@@ -44,12 +44,12 @@ class OrganizationsController < ApplicationController
     if params[:organization][:cause_ids].reject(&:empty?).present?
     	@organization.organization_users.build(:user_id => current_user.id, :role=>"owner",:status=>"accepted")
     	params[:organization][:cause_ids].reject(&:empty?).each do |cause|
-        @cause_id = Cause.find_by_subject(cause).id
-      @organization.cause_organizations.build(:cause_id => @cause_id)
+      @organization.cause_organizations.build(:cause_id => cause)
       end
       if @organization.save 
         redirect_to @organization
       else
+        @all_causes = Cause.all
         render 'new'
       end
     else
@@ -80,7 +80,6 @@ class OrganizationsController < ApplicationController
       end
     end  
     if @organization.save
-      flash[:success] = "Profile updated"
       redirect_to @organization
     else
       render 'edit'
@@ -174,7 +173,10 @@ class OrganizationsController < ApplicationController
 
   def friend
     @organization_id = params[:organization_id]
-    @users = User.all
+    @organization = Organization.find(@organization_id)
+    @pending_requests_ids = @organization.organization_users.send_by_user.map(&:user_id) 
+    @pending_users = User.where( id: @pending_requests_ids)
+    @users = current_user.friends  - @organization.users
   end
 
   def organization_invite

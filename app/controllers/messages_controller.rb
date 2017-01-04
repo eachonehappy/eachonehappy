@@ -2,16 +2,10 @@ class MessagesController < ApplicationController
   before_action :authenticate_user!
   before_action :load_activities, only: [:index, :show, :new, :edit]
 	def index
-  #  @user = User.find(params[:friend_id])
-   # @a = @user.chat_rooms
-  #  @b = current_user.chat_rooms
-   # @chat_room = @a & @b
-   # @chat_room_messages = @chat_room.first.messages
-   # redirect_to chat_rooms_path
   end
 
   def show
-   # byebug
+
   end
 
   def create

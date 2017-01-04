@@ -3,10 +3,11 @@ class PagesController < ApplicationController
   def home
   	@post = Post.new
   	@comment = Comment.new
+    @payment = Payment.new
   	@posts = Post.all.sort_by(&:created_at).reverse
-  	@all_user = User.all
-    @fundraises = Fundraise.all
-    @campaigns = Campaign.all
+  	@all_user = current_user.friends
+    @fundraises = Fundraise.all.sort_by(&:likers_count).reverse
+    @campaigns = Campaign.all.sort_by(&:likers_count).reverse
 
   end
 

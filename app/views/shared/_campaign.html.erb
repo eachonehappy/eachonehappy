@@ -12,18 +12,12 @@
       </p>
       <p class="text-capitalize"><%=campaign.description%></p>
       <div class="numbers clearfix text-center">
-        <div class="col-md-4 backers pull-left " style="padding:5px;">
+        <div class="col-md-6 backers pull-left " style="padding:5px;">
             <i class="fa fa-lg fa-heart"></i>
-            <span class="votes-count" data-id="<%= campaign.id %>"><%= campaign.likers_count %></span><p style="margin:0px;">supporters</p>
+            <span class="votes-count" data-id="<%= campaign.id %>"><%= campaign.likers_count %></span><p style="margin:0px;">Likes</p>
         </div>
-        <div class="col-md-4 trophy pull-left " style="padding:5px;">
+        <div class="col-md-6 trophy pull-left " style="padding:5px;">
           <i class="fa fa-lg fa-user"></i><span><span class="follow-count" data-id="<%= campaign.id %>"> <%= campaign.followers_count %></span><p style="margin:0px;">Followers</p></span>
-        </div>
-        <div class="col-md-4 days pull-left" style="padding:5px;">
-          <i class="fa fa-lg fa-clock-o"></i>
-          <span>
-              56<p style="margin:0px;"> days left</p>                    
-          </span>
         </div>
       </div> 
       <div class="btn-group btn-group-footer btn-group-justified" >

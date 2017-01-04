@@ -21,8 +21,14 @@ class JobsController < ApplicationController
   
   def new
     @job = Job.new
-    @all_campaign = Campaign.all
-    @all_user = User.all
+    @all_organizations = current_user.organizations.joins(:organization_users).where(:organization_users => {:status => "accepted"})
+    @all_campaign = []
+    @all_organizations.each do |org|
+      org.campaigns.each do |campaign|
+        @all_campaign << campaign
+      end
+    end
+    @all_user = current_user.friends + [current_user]
   end
   
   def create
@@ -35,15 +41,28 @@ class JobsController < ApplicationController
       @job.mention!(@user)
       end
       if @job.save
-        flash[:success] = "job created!"
         redirect_to jobs_path
       else
+        @all_organizations = current_user.organizations.joins(:organization_users).where(:organization_users => {:status => "accepted"})
+        @all_campaign = []
+        @all_organizations.each do |org|
+          org.campaigns.each do |campaign|
+            @all_campaign << campaign
+          end
+        end
+        @all_user = current_user.friends + [current_user]
         render 'new'
       end
     else
       flash[:failure] = "Select Campaign and to Whom job Assigned"
-      @all_campaign = Campaign.all
-      @all_user = User.all
+      @all_organizations = current_user.organizations.joins(:organization_users).where(:organization_users => {:status => "accepted"})
+      @all_campaign = []
+      @all_organizations.each do |org|
+        org.campaigns.each do |campaign|
+          @all_campaign << campaign
+        end
+      end
+      @all_user = current_user.friends + [current_user]
       render 'new'
     end  
   end

@@ -28,8 +28,8 @@ class User < ApplicationRecord
   acts_as_mentionable
   validates :first_name,  presence: true
   validates :last_name,  presence: true
-  validates :password, confirmation: true, length: { minimum: 6, maximum: 30 }
-  validates :password_confirmation, presence: true
+  #validates :password, confirmation: true, length: { minimum: 6, maximum: 30 }
+  #validates :password_confirmation, presence: true
   validates :email, presence: true, uniqueness: true, 
              format: { with: /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i }
   devise :database_authenticatable, :registerable,

@@ -32,7 +32,7 @@
     <%unless user.organization_users.where(:organization_id => @organization_id).present?%>
     <%= link_to "Invite", organization_invite_path(:user_id => user.id, :organization_id => @organization_id), :method => :post, :class=>"btn btn-primary" %>
     <%else%>
-    <a class="btn btn-danger"> Request Send</a>
+    <a class="btn btn-danger"> Invitation Send</a>
     <%end%>
   </td>
 </tr>

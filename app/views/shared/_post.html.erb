@@ -24,8 +24,9 @@
       <%end%>
       <p ><%=post.description%></p>
       </div>
-      
+      <%if post.image_url %>
     <%= image_tag post.image_url.to_s, :class=>"img-responsive", :style=> "padding: 10px;" %>
+    <%end%>
     <div class="collapse" id="1collapseExample<%=post.id%>" style= "padding-left:10px;padding-bottom:5px;" >
      <%= social_share_button_tag(post.description, :url => request.original_url ) %>  </div>
     <div class="btn-group btn-group-footer btn-group-justified" style="    border-bottom: 1px solid #eeeeee;">

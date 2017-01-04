@@ -24,7 +24,6 @@ class PaymentsController < ApplicationController
 	    	current_user.save
         @fundraise.raised_amount = @fundraise.raised_amount + @payment.amount
         @fundraise.save 
-	      flash[:success] = "payment created!"
 	      redirect_to request.referer
 	    else
 	      render 'new'
@@ -36,7 +35,6 @@ class PaymentsController < ApplicationController
   
   def destroy
     Payment.find(params[:id]).destroy
-    flash[:success] = "Payment deleted"
     redirect_to request.referer
   end
   

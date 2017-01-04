@@ -8,7 +8,7 @@
 		    <div class="panel-body">
 		      <%= f.text_area :description, class: 'form-control share-text', :rows=>"3", :placeholder=>"Whats in Your Mind..." %>      
 		    </div>
-		    <div class="container-fluid collapse" id="collapseExample1" style="padding-bottom:10px;">
+		    <div class="container-fluid collapse" id="tagfriendspost" style="padding-bottom:10px;">
 			    <div class="form-group" >
 	          <label class="col-sm-3 control-label">Tag friends</label>
 	          <div class="col-sm-6">
@@ -20,7 +20,7 @@
         </div>
 		    <div class="panel-footer share-buttons"> 
 	        <%= f.file_field :image , :class=>"btn btn-sm pull-left"%>
-	        <a style="width: 120px;padding-top:0px;" data-toggle="collapse" data-target="#collapseExample1" aria-expanded="false" aria-controls="collapseExample" class="btn" >
+	        <a style="width: 120px;padding-top:0px;" data-toggle="collapse" data-target="#tagfriendspost" aria-expanded="false" aria-controls="collapseExample" class="btn" >
 	            <b>Tag Friends</b>
 	        </a>
 	        <%= f.submit "Post", :class=> "btn btn-primary btn-sm pull-right" %>

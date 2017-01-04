@@ -75,7 +75,7 @@
           <% elsif invitation_came?(@organization)%>
           <%= link_to "Accept", organization_invitation_path(:organization_id => @organization), :method => :post, :class=>"btn btn-info" %>
           <%else%>
-          <%= link_to "Join", organization_invitation_path(:organization_id => @organization), :method => :post, :class=>"btn btn-info" %>
+          <%= link_to "Join", organization_invitation_path(:organization_id => @organization), :method => :post, :class=>"btn btn-info", data: { disable_with: 'Sending Request' ,toggle_text: 'Request Send'} %>
           <% end %> 
           <% else %>        
           <%= link_to "Invite friends", organization_friend_path(:organization_id => @organization), :class=>"btn btn-info" %> 
@@ -144,7 +144,7 @@
                           <div class="row" style="margin-bottom:3px;">
                               <div class="col-sm-8"><%= link_to "#{full_name(user)}", user_path(user), :class=>"text-capitalize"%>
                               </div>
-                              <div class="col-sm-4 text-capitalize"><%= link_to "accept" , accept_organization_path(:user_id => user.id,:organization_id => @organization.id), :method => :post, :class => "btn btn-primary btn-sm"%>
+                              <div class="col-sm-4 text-capitalize"><%= link_to "accept" , accept_organization_path(:user_id => user.id,:organization_id => @organization.id), :method => :post, :class => "btn btn-primary btn-sm", data: { disable_with: 'Accepting' ,toggle_text: 'Member'}%>
                             </div>
                           </div>
                       </li>

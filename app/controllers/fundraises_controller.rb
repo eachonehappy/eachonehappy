@@ -18,8 +18,14 @@ class FundraisesController < ApplicationController
   
   def new
     @fundraise = Fundraise.new
-    @all_campaign = Campaign.all
-    @users = User.all
+    @all_organizations = current_user.organizations.joins(:organization_users).where(:organization_users => {:status => "accepted"})
+    @all_campaign = []
+    @all_organizations.each do |org|
+      org.campaigns.each do |campaign|
+        @all_campaign << campaign
+      end
+    end
+    @users = current_user.friends
   end
   
   def create
@@ -36,12 +42,26 @@ class FundraisesController < ApplicationController
       if @fundraise.save
         redirect_to @fundraise
       else
+        @all_organizations = current_user.organizations.joins(:organization_users).where(:organization_users => {:status => "accepted"})
+        @all_campaign = []
+        @all_organizations.each do |org|
+          org.campaigns.each do |campaign|
+            @all_campaign << campaign
+          end
+        end
+        @users = current_user.friends
         render 'new'
       end
     else 
       flash[:failure] = "Select Campaign"
-      @all_campaign = Campaign.all
-      @users = User.all
+      @all_organizations = current_user.organizations.joins(:organization_users).where(:organization_users => {:status => "accepted"})
+      @all_campaign = []
+      @all_organizations.each do |org|
+        org.campaigns.each do |campaign|
+        @all_campaign << campaign
+        end
+      end
+      @users = current_user.friends
       render 'new'
     end 
   end

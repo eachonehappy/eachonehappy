@@ -9,7 +9,6 @@ class Organization < ApplicationRecord
   acts_as_followable
   acts_as_likeable
 
-  validates :causes, :presence => true
   validates :name,  presence: true
   validates :description,  presence: true, length: { minimum: 10 }
   include PublicActivity::Model

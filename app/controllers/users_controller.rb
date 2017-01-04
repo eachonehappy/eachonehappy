@@ -2,29 +2,17 @@ class UsersController < ApplicationController
   before_action :authenticate_user!
   before_action :load_activities, only: [:index, :show, :new, :edit]
   def index
-    @users = User.all.reject { |u| u.id == current_user.id }
-    @chat_room = current_user.chat_rooms
-    # @friends = []
-
-     #@chat_rooms.each do |chat|
-      #   chat.users.each do |user|
-       #      @friends << user
-        # end
-     #end
+    @users = User.all - [current_user] - current_user.friends
   end
 
-  def new
-    @message = Message.new
-    
+  def new 
   end
   def show
     @comment = Comment.new
     @user = User.find(params[:id])
     @posts = @user.posts
-    @users = current_user.friends
+    @users = @user.friends - [current_user]
     @payment = Payment.new 
-    @all_user = User.all
-    
   end
 
   def edit
@@ -45,9 +33,9 @@ class UsersController < ApplicationController
       if params[:user][:profile_image].present? 
         @user.profile_image = params[:user][:profile_image]
       end
-    end     
+    end 
+      
     if @user.save
-      flash[:success] = "Profile updated"
       redirect_to @user
     else
       render 'edit'
@@ -113,7 +101,6 @@ class UsersController < ApplicationController
         redirect_to request.referer_path
       end
     else
-      flash[:failure] = "U r not freinds"
       redirect_to request.referer
     end  
   end

@@ -17,8 +17,8 @@ class CampaignsController < ApplicationController
   def new
     @campaign = Campaign.new
     @all_causes = Cause.all
-    @all_organizations = Organization.all
-    @users = User.all
+    @all_organizations = current_user.organizations.joins(:organization_users).where(:organization_users => {:status => "accepted"})
+    @users = current_user.friends
   end
   
   def create
@@ -36,19 +36,22 @@ class CampaignsController < ApplicationController
       if @campaign.save
         redirect_to @campaign
       else
+        @all_causes = Cause.all
+        @all_organizations = current_user.organizations.joins(:organization_users).where(:organization_users => {:status => "accepted"})
+        @users = current_user.friends
         render 'new'
       end
     else
       flash[:failure] = "Select One Organization & One Cause"
       @all_causes = Cause.all
-      @all_organizations = Organization.all
-      @users = User.all
+      @all_organizations = current_user.organizations.joins(:organization_users).where(:organization_users => {:status => "accepted"})
+      @users = current_user.friends
       render 'new' 
     end   
   end
 
   def edit
-    @users = User.all
+    @users = current_user.friends
     @campaign = Campaign.find(params[:id])
   end
 
