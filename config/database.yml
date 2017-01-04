@@ -19,8 +19,8 @@ test:
 
 production:
  <<: *default
- username: deployer
- password: postgres 
+ username: postgres
+ password: takestand
  database: eachonehappy_production
  
 
