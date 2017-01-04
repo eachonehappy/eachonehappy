@@ -20,5 +20,5 @@ test:
 production:
  <<: *default
  username: deployer
- password: password 
+ password: postgres 
  database: eachonehappy_production
