@@ -83,5 +83,6 @@ Rails.application.configure do
 
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
+  config.action_cable.url = "http://148.72.244.194/"
   config.action_cable.allowed_request_origins = ["https://takestand.in"]                                            
 end
