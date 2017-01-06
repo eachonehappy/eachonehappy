@@ -46,7 +46,7 @@
   	</div>   
     <div class="collapse" id="collapseExample<%=post.id%>">
       <ul class="comments">
-      <div id="comments">
+      <div id="comments<%=post.id%>">
         <%= render :partial => 'comments/comment', :collection => post.comments %>  	
       </div>          
         <li class="comment-form">                                           

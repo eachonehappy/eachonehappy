@@ -1,1 +1,1 @@
-$('#comments').html("<%=j render @post.comments %>");
+$('#comments<%=@post.id%>').html("<%=j render @post.comments %>");
