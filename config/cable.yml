@@ -6,4 +6,4 @@ test:
 
 production:
   adapter: redis
-  url: redis://148.72.244.194
+  url: redis://148.72.245.28

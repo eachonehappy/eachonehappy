@@ -38,7 +38,7 @@ set :repo_url, 'https://github.com/eachonehappy/eachonehappy.git'
 set :user, 'deployer'
 set :application, 'eachonehappy'
 set :rails_env, 'production'
-server '148.72.244.194', user: "#{fetch(:user)}", roles: %w{app db web}, primary: true
+server '148.72.245.28', user: "#{fetch(:user)}", roles: %w{app db web}, primary: true
 set :deploy_to,       "/home/#{fetch(:user)}/apps/#{fetch(:application)}"
 set :pty, true
 
