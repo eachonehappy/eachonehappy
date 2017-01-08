@@ -26,7 +26,7 @@ class PostsController < ApplicationController
     if @post.save
       redirect_to request.referer
     else
-      render 'new'
+      render request.referer
     end
   end
 
