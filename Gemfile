@@ -14,6 +14,9 @@ gem 'devise'
 gem 'has_friendship'
 gem 'redis', '~> 3.2'
 gem 'carrierwave', '>= 1.0.0.rc', '< 2.0'
+gem "fog-google"
+gem "google-api-client", ">= 0.6.2", "< 0.9"
+gem "mime-types"
 gem "socialization"
 gem "lol_dba"
 gem 'mini_magick', '3.8.0'
