@@ -62,14 +62,3 @@ namespace :deploy do
   after :publishing, 'deploy:restart'
   after :finishing, 'deploy:cleanup'
 end
-
-namespace :logs do
-  namespace :tail do
-    desc 'Tail sidekiq log'
-    task :sidekiq do
-      on roles(:app) do
-        logtail_utility.tail(release_path.join('log', 'sidekiq.log'))
-      end
-    end
-  end
-end

@@ -27,10 +27,8 @@ gem 'client_side_validations', github: 'DavyJonesLocker/client_side_validations'
 gem 'execjs'
 gem 'therubyracer'
 
-
 group :development, :test do
   gem 'byebug', platform: :mri
-  gem 'capistrano-logtail'
   gem 'capistrano' ,'3.7.1'
   gem 'capistrano-rvm'
   gem 'capistrano-nginx'
