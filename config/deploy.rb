@@ -57,8 +57,6 @@ namespace :deploy do
       execute :touch, release_path.join('tmp/restart.txt')
     end
   end
-  before 'check:linked_files', 'config:push'
-  before 'deploy:migrate', 'deploy:db:create'
   after :publishing, 'deploy:restart'
   after :finishing, 'deploy:cleanup'
 end
