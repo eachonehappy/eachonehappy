@@ -5,5 +5,4 @@ test:
   adapter: async
 
 production:
-  adapter: redis
-  url: <%= ENV["redis-13282.c8.us-east-1-4.ec2.cloud.redislabs.com:13282"] %>
+  url: redis://localhost:6379
