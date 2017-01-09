@@ -59,3 +59,16 @@
 #     auth_methods: %w(publickey password)
 #     # password: "please use keys"
 #   }
+require 'capistrano/bundler'
+require 'capistrano/rails'
+
+require "capistrano/scm/git"
+install_plugin Capistrano::SCM::Git
+
+
+ require 'capistrano/rvm'
+ set :rvm_type, :deployer
+ set :rvm_ruby_version, '2.3.1'
+
+ set :stage, :production
+ server 'http://148.72.246.74/', user: 'deployer', roles: %w{web app}

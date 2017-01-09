@@ -38,6 +38,7 @@ group :development, :test do
   gem 'capistrano-rails-console'
   gem 'capistrano-upload-config'
   gem 'sshkit-sudo'
+  gem 'capistrano-bundler'
 end
 
 group :development do
