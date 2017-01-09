@@ -1,17 +1,7 @@
 # config valid only for current version of Capistrano
 lock "3.7.1"
 
-require 'capistrano/bundler'
-require 'capistrano/rails'
-require "capistrano/setup"
 
-require "capistrano/scm/git"
-install_plugin Capistrano::SCM::Git
-
-
- require 'capistrano/rvm'
- set :rvm_type, :deployer
- set :rvm_ruby_version, '2.3.1'
 # Default branch is :master
 # ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
 
