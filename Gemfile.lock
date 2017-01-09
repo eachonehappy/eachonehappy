@@ -331,6 +331,7 @@ PLATFORMS
 DEPENDENCIES
   byebug
   capistrano
+  capistrano-bundler
   capistrano-nginx
   capistrano-rails
   capistrano-rails-console
