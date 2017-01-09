@@ -49,6 +49,12 @@ set :config_example_suffix, '.example'
 set :config_files, %w{config/database.yml config/secrets.yml}
 
 namespace :deploy do
+  desc 'Restart application'
+  task :restart do
+    on roles(:app), in: :sequence, wait: 5 do
+      execute :touch, release_path.join('tmp/restart.txt')
+    end
+  end
   before 'check:linked_files', 'config:push'
   before 'deploy:migrate', 'deploy:db:create'
   after :publishing, 'deploy:restart'
