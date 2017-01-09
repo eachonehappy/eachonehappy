@@ -7,4 +7,7 @@ CarrierWave.configure do |config|
     google_storage_secret_access_key: 'W5++bbL/54DsXpimIFQWTOZjoRlI9Ds85xYTyShz'
   }
   config.fog_directory = 'takestand'
+  config.fog_public = true
+  config.storage = :fog
+  config.root = Rails.root.join('public')
 end
