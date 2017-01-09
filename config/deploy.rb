@@ -32,26 +32,23 @@ lock "3.7.1"
 # config valid only for current version of Capistrano
 
 
-set :repo_url, 'https://github.com/eachonehappy/eachonehappy.git'
-# ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
-
-set :user, 'deployer'
 set :application, 'eachonehappy'
-set :rails_env, 'production'
-server '148.72.246.74', user: "#{fetch(:user)}", roles: %w{app db web}, primary: true
-set :deploy_to,       "/home/#{fetch(:user)}/apps/#{fetch(:application)}"
-set :pty, true
+set :repo_url, 'https://github.com/eachonehappy/eachonehappy.git'
 
-set :linked_files, fetch(:linked_files, []).push('config/database.yml', 'config/secrets.yml')
-set :linked_dirs, fetch(:linked_dirs, []).push('log', 'tmp/pids', 'tmp/cache', 'tmp/sockets', 'vendor/bundle', 'public/system', 'public/uploads')
+set :deploy_to, '/home/deployer/eachonehappy'
 
-set :config_example_suffix, '.example'
-set :config_files, %w{config/database.yml config/secrets.yml}
+set :linked_files, %w{config/database.yml}
+set :linked_dirs, %w{log tmp/pids tmp/cache tmp/sockets vendor/bundle public/system}
 
 namespace :deploy do
-  before 'check:linked_files', 'config:push'
-  before 'deploy:migrate', 'deploy:db:create'
+
+  desc 'Restart application'
+  task :restart do
+    on roles(:app), in: :sequence, wait: 5 do
+      execute :touch, release_path.join('tmp/restart.txt')
+    end
+  end
+
   after :publishing, 'deploy:restart'
   after :finishing, 'deploy:cleanup'
 end
-

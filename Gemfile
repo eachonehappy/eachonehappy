@@ -29,16 +29,10 @@ gem 'therubyracer'
 
 group :development, :test do
   gem 'byebug', platform: :mri
-  gem 'capistrano'
-  gem 'capistrano-rvm'
-  gem 'capistrano-nginx'
-  gem 'capistrano3-puma'
-  gem 'capistrano-rails'
-  gem 'capistrano-rails-db'
-  gem 'capistrano-rails-console'
-  gem 'capistrano-upload-config'
-  gem 'sshkit-sudo'
-  gem 'capistrano-bundler'
+  gem 'capistrano', '~> 3.1.0'
+  gem 'capistrano-bundler', '~> 1.1.2'
+  gem 'capistrano-rails', '~> 1.1.1'
+  gem 'capistrano-rvm', github: "capistrano/rvm"
 end
 
 group :development do
