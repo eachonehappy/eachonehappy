@@ -48,12 +48,10 @@ set :linked_dirs, fetch(:linked_dirs, []).push('log', 'tmp/pids', 'tmp/cache', '
 set :config_example_suffix, '.example'
 set :config_files, %w{config/database.yml config/secrets.yml}
 
-
 namespace :deploy do
-
   before 'check:linked_files', 'config:push'
- 
   before 'deploy:migrate', 'deploy:db:create'
   after :publishing, 'deploy:restart'
   after :finishing, 'deploy:cleanup'
 end
+
