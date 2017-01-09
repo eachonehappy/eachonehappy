@@ -26,10 +26,11 @@ gem 'public_activity'
 gem 'client_side_validations', github: 'DavyJonesLocker/client_side_validations', branch: 'rails5'
 gem 'execjs'
 gem 'therubyracer'
-gem 'capistrano-logtail'
+
 
 group :development, :test do
   gem 'byebug', platform: :mri
+  gem 'capistrano-logtail'
   gem 'capistrano' ,'3.7.1'
   gem 'capistrano-rvm'
   gem 'capistrano-nginx'
