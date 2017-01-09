@@ -8,14 +8,6 @@ GIT
       js_regex (~> 1.0, >= 1.0.19)
       rails (>= 5.0.0, < 5.1.0)
 
-GIT
-  remote: git://github.com/capistrano/rvm.git
-  revision: 9cfef39cf0022839dca6b5b330dfefeb5fc363e7
-  specs:
-    capistrano-rvm (0.1.2)
-      capistrano (~> 3.0)
-      sshkit (~> 1.2)
-
 GEM
   remote: https://rubygems.org/
   specs:
@@ -73,9 +65,23 @@ GEM
     capistrano-bundler (1.1.4)
       capistrano (~> 3.1)
       sshkit (~> 1.2)
+    capistrano-nginx (1.0.0)
+      capistrano (~> 3.1)
     capistrano-rails (1.1.8)
       capistrano (~> 3.1)
       capistrano-bundler (~> 1.1)
+    capistrano-rails-console (1.0.2)
+      capistrano (>= 3.1.0, < 4.0.0)
+    capistrano-rails-db (0.0.2)
+      capistrano-rails (~> 1.1)
+    capistrano-rvm (0.1.2)
+      capistrano (~> 3.0)
+      sshkit (~> 1.2)
+    capistrano-upload-config (0.7.0)
+      capistrano (>= 3.0)
+    capistrano3-puma (1.2.1)
+      capistrano (~> 3.0)
+      puma (>= 2.6)
     carrierwave (1.0.0.rc)
       activemodel (>= 4.0.0)
       activesupport (>= 4.0.0)
@@ -291,6 +297,8 @@ GEM
     sshkit (1.11.5)
       net-scp (>= 1.1.2)
       net-ssh (>= 2.8.0)
+    sshkit-sudo (0.1.0)
+      sshkit (~> 1.8)
     stateful_enum (0.3.1)
     subexec (0.2.3)
     therubyracer (0.12.2)
@@ -323,9 +331,13 @@ PLATFORMS
 DEPENDENCIES
   byebug
   capistrano
-  capistrano-bundler
+  capistrano-nginx
   capistrano-rails
-  capistrano-rvm!
+  capistrano-rails-console
+  capistrano-rails-db
+  capistrano-rvm
+  capistrano-upload-config
+  capistrano3-puma
   carrierwave (>= 1.0.0.rc, < 2.0)
   client_side_validations!
   coffee-rails (~> 4.2)
@@ -351,6 +363,7 @@ DEPENDENCIES
   socialization
   spring
   spring-watcher-listen (~> 2.0.0)
+  sshkit-sudo
   therubyracer
   turbolinks (~> 5)
   tzinfo-data
