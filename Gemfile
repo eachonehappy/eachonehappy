@@ -29,7 +29,7 @@ gem 'therubyracer'
 
 group :development, :test do
   gem 'byebug', platform: :mri
-  gem 'capistrano'
+  gem 'capistrano' ,'3.7.1'
   gem 'capistrano-rvm'
   gem 'capistrano-nginx'
   gem 'capistrano3-puma'

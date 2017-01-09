@@ -1,5 +1,5 @@
 # config valid only for current version of Capistrano
-
+lock "3.7.1"
 
 
 # Default branch is :master
