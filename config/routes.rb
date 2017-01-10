@@ -1,12 +1,6 @@
 Rails.application.routes.draw do
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
 	root 'pages#home'
-	
-	get 'pages/home'
-
-	get 'pages/about_us'
-
-	get 'pages/contact_us'
 
 	devise_for :users, controllers: { sessions: 'users/sessions', registrations: 'users/registrations' }
     devise_scope :user do

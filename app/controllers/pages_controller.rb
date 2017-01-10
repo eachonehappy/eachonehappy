@@ -1,5 +1,7 @@
 class PagesController < ApplicationController
+  before_action :authenticate_user!
   before_action :load_activities, only: [:home, :about_us, :cantact_us]
+
   def home
   	@post = Post.new
   	@comment = Comment.new
@@ -8,7 +10,6 @@ class PagesController < ApplicationController
   	@all_user = current_user.friends
     @fundraises = Fundraise.all.sort_by(&:likers_count).reverse
     @campaigns = Campaign.all.sort_by(&:likers_count).reverse
-
   end
 
   def about_us

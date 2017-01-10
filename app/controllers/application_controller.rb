@@ -13,7 +13,7 @@ class ApplicationController < ActionController::Base
       current_user.wallet_amount = current_user.wallet_amount + @amount_to_be_added
       current_user.save
     end 
-    @activities = @activities.limit(20)   
+    @activities = @activities.limit(7)   
   end
 
   

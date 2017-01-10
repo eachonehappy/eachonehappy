@@ -14,7 +14,7 @@
             <%= value %></div>
           <% end %>
           
-            <%= form_for(resource, as: resource_name,:remote => true, url: session_path(resource_name), validate: true) do |f| %>
+            <%= form_for(resource, as: resource_name, url: session_path(resource_name), validate: true) do |f| %>
              
               <div class="form-group">
                 <div class="input-group">
@@ -29,7 +29,7 @@
                 </div>
               </div>
               <div class="text-center">
-              <%= f.submit 'Log in'.html_safe, :class=>"btn btn-success",data: { disable_with: 'Logging In ' } %>
+              <%= f.submit 'Log in'.html_safe, :class=>"btn btn-success",data: {  turbolinks: false } %>
               </div>
             <% end %>
           </div>
