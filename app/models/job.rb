@@ -6,7 +6,4 @@ class Job < ApplicationRecord
   validates :subject,  presence: true
   validates :description,  presence: true, length: { minimum: 10 }
   acts_as_mentioner
-  include PublicActivity::Model
-  tracked
-  tracked owner: Proc.new { |controller, model| controller.current_user ? controller.current_user : nil }
 end

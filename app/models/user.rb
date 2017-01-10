@@ -34,8 +34,6 @@ class User < ApplicationRecord
              format: { with: /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i }
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
-  include PublicActivity::Model
-  tracked
   scope :online, lambda{ where("updated_at > ?", 10.minutes.ago) }
   
   def name
