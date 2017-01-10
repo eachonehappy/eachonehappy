@@ -9,15 +9,25 @@ class MessagesController < ApplicationController
   end
 
   def create
-    message = Message.new(message_params)
-    message.user = current_user
-    message.chat_room_id = params[:chat_room_id]
-    if message.save
-      ActionCable.server.broadcast 'messages',
-        message: message.body,
-        user: message.user.first_name
-      head :ok
+    @message = Message.new(message_params)
+    @message.user = current_user
+    @message.chat_room_id = params[:chat_room_id]
+    if @message.save
+      @chat_room = ChatRoom.find(params[:chat_room_id])
+      respond_to do |format|
+        format.html { redirect_to request.referer }
+        format.js 
+        end
+      else
+        redirect_to request.referer
     end
+  end
+
+  def get_messages
+    @chat_room = ChatRoom.find(params[:id])
+    respond_to do |format|
+      format.js 
+      end
   end
 
   private

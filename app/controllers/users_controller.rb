@@ -13,6 +13,7 @@ class UsersController < ApplicationController
     @posts = @user.posts
     @users = @user.friends - [current_user]
     @payment = Payment.new 
+    @all_user = @user.friends
   end
 
   def edit

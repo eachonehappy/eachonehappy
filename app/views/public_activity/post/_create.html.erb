@@ -9,7 +9,7 @@
   <div class="media-body">
     <%=link_to "#{activity.owner.first_name}", user_path(activity.owner), data: { turbolinks: false } %> 
     <% if a.trackable %>
-	    posted  <%= link_to a.trackable.subject, post_path(a.trackable), data: { turbolinks: false } %>
+	    posted  
 	  <% else %>
 	    added the story that is currently deleted.
 	  <% end %> on his timeline.

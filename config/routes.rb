@@ -14,7 +14,7 @@ Rails.application.routes.draw do
 	end
     resources :users, only: [:index,:show, :update]
     resources :chat_rooms, only: [:new, :create, :show, :index]
-    mount ActionCable.server => '/cable'
+    #mount ActionCable.server => '/cable'
     resources :messages
 	resources :posts
 	resources :campaigns
@@ -50,6 +50,7 @@ Rails.application.routes.draw do
 	get 'notification' => 'pages#notification'
 	get 'my_fundraises' => 'fundraises#my_fundraise'
 	put 'fundraise_status' => 'fundraises#fundraise_status'
+	get 'chat_rooms/:id/get_messages' => 'messages#get_messages'
 	#resources :friendships
 	# For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

@@ -19,7 +19,7 @@
                 <% if friend.online? %>  
                 <li class="online">
                 
-                  <%= link_to chat_room_path(chat_room) do  %>        
+                  <%= link_to chat_room_path(chat_room), data: { turbolinks: false } do  %>        
                     <div class="media" style="height: 45px;">
                       <div class="pull-left" style="padding-top: 8px;padding-bottom: 7px;">
                         <span class="status" style="margin-top: 12px;"></span>
@@ -39,7 +39,7 @@
                 </li>
                 <% else %>
                   <li class="offline">
-                  <%= link_to chat_room_path(chat_room) do  %>
+                  <%= link_to chat_room_path(chat_room), data: { turbolinks: false } do  %>
                     <div class="media" style="height: 45px;">
                       <div class="pull-left" style="padding-top: 8px;padding-bottom: 7px;">
                         <span class="status" style="margin-top: 12px;"></span>

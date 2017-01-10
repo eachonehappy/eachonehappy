@@ -12,8 +12,9 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require cable
 //= require turbolinks
 //= require social-share-button
 //= require rails.validations
 //= require_tree .
+
+
