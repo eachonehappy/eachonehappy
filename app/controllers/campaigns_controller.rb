@@ -12,6 +12,8 @@ class CampaignsController < ApplicationController
   
   def show
     @campaign = Campaign.find(params[:id]) 
+    @fundraises = @campaign.fundraises
+    @payment = Payment.new
   end
   
   def new

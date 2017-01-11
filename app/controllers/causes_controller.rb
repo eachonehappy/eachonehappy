@@ -11,7 +11,9 @@ class CausesController < ApplicationController
   end
   
   def show
-    @cause = Cause.find(params[:id]) 
+    @cause = Cause.find(params[:id])
+    @organizations = @cause.organizations
+    @campaigns = @cause.campaigns 
   end
   
   def new

@@ -51,3 +51,13 @@
     </div>
   </div>
 </div>
+<% if @fundraises.any? %>
+<div class="col-md-9" style="padding:0px;">
+<div style="margin-right:3px;margin-left:3px">
+  <h3 class="margin-none text-capitalize text-center" style="background-color:white;padding-bottom:0px;padding-top:5px;">Campaign Fundraises</h3>
+  </div>
+    <div id="scrolling">
+<%= render :partial=> 'fundraises/fundraise', :collection => @fundraises %>
+</div>
+</div>
+<%end%>

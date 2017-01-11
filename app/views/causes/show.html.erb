@@ -44,3 +44,25 @@
     </div>
   </div>
 </div>
+<div class="col-md-9" style="padding:0px;">
+<% if @organizations.any? %>
+<div class="col-md-8" style="padding:0px;">
+<div style="margin-right:3px;margin-left:3px">
+    <h3 class="margin-none text-capitalize text-center" style="background-color:white;padding-bottom:0px;padding-top:5px;">Cause Organizations</h3>
+    </div>
+    <div id="scrolling" style="margin-right:3px;margin-left:3px">
+  <%= render :partial=> 'organizations/organization', :collection => @organizations %>
+  </div>
+</div>
+<% end %>
+<% if @campaigns.any? %>
+<div class="col-md-4" style="padding:0px;">
+<div style="margin-right:3px;margin-left:3px">
+    <h3 class="margin-none text-capitalize text-center" style="background-color:white;padding-bottom:0px;padding-top:5px;">Cause Campaigns</h3>
+    </div>
+    <div id="scrolling">
+<%= render :partial=> 'shared/campaign', :collection => @campaigns %>
+</div>
+</div>
+<% end %>
+</div>
