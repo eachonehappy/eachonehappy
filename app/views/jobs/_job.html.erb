@@ -2,8 +2,9 @@
   <td><%= job.subject %></td>
   <td><%=job.description%></td>
   <td><%job.mentionees(User).each do |user|%>
-  
+  <% unless user == current_user%>
     <%= link_to "#{user.first_name} #{user.last_name}", user_path(user), data: { turbolinks: false }, :class => "text-capitalize"%>
+    <%end%>
     <%end%>
   </td>
   <td>

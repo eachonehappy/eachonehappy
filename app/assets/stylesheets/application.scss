@@ -17,7 +17,7 @@
    padding-top:10px;
  }
 
- #messages {
+ #message {
   max-height: 560px;
   overflow-y: auto;
   .avatar {
@@ -30,6 +30,10 @@
   overflow-y: auto;
 }
 
+#scrolling-notifications  {
+  max-height: 350px;
+  overflow-y: auto;  
+}
 
 html {
     overflow: scroll;
@@ -220,3 +224,5 @@ footer {
 p.copyright {
     margin: 15px 0 0;
 }
+
+

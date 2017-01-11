@@ -8,12 +8,22 @@ class ApplicationController < ActionController::Base
   def load_activities
     @activities = PublicActivity::Activity.order("created_at desc").where(owner_type: "User", owner_id: current_user.friends.map {|u| u.id})
     if @activities.count > current_user.notification_count
-      @amount_to_be_added =  (@activities.count - current_user.notification_count)/100.0
+      @stat = Stat.first
+      @amount_to_be_added =  (@activities.count - current_user.notification_count)*@stat.rate
       current_user.notification_count = @activities.count     
       current_user.wallet_amount = current_user.wallet_amount + @amount_to_be_added
       current_user.save
     end 
-    @activities = @activities.limit(7)   
+    @activities = @activities.limit(20)
+    @chat_rooms = current_user.chat_rooms
+    @messages = []
+    @chat_rooms.each do |chat_room|
+      chat_room.messages.each do |message|
+        unless message.user == current_user
+          @messages << message
+        end
+      end
+    end  
   end
 
   

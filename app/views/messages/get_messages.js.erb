@@ -1,2 +1,2 @@
 
-$("#get-messages").html('<%= j render @chat_room.messages, chat_room: @chat_room %>');
+$("#get-messages").html('<%= j render @chat_room.messages.reverse, chat_room: @chat_room %>');

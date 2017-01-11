@@ -33,20 +33,22 @@
           </a>
           <ul class="dropdown-menu" role="notification">
             <li class="dropdown-header">Friend Requests</li>
-            <% current_user.requested_friends.each do |friend| %>
-            <li class="media" >
-              <div class="pull-right friend-message" data-id="<%= friend.id %>">
-               <%= link_to "Accept", accept_path(friend), :method => :post, :class =>"acceptfriend btn btn-primary",remote: true, data: { turbolinks: false , toggle_href: accept_path(friend), id: friend.id }%>
-               <%= link_to "Decline", decline_path(friend), :method => :post, :class =>"acceptfriend btn btn-danger",remote: true, data: { turbolinks: false , toggle_href: decline_path(friend), id: friend.id }%>
-              </div>
-              <div class="media-left">
-                <img src="/images/people/50/guy-2.jpg" alt="people" class="img-circle" width="30">
-              </div>
-              <div class="media-body">
-                <a href="#"><%=friend.name%></a>
-              </div>
-            </li>
-            <%end%>
+            <div id="scrolling-notifications">
+              <% current_user.requested_friends.each do |friend| %>
+              <li class="media" >
+                <div class="pull-right friend-message" data-id="<%= friend.id %>">
+                 <%= link_to "Accept", accept_path(friend), :method => :post, :class =>"acceptfriend btn btn-primary",remote: true, data: { turbolinks: false , toggle_href: accept_path(friend), id: friend.id }%>
+                 <%= link_to "Decline", decline_path(friend), :method => :post, :class =>"acceptfriend btn btn-danger",remote: true, data: { turbolinks: false , toggle_href: decline_path(friend), id: friend.id }%>
+                </div>
+                <div class="media-left">
+                  <img src="/images/people/50/guy-2.jpg" alt="people" class="img-circle" width="30">
+                </div>
+                <div class="media-body">
+                  <a href="#"><%=friend.name%></a>
+                </div>
+              </li>
+              <%end%>
+             </div> 
             <li class="media">
             <center>
             <%= link_to "Find More Friends", users_path %>
@@ -66,7 +68,9 @@
             </span>
           </a>
           <ul class="dropdown-menu" role="notification">
+          <div id="scrolling-notifications">
             <%= render 'shared/activities' %>
+          </div>  
             <li class="media">
             <center>
             <%= link_to "View all Notifications", notification_path %>
@@ -79,10 +83,11 @@
         <li class="dropdown notifications ">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown">
             <i class="fa fa-envelope-o"></i>
-            <span class="badge floating badge-danger"><%= current_user.messages.last(5).count %></span>
+            <span class="badge floating badge-danger"><%= @messages.last(10).count %></span>
           </a>
           <ul class="dropdown-menu">
-            <% current_user.messages.last(5).reverse.each do |message| %>
+          <div id="scrolling-notifications">
+            <% @messages.last(10).reverse.each do |message| %>
             <li class="media">
               <%= link_to chat_room_path(message.chat_room), data: { turbolinks: false } do %>
               <div class="pull-left">
@@ -101,6 +106,7 @@
               <% end %>
             </li>
             <%end%>
+            </div>
             <li class="media">
             <center>
             <%= link_to "View all Messages", chat_rooms_path %>

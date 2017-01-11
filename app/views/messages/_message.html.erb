@@ -1,3 +1,4 @@
+<% if message.user == current_user %>
 <div class="media" style="margin-top:0px;height: 50px;">
   <div class="pull-right media-object">
   <div style="height:60px;width:60px;padding-top:1px;">
@@ -21,3 +22,28 @@
     </div>
   </div>
 </div>
+<% else %>
+<div class="media" style="margin-top:0px;height: 50px;">
+  <div class="pull-left media-object">
+  <div style="height:60px;width:60px;padding-top:1px;">
+    <% if message.user.profile_image_url %> 
+      <%= image_tag(message.user.profile_image_url(:thumb), :class=>"img-responsive" ) %>
+      <% else %>
+      <img src="/images/people/50/guy-5.jpg" alt="Bill" class="img-circle" />
+      <% end %>
+    </div>
+  </div>
+  <div class="media-body message">
+    <div class="panel panel-default">
+      <div class="panel-body" style="padding:10px;">
+        <div class="col-md-2">
+        <a class="text-capitalize"><%= message.user.first_name %></a>
+        </div>
+        <div class="col-md-10">
+        <%= message.body %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<% end %>

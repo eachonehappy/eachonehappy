@@ -1,18 +1,23 @@
 <tr>
-  <td><%= link_to "#{user.first_name}  #{user.last_name}", user_path(user), :class=>"text-capitalize" %>
+  <td>
     <% if user.profile_image_url %> 
       <%= image_tag(user.profile_image_url(:thumb)) %>
       <% else %>
       <img src="/images/people/50/guy-5.jpg" width="35" alt="Bill" class="img-circle" />
       <% end %>
+      <%= link_to "#{user.first_name}  #{user.last_name}", user_path(user), :class=>"text-capitalize" %>
     </td>
   <td><%= user.email%>
   </td>
   <td>
+  <div class="friend-message" data-id="<%= user.id %>">
     <% if current_user.pending_friends.include?(user) %>
      <%= link_to "Friend request send",nil ,:class=>"btn btn-info", remote: true, :disabled=> true %>
+     <% elsif current_user.requested_friends.include?(user) %>
+    <%= link_to "Accept Request", accept_path(user), :method => :post, :class=>"acceptfriend btn btn-primary", remote: true, data: { disable_with: 'accepting' ,toggle_text: 'You are friends', toggle_href: accept_path(user), id: user.id } %>
     <%else%>
     <%= link_to "Add Friend", invite_path(user), :method => :post, :class=>"friend btn btn-info", remote: true, data: { disable_with: 'adding' ,toggle_text: 'Friend request send', toggle_href: invite_path(user), id: user.id } %>
     <% end %>
+  </div>  
   </td>
 </tr>

@@ -24,7 +24,7 @@
     <div class="profile-icons margin-none">
       <span><i class="fa fa-heart"></i><span class="votes-count" data-id="<%= organization.id %>"><%= organization.likers_count %></span></span>
       <span><i class="fa fa-user"></i> <span class="follow-count" data-id="<%= organization.id %>"> <%= organization.followers_count %></span></span>
-      <span><i class="fa fa-users"></i> 372</span>
+      <span><i class="fa fa-users"></i> <%= organization.organization_users.count %></span>
     </div>
     <div class="panel-body" style="padding-bottom:0px;">
       <div class="expandable expandable-indicator-white expandable-trigger">

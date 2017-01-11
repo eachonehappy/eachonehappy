@@ -16,5 +16,3 @@
 //= require social-share-button
 //= require rails.validations
 //= require_tree .
-
-

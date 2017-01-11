@@ -2,16 +2,23 @@ class JobsController < ApplicationController
 	before_action :authenticate_user!
   before_action :load_activities, only: [:index, :show, :new, :edit]
 	def index
+    @jobs = Job.all
+    @user_jobs = []
+    @jobs.each do |job|
+     if job.mentions?(current_user)
+       @user_jobs << job
+     end
+    end
     if params[:format].present?
       if params[:format] == "all"
-        @jobs = Job.all
+        @jobs = @user_jobs
       elsif params[:format] == "completed"
-        @jobs = Job.where(:is_completed => true)
+        @jobs = @user_jobs.select { |job| job.is_completed == true }
       else 
-        @jobs = Job.where(:is_completed => false)
+        @jobs = @user_jobs.select { |job| job.is_completed == false }
       end    
     else
-      @jobs = Job.all
+      @jobs = @user_jobs
     end
   end
   
@@ -39,7 +46,10 @@ class JobsController < ApplicationController
       params[:job][:user_ids].reject(&:empty?).each do |user_id|
         @user = User.find(user_id)
       @job.mention!(@user)
-      end
+    end
+    unless params[:job][:user_ids].reject(&:empty?).include?(current_user.id)
+      @job.mention!(current_user)
+    end
       if @job.save
         redirect_to jobs_path
       else

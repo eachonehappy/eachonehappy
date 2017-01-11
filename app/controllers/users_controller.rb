@@ -71,7 +71,7 @@ class UsersController < ApplicationController
       flash[:success] = "You are freinds"
       if request.xhr?
         @user = User.find(params[:format])
-        render json: { count: "You are freinds" , id: params[:format]}
+        render json: { count: "You are Freinds Now" , id: params[:format]}
       else
         redirect_to request.referer_path
       end

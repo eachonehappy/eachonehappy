@@ -3,7 +3,12 @@
     <div class="panel-heading" style="border-radius: 2px;">
       <div class="media">
         <a href="" class="pull-left">
-          <img src="/images/people/50/woman-5.jpg" class="media-object">
+        <% if post.user.profile_image_url %> 
+            <%= image_tag(post.user.profile_image_url(:thumb), :class => "pull-left") %>
+            <% else %>
+            <img src="/images/people/50/woman-5.jpg" class="media-object">
+                <% end %>
+          
         </a>
         <div class="media-body">
           <% if (post.user == current_user) %>

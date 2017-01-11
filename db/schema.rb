@@ -10,7 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170101185543) do
+ActiveRecord::Schema.define(version: 20170110185032) do
+
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
 
   create_table "activities", force: :cascade do |t|
     t.string   "trackable_type"
@@ -23,9 +26,9 @@ ActiveRecord::Schema.define(version: 20170101185543) do
     t.integer  "recipient_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.index ["owner_id", "owner_type"], name: "index_activities_on_owner_id_and_owner_type"
-    t.index ["recipient_id", "recipient_type"], name: "index_activities_on_recipient_id_and_recipient_type"
-    t.index ["trackable_id", "trackable_type"], name: "index_activities_on_trackable_id_and_trackable_type"
+    t.index ["owner_id", "owner_type"], name: "index_activities_on_owner_id_and_owner_type", using: :btree
+    t.index ["recipient_id", "recipient_type"], name: "index_activities_on_recipient_id_and_recipient_type", using: :btree
+    t.index ["trackable_id", "trackable_type"], name: "index_activities_on_trackable_id_and_trackable_type", using: :btree
   end
 
   create_table "campaign_users", force: :cascade do |t|
@@ -33,8 +36,8 @@ ActiveRecord::Schema.define(version: 20170101185543) do
     t.integer  "user_id"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
-    t.index ["campaign_id"], name: "index_campaign_users_on_campaign_id"
-    t.index ["user_id"], name: "index_campaign_users_on_user_id"
+    t.index ["campaign_id"], name: "index_campaign_users_on_campaign_id", using: :btree
+    t.index ["user_id"], name: "index_campaign_users_on_user_id", using: :btree
   end
 
   create_table "campaigns", force: :cascade do |t|
@@ -48,8 +51,8 @@ ActiveRecord::Schema.define(version: 20170101185543) do
     t.integer  "likers_count",      default: 0
     t.string   "small_description"
     t.string   "image"
-    t.index ["cause_id"], name: "index_campaigns_on_cause_id"
-    t.index ["organization_id"], name: "index_campaigns_on_organization_id"
+    t.index ["cause_id"], name: "index_campaigns_on_cause_id", using: :btree
+    t.index ["organization_id"], name: "index_campaigns_on_organization_id", using: :btree
   end
 
   create_table "cause_organizations", force: :cascade do |t|
@@ -57,8 +60,8 @@ ActiveRecord::Schema.define(version: 20170101185543) do
     t.integer  "organization_id"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
-    t.index ["cause_id"], name: "index_cause_organizations_on_cause_id"
-    t.index ["organization_id"], name: "index_cause_organizations_on_organization_id"
+    t.index ["cause_id"], name: "index_cause_organizations_on_cause_id", using: :btree
+    t.index ["organization_id"], name: "index_cause_organizations_on_organization_id", using: :btree
   end
 
   create_table "causes", force: :cascade do |t|
@@ -77,8 +80,8 @@ ActiveRecord::Schema.define(version: 20170101185543) do
     t.integer  "user_id"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
-    t.index ["chat_room_id"], name: "index_chat_room_users_on_chat_room_id"
-    t.index ["user_id"], name: "index_chat_room_users_on_user_id"
+    t.index ["chat_room_id"], name: "index_chat_room_users_on_chat_room_id", using: :btree
+    t.index ["user_id"], name: "index_chat_room_users_on_user_id", using: :btree
   end
 
   create_table "chat_rooms", force: :cascade do |t|
@@ -87,7 +90,7 @@ ActiveRecord::Schema.define(version: 20170101185543) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer  "friend_id"
-    t.index ["user_id"], name: "index_chat_rooms_on_user_id"
+    t.index ["user_id"], name: "index_chat_rooms_on_user_id", using: :btree
   end
 
   create_table "comments", force: :cascade do |t|
@@ -96,8 +99,8 @@ ActiveRecord::Schema.define(version: 20170101185543) do
     t.integer  "user_id"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
-    t.index ["post_id"], name: "index_comments_on_post_id"
-    t.index ["user_id"], name: "index_comments_on_user_id"
+    t.index ["post_id"], name: "index_comments_on_post_id", using: :btree
+    t.index ["user_id"], name: "index_comments_on_user_id", using: :btree
   end
 
   create_table "follows", force: :cascade do |t|
@@ -106,8 +109,8 @@ ActiveRecord::Schema.define(version: 20170101185543) do
     t.string   "followable_type"
     t.integer  "followable_id"
     t.datetime "created_at"
-    t.index ["followable_id", "followable_type"], name: "fk_followables"
-    t.index ["follower_id", "follower_type"], name: "fk_follows"
+    t.index ["followable_id", "followable_type"], name: "fk_followables", using: :btree
+    t.index ["follower_id", "follower_type"], name: "fk_follows", using: :btree
   end
 
   create_table "friendships", force: :cascade do |t|
@@ -118,8 +121,8 @@ ActiveRecord::Schema.define(version: 20170101185543) do
     t.datetime "updated_at"
     t.integer  "blocker_id"
     t.integer  "status"
-    t.index ["friend_id"], name: "index_friendships_on_friend_id"
-    t.index ["friendable_id", "friendable_type"], name: "index_friendships_on_friendable_id_and_friendable_type"
+    t.index ["friend_id"], name: "index_friendships_on_friend_id", using: :btree
+    t.index ["friendable_id", "friendable_type"], name: "index_friendships_on_friendable_id_and_friendable_type", using: :btree
   end
 
   create_table "fundraise_payment_details", force: :cascade do |t|
@@ -129,7 +132,7 @@ ActiveRecord::Schema.define(version: 20170101185543) do
     t.integer  "fundraise_id"
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false
-    t.index ["fundraise_id"], name: "index_fundraise_payment_details_on_fundraise_id"
+    t.index ["fundraise_id"], name: "index_fundraise_payment_details_on_fundraise_id", using: :btree
   end
 
   create_table "fundraises", force: :cascade do |t|
@@ -146,8 +149,8 @@ ActiveRecord::Schema.define(version: 20170101185543) do
     t.string   "image"
     t.integer  "raised_amount",      default: 0
     t.boolean  "payment_is_pending"
-    t.index ["campaign_id"], name: "index_fundraises_on_campaign_id"
-    t.index ["user_id"], name: "index_fundraises_on_user_id"
+    t.index ["campaign_id"], name: "index_fundraises_on_campaign_id", using: :btree
+    t.index ["user_id"], name: "index_fundraises_on_user_id", using: :btree
   end
 
   create_table "job_users", force: :cascade do |t|
@@ -155,8 +158,8 @@ ActiveRecord::Schema.define(version: 20170101185543) do
     t.integer  "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["job_id"], name: "index_job_users_on_job_id"
-    t.index ["user_id"], name: "index_job_users_on_user_id"
+    t.index ["job_id"], name: "index_job_users_on_job_id", using: :btree
+    t.index ["user_id"], name: "index_job_users_on_user_id", using: :btree
   end
 
   create_table "jobs", force: :cascade do |t|
@@ -166,7 +169,7 @@ ActiveRecord::Schema.define(version: 20170101185543) do
     t.datetime "created_at",                   null: false
     t.datetime "updated_at",                   null: false
     t.boolean  "is_completed", default: false
-    t.index ["campaign_id"], name: "index_jobs_on_campaign_id"
+    t.index ["campaign_id"], name: "index_jobs_on_campaign_id", using: :btree
   end
 
   create_table "likes", force: :cascade do |t|
@@ -175,8 +178,8 @@ ActiveRecord::Schema.define(version: 20170101185543) do
     t.string   "likeable_type"
     t.integer  "likeable_id"
     t.datetime "created_at"
-    t.index ["likeable_id", "likeable_type"], name: "fk_likeables"
-    t.index ["liker_id", "liker_type"], name: "fk_likes"
+    t.index ["likeable_id", "likeable_type"], name: "fk_likeables", using: :btree
+    t.index ["liker_id", "liker_type"], name: "fk_likes", using: :btree
   end
 
   create_table "mentions", force: :cascade do |t|
@@ -185,8 +188,8 @@ ActiveRecord::Schema.define(version: 20170101185543) do
     t.string   "mentionable_type"
     t.integer  "mentionable_id"
     t.datetime "created_at"
-    t.index ["mentionable_id", "mentionable_type"], name: "fk_mentionables"
-    t.index ["mentioner_id", "mentioner_type"], name: "fk_mentions"
+    t.index ["mentionable_id", "mentionable_type"], name: "fk_mentionables", using: :btree
+    t.index ["mentioner_id", "mentioner_type"], name: "fk_mentions", using: :btree
   end
 
   create_table "messages", force: :cascade do |t|
@@ -195,8 +198,8 @@ ActiveRecord::Schema.define(version: 20170101185543) do
     t.integer  "chat_room_id"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
-    t.index ["chat_room_id"], name: "index_messages_on_chat_room_id"
-    t.index ["user_id"], name: "index_messages_on_user_id"
+    t.index ["chat_room_id"], name: "index_messages_on_chat_room_id", using: :btree
+    t.index ["user_id"], name: "index_messages_on_user_id", using: :btree
   end
 
   create_table "organization_users", force: :cascade do |t|
@@ -206,8 +209,8 @@ ActiveRecord::Schema.define(version: 20170101185543) do
     t.datetime "updated_at",      null: false
     t.string   "role"
     t.string   "status"
-    t.index ["organization_id"], name: "index_organization_users_on_organization_id"
-    t.index ["user_id"], name: "index_organization_users_on_user_id"
+    t.index ["organization_id"], name: "index_organization_users_on_organization_id", using: :btree
+    t.index ["user_id"], name: "index_organization_users_on_user_id", using: :btree
   end
 
   create_table "organizations", force: :cascade do |t|
@@ -227,8 +230,8 @@ ActiveRecord::Schema.define(version: 20170101185543) do
     t.integer  "user_id"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
-    t.index ["fundraise_id"], name: "index_payments_on_fundraise_id"
-    t.index ["user_id"], name: "index_payments_on_user_id"
+    t.index ["fundraise_id"], name: "index_payments_on_fundraise_id", using: :btree
+    t.index ["user_id"], name: "index_payments_on_user_id", using: :btree
   end
 
   create_table "posts", force: :cascade do |t|
@@ -238,7 +241,13 @@ ActiveRecord::Schema.define(version: 20170101185543) do
     t.datetime "updated_at",               null: false
     t.string   "image"
     t.integer  "likers_count", default: 0
-    t.index ["user_id"], name: "index_posts_on_user_id"
+    t.index ["user_id"], name: "index_posts_on_user_id", using: :btree
+  end
+
+  create_table "stats", force: :cascade do |t|
+    t.float    "rate"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|
@@ -262,8 +271,11 @@ ActiveRecord::Schema.define(version: 20170101185543) do
     t.boolean  "admin",                  default: false
     t.float    "wallet_amount",          default: 0.0
     t.integer  "notification_count",     default: 0
-    t.index ["email"], name: "index_users_on_email", unique: true
-    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+    t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
+    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
 
+  add_foreign_key "chat_rooms", "users"
+  add_foreign_key "messages", "chat_rooms"
+  add_foreign_key "messages", "users"
 end

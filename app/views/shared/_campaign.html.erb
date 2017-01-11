@@ -27,7 +27,7 @@
           <%= link_to '<i class="fa fa-heart"></i>Like'.html_safe, like_campaign_path(campaign), method: :put, :class=>"vote btn", remote: true, data: { toggle_text: 'Unlike', toggle_href: like_campaign_path(campaign), id: campaign.id } %>
         <% end %>
         <% if current_user.follows?(campaign)  %>
-          <%= link_to '<i class="fa fa-user"></i> Unfollow'.html_safe, follow_campaign_path(campaign), method: :put, :class=>"follow btn", remote: true, data: { toggle_text: 'Follow', toggle_href: follow_campaign_path(campaign), id: campaign.id } %>
+          <%= link_to '<i class="fa fa-user"></i> Unfollow'.html_safe, follow_campaign_path(campaign), method: :put, :class=>"follow btn",:style=> "padding-left: 4px;", remote: true, data: { toggle_text: 'Follow', toggle_href: follow_campaign_path(campaign), id: campaign.id } %>
         <% else %>
           <%= link_to '<i class="fa fa-user"></i> Follow'.html_safe, follow_campaign_path(campaign), method: :put, :class=>"follow btn", remote: true, data: { toggle_text: 'Unfollow', toggle_href: follow_campaign_path(campaign), id: campaign.id } %>
         <% end %>

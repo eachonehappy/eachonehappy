@@ -21,7 +21,7 @@
                 <li>
                   <%current_user.organizations.each do |organization|%>
                     <%= link_to organization_path(organization), data: { turbolinks: false } do %>
-                      <i class="icon-lock-fill"></i><%=organization.name%>
+                      <i class="fa fa-building-o"></i><%=organization.name%>
                     <%end%>
                   <%end%>  
                 </li>
@@ -34,7 +34,7 @@
                 <li>
                 <%current_user.campaigns.each do |campaign|%>
                     <%= link_to campaign_path(campaign), data: { turbolinks: false } do %>
-                      <i class="icon-lock-fill"></i><%=campaign.subject%>
+                      <i class="icon-group"></i><%=campaign.subject%>
                     <%end%>
                  <%end%>  
                 </li>
@@ -47,7 +47,7 @@
                 <li>
                 <%current_user.fundraises.each do |fundraise|%>
                   <%= link_to fundraise_path(fundraise), data: { turbolinks: false } do %>
-                    <i class="icon-lock-fill"></i><%=fundraise.subject%>
+                    <i class="fa fa-money"></i><%=fundraise.subject%>
                   <%end%>
                  <%end%>  
                 </li>

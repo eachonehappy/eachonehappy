@@ -3,12 +3,7 @@
 </div>
 <div class="col-md-6" style="margin-left:20px;">
 <div class="media-body"> 
-  <div id="messages<%= @chat_room.id %>">
-  <div id="get-messages">
-  <%= render :partial => 'messages/message', :collection => @chat_room.messages %>
-  </div>
-  </div>   
-    <div class="media">
+<div class="media" style="height: 38px;">
       <div class="panel panel-default share">
       <%= form_for(@message, remote: true) do |f| %>
         <%= hidden_field_tag 'chat_room_id', @chat_room.id %>
@@ -26,6 +21,15 @@
           <!-- /input-group -->
       </div>
     </div>
+<div class="media" id="message">
+  <div id="messages<%= @chat_room.id %>">
+  <div id="get-messages">
+  
+  <%= render :partial => 'messages/message', :collection => @chat_room.messages.reverse %>
+  </div>
+  </div>
+  </div>   
+    
   </div>
 </div>
 

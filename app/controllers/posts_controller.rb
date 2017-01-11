@@ -2,7 +2,13 @@ class PostsController < ApplicationController
   before_action :authenticate_user!
   before_action :load_activities, only: [:index, :show, :new, :edit]
 	def index
-    @posts = Post.all
+    @posts = []
+    @friends = current_user.friends
+    @friends.each do |friend|
+      friend.posts.each do |post|
+        @posts << post
+      end  
+    end
   end
   
   def show
