@@ -3,10 +3,11 @@
     <div class="panel-heading" style="border-radius: 2px;">
       <div class="media">
         <a href="" class="pull-left">
+        
         <% if post.user.profile_image_url %> 
             <%= image_tag(post.user.profile_image_url(:thumb), :class => "pull-left") %>
             <% else %>
-            <img src="/images/people/50/woman-5.jpg" class="media-object">
+            <img src="/images/profile.png" class="media-object" width="40">
                 <% end %>
           
         </a>
@@ -29,9 +30,11 @@
       <%end%>
       <p ><%=post.description%></p>
       </div>
+      <%= link_to post_path(post) do %>
       <%if post.image_url %>
     <%= image_tag post.image_url.to_s, :class=>"img-responsive", :style=> "padding: 10px;" %>
     <%end%>
+    <% end %>
     <div class="collapse" id="1collapseExample<%=post.id%>" style= "padding-left:10px;padding-bottom:5px;" >
      <%= social_share_button_tag(post.description, :url => request.original_url ) %>  </div>
     <div class="btn-group btn-group-footer btn-group-justified" style="    border-bottom: 1px solid #eeeeee;">

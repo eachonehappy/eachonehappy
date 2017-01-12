@@ -3,10 +3,12 @@
     
      <h3 class="margin-none" style="padding-top:10px;"><%= link_to "#{organization.name}" , organization_path(organization), data: { turbolinks: false }, :class=> "text-capitalize"%></h3>
      <div class="avatar" style="padding-top:10px;padding-bottom:0px;">
+     <%= link_to  organization_path(organization)do %>
     <% if organization.profile_image_url %> 
       <%= image_tag organization.profile_image_url :organization, :class=>"img-circle pull-left img-responsive"%>
     <% else %>
        <img src="/images/people/110/default.png" alt="" class="img-circle pull-left">
+    <% end %>
     <% end %>
     </div>
     <div style="padding-bottom:10px;">
