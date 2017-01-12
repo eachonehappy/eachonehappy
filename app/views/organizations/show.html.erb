@@ -1,6 +1,13 @@
 <div class="col-md-9" style="padding-left: 0px;
     padding-right: 0px;">
+
   <div class="cover profile" style="margin-bottom: 10px;">
+   <% flash.each do |key, value| %>
+      <div class="alert alert-info alert-dismissable">
+      <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+      <%= value %></div>
+    <% end %>
+    <%= render 'organizations/picture_modal'%> 
     <div style="position:relative;display:inline-block;text-align:center;"> 
       <% if @organization.cover_image_url %> 
         <%= image_tag @organization.cover_image_url.to_s, :class=>"img-responsive" %>
@@ -8,7 +15,7 @@
         <img src="/images/cover.png" class="img-responsive">
       <% end %>
       <% if organization_member?(@organization) %>  
-      <a style="position:absolute;background-color: rgba(255, 255, 255, 0.48);top:10px;left:10px;" class="btn btn-cover" data-toggle="modal" data-target="#modal-slide-down"><i class="fa fa-pencil fa-fw"></i></a>
+      <a style="position:absolute;background-color: rgba(255, 255, 255, 0.48);top:10px;left:10px;" class="btn btn-cover" data-toggle="collapse" data-target="#collapseExampleorganization<%=@organization.id%>" aria-expanded="false" aria-controls="collapseExample"><i class="fa fa-pencil fa-fw"></i></a>
       <% end %>
       <div style="position:absolute;background-color: rgba(255, 255, 255, 0);right:10px;bottom:50px;">
         <p class="blockquote-reverse h4"><span class="votes-count" data-id="<%= 
@@ -85,7 +92,9 @@
     </div>
   </div>
   <div class="tab-content" style="padding: 0px;">
-  <%= render :partial => 'users/friends', :collection => @users = @members%>    
+  <div class="tab-pane fade" id="friends">
+  <%= render :partial => 'users/friends', :collection => @users%> 
+  </div>   
     <div class="tab-pane fade" id="fundraise" >
     <%= render :partial => 'fundraises/fundraise', :collection => @organization_fundraise %>
   </div>
@@ -161,7 +170,7 @@
   </div>                      
   </div>
 </div>
-<%= render 'organizations/picture_modal'%>         
+        
           
               
             

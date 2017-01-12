@@ -1,38 +1,29 @@
-<div class="modal slide-down fade" id="modal-slide-down">
-  <div class="modal-dialog">
-    <div class="v-cell">
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-          <h4 class="modal-title">Update profile picture & cover picture</h4>
-        </div>
-        <div class="modal-body" style="
-    height: 150px;
-">
-          <%= form_for @user, :html =>{:multipart => true} do |f| %>           
-            <div class="form-group"> 
-              <label for="inputEmail3" class="col-sm-3 control-label">Cover Photo</label> 
-              <div class="col-sm-9">          
-                <%= f.file_field :cover_image , :class=>"btn btn-default btn-sm pull-left"%>
-              </div>
-            </div>
-            <br>
-            <div class="form-group">
-              <label for="inputEmail3" class="col-sm-3 control-label">Profile Picture</label> 
-              <div class="col-sm-9">  
-                <%= f.file_field :profile_image , :class=>"btn btn-default btn-sm pull-left"%>
-              </div>
-            </div>
-            <br>
-            <div class="col-sm-offset-3 col-sm-9">
-              <%= f.submit "Change", :class=> "btn btn-primary" %>
-            </div>
-          <%end%>
-        </div>
-        <div class="modal-footer">       
-          <button type="button" class="btn btn-default" data-dismiss="modal">cancel</button>            
-        </div>        
+<div class="collapse" id="collapseExampleuser<%=current_user.id%>">
+ <div class="col-md-6" style="padding-left:5px;">
+  <%= form_for @user,  :html =>{:multipart => true} do |f| %>           
+    <div class="form-group">
+      <label for="inputEmail3" class="col-sm-2 control-label" style="padding-left:5px;">Profile Picture</label> 
+      <div class="col-sm-8" style="padding-left:5px;">  
+        <%= f.file_field :profile_image, validate: { presence: true } , :class=>"btn btn-default btn-sm pull-left"%>
       </div>
     </div>
-  </div>
+    <div class="col-sm-2" style="padding-left:3px;">
+      <%= f.submit "Change", :class=> "btn btn-primary" %>
+    </div>
+  <%end%>
+</div> 
+ <div class="col-md-6" style="padding-left:5px;">
+  <%= form_for @user, :html =>{:multipart => true} do |f| %>           
+    <div class="form-group" > 
+      <label for="inputEmail3" class="col-sm-2 control-label">Cover Photo</label> 
+      <div class="col-sm-8" style="padding-left:5px;">          
+        <%= f.file_field :cover_image , :class=>"btn btn-default btn-sm pull-left"%>
+      </div>
+    </div>
+    <div class="col-sm-2" style="padding-left:2px;">
+      <%= f.submit "Change", :class=> "btn btn-primary" %>
+    </div>
+  <%end%>
+</div>       
+ 
 </div> 

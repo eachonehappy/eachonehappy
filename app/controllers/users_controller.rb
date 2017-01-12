@@ -22,24 +22,25 @@ class UsersController < ApplicationController
 
   def update
     @user = User.find(params[:id])
-    if params[:user][:first_name].present? && params[:user][:last_name].present?
-      @user.first_name = params[:user][:first_name]
-      @user.last_name = params[:user][:last_name]
-    else
-
-      if params[:user][:cover_image].present?
+    if params[:user]    
+      if params[:user][:first_name].present? && params[:user][:last_name].present?
+        @user.first_name = params[:user][:first_name]
+        @user.last_name = params[:user][:last_name]
+      elsif params[:user][:cover_image].present?
         @user.cover_image = params[:user][:cover_image]
-      end
-      
-      if params[:user][:profile_image].present? 
+      elsif params[:user][:profile_image].present?
         @user.profile_image = params[:user][:profile_image]
+      else
+        redirect_to request.referer 
       end
-    end 
-      
-    if @user.save
-      redirect_to @user
+      if @user.save
+        redirect_to @user
+      else
+        render 'edit'
+      end
     else
-      render 'edit'
+      flash[:failure] = "select atleast one picture"
+      redirect_to request.referer 
     end
   end
 

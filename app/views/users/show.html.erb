@@ -1,6 +1,12 @@
 <div class="col-md-9" style="padding-left: 0px;
-    padding-right: 0px;">
+    padding-right: 0px;">      
   <div class="cover profile" style="margin-bottom: 10px;"> 
+  <% flash.each do |key, value| %>
+      <div class="alert alert-info alert-dismissable">
+      <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+      <%= value %></div>
+    <% end %> 
+  <%= render 'users/picture_modal'%>
   <div style="position:relative;
     display:inline-block;
     text-align:center;
@@ -15,7 +21,7 @@
     background-color: rgba(255, 255, 255, 0.48);
     top:10px;
     left:10px;
-    " class="btn btn-cover" data-toggle="modal" data-target="#modal-slide-down"><i class="fa fa-pencil fa-fw"></i></a> 
+    " class="btn btn-cover" data-toggle="collapse" data-target="#collapseExampleuser<%=@current_user.id%>" aria-expanded="false" aria-controls="collapseExample"><i class="fa fa-pencil fa-fw"></i></a> 
     <% end %>
    <div style="position:absolute;
     background-color: rgba(255, 255, 255, 0);
@@ -93,8 +99,10 @@
   </div>
   <div class="tab-pane fade" id="campaign" >
     <%= render :partial => 'campaigns/campaign', :collection => @user.campaigns%>
-  </div>     
-    <%= render 'users/friends'%> 
+  </div> 
+  <div class="tab-pane fade" id="friends">    
+    <%= render 'users/friends'%>
+    </div> 
   <div class="tab-pane active" id="time_line" > 
     <div class="col-md-6" style="padding-left: 0px; padding-right: 8px;">
         <div class="panel panel-default" style="margin-bottom: 10px;"">
@@ -124,10 +132,11 @@
                 </ul>
             </div>
         </div>
-        
+        <% if @user.organizations.any? %>
         <h3 class="margin-none text-capitalize text-center" style="background-color:white;;padding-bottom:5px;">Organizations</h3>
         
         <%= render :partial => 'organizations/organization', :collection => @user.organizations%>
+        <% end %>
     </div> 
       <div class="col-md-6 " style="padding-left: 0px; padding-right: 0px;" id="scrolling">
         <%= render :partial => 'shared/post', :collection => @posts%>
@@ -136,7 +145,7 @@
   </div>
 </div>
     
-<%= render 'users/picture_modal'%>       
+ 
               
             
       

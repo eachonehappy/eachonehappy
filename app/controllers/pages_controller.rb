@@ -6,10 +6,20 @@ class PagesController < ApplicationController
   	@post = Post.new
   	@comment = Comment.new
     @payment = Payment.new
-  	@posts = Post.all.sort_by(&:created_at).reverse
+    @posts = []
+    @friends = current_user.friends + [current_user]
+    @friends.each do |friend|
+      friend.posts.each do |post|
+        @posts << post
+      end  
+    end
+  	@posts = @posts.sort_by(&:created_at).reverse
+    if @posts.empty?
+      @posts = Post.all.sort_by(&:likers_count).sort_by(&:created_at).last(20).reverse
+    end
   	@all_user = current_user.friends
-    @fundraises = Fundraise.all.sort_by(&:likers_count).reverse
-    @campaigns = Campaign.all.sort_by(&:likers_count).reverse
+    @fundraises = Fundraise.all.sort_by(&:likers_count).sort_by(&:created_at).last(20).reverse
+    @campaigns = Campaign.all.sort_by(&:likers_count).sort_by(&:created_at).last(20).reverse
   end
 
   def about_us

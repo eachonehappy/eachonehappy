@@ -1,10 +1,14 @@
 <div class="col-md-4 animated pulse" style="margin-top:7px;padding:0px;">
   <div style="margin-right:3px;margin-left:3px;background-color:white;padding:5px;">
-    <% if campaign.image_url %> 
-      <%= image_tag campaign.image_url :medium, :class=>"img-responsive"%>
-    <% else %>
-       <img src="https://static-files-ketto.netdna-ssl.com/3/media/campaign/22000/22408/image/wid098993fa011b4178a854ecb80ca89decfc2ebca4.jpg" class="img-responsive">
-    <% end %>
+    <%= link_to  campaign_path(campaign)do %>
+      <% if campaign.image_url %>
+      <div style="padding-left:2px;">  
+        <%= image_tag campaign.image_url :medium, :class=>"img-responsive"%>
+        </div>
+      <% else %>
+         <img src="/images/default.png" class="img-responsive" style="height: 194px;">
+      <% end %>
+    <% end %>  
     <div style="padding-left:10px;padding-right:10px;">
       <h5 class="text-capitalize" ><%= link_to "#{campaign.subject}" , campaign_path(campaign), data: { turbolinks: false }%></h5>
       <p >by

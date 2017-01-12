@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170110185032) do
+ActiveRecord::Schema.define(version: 20170112161100) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -73,6 +73,7 @@ ActiveRecord::Schema.define(version: 20170110185032) do
     t.integer  "likers_count",      default: 0
     t.string   "small_description"
     t.string   "image"
+    t.integer  "user_id"
   end
 
   create_table "chat_room_users", force: :cascade do |t|

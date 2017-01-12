@@ -22,6 +22,7 @@ class CausesController < ApplicationController
   
   def create
   	@cause = Cause.new(cause_params)
+    @cause.user_id = current_user.id
     if @cause.save
       flash[:success] = "cause created!"
       redirect_to @cause

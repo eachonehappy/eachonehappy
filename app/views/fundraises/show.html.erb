@@ -13,7 +13,7 @@
           <% if @fundraise.image_url %> 
             <%= image_tag @fundraise.image_url :normal, :class=>"img-responsive", :style=>"padding:5px;"%>
           <% else %>
-            <img src="/images/food1-full.jpg" alt="image" class="img-responsive" style="padding:5px;" />
+            <img src="/images/default.png" alt="image" class="img-responsive" style="padding:5px;" />
           <% end %>
         </div>
         <div class="media-body">
@@ -23,6 +23,9 @@
           <h4 class = "margin-none text-capitalize"><%=@fundraise.small_description%></h4><br>
           <h3 class = "margin-none text-capitalize"><%=@fundraise.description%></h3>
           <br>
+          <p >Started by
+            <%= link_to "#{full_name(@fundraise.user)}", user_path(@fundraise.user), :class=> "text-capitalize"%>
+          </p>
           <%if @fundraise.mentionees(User).any? %>
           with
           <%@fundraise.mentionees(User).each do |user|%>

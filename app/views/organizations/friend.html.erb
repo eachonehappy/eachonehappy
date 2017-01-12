@@ -7,25 +7,28 @@
     <table data-toggle="data-table" class="table" cellspacing="0" width="100%">
       <thead>
         <tr>
-          <th>Title</th>
-          <th>Description</th>
-          <th>Office</th>
+          <th>Name</th>
+          <th>Email</th>
           <th>Action</th>
         </tr>
       </thead>
       <tfoot>
         <tr>
-          <th>Title</th>
-          <th>Description</th>
-          <th>Office</th>
+          <th>Name</th>
+          <th>Email</th>
           <th>Action</th>
         </tr>
       </tfoot>
       <tbody>
       <% @users.each do |user|%>
       <tr>
-  <td><%= link_to "#{user.first_name}  #{user.last_name}", user_path(user), :class=>"text-capitalize" %></td>
-  <td><img src="http://bootdey.com/img/Content/user_1.jpg" class="img-circle avatar" alt="user profile image"></td>
+  <td>
+  <% if user.profile_image_url %> 
+    <%= image_tag(user.profile_image_url(:thumb)) %>
+    <% else %>
+    <img src="/images/profile.png" width="35" class="img-circle" />
+  <% end %>
+  <%= link_to "#{user.first_name}  #{user.last_name}", user_path(user), :class=>"text-capitalize" %></td>
   <td><%= user.email%>
   </td>
   <td>

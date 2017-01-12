@@ -1,6 +1,6 @@
 class OrganizationsController < ApplicationController
   before_action :authenticate_user!
-  before_action :load_activities, only: [:index, :show, :new, :edit]
+  before_action :load_activities, only: [:index, :show, :new, :edit, :friend]
   def index
     if params[:search]
       @organizations = Organization.all
@@ -17,7 +17,7 @@ class OrganizationsController < ApplicationController
     @pending_users = User.where( id: @pending_requests_ids)
     @members_ids = @organization.organization_users.accepted.map(&:user_id) 
     @members = User.where( id: @members_ids) 
-    @members = @members - [current_user]
+    @users = @members - [current_user]
     @organization_posts = []
     @members.each do |member|
       member.posts.each do |post|
@@ -31,7 +31,8 @@ class OrganizationsController < ApplicationController
         @organization_fundraise << fundraise
       end  
     end
-    @payment = Payment.new   
+    @payment = Payment.new 
+    @all_user = current_user.friends  
   end
   
   def new
@@ -66,24 +67,26 @@ class OrganizationsController < ApplicationController
   
   def update
     @organization = Organization.find(params[:id])
-    if organization_params[:description].present? && organization_params[:name].present?
-      @organization.name = organization_params[:name]
-      @organization.description = organization_params[:description]
-    else
-      
-      if params[:organization][:cover_image].present?
+    if params[:organization]
+      if organization_params[:description].present? && organization_params[:name].present?
+        @organization.name = organization_params[:name]
+        @organization.description = organization_params[:description]
+      elsif params[:organization][:cover_image].present?
         @organization.cover_image = params[:organization][:cover_image]
-      end
-      
-      if params[:organization][:profile_image].present? 
+      elsif params[:organization][:profile_image].present? 
         @organization.profile_image = params[:organization][:profile_image]
+      else
+        redirect_to request.referer  
+      end  
+      if @organization.save
+        redirect_to @organization
+      else
+        render 'edit'
       end
-    end  
-    if @organization.save
-      redirect_to @organization
     else
-      render 'edit'
-    end
+      flash[:failure] = "select atleast one picture"
+      redirect_to request.referer 
+    end  
   end
 
   def destroy

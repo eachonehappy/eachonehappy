@@ -10,9 +10,10 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
+      <%= link_to  root_path, data: { turbolinks: false } do %>
+      <img src="/images/logo.png" class="navbar-brand hidden-xs navbar-brand-primary">
       
-      <%= link_to "<center>TakeStand</center>".html_safe, root_path, :class=>"navbar-brand hidden-xs navbar-brand-primary", data: { turbolinks: false } %>
-
+      <% end %>
     </div>
     <div class="navbar-collapse collapse" id="collapse" style="padding-right:40px;">
       <ul class="nav navbar-nav navbar-right"> 
@@ -41,7 +42,7 @@
                  <%= link_to "Decline", decline_path(friend), :method => :post, :class =>"acceptfriend btn btn-danger",remote: true, data: { turbolinks: false , toggle_href: decline_path(friend), id: friend.id }%>
                 </div>
                 <div class="media-left">
-                  <img src="/images/people/50/guy-2.jpg" alt="people" class="img-circle" width="30">
+                  <img src="/images/profile.png" alt="people" class="img-circle" width="30">
                 </div>
                 <div class="media-body">
                   <a href="#"><%=friend.name%></a>
@@ -95,7 +96,7 @@
                   <% if message.user.profile_image_url %> 
             <%= image_tag(message.user.profile_image_url(:thumb), :class => "pull-left") %>
             <% else %>
-            <img src="/images/people/50/guy-5.jpg" width="20" alt="Bill" class="img-circle" />
+            <img src="/images/profile.png" width="20" alt="Bill" class="img-circle" />
                 <% end %>
               </div>
               <div class="media-body" style="padding-left:10px;">
@@ -120,7 +121,7 @@
             <% if current_user.profile_image_url %> 
             <%= image_tag(current_user.profile_image_url(:thumb)) %>
             <% else %>
-            <img src="/images/people/50/guy-5.jpg" width="20" alt="Bill" class="img-circle" />
+            <img src="/images/profile.png" width="20" alt="Bill" class="img-circle" />
             <% end %>
              <%= "#{current_user.first_name}" %>
           <%end%>         
