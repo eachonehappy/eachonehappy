@@ -12,7 +12,7 @@
     <div style="padding-left:10px;padding-right:10px;">
       <h5 class="text-capitalize" ><%= link_to "#{fundraise.subject}" , fundraise_path(fundraise), data: { turbolinks: false }%></h5>
       <p >by
-        <%= link_to "#{full_name(fundraise.user)}", user_path(fundraise.user), :class=> "text-capitalize"%>
+        <%= link_to "#{full_name(fundraise.user)}", user_path(fundraise.user), :class=> "text-capitalize",data: {  turbolinks: false }%>
         <a data-toggle="collapse" data-target="#collapseExample<%=fundraise.id%>" aria-expanded="false" aria-controls="collapseExample" class="btn btn-primary pull-right">Donate</a>
       </p>
       

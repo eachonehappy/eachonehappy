@@ -1,15 +1,15 @@
 <tr>
-  <td><%= link_to "#{full_name(payment.user)}", user_path(payment.user), :class=>"text-capitalize" %></td>
+  <td><%= link_to "#{full_name(payment.user)}", user_path(payment.user), :class=>"text-capitalize",data: {  turbolinks: false } %></td>
   <td>Rs. <%= payment.amount %>
   </td>
   <td>
    
-    <%= link_to "#{payment.fundraise.subject}", fundraise_path(payment.fundraise) %>
+    <%= link_to "#{payment.fundraise.subject}", fundraise_path(payment.fundraise),data: {  turbolinks: false } %>
     
   </td>
   <td>
    
-    <%= link_to "#{payment.fundraise.campaign.subject}", campaign_path(payment.fundraise.campaign) %>
+    <%= link_to "#{payment.fundraise.campaign.subject}", campaign_path(payment.fundraise.campaign) ,data: {  turbolinks: false }%>
     
   </td>
 </tr>

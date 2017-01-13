@@ -23,6 +23,7 @@ class FundraisePaymentDetailsController < ApplicationController
   def new
     @fundraise_payment_detail = FundraisePaymentDetail.new
     @all_fundraises = current_user.fundraises
+    @fundraise = Fundraise.find(params[:format])
   end
 
   def create

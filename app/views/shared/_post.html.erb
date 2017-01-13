@@ -13,9 +13,9 @@
         </a>
         <div class="media-body">
           <% if (post.user == current_user) %>
-          <%= link_to '<i class="fa fa-pencil"></i>'.html_safe , edit_post_path(post), data: { turbolinks: false }, :class => "btn btn-cover pull-right", :style=>"padding-top:2px;" %> 
+          <%= link_to '<i class="fa fa-pencil"></i>'.html_safe , edit_post_path(post), data: { turbolinks: false }, :class => "btn btn-cover pull-right", :style=>"padding-top:2px;",data: {  turbolinks: false } %> 
           <% end %>
-          <%= link_to "#{full_name(post.user)}", user_path(post.user), :class=>"text-capitalize"%>
+          <%= link_to "#{full_name(post.user)}", user_path(post.user), :class=>"text-capitalize",data: {  turbolinks: false }%>
           
           <span>posted <%= time_ago_in_words(post.created_at) %> ago</span>
         </div>
@@ -25,7 +25,7 @@
     <%if post.mentionees(User).any?%>
     with <%post.mentionees(User).each do |user|%>
 
-      <%= link_to "#{full_name(user)}", user_path(user), :class=>"text-capitalize"%>
+      <%= link_to "#{full_name(user)}", user_path(user), :class=>"text-capitalize",data: {  turbolinks: false }%>
       <%end%>
       <%end%>
       <p ><%=post.description%></p>

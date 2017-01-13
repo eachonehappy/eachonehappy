@@ -1,16 +1,18 @@
 <tr>
-  <td><%= link_to "#{full_name(fundraise_payment_detail.fundraise.user)}", user_path(fundraise_payment_detail.fundraise.user), :class=>"text-capitalize" %></td>
+  <td><%= link_to "#{full_name(fundraise_payment_detail.fundraise.user)}", user_path(fundraise_payment_detail.fundraise.user), :class=>"text-capitalize" ,data: {  turbolinks: false }%></td>
   
   <td>
    
-    <%= link_to "#{fundraise_payment_detail.fundraise.subject}", fundraise_path(fundraise_payment_detail.fundraise) %>
+    <%= link_to "#{fundraise_payment_detail.fundraise.subject}", fundraise_path(fundraise_payment_detail.fundraise) ,data: {  turbolinks: false }%>
     
   </td>
-  <td>Rs. <%= fundraise_payment_detail.full_name %>
+  <td><%= fundraise_payment_detail.full_name %>
   </td>
-  <td>Rs. <%= fundraise_payment_detail.account_number %>
+  <td><%= fundraise_payment_detail.account_number %>
   </td>
-  <td>Rs. <%= fundraise_payment_detail.ifsc_code %>
+  <td><%= fundraise_payment_detail.ifsc_code %>
+  </td>
+  <td><%= fundraise_payment_detail.fundraise.raised_amount %>
   </td>
   <td>
    <% if fundraise_payment_detail.fundraise.payment_is_pending == false%>

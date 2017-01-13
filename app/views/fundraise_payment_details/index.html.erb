@@ -5,11 +5,11 @@
         <%= "Jobs" %>
       </h1>
       <div class="pull-right">
-      <%= link_to "Pending payment", fundraise_payment_details_path("pending"), data: { turbolinks: false }, class: 'btn btn-primary', :style=> "margin-top: 10px;
+      <%= link_to "Pending payment", fundraise_payment_details_path("pending"), data: { turbolinks: false , disable_with: 'Wait ...'}, class: 'btn btn-primary', :style=> "margin-top: 10px;
     margin-right: 10px;"%>
-    <%= link_to "Transfered payment", fundraise_payment_details_path("transfered"), data: { turbolinks: false }, class: 'btn btn-primary', :style=> "margin-top: 10px;
+    <%= link_to "Transfered payment", fundraise_payment_details_path("transfered"), data: { turbolinks: false , disable_with: 'Wait ...'}, class: 'btn btn-primary', :style=> "margin-top: 10px;
     margin-right: 10px;"%>
-    <%= link_to "All payment", fundraise_payment_details_path("all"), data: { turbolinks: false }, class: 'btn btn-primary', :style=> "margin-top: 10px;
+    <%= link_to "All payment", fundraise_payment_details_path("all"), data: { turbolinks: false , disable_with: 'Wait ...'}, class: 'btn btn-primary', :style=> "margin-top: 10px;
     margin-right: 10px;"%>
       
     </div>
@@ -22,21 +22,23 @@
       <thead>
         <tr>
           <th>User</th>
-          <th>Amount</th>
           <th>Fundraise</th>
-          <th>Campaign</th>
-          <th>Campaign</th>
-          <th>Campaign</th>
+          <th>Full Name</th>
+          <th>Account No.</th>
+          <th>IFSC code</th>
+          <th>Amount</th>
+          <th>Action</th>
         </tr>
       </thead>
       <tfoot>
         <tr>
           <th>User</th>
-          <th>Amount</th>
           <th>Fundraise</th>
-          <th>Campaign</th>
-          <th>Campaign</th>
-          <th>Campaign</th>
+          <th>Full Name</th>
+          <th>Account No.</th>
+          <th>IFSC code</th>
+          <th>Amount</th>
+          <th>Action</th>
         </tr>
       </tfoot>
       <tbody>

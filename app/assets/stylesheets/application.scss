@@ -17,6 +17,10 @@
    padding-top:10px;
  }
 
+ .alert-dismissable {
+   margin-bottom:5px;
+ }
+
  #message {
   max-height: 560px;
   overflow-y: auto;
@@ -40,12 +44,12 @@ html {
     overflow-x: hidden;
 }
 ::-webkit-scrollbar {
-    width: 5px;  /* remove scrollbar space */
-    background: transparent;  /* optional: just make scrollbar invisible */
+    width: 7px;  /* remove scrollbar space */
+    background: #cacaca;  /* optional: just make scrollbar invisible */
 }
 /* optional: show position indicator in red */
 ::-webkit-scrollbar-thumb {
-    background: #cacaca;
+    background: white;
 }
 
 $size: 29px;

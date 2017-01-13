@@ -4,7 +4,7 @@
       <center>
         <h3 class = "margin-none text-uppercase"><b><%=@fundraise.subject%>
         <% if (@fundraise.user == current_user) %>
-          <%= link_to '<i class="fa fa-pencil"></i>'.html_safe , edit_fundraise_path(@fundraise), :class=>"btn btn-white btn-md pull-right" %>
+          <%= link_to '<i class="fa fa-pencil"></i>'.html_safe , edit_fundraise_path(@fundraise), :class=>"btn btn-white btn-md pull-right" ,data: {  turbolinks: false }%>
           <% end %>
         </b></h3> 
       </center>
@@ -21,19 +21,27 @@
         <a data-toggle="collapse" data-target="#collapseExample<%=@fundraise.id%>" aria-expanded="false" aria-controls="collapseExample" class="btn btn-primary btn-lg" style="margin-bottom:10px;">Make a Contribution</a>
         
           <h4 class = "margin-none text-capitalize"><%=@fundraise.small_description%></h4><br>
-          <h3 class = "margin-none text-capitalize"><%=@fundraise.description%></h3>
+          <h5 class = "margin-none text-capitalize"><%=@fundraise.description%></h5>
           <br>
           <p >Started by
-            <%= link_to "#{full_name(@fundraise.user)}", user_path(@fundraise.user), :class=> "text-capitalize"%>
+            <%= link_to "#{full_name(@fundraise.user)}", user_path(@fundraise.user), :class=> "text-capitalize",data: {  turbolinks: false }%>
           </p>
           <%if @fundraise.mentionees(User).any? %>
           with
           <%@fundraise.mentionees(User).each do |user|%>
-            <%= link_to "#{user.first_name} #{user.last_name}", user_path(user), :class => "text-capitalize"%>
+            <%= link_to "#{user.first_name} #{user.last_name}", user_path(user), :class => "text-capitalize",data: {  turbolinks: false }%>
             <%end%>
           <%end%>
-          <br><br>
-          <h3 class="margin-none text-capitalize"> Goal : Rs. <%=@fundraise.target%></h3><br>
+         
+          <h3 class="margin-none text-capitalize"> Goal : Rs. <%=@fundraise.target%></h3>
+          <div class="clearfix">
+            <span class="pull-left">Raised <i class="fa fa-inr"></i> <span><%=@fundraise.raised_amount%></span></span>
+            <span class="pull-right"><%=@fundraise.raised_amount*100/@fundraise.target%>%</span>
+          </div><!-- .amt-raised -->
+          <div class="progress" style="margin-bottom:5px;">
+            <div class="progress-bar" style="width:<%=@fundraise.raised_amount*100/@fundraise.target%>%"> 
+            </div>
+          </div>
           <h3><span class="follow-count" data-id="<%= @fundraise.id %>" >
               <%= @fundraise.followers_count %></span> Followers</h3>
           <h3><span class="votes-count" data-id="<%= @fundraise.id %>" ><%= @fundraise.likers_count %></span> Likes</h3>

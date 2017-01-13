@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170112161100) do
+ActiveRecord::Schema.define(version: 20170113134849) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -74,6 +74,7 @@ ActiveRecord::Schema.define(version: 20170112161100) do
     t.string   "small_description"
     t.string   "image"
     t.integer  "user_id"
+    t.index ["user_id"], name: "index_causes_on_user_id", using: :btree
   end
 
   create_table "chat_room_users", force: :cascade do |t|
@@ -122,7 +123,9 @@ ActiveRecord::Schema.define(version: 20170112161100) do
     t.datetime "updated_at"
     t.integer  "blocker_id"
     t.integer  "status"
+    t.index ["friend_id", "friendable_id"], name: "index_friendships_on_friend_id_and_friendable_id", using: :btree
     t.index ["friend_id"], name: "index_friendships_on_friend_id", using: :btree
+    t.index ["friendable_id", "friend_id"], name: "index_friendships_on_friendable_id_and_friend_id", using: :btree
     t.index ["friendable_id", "friendable_type"], name: "index_friendships_on_friendable_id_and_friendable_type", using: :btree
   end
 
@@ -150,6 +153,7 @@ ActiveRecord::Schema.define(version: 20170112161100) do
     t.string   "image"
     t.integer  "raised_amount",      default: 0
     t.boolean  "payment_is_pending"
+    t.integer  "reedemed_amount",    default: 0
     t.index ["campaign_id"], name: "index_fundraises_on_campaign_id", using: :btree
     t.index ["user_id"], name: "index_fundraises_on_user_id", using: :btree
   end

@@ -1,4 +1,9 @@
-<div class="col-md-6" style="padding-left: 0px;padding-right: 0px;">  
+<div class="col-md-6" style="padding-left: 0px;padding-right: 0px;"> 
+ <% flash.each do |key, value| %>
+    <div class="alert alert-info alert-dismissable">
+    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+    <%= value %></div>
+  <% end %> 
   <div class="timeline-block">
 	  <div class="panel panel-default share" style="margin-bottom: 10px; border-radius: 2px;">
 		  <%= form_for @post, :html =>{:multipart => true} do |f| %>
@@ -37,7 +42,7 @@
 ">
     <div class="col-md-6" style="padding: 0px;" >
     <% if @fundraises.any? %>
-    <div style="margin-right:3px;margin-left:3px">
+    <div style="margin-left:3px">
     <h3 class="margin-none text-capitalize text-center" style="background-color:white;padding-bottom:0px;padding-top:5px;">Top Fundraises</h3>
     </div>
     <div id="scrolling">
@@ -45,7 +50,7 @@
 	</div>
 	<% end %>
 	<% if @campaigns.any? %>
-	<div style="margin-right:3px;margin-left:3px;margin-top:10px;">
+	<div style="margin-left:3px;margin-top:10px;">
     <h3 class="margin-none text-capitalize text-center" style="background-color:white;padding-bottom:0px;padding-top:5px;">Top Campaign</h3>
     </div>
     <div id="scrolling">

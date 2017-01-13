@@ -85,7 +85,7 @@
           <%= link_to "Join", organization_invitation_path(:organization_id => @organization), :method => :post, :class=>"btn btn-info", data: { disable_with: 'Sending Request' ,toggle_text: 'Request Send'} %>
           <% end %> 
           <% else %>        
-          <%= link_to "Invite friends", organization_friend_path(:organization_id => @organization), :class=>"btn btn-info" %> 
+          <%= link_to "Invite friends", organization_friend_path(:organization_id => @organization), :class=>"btn btn-info",data: {  turbolinks: false, disable_with: 'Wait...' } %> 
         <% end %> 
         </div>          
       </div>      
@@ -106,7 +106,7 @@
         <div class="panel panel-default" style="margin-bottom: 10px;"">
             <div class="panel-heading panel-heading-gray">
             <% if organization_member?(@organization) %>
-            <%= link_to '<i class="fa fa-pencil"></i>'.html_safe , edit_organization_path(@organization), :class=>"btn btn-white btn-xs pull-right" %>
+            <%= link_to '<i class="fa fa-pencil"></i>'.html_safe , edit_organization_path(@organization), :class=>"btn btn-white btn-xs pull-right",data: {  turbolinks: false } %>
             <% end %>
                 <i class="fa fa-info-circle"></i> About
             </div>

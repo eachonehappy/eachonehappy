@@ -12,7 +12,7 @@
     <div style="padding-left:10px;padding-right:10px;">
       <h5 class="text-capitalize" ><%= link_to "#{campaign.subject}" , campaign_path(campaign), data: { turbolinks: false }%></h5>
       <p >by
-        <%= link_to "#{full_name(campaign.users.first)}", user_path(campaign.users.first), :class=> "text-capitalize"%>
+        <%= link_to "#{full_name(campaign.users.first)}", user_path(campaign.users.first), :class=> "text-capitalize",data: {  turbolinks: false }%>
       </p>
       <p class="text-capitalize"><%=campaign.description%></p>
       <div class="numbers clearfix text-center">

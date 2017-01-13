@@ -108,7 +108,7 @@
         <div class="panel panel-default" style="margin-bottom: 10px;"">
             <div class="panel-heading panel-heading-gray">
             <% if (@user == current_user) %>
-                <%= link_to '<i class="fa fa-pencil"></i>'.html_safe , edit_user_path(@user), :class=>"btn btn-white btn-xs pull-right" %>
+                <%= link_to '<i class="fa fa-pencil"></i>'.html_safe , edit_user_path(@user), :class=>"btn btn-white btn-xs pull-right",data: {  turbolinks: false } %>
             <% end %>    
                 <i class="fa fa-info-circle"></i> About
             </div>

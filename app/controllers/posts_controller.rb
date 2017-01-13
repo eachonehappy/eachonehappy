@@ -21,19 +21,24 @@ class PostsController < ApplicationController
   end
   
   def create
-  	@post = Post.new(post_params)
-    @post.user_id = current_user.id
-    if params[:post][:user_id].reject(&:empty?).present?
-      params[:post][:user_id].reject(&:empty?).each do |user_id|
-        @user = User.find(user_id)
-      @post.mention!(@user)
-      end  
-    end
-    if @post.save
-      redirect_to request.referer
+    if post_params[:description].present? || post_params[:image].present?
+    	@post = Post.new(post_params)
+      @post.user_id = current_user.id
+      if params[:post][:user_id].reject(&:empty?).present?
+        params[:post][:user_id].reject(&:empty?).each do |user_id|
+          @user = User.find(user_id)
+        @post.mention!(@user)
+        end  
+      end
+      if @post.save
+        redirect_to request.referer
+      else
+        redirect_to request.referer
+      end
     else
-      render request.referer
-    end
+      flash[:failure] = "Enter description or Upload image"
+      redirect_to request.referer  
+    end  
   end
 
   def edit
