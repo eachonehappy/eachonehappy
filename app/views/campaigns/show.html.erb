@@ -19,8 +19,7 @@
         </div>
         <div class="media-body">
           <h4 class = "margin-none text-capitalize"><%=@campaign.small_description%></h4><br>
-          <h5 class = "margin-none text-capitalize"><%=@campaign.description%></h5>
-          <br>
+          
           <p >Started by
             <%= link_to "#{full_name(@campaign.users.first)}", user_path(@campaign.users.first), :class=> "text-capitalize"%>
           </p>
@@ -30,11 +29,12 @@
             <%= link_to "#{user.first_name} #{user.last_name}", user_path(user), :class => "text-capitalize"%>
             <%end%>
           <%end%>
-          <br><br>
+          
           <h3><span class="follow-count" data-id="<%= @campaign.id %>"> <%= @campaign.followers_count %></span> Followers</h3>
           <h3><span class="votes-count" data-id="<%= @campaign.id %>"><%= @campaign.likers_count %></span> Likes</h3>     
         </div>
       </div>
+      <h5 class = "margin-none text-capitalize"><%=@campaign.description%></h5>
       <div class="collapse" id="1collapseExample<%=@campaign.id%>" style= "padding-left:10px;padding-bottom:5px;padding-top:10px;" >
      <%= social_share_button_tag(@campaign.description, :url => request.original_url ) %>  
      </div>

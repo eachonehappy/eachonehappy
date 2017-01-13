@@ -21,8 +21,7 @@
         <a data-toggle="collapse" data-target="#collapseExample<%=@fundraise.id%>" aria-expanded="false" aria-controls="collapseExample" class="btn btn-primary btn-lg" style="margin-bottom:10px;">Make a Contribution</a>
         
           <h4 class = "margin-none text-capitalize"><%=@fundraise.small_description%></h4><br>
-          <h5 class = "margin-none text-capitalize"><%=@fundraise.description%></h5>
-          <br>
+          
           <p >Started by
             <%= link_to "#{full_name(@fundraise.user)}", user_path(@fundraise.user), :class=> "text-capitalize",data: {  turbolinks: false }%>
           </p>
@@ -48,6 +47,7 @@
           
         </div>
       </div>
+      <h5 class = "margin-none text-capitalize"><%=@fundraise.description%></h5>
       <div class="collapse" id="collapseExample<%=@fundraise.id%>" >
           <div class="form-horizontal" role="form">
             <%= form_for(@payment) do |f| %>
