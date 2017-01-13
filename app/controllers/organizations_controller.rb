@@ -1,6 +1,6 @@
 class OrganizationsController < ApplicationController
   before_action :authenticate_user!
-  before_action :load_activities, only: [:index, :show, :new, :edit, :friend]
+  before_action :load_activities, only: [:index, :show, :new, :edit, :friend, :create]
   def index
     if params[:search]
       @organizations = Organization.all

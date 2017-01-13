@@ -1,6 +1,6 @@
 class CommentsController < ApplicationController
 	before_action :authenticate_user!
-  before_action :load_activities, only: [:index, :show, :new, :edit]
+  before_action :load_activities, only: [:index, :show, :new, :edit, :create]
 	def index
     @comments = Comment.all
   end

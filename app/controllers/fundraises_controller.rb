@@ -1,6 +1,6 @@
 class FundraisesController < ApplicationController
 	before_action :authenticate_user!
-  before_action :load_activities, only: [:index, :show, :new, :edit, :my_fundraise]
+  before_action :load_activities, only: [:index, :show, :new, :edit, :my_fundraise, :create]
 	def index
     if params[:search]
       @fundraises = Fundraise.all

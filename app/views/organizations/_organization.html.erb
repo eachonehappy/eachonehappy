@@ -5,22 +5,22 @@
      <div class="avatar" style="padding-top:10px;padding-bottom:0px;">
      <%= link_to  organization_path(organization)do %>
     <% if organization.profile_image_url %> 
-      <%= image_tag organization.profile_image_url :organization, :class=>"img-circle pull-left img-responsive"%>
+      <%= image_tag organization.profile_image_url :organization, :class=>"img-responsive"%>
     <% else %>
-       <img src="/images/people/110/default.png" alt="" class="img-circle pull-left">
+       <img src="/images/default.png" alt="" class="img-responsive">
     <% end %>
     <% end %>
     </div>
     <div style="padding-bottom:10px;">
+       <% if current_user.likes?(organization)%>
+        <%= link_to 'Unlike'.html_safe,like_organization_path(organization), method: :put, :class=>"vote btn btn-danger", remote: true, data: { toggle_text: 'Like', toggle_href: like_organization_path(organization), id: organization.id } %>
+        <%else%>
+        <%= link_to 'Like'.html_safe,like_organization_path(organization), method: :put, :class=>"vote btn btn-success", remote: true, data: { toggle_text: 'Unlike', toggle_href: like_organization_path(organization), id: organization.id } %>
+        <%end%>
         <% if current_user.follows?(organization)%>
         <%= link_to 'UnFollow'.html_safe,follow_organization_path(organization), method: :put, :class=>"follow btn btn-danger", remote: true, data: { toggle_text: 'Follow', toggle_href: follow_organization_path(organization), id: organization.id } %>
         <%else%>
         <%= link_to 'Follow'.html_safe,follow_organization_path(organization), method: :put, :class=>"follow btn btn-success", remote: true, data: { toggle_text: 'Unfollow', toggle_href: follow_organization_path(organization), id: organization.id } %>
-        <%end%>
-        <% if current_user.likes?(organization)%>
-        <%= link_to 'Unlike'.html_safe,like_organization_path(organization), method: :put, :class=>"vote btn btn-danger", remote: true, data: { toggle_text: 'Like', toggle_href: like_organization_path(organization), id: organization.id } %>
-        <%else%>
-        <%= link_to 'Like'.html_safe,like_organization_path(organization), method: :put, :class=>"vote btn btn-success", remote: true, data: { toggle_text: 'Unlike', toggle_href: like_organization_path(organization), id: organization.id } %>
         <%end%>
     </div>
     <div class="profile-icons margin-none">
