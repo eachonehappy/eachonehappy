@@ -2,7 +2,7 @@
   <div style="margin-right:3px;margin-left:3px;background-color:white;padding:5px;">
     <%= link_to  fundraise_path(fundraise)do %>
       <% if fundraise.image_url %> 
-        <%= image_tag fundraise.image_url :medium, :class=>"img-responsive"%>
+        <%= image_tag(fundraise.image_url(:medium), :class=>"img-responsive")%>
       <% else %>
          <img src="/images/default.png" class="img-responsive">
       <% end %>

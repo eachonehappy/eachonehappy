@@ -11,7 +11,7 @@
       <div class="media">
         <div class="media-object pull-left">
           <% if @cause.image_url %> 
-            <%= image_tag @cause.image_url :normal, :class=>"img-responsive", :style=>"padding:5px;"%>
+            <%= image_tag(@cause.image_url(:normal), :class=>"img-responsive", :style=>"padding:5px;")%>
           <% else %>
             <img src="/images/default.png" alt="image" class="img-responsive" style="padding:5px;" />
           <% end %>
@@ -19,7 +19,7 @@
         </div>
         <div class="media-body">
           <h4 class = "margin-none text-capitaize"><%=@cause.small_description%></h4><br>
-          <h3 class = "margin-none text-capitaize"><%=@cause.description%></h3>
+          <h5 class = "margin-none text-capitaize"><%=@cause.description%></h5>
           <br><br><br>
           <h3><span class="follow-count" data-id="<%= @cause.id %>"> <%= @cause.followers_count %></span> Followers</h3>
           <h3><span class="votes-count" data-id="<%= @cause.id %>"><%= @cause.likers_count %></span> Likes</h3>     

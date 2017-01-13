@@ -30,7 +30,7 @@
       <%end%>
       <p ><%=post.description%></p>
       </div>
-      <%= link_to post_path(post) do %>
+      <%= link_to post_path(post),data: {  turbolinks: false } do %>
       <%if post.image_url %>
     <%= image_tag post.image_url.to_s, :class=>"img-responsive", :style=> "padding: 10px;" %>
     <%end%>

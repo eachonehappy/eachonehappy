@@ -1,10 +1,9 @@
 <div class="col-md-4 animated pulse" style="margin-top:7px;padding:0px;">
   <div style="margin-right:3px;margin-left:3px;background-color:white;padding:5px;">
-    <%= link_to  fundraise_path(fundraise)do %>
+    <%= link_to  fundraise_path(fundraise) ,data: {  turbolinks: false } do %>
       <% if fundraise.image_url %>
-      <div style="padding-left:2px;"> 
-        <%= image_tag fundraise.image_url :medium, :class=>"img-responsive"%>
-        </div>
+        <%= image_tag(fundraise.image_url(:medium), :class=>"img-responsive")%>
+        
       <% else %>
          <img src="/images/default.png" class="img-responsive">
       <% end %>

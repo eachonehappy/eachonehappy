@@ -19,7 +19,7 @@
         </div>
         <div class="media-body">
           <h4 class = "margin-none text-capitalize"><%=@campaign.small_description%></h4><br>
-          <h3 class = "margin-none text-capitalize"><%=@campaign.description%></h3>
+          <h5 class = "margin-none text-capitalize"><%=@campaign.description%></h5>
           <br>
           <p >Started by
             <%= link_to "#{full_name(@campaign.users.first)}", user_path(@campaign.users.first), :class=> "text-capitalize"%>

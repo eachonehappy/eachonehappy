@@ -1,7 +1,7 @@
 class Users::RegistrationsController < Devise::RegistrationsController
 # before_action :configure_sign_up_params, only: [:create]
 # before_action :configure_account_update_params, only: [:update]
-
+before_action :select_causes
   # GET /resource/sign_up
   # def new
   #   super
@@ -35,6 +35,9 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # def cancel
   #   super
   # end
+  def select_causes
+    @major_causes = Cause.all.sort_by(&:likers_count).last(10)
+  end
 
   # protected
 

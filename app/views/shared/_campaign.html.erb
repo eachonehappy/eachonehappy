@@ -1,8 +1,11 @@
 <div class="animated pulse" style="margin-bottom:7px;padding:0px;">
   <div style="margin-right:3px;margin-left:3px;background-color:white;padding:5px;">
     <%= link_to  campaign_path(campaign)do %>
-      <% if campaign.image_url %> 
-        <%= image_tag campaign.image_url :medium, :class=>"img-responsive"%>
+      <% if campaign.image_url %>
+      
+      <%= image_tag(campaign.image_url(:medium), :class=>"img-responsive" ) %>
+        
+       
       <% else %>
          <img src="/images/default.png" class="img-responsive">
       <% end %>
