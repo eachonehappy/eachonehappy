@@ -34,6 +34,7 @@
           <h3><span class="votes-count" data-id="<%= @campaign.id %>"><%= @campaign.likers_count %></span> Likes</h3>     
         </div>
       </div>
+      <br>
       <h5 class = "margin-none text-capitalize"><%=@campaign.description%></h5>
       <div class="collapse" id="1collapseExample<%=@campaign.id%>" style= "padding-left:10px;padding-bottom:5px;padding-top:10px;" >
      <%= social_share_button_tag(@campaign.description, :url => request.original_url ) %>  
