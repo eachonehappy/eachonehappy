@@ -95,10 +95,42 @@
   </div>
   <div class="tab-content" style="padding: 0px;">
   <div class="tab-pane fade" id="fundraise" >
+    <% if @user.fundraises.empty? %>
+    <div class="ibox-title" style="background-color: white;">
+          <h1 class="title pull-left" style="margin-top: 10px;
+        margin-bottom: 10px; margin-left: 10px;">
+            You have not created any fundraise 
+          </h1>
+        
+            <%= link_to "Start a Fundraise", new_fundraise_path, data: { turbolinks: false, disable_with: 'Wait ...' }, class: 'btn btn-primary pull-right ', :style=> "margin-top: 10px;
+    margin-right: 10px;"%>
+         
+          <div class="clearfix"></div>
+       
+    </div>
+
+<% else %>
     <%= render :partial => 'fundraises/fundraise', :collection => @user.fundraises%>
+<%end%>    
   </div>
   <div class="tab-pane fade" id="campaign" >
+  <% if @user.campaigns.empty? %>
+    <div class="ibox-title" style="background-color: white;">
+          <h1 class="title pull-left" style="margin-top: 10px;
+        margin-bottom: 10px; margin-left: 10px;">
+            You have not created any campaign 
+          </h1>
+        
+            <%= link_to "Start a Campaign", new_campaign_path, data: { turbolinks: false, disable_with: 'Wait ...' }, class: 'btn btn-primary pull-right ', :style=> "margin-top: 10px;
+    margin-right: 10px;"%>
+         
+          <div class="clearfix"></div>
+       
+    </div>
+
+<% else %>
     <%= render :partial => 'campaigns/campaign', :collection => @user.campaigns%>
+<%end%>    
   </div> 
   <div class="tab-pane fade" id="friends">    
     <%= render 'users/friends'%>
@@ -138,7 +170,7 @@
         <%= render :partial => 'organizations/organization', :collection => @user.organizations%>
         <% end %>
     </div> 
-      <div class="col-md-6 " style="padding-left: 0px; padding-right: 0px;" id="scrolling">
+      <div class="col-md-6 " style="padding-left: 0px; padding-right: 3px;" id="scrolling">
         <%= render :partial => 'shared/post', :collection => @posts%>
       </div> 
     </div>                      

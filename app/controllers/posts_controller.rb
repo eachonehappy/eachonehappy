@@ -47,23 +47,28 @@ class PostsController < ApplicationController
   end
   
   def update
-    @post = Post.find(params[:id])
-    if params[:post][:user_id].reject(&:empty?).present?
-      @post.mentionees(User).each do |user|
-        @post.unmention!(user)
-      end  
-      params[:post][:user_id].reject(&:empty?).each do |user_id|
-        @user = User.find(user_id)
-      @post.mention!(@user)
+    if post_params[:description].present? || post_params[:image].present?
+      @post = Post.find(params[:id])
+      if params[:post][:user_id].reject(&:empty?).present?
+        @post.mentionees(User).each do |user|
+          @post.unmention!(user)
+        end  
+        params[:post][:user_id].reject(&:empty?).each do |user_id|
+          @user = User.find(user_id)
+        @post.mention!(@user)
+        end
       end
-    end
-    @post.image = post_params[:image]
-    @post.description = post_params[:description]
-    if @post.save
-      redirect_to root_url
+      @post.image = post_params[:image]
+      @post.description = post_params[:description]
+      if @post.save
+        redirect_to root_url
+      else
+        render 'edit'
+      end
     else
-      render 'edit'
-    end
+      flash[:failure] = "Enter description or Upload image"
+      redirect_to request.referer  
+    end  
   end
   
   def destroy

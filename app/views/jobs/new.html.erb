@@ -1,4 +1,18 @@
 <div class="col-md-7">
+<% if @all_campaign.empty? %>
+<div class="ibox-title" style="background-color: white;">
+      <h1 class="title pull-left" style="margin-top: 10px;
+    margin-bottom: 10px; margin-left: 10px;">
+        You have not started any campaign 
+      </h1>
+    
+        <%= link_to "Start a Campaign", new_campaign_path, data: { turbolinks: false, disable_with: 'Wait ...' }, class: 'btn btn-primary pull-right ', :style=> "margin-top: 10px;
+    margin-right: 10px;"%>
+     
+      <div class="clearfix"></div>
+   
+</div>
+<% else %>
   <div class="panel panel-default">
       <div class="panel-heading panel-heading-gray">Create a Job</div>
       <div class="panel-body">
@@ -56,5 +70,5 @@
           
       </div>
   </div>
-               
+ <% end %>              
 </div>

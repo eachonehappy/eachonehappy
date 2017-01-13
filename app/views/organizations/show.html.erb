@@ -93,13 +93,61 @@
   </div>
   <div class="tab-content" style="padding: 0px;">
   <div class="tab-pane fade" id="friends">
+  <% if @users.empty? %>
+<div class="ibox-title" style="background-color: white;">
+      <h1 class="title pull-left" style="margin-top: 10px;
+    margin-bottom: 10px; margin-left: 10px;">
+        Don't have members 
+      </h1>
+        <%= link_to "Invite friends", organization_friend_path(:organization_id => @organization), :class=>"btn btn-primary pull-right",data: {  turbolinks: false, disable_with: 'Wait...' }, :style=> "margin-top: 10px;
+    margin-right: 20px;" %>
+        
+     
+      <div class="clearfix"></div>
+   
+</div>
+
+<% else %>
   <%= render :partial => 'users/friends', :collection => @users%> 
+  <%end%>
   </div>   
     <div class="tab-pane fade" id="fundraise" >
+    <% if @organization_fundraise.empty? %>
+    <div class="ibox-title" style="background-color: white;">
+          <h1 class="title pull-left" style="margin-top: 10px;
+        margin-bottom: 10px; margin-left: 10px;">
+            You have not created any fundraise 
+          </h1>
+        
+            <%= link_to "Start a Fundraise", new_fundraise_path, data: { turbolinks: false, disable_with: 'Wait ...' }, class: 'btn btn-primary pull-right ', :style=> "margin-top: 10px;
+    margin-right: 10px;"%>
+         
+          <div class="clearfix"></div>
+       
+    </div>
+
+<% else %>
     <%= render :partial => 'fundraises/fundraise', :collection => @organization_fundraise %>
+<%end%>
   </div>
   <div class="tab-pane fade" id="campaign" >
+  <% if @campaigns.empty? %>
+    <div class="ibox-title" style="background-color: white;">
+          <h1 class="title pull-left" style="margin-top: 10px;
+        margin-bottom: 10px; margin-left: 10px;">
+            Your organization don't have any campaign 
+          </h1>
+        
+            <%= link_to "Start a Campaign", new_campaign_path, data: { turbolinks: false, disable_with: 'Wait ...' }, class: 'btn btn-primary pull-right ', :style=> "margin-top: 10px;
+    margin-right: 10px;"%>
+         
+          <div class="clearfix"></div>
+       
+    </div>
+
+<% else %>
     <%= render :partial => 'campaigns/campaign', :collection => @campaigns%>
+<% end %>    
   </div>
     <div class="tab-pane active" id="time_line" > 
     <div class="col-md-6" style="padding-left: 0px; padding-right: 8px;">
@@ -141,6 +189,7 @@
             </div>
         </div>
         <% if owner?(@organization) %>
+        <% unless @pending_users.empty? %>
           <div class="panel panel-default" style="margin-bottom: 10px;"">
               <div class="panel-heading panel-heading-gray">
                 Pending Join Requests
@@ -162,8 +211,9 @@
               </div>
           </div>
         <%end%>
+        <%end%>
     </div> 
-      <div class="col-md-6 " style="padding-left: 0px; padding-right: 0px;">
+      <div class="col-md-6 " style="padding-left: 0px; padding-right: 3px;">
         <%= render :partial => 'shared/post', :collection => @organization_posts %>
       </div> 
     </div>                      

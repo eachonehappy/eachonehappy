@@ -1,5 +1,19 @@
 <div class="col-md-9" style="padding:0px;">
+<% if @users.empty? %>
+<div class="ibox-title" style="background-color: white;">
+      <h1 class="title pull-left" style="margin-top: 10px;
+    margin-bottom: 10px; margin-left: 10px;">
+        Don't have friends 
+      </h1>
+    
+        <%= link_to "Find Friends", users_path, data: { turbolinks: false, disable_with: 'Wait ...' }, class: 'btn btn-primary pull-right', :style=> "margin-top: 10px;
+    margin-right: 20px;"%>
+     
+      <div class="clearfix"></div>
+   
+</div>
 
+<% else %>
 
 
 <div class="panel panel-default">
@@ -45,3 +59,4 @@
     <!-- // Data table -->
   </div>
   </div>
+<%end%>  
