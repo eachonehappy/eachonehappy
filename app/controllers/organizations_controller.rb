@@ -3,10 +3,10 @@ class OrganizationsController < ApplicationController
   before_action :load_activities, only: [:index, :show, :new, :edit, :friend, :create]
   def index
     if params[:search]
-      @organizations = Organization.all
+      @organizations = Organization.all.sort_by(&:created_at).reverse
       @organizations = @organizations.where("name LIKE ?" , "%#{params[:search]}%")
     else
-      @organizations = Organization.all
+      @organizations = Organization.all.sort_by(&:created_at).reverse
     end
   end
   

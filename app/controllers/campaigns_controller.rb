@@ -3,10 +3,10 @@ class CampaignsController < ApplicationController
   before_action :load_activities, only: [:index, :show, :new, :edit, :create]
 	def index
     if params[:search]
-      @campaigns = Campaign.all
+      @campaigns = Campaign.all.sort_by(&:created_at).reverse
       @campaigns = @campaigns.where("subject LIKE ?" , "%#{params[:search]}%")
     else
-      @campaigns = Campaign.all
+      @campaigns = Campaign.all.sort_by(&:created_at).reverse
     end
   end
   

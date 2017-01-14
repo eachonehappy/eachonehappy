@@ -6,13 +6,16 @@ class FundraisePaymentDetailsController < ApplicationController
 		if params[:format].present?
       if params[:format] == "pending"
         @fundraise_payment_details = FundraisePaymentDetail.joins(:fundraise).where(:fundraises => {:payment_is_pending => true})
+        @fundraise_payment_details = @fundraise_payment_details.sort_by(&:created_at).reverse
       elsif params[:format] == "transfered"
         @fundraise_payment_details = FundraisePaymentDetail.joins(:fundraise).where(:fundraises => {:payment_is_pending => false})
+        @fundraise_payment_details = @fundraise_payment_details.sort_by(&:created_at).reverse
       else 
         @fundraise_payment_details = FundraisePaymentDetail.all
+        @fundraise_payment_details = @fundraise_payment_details.sort_by(&:created_at).reverse
       end    
     else
-      @fundraise_payment_details = FundraisePaymentDetail.all
+      @fundraise_payment_details = FundraisePaymentDetail.all.sort_by(&:created_at).reverse
     end
   end
 

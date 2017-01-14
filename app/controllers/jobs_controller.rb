@@ -11,14 +11,16 @@ class JobsController < ApplicationController
     end
     if params[:format].present?
       if params[:format] == "all"
-        @jobs = @user_jobs
+        @jobs = @user_jobs.sort_by(&:created_at).reverse
       elsif params[:format] == "completed"
         @jobs = @user_jobs.select { |job| job.is_completed == true }
+        @jobs = @jobs.sort_by(&:created_at).reverse
       else 
         @jobs = @user_jobs.select { |job| job.is_completed == false }
+        @jobs = @jobs.sort_by(&:created_at).reverse
       end    
     else
-      @jobs = @user_jobs
+      @jobs = @user_jobs.sort_by(&:created_at).reverse
     end
   end
   

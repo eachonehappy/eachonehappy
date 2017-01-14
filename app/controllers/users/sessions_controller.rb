@@ -17,7 +17,7 @@ before_action :select_causes
   #   super
   # end
   def select_causes
-    @major_causes = Cause.all.sort_by(&:likers_count).last(10)
+    @major_causes = Cause.all.sort_by(&:likers_count).last(11)
   end
   # protected
 

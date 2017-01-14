@@ -18,7 +18,7 @@ class PagesController < ApplicationController
       @posts = Post.all.sort_by(&:likers_count).sort_by(&:created_at).last(20).reverse
     end
   	@all_user = current_user.friends
-    @fundraises = Fundraise.all.sort_by(&:likers_count).sort_by(&:created_at).last(1).reverse
+    @fundraises = Fundraise.all.sort_by(&:likers_count).sort_by(&:created_at).last(20).reverse
     @campaigns = Campaign.all.sort_by(&:likers_count).sort_by(&:created_at).last(20).reverse
   end
 

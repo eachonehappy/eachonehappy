@@ -40,7 +40,6 @@
 }
 
 html {
-    overflow: scroll;
     overflow-x: hidden;
 }
 ::-webkit-scrollbar {
@@ -49,7 +48,7 @@ html {
 }
 /* optional: show position indicator in red */
 ::-webkit-scrollbar-thumb {
-    background: white;
+    background: #a7a7a7;
 }
 
 $size: 29px;

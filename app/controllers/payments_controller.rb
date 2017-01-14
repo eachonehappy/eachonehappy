@@ -2,7 +2,7 @@ class PaymentsController < ApplicationController
 	before_action :authenticate_user!
   before_action :load_activities, only: [:index, :show, :new, :edit, :create]
 	def index
-    @payments = current_user.payments
+    @payments = current_user.payments.sort_by(&:created_at).reverse
   end
   
   def show

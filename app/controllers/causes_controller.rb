@@ -3,10 +3,10 @@ class CausesController < ApplicationController
   before_action :load_activities, only: [:index, :show, :new, :edit, :create]
 	def index
     if params[:search]
-      @causes = Cause.all
+      @causes = Cause.all.sort_by(&:created_at).reverse
       @causes = @causes.where("subject LIKE ?" , "%#{params[:search]}%")
     else
-      @causes = Cause.all
+      @causes = Cause.all.sort_by(&:created_at).reverse
     end
   end
   
