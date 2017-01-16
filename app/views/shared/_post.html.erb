@@ -23,13 +23,15 @@
     </div> 
     <%if post.mentionees(User).any? || post.description.present? %>
     <div style="margin-bottom: 5px;margin-top: 5px;;margin-left: 5px;">
-    
+    <%if post.mentionees(User).any? %>
     with <%post.mentionees(User).each do |user|%>
 
       <%= link_to "#{full_name(user)}", user_path(user), :class=>"text-capitalize",data: {  turbolinks: false }%>
       <%end%>
-      
+      <%end%>
+      <%if post.description.present? %>
       <p ><%=post.description%></p>
+      <%end%>
       </div>
       <%end%>
       <%= link_to post_path(post),data: {  turbolinks: false } do %>
