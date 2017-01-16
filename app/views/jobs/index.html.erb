@@ -45,3 +45,14 @@
   </div>
 
 </div>
+
+ <div class="col-md-2" style="padding-left: 10px;
+    padding-right: 0px;">
+    <div class="row">
+    <% @jobs_count = @jobs.count/2 + 1 %>
+  <% (1..@jobs_count).each do |i| %>
+
+    <%= render 'shared/add' %>
+  <% end %>
+  </div>
+    </div>  

@@ -1,5 +1,5 @@
 
-<div class="col-md-6" style="padding-left: 0px;padding-right: 0px;"> 
+<div class="col-md-5" style="padding-left: 0px;padding-right: 0px;"> 
  <% flash.each do |key, value| %>
     <div class="alert alert-info alert-dismissable">
     <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
@@ -38,27 +38,40 @@
 </div>
                 
                
-<div class="col-md-6" style="padding-left: 10px;padding-left: 3px;
-    padding-right: 5px;overflow: hidden;position: relative;
-">
-    <div class="col-md-6" style="padding: 0px;" >
+<div class="col-md-7" style="padding-left: 10px;padding-left: 3px;
+    padding-right: 5px;overflow: hidden;position: relative;">
+  <div class="col-md-5" style="padding: 0px;" >
     <% if @fundraises.any? %>
     <div style="margin-left:3px;margin-right: 10px;">
-    <h3 class="margin-none text-capitalize text-center" style="background-color:white;padding-bottom:0px;padding-top:5px;">Top Fundraises</h3>
+      <h3 class="margin-none text-capitalize text-center" style="background-color:white;padding-bottom:0px;padding-top:5px;">Top Fundraises</h3>
     </div>
     <div id="scrolling">
-	<%= render :partial => 'shared/fundraise', :collection => @fundraises %>
-	</div>
-	<% end %>
-	<% if @campaigns.any? %>
-	<div style="margin-right: 10px;margin-left:3px;margin-top:10px;">
-    <h3 class="margin-none text-capitalize text-center" style="background-color:white;padding-bottom:0px;padding-top:5px;">Top Campaign</h3>
+	  <%= render :partial => 'shared/fundraise', :collection => @fundraises %>
+	  </div>
+	  <% end %>
+	  <% if @campaigns.any? %>
+  	<div style="margin-right: 10px;margin-left:3px;margin-top:10px;">
+      <h3 class="margin-none text-capitalize text-center" style="background-color:white;padding-bottom:0px;padding-top:5px;">Top Campaign</h3>
     </div>
     <div id="scrolling">
-	<%= render :partial => 'shared/campaign', :collection => @campaigns %>
+      <%= render :partial => 'shared/campaign', :collection => @campaigns %>
+  	</div>
+	  <% end %>
 	</div>
-	<% end %>
-	</div>
-	<div class="col-md-6" style="padding: 0px;" >
-	</div>
+    <div class="col-md-3" style="padding-left: 20px;" >
+  <div class="row">
+  <% (1..@posts.count).each do |i| %>
+   <%= render 'shared/add' %>
+    <% end %>
+    </div>
+  </div>
+  <div class="col-md-4" style="padding-left: 30px;" >
+  <div class="row">
+  <% (1..@posts.count).each do |i| %>
+
+    <%= render 'shared/add' %>
+  <% end %>
+  </div>
+  </div>
+
 </div>
