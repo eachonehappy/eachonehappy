@@ -16,7 +16,7 @@
               </ul>
               <ul class="sidebar-menu sm-active-item-bg">
                 <li class="padding">
-                  <%= link_to '<i class="icon-circle-chevron-right pull-right"></i><b>Organizations</b>'.html_safe, organizations_path %>
+                  <%= link_to '<i class="icon-circle-chevron-right pull-right"></i><b>Organizations</b>'.html_safe, organizations_path , data: { turbolinks: false }%>
                 </li>
                 <li>
                   <%current_user.organizations.each do |organization|%>
