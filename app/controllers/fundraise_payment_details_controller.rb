@@ -17,6 +17,19 @@ class FundraisePaymentDetailsController < ApplicationController
     else
       @fundraise_payment_details = FundraisePaymentDetail.all.sort_by(&:created_at).reverse
     end
+    @posts_likes = Post.all.map(&:likers_count).inject(0, :+) 
+    @campaigns_likes = Campaign.all.map(&:likers_count).inject(0, :+) 
+    @campaigns_followers = Campaign.all.map(&:followers_count).inject(0, :+)
+    @causes_likes = Cause.all.map(&:likers_count).inject(0, :+) 
+    @causes_followers = Cause.all.map(&:followers_count).inject(0, :+)
+    @fundraises_likes = Fundraise.all.map(&:likers_count).inject(0, :+) 
+    @fundraises_followers = Fundraise.all.map(&:followers_count).inject(0, :+)
+    @user_likes = User.all.map(&:followers_count).inject(0, :+)
+    @organizations_followers = Organization.all.map(&:followers_count).inject(0, :+)
+    @organizations_likers = Organization.all.map(&:likers_count).inject(0, :+)
+    @total_amount = @posts_likes + @campaigns_likes + @campaigns_followers + @causes_likes + @causes_followers + @fundraises_likes + @fundraises_followers + @user_likes + @organizations_followers + @organizations_likers  
+    @stat = Stat.first
+    @total_amount = @total_amount*@stat.rate
   end
 
   def show
