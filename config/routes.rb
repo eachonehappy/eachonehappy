@@ -1,6 +1,10 @@
 Rails.application.routes.draw do
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
 	root 'pages#home'
+	get 'about_us' => 'pages#about_us'
+	get 'contact_us' => 'pages#contact_us'
+	get 'volunteer_us' => 'pages#volunteer_us'
+	get 'our_goal' => 'pages#our_goal'
 
 	devise_for :users, controllers: { sessions: 'users/sessions', registrations: 'users/registrations' }
     devise_scope :user do
@@ -10,6 +14,7 @@ Rails.application.routes.draw do
     resources :chat_rooms, only: [:new, :create, :show, :index]
     #mount ActionCable.server => '/cable'
     resources :messages
+    resources :contacts
 	resources :posts
 	resources :campaigns
 	resources :causes

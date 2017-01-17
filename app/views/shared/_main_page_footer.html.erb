@@ -1,20 +1,17 @@
-<div class="hidden-xs">
 <% @major_causes.each do |cause|%>
   <% if @major_causes.index(cause).even? %>
      <div class="content-section-a">
 
         <div class="container">
             <div class="row">
-            <div class="col-md-2" >
-               <%= render 'shared/add' %>
-              </div>
+           
                 <div class="col-md-5 col-sm-6">
                   
                     <h2 class="section-heading text-capitalize"><%= cause.subject %></h2>
                     <p class="lead"><%= cause.small_description %></p>
                     <p class="lead"><%= cause.description %></p>
                 </div>
-                <div class="col-md-5 col-sm-6">
+                <div class="col-md-5 col-md-offset-2 col-sm-6">
                     <% if cause.image_url %> 
                         <%= image_tag(cause.image_url(:normal), :class=>"img-responsive", :style=>"padding:5px;")%>
                       <% else %>
@@ -33,22 +30,20 @@
 
         <div class="container">
             <div class="row">
-                <div class="col-md-5 col-sm-push-5  col-sm-6">
+                <div class="col-md-5 col-md-offset-1 col-sm-push-6  col-sm-6">
                   
                     <h2 class="section-heading text-capitalize"><%= cause.subject %></h2>
                     <p class="lead"><%= cause.small_description %></p>
                     <p class="lead"><%= cause.description %></p>
                 </div>
-                <div class="col-md-5 col-sm-pull-5  col-sm-6">
+                <div class="col-md-5 col-sm-pull-6  col-sm-6">
                      <% if cause.image_url %> 
                         <%= image_tag(cause.image_url(:normal), :class=>"img-responsive", :style=>"padding:5px;")%>
                       <% else %>
                         <img src="/images/default.png" alt="image" class="img-responsive" />
                       <% end %>
                 </div>
-                <div class="col-md-2" >
-               <%= render 'shared/add' %>
-              </div>
+                
             </div>
 
         </div>
@@ -57,80 +52,6 @@
     </div>
   <% end %>  
 <% end %>
-<div class="content-section-b">
 
-        <div class="container">
 
-            <div class="row">
-                    <center>
-                   
-                    
-                    <h2 class="section-heading">About Us</h2></center>
-                    <p class="lead">Takestand, through its platform, aims to create leaders and influencers in society who will contribute and work towards creating a social impact through crowdfunding and Impact Investing. We wish to create heroes out of everyone, and empower people to make a big difference in their own small and large ways</p>
-                    <p class="lead">
-                        Takestand is a tech for good venture that offers a complete crowdfunding solution that combines donation crowdfunding, rewards crowdfunding, and investment crowdfunding / fundraising for individuals, nonprofits, social enterprises, or startups for all their fundraising needs - be it small or large. 
-                    </p>
-                
-            </div>
-
-        </div>
-        <!-- /.container -->
-
-    </div>
-
-    <div class="content-section-a">
-
-        <div class="container">
-
-            <div class="row">
-                    <center>
-                   
-                    
-                    <h2 class="section-heading">Our Goal</h2></center>
-                    <p class="lead">
-                        The aim is to bring the NGO in the eye of those people who wish to bring about a positive change to the society because that’s the underlying principle of every NGO.
-                    </p>
-                    <p class="lead">NGOs work with a strong principle. Every NGO has a different area of concern. Championing the cause of your favourite NGO would help immensely. Spreading the word of their activities and events on Facebook, Twitter & WhatsApp would generate more participation in all their events, which in turn will create a platform perfect for raising more funds. The more vocal you are, the more the efforts of the NGO will get highlighted to the public</p>
-                    <p class="lead">
-                        The easiest way to make a difference to an organisation you support is to donate to their fundraiser. Takestand provides security to your donations as they go directly to the beneficiaries without any intermediate delays.
-                    </p>
-                
-            </div>
-
-        </div>
-        <!-- /.container -->
-
-    </div>
-    <div class="content-section-b">
-
-        <div class="container">
-
-            <div class="row">
-                    <center>
-                   
-                    
-                    <h2 class="section-heading">Volunteer Us</h2></center>
-                    <p class="lead">Sometimes lending services is all that is required to support NGOs. Volunteering your expertise and time can make the operational tasks of an NGO much easier. The services can be as simple as clerical work, picking up donations, helping to maintain their website, advertising their work on a social media platform, etc.</p>
-                    <p class="lead">
-                        There is a way that every professional can help. Doctors are invaluable for health camps and blood donations, pro-bono legal services are an excellent way lawyers can be of service, even providing discounts wherever applicable can be of great help for the NGO. 
-                    </p>
-                
-            </div>
-
-        </div>
-        <!-- /.container -->
-
-    </div>
- 
-   <!-- Footer -->
-    <footer>
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12">
-                    
-                    <p class="copyright text-muted small">Copyright &copy; takestand.in All Rights Reserved</p>
-                </div>
-            </div>
-        </div>
-    </footer>
-</div>    
+    

@@ -1,0 +1,24 @@
+ <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <ul class="list-inline">
+                       <li>
+                            <%= link_to 'About Us'.html_safe , about_us_path, data: { turbolinks: false, disable_with: 'Wait ...' }, class: 'btn btn-primary'%>
+                        </li>
+                       
+                        <li>
+                            <%= link_to 'Contact Us' , contact_us_path, data: { turbolinks: false, disable_with: 'Wait ...' }, class: 'btn btn-primary'%>
+                        </li>
+                         <li>
+                            <%= link_to 'Volunteer Us' , volunteer_us_path, data: { turbolinks: false, disable_with: 'Wait ...' }, class: 'btn btn-primary'%>
+                        </li>
+                         <li>
+                            <%= link_to 'Our goal' , our_goal_path, data: { turbolinks: false, disable_with: 'Wait ...' }, class: 'btn btn-primary'%>
+                        </li>
+                    </ul>
+                    <p class="copyright text-muted small">Copyright &copy; takestand.in. All Rights Reserved</p>
+                </div>
+            </div>
+        </div>
+    </footer>

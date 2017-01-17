@@ -1,6 +1,6 @@
 class PagesController < ApplicationController
   before_action :authenticate_user!, only: [:notification]
-  before_action :load_activities, only: [ :about_us, :cantact_us, :notification]
+  before_action :load_activities, only: [:notification]
   
 
   def home
@@ -74,6 +74,15 @@ class PagesController < ApplicationController
   end
 
   def contact_us
+    @contact = Contact.new
+  end
+
+  def our_goal
+    
+  end
+
+  def volunteer_us
+    
   end
 
   def notification

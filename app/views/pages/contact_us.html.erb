@@ -1,2 +1,76 @@
-<h1>Pages#contact_us</h1>
-<p>Find me in app/views/pages/contact_us.html.erb</p>
+<div class="content-section-a">
+  <div class="container">
+    <div class="row">
+      <center><h2 class="section-heading">Contact Us</h2></center>
+      <div class="container">
+	    	<div class="row">
+	        <div class="col-md-8">
+            <div class="well well-sm">
+              <%= form_for(@contact) do |f| %>
+               <% flash.each do |key, value| %>
+				          <div class="alert alert-info alert-dismissable">
+				          <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+				          <%= value %></div>
+				        <% end %>
+                <div class="row">
+                  <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="name">
+                            Name</label>
+                        <%= f.text_field :name, class: 'form-control', :placeholder=>"Name" , :style => "background-color: #ffffff;" %>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">
+                            Email Address</label>
+                        <div class="input-group">
+                            <span class="input-group-addon"><span class="glyphicon glyphicon-envelope"></span>
+                            </span>
+                            <%= f.text_field :email, class: 'form-control', :placeholder=>"enter email", :style => "background-color: #ffffff;" %></div>
+                    </div>
+                    <div class="form-group">
+                        <label for="subject">
+                            Subject</label>
+                        
+                        <%= f.select :subject, 
+											    options_for_select([['General Customer Service','General Customer Service'],['Suggestions','Suggestions'],['Product Support','Product Support']]),
+											    {}, { :class => 'form-control', :style => "background-color: #ffffff;" } %>
+											                    </div>
+                  </div>
+                  <div class="col-md-6">
+                      <div class="form-group">
+                          <label for="name">
+                              Message</label>
+                          <%= f.text_area :message, class: 'form-control', :rows=>"8", :placeholder=>"message", :style => "background-color: #ffffff;" %>
+                      </div>
+                  </div>
+                  <div class="col-md-12">
+                  <%= f.submit "Submit", class: "btn btn-primary pull-right" %>
+                      
+                  </div>
+                </div>
+              <% end %>
+            </div>
+	        </div>
+	        <div class="col-md-4">
+	            <form>
+	            <legend><span class="glyphicon glyphicon-globe"></span> Our office</legend>
+	            <address>
+	                <strong>Takestand.in</strong><br>
+	                Shahganj<br>
+	                Agra<br>
+	                <abbr title="Phone">
+	                    P:</abbr>
+	                +91 9756034557
+	            </address>
+	            <address>
+	                <strong>Full Name</strong><br>
+	                <a>Aditya Singh</a>
+	            </address>
+	            </form>
+	        </div>
+	      </div>
+	    </div>      
+    </div>
+  </div>
+</div>
