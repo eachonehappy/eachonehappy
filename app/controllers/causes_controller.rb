@@ -38,7 +38,9 @@ class CausesController < ApplicationController
   def update
     @cause = Cause.find(params[:id])
     @cause.subject = cause_params[:subject]
-    @cause.image = cause_params[:image]
+    if cause_params[:image].present?
+      @cause.image = cause_params[:image]
+    end  
     @cause.description = cause_params[:description]
     @cause.small_description = cause_params[:small_description]
   

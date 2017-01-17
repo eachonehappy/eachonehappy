@@ -74,7 +74,9 @@ class FundraisesController < ApplicationController
   def update
     @fundraise = Fundraise.find(params[:id])
     @fundraise.subject = fundraise_params[:subject]
-    @fundraise.image = fundraise_params[:image]
+    if fundraise_params[:image].present?
+      @fundraise.image = fundraise_params[:image]
+    end  
     @fundraise.description = fundraise_params[:description]
     @fundraise.small_description = fundraise_params[:small_description]
     if params[:fundraise][:user_id].reject(&:empty?).present?

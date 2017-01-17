@@ -69,7 +69,8 @@
         </div>            
       </div>    
       <div class="collapse" id="1collapseExample<%=@fundraise.id%>" style= "padding-left:10px;padding-bottom:5px;padding-top:10px;" >
-     <%= social_share_button_tag(@fundraise.description, :url => request.original_url, :image => @fundraise.image_url ) %>  
+     <%= social_share_button_tag(@fundraise.description, :url => request.original_url, :image => "https://storage.googleapis.com/takestand#{@fundraise.image_url}" ) %>
+
      </div>
       <div class="btn-group btn-group-footer btn-group-justified" style="margin-top:10px;">
          <% if current_user.likes?(@fundraise)  %>
@@ -88,7 +89,7 @@
   </div>
 </div>
 
- <div class="col-md-3" style="padding-left: 10px;
+ <div class="col-md-3" style="padding-left: 30px;
     padding-right: 0px;">
     <div class="row">
   <% (1..3).each do |i| %>
