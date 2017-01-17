@@ -11,7 +11,11 @@
       <h5 class="text-capitalize" ><%= link_to "#{fundraise.subject}" , fundraise_path(fundraise), data: { turbolinks: false }%></h5>
       <p >by
         <%= link_to "#{full_name(fundraise.user)}", user_path(fundraise.user), :class=> "text-capitalize",data: {  turbolinks: false }%>
-        <a data-toggle="collapse" data-target="#donate<%=fundraise.id%>" aria-expanded="false" aria-controls="collapseExample" class="btn btn-primary pull-right">Donate</a>
+         <% if fundraise.payment_is_pending == nil %>
+          <a data-toggle="collapse" data-target="#donate<%=fundraise.id%>" aria-expanded="false" aria-controls="collapseExample" class="btn btn-primary pull-right">Donate</a>
+          <% else %>
+          <%= link_to "Donate",nil ,:class=>"btn btn-primary pull-right", :disabled=> true %>
+          <% end %>
       </p>
       
       <p class = "text-capitalize"><%=fundraise.small_description%></p>
@@ -29,10 +33,10 @@
             <%= hidden_field_tag 'fundraise_id', fundraise.id %>
                 <div class="form-group">
       
-                  <div class="col-md-10" style="padding-left:0px;padding-right:0px;width:71%;">
-                  <%= f.number_field :amount, :class=>'form-control', :id=>"touch-spin-2", :placeholder=>"enter donation amount...", "data-toggle"=>"touch-spin", "data-min"=>"0", "data-max"=>"1000000", "data-prefix"=>"Rs", "data-step"=>"50", :value=>"200" %>
+                  <div class="col-md-9" style="padding-left:0px;padding-right:0px;width:71%;">
+                  <%= f.number_field :amount, :class=>'form-control', :id=>"touch-spin-2", :placeholder=>"enter donation amount...", "data-toggle"=>"touch-spin", "data-min"=>"0", "data-max"=>"1000000", "data-step"=>"1", :value=>"200" %>
                   </div>
-                  <div class="col-md-2" style="padding-left:5px;">
+                  <div class="col-md-3" style="padding-left:5px;">
                    <%= f.submit "Submit", class: "btn btn-primary" %>
                    </div>
                 </div>                  

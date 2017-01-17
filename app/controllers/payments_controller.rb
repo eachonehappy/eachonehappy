@@ -14,11 +14,11 @@ class PaymentsController < ApplicationController
   end
   
   def create
-  	@payment = Payment.new(payment_params)
-  	@payment.user_id = current_user.id
-  	@payment.fundraise_id = params[:fundraise_id]
-    @fundraise = Fundraise.find(params[:fundraise_id])
     unless payment_params[:amount].to_f > current_user.wallet_amount
+    	@payment = Payment.new(payment_params)
+    	@payment.user_id = current_user.id
+    	@payment.fundraise_id = params[:fundraise_id]
+      @fundraise = Fundraise.find(params[:fundraise_id])
 	    if @payment.save
 	    	current_user.wallet_amount = current_user.wallet_amount - @payment.amount
 	    	current_user.save

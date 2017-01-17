@@ -17,19 +17,11 @@ class FundraisePaymentDetailsController < ApplicationController
     else
       @fundraise_payment_details = FundraisePaymentDetail.all.sort_by(&:created_at).reverse
     end
-    @posts_likes = Post.all.map(&:likers_count).inject(0, :+) 
-    @campaigns_likes = Campaign.all.map(&:likers_count).inject(0, :+) 
-    @campaigns_followers = Campaign.all.map(&:followers_count).inject(0, :+)
-    @causes_likes = Cause.all.map(&:likers_count).inject(0, :+) 
-    @causes_followers = Cause.all.map(&:followers_count).inject(0, :+)
-    @fundraises_likes = Fundraise.all.map(&:likers_count).inject(0, :+) 
-    @fundraises_followers = Fundraise.all.map(&:followers_count).inject(0, :+)
-    @user_likes = User.all.map(&:followers_count).inject(0, :+)
-    @organizations_followers = Organization.all.map(&:followers_count).inject(0, :+)
-    @organizations_likers = Organization.all.map(&:likers_count).inject(0, :+)
-    @total_amount = @posts_likes + @campaigns_likes + @campaigns_followers + @causes_likes + @causes_followers + @fundraises_likes + @fundraises_followers + @user_likes + @organizations_followers + @organizations_likers  
-    @stat = Stat.first
-    @total_amount = @total_amount*@stat.rate
+    @total_wallet_amount = User.all.map(&:wallet_amount).inject(0, :+)
+    @fundraises_payment_amount_to_be_paid = FundraisePaymentDetail.joins(:fundraise).where(:fundraises => {:payment_is_pending => true}).map(&:amount_to_be_paid).inject(0, :+) 
+    @fundraises_payment_amount_paid = FundraisePaymentDetail.joins(:fundraise).where(:fundraises => {:payment_is_pending => false}).map(&:amount_to_be_paid).inject(0, :+) 
+    @fundraises_amount = Fundraise.all.map(&:raised_amount).inject(0, :+)
+    @total_amount = @total_wallet_amount + @fundraises_amount
   end
 
   def show
@@ -38,14 +30,15 @@ class FundraisePaymentDetailsController < ApplicationController
 
   def new
     @fundraise_payment_detail = FundraisePaymentDetail.new
-    @all_fundraises = current_user.fundraises
+    @all_fundraises = current_user.fundraises.where(payment_is_pending: nil)
     @fundraise = Fundraise.find(params[:format])
   end
 
   def create
     @fundraise_payment_detail = FundraisePaymentDetail.new(fundraise_payment_detail_params)
+    @fundraise = Fundraise.find(fundraise_payment_detail_params[:fundraise_id])
+    @fundraise_payment_detail.amount_to_be_paid = @fundraise.raised_amount
     if @fundraise_payment_detail.save
-    	@fundraise = Fundraise.find(fundraise_payment_detail_params[:fundraise_id])
     	@fundraise.payment_is_pending = true
     	@fundraise.save
       flash[:success] = 'Chat room added!'

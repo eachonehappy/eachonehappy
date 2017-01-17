@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170113134849) do
+ActiveRecord::Schema.define(version: 20170117092940) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -131,11 +131,12 @@ ActiveRecord::Schema.define(version: 20170113134849) do
 
   create_table "fundraise_payment_details", force: :cascade do |t|
     t.string   "full_name"
-    t.integer  "account_number"
     t.string   "ifsc_code"
     t.integer  "fundraise_id"
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
+    t.integer  "amount_to_be_paid"
+    t.string   "account_number"
     t.index ["fundraise_id"], name: "index_fundraise_payment_details_on_fundraise_id", using: :btree
   end
 

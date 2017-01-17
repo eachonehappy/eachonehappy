@@ -17,8 +17,11 @@
           <% end %>
         </div>
         <div class="media-body">
-        
-        <a data-toggle="collapse" data-target="#collapseExample<%=@fundraise.id%>" aria-expanded="false" aria-controls="collapseExample" class="btn btn-primary btn-lg" style="margin-bottom:10px;">Make a Contribution</a>
+        <% if @fundraise.payment_is_pending == nil %>
+        <a data-toggle="collapse" data-target="#donate<%=@fundraise.id%>" aria-expanded="false" aria-controls="collapseExample" class="btn btn-primary btn-lg" style="margin-bottom:10px;">Make a Contribution</a>
+        <% else %>
+        <%= link_to "Make a Contribution",nil ,:class=>"btn btn-primary btn-lg", :disabled=> true, :style=> "margin-bottom:10px;"%>
+        <% end %>
         
           <h4 class = "margin-none text-capitalize"><%=@fundraise.small_description%></h4><br>
           
@@ -49,14 +52,14 @@
       </div>
       <br>
       <h5 class = "margin-none text-capitalize"><%=@fundraise.description%></h5>
-      <div class="collapse" id="collapseExample<%=@fundraise.id%>" >
+      <div class="collapse" id="donate<%=@fundraise.id%>" >
           <div class="form-horizontal" role="form">
             <%= form_for(@payment) do |f| %>
             <%= hidden_field_tag 'fundraise_id', @fundraise.id %>
                 <div class="form-group">
       
                   <div class="col-md-10" style="padding-left:0px;padding-right:0px;width:83%;padding-top:10px;">
-                  <%= f.number_field :amount, :class=>'form-control', :id=>"touch-spin-2", :placeholder=>"enter donation amount...", "data-toggle"=>"touch-spin", "data-min"=>"0", "data-max"=>"1000000", "data-prefix"=>"Rs", "data-step"=>"50", :value=>"200" %>
+                  <%= f.number_field :amount, :class=>'form-control', :id=>"touch-spin-2", :placeholder=>"enter donation amount...", "data-toggle"=>"touch-spin", "data-min"=>"0", "data-max"=>"1000000", "data-prefix"=>"Rs", "data-step"=>"1", :value=>"200" %>
                   </div>
                   <div class="col-md-2" style="padding-left:10px;padding-top:10px;">
                    <%= f.submit "Contribute", class: "btn btn-primary" %>
