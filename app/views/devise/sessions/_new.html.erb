@@ -1,0 +1,46 @@
+<div class="login" style="padding-bottom:100px;padding-top:40px;">
+  <div class="container-fluid">
+    <div class="brand-logo">
+      <img src="/images/profile.png" alt="guy" />
+    </div>
+    <div class="row">
+      <h1>Account Access</h1>
+      <div class="col-sm-4 col-sm-offset-4">
+        <div class="panel panel-default">
+          <div class="panel-body">
+          <% flash.each do |key, value| %>
+            <div class="alert alert-info alert-dismissable">
+            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+            <%= value %></div>
+          <% end %>
+          
+            <%= form_for(resource, as: resource_name, url: session_path(resource_name), validate: true) do |f| %>
+             
+              <div class="form-group">
+                <div class="input-group">
+                  <span class="input-group-addon"><i class="fa fa-user"></i></span>
+                  <%= f.email_field :email, autofocus: true, :class=>"form-control", :placeholder=>"Email", :type=>"text" %>
+                </div>
+              </div>
+              <div class="form-group">
+                <div class="input-group">
+                  <span class="input-group-addon"><i class="fa fa-shield"></i></span>
+                 <%= f.password_field :password, autocomplete: "off", :class=>"form-control", :placeholder=>"password", :type=>"password" %>
+                </div>
+              </div>
+              <div class="text-center">
+              <%= f.submit 'Log in'.html_safe, :class=>"btn btn-success",data: {  turbolinks: false ,disable_with: 'Logging In'} %>
+              </div>
+            <% end %>
+          </div>
+        </div>
+        <%= link_to 'Not a Member? <b> Sign Up </b>'.html_safe , new_user_registration_path, :class=>"forgot-pass"%>        
+      </div>
+    </div>
+  </div>
+</div>  
+
+
+
+  
+
