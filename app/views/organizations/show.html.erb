@@ -18,10 +18,10 @@
       <a style="position:absolute;background-color: rgba(255, 255, 255, 0.48);top:10px;left:10px;" class="btn btn-cover" data-toggle="collapse" data-target="#collapseExampleorganization<%=@organization.id%>" aria-expanded="false" aria-controls="collapseExample"><i class="fa fa-pencil fa-fw"></i></a>
       <% end %>
       <div style="position:absolute;background-color: rgba(255, 255, 255, 0);right:10px;bottom:50px;">
-        <p class="blockquote-reverse h4"><span class="votes-count" data-id="<%= 
+        <p class="blockquote-reverse h4" style="background-color: rgba(255, 255, 255, 0.15);color: black;"><span class="votes-count" data-id="<%= 
         @organization.id %>"><%= @organization.likers_count %></span> Likes 
         </p>
-        <p class="blockquote-reverse h4"><span class="follow-count" data-id="<%= @organization.id %>"> <%= @organization.followers_count %></span> Followers 
+        <p class="blockquote-reverse h4" style="background-color: rgba(255, 255, 255, 0.15);color: black;"><span class="follow-count" data-id="<%= @organization.id %>"> <%= @organization.followers_count %></span> Followers 
         </p>
         
         
