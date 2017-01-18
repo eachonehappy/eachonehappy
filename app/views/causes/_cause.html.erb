@@ -17,8 +17,8 @@
         <a  class="text-muted">  <span class="follow-count" data-id="<%= cause.id %>"> <%= cause.followers_count %></span> Followers <i class="fa fa-user"></i></a>
       </div>
     </div>
-    <div class="collapse" id="1collapseExample<%=cause.id%>" style= "padding-left:10px;padding-bottom:5px;" >
-     <%= social_share_button_tag(cause.description, :url => request.original_url ) %>  
+    <div class="collapse" id="cause<%=cause.id%>" style= "padding-left:10px;padding-bottom:5px;" >
+     <%= social_share_button_tag(cause.small_description, :url => "http://www.takestand.in/cause/#{cause.id}" ) %>  
      </div>
     <div class="btn-group btn-group-footer btn-group-justified" >
       <% if current_user.likes?(cause)  %>
@@ -31,7 +31,7 @@
       <% else %>
       <%= link_to '<i class="fa fa-user"></i> Follow'.html_safe, follow_cause_path(cause), method: :put, :class=>"follow btn", remote: true, data: { toggle_text: 'Unfollow', toggle_href: follow_cause_path(cause), id: cause.id } %>
       <% end %>
-      <a data-toggle="collapse" data-target="#1collapseExample<%=cause.id%>" aria-expanded="false" aria-controls="collapseExample" class="btn"><i class="fa fa-user"></i> Share</a>
+      <a data-toggle="collapse" data-target="#cause<%=cause.id%>" aria-expanded="false" aria-controls="collapseExample" class="btn"><i class="fa fa-user"></i> Share</a>
     </div>
   </div>                
 </div>

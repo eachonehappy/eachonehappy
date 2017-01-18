@@ -57,9 +57,8 @@
           <i class="fa fa-inr"></i><span><span><%=fundraise.target%></span><p style="margin:0px;">goal</p></span>
         </div>
       </div> 
-
-      <div class="collapse" id="1collapseExample<%=fundraise.id%>" style= "padding-left:10px;padding-bottom:5px;padding-top:10px;" >
-     <%= social_share_button_tag(fundraise.description, :url => request.original_url ) %>  
+      <div class="collapse" id="fundraisehome<%=fundraise.id%>" style= "padding-left:10px;padding-bottom:5px;padding-top:10px;" >
+     <%= social_share_button_tag(fundraise.description, :url => "http://www.takestand.in/fundraises/#{fundraise.id}" ) %>  
      </div>
       <div class="btn-group btn-group-footer btn-group-justified" >
         <% if current_user.likes?(fundraise)  %>
@@ -72,7 +71,7 @@
         <% else %>
           <%= link_to '<i class="fa fa-user"></i> Follow'.html_safe, follow_fundraise_path(fundraise), method: :put, :class=>"follow btn", remote: true, data: { toggle_text: 'Unfollow', toggle_href: follow_fundraise_path(fundraise), id: fundraise.id } %>
         <% end %>
-        <a data-toggle="collapse" data-target="#1collapseExample<%=fundraise.id%>" aria-expanded="false" aria-controls="collapseExample" class="btn"><i class="fa fa-user"></i> Share</a>
+        <a data-toggle="collapse" data-target="#fundraisehome<%=fundraise.id%>" aria-expanded="false" aria-controls="collapseExample" class="btn"><i class="fa fa-user"></i> Share</a>
       </div>                    
     </div>
 
