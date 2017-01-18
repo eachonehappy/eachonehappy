@@ -48,7 +48,7 @@
                   <img src="/images/profile.png" alt="people" class="img-circle" width="30">
                 </div>
                 <div class="media-body">
-                  <a href="#"><%=friend.name%></a>
+                  <%=link_to "#{full_name(friend)}" , user_path(friend), data: { turbolinks: false } %>
                 </div>
               </li>
               <%end%>
