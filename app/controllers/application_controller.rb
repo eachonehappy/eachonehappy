@@ -30,8 +30,19 @@ class ApplicationController < ActionController::Base
       @user_organizations = current_user.organizations.select { |org| org.organization_users.where(user_id: current_user.id).where(role: "owner") }
       @organizations_followers = @user_organizations.map(&:followers_count).inject(0, :+)
       @organizations_likers = @user_organizations.map(&:likers_count).inject(0, :+)
-      @sum_count = @posts_likes + @campaigns_likes + @campaigns_followers + @causes_likes + @causes_followers + @fundraises_likes + @fundraises_followers + @user_likes + @organizations_followers + @organizations_likers
 
+      @current_user_post_likes = current_user.likees(Post).count
+      @current_user_campaign_likes = current_user.likees(Campaign).count
+      @current_user_campaign_follows = current_user.followees(Campaign).count
+      @current_user_cause_likes = current_user.likees(Cause).count
+      @current_user_cause_follows = current_user.followees(Cause).count
+      @current_user_fundraise_likes = current_user.likees(Fundraise).count
+      @current_user_fundraise_follows = current_user.followees(Fundraise).count
+      @current_user_organization_likes = current_user.likees(Organization).count
+      @current_user_organization_follows = current_user.followees(Organization).count
+      @own_likes_follows =  @current_user_post_likes + @current_user_campaign_likes + @current_user_campaign_follows + @current_user_cause_likes + @current_user_cause_follows + @current_user_fundraise_likes + @current_user_fundraise_follows + @current_user_organization_likes + @current_user_organization_follows
+      @sum_count = @posts_likes + @campaigns_likes + @campaigns_followers + @causes_likes + @causes_followers + @fundraises_likes + @fundraises_followers + @user_likes + @organizations_followers + @organizations_likers - @own_likes_follows
+    
       if @sum_count > current_user.notification_count
         @stat = Stat.first
         @amount_to_be_added =  (@sum_count - current_user.notification_count)*@stat.rate
