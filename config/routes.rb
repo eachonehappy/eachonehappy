@@ -5,6 +5,7 @@ Rails.application.routes.draw do
 	get 'contact_us' => 'pages#contact_us'
 	get 'volunteer_us' => 'pages#volunteer_us'
 	get 'our_goal' => 'pages#our_goal'
+	get 'privacy_policy' => 'pages#privacy_policy'
 
 	devise_for :users, controllers: { sessions: 'users/sessions', registrations: 'users/registrations' }
     devise_scope :user do
