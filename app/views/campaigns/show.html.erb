@@ -55,6 +55,15 @@
     </div>
   </div>
 </div>
+<div class="col-md-3" style="padding-left: 10px;
+    padding-right: 0px;">
+    <div class="row">
+  <% (1..3).each do |i| %>
+
+    <%= render 'shared/add' %>
+  <% end %>
+  </div>
+    </div>
 <% if @fundraises.any? %>
 <div class="col-md-9" style="padding:0px;">
 <div style="margin-right:3px;margin-left:3px">
@@ -66,12 +75,4 @@
 </div>
 <%end%>
 
- <div class="col-md-3" style="padding-left: 10px;
-    padding-right: 0px;">
-    <div class="row">
-  <% (1..3).each do |i| %>
-
-    <%= render 'shared/add' %>
-  <% end %>
-  </div>
-    </div>  
+   
