@@ -12,7 +12,7 @@ class Fundraise < ApplicationRecord
 
   validates :subject,  presence: true
   validates :target,  presence: true, numericality: { only_integer: true }
-  validates :description,  presence: true, length: { minimum: 30 }
+  validates :description,  presence: true, length: { minimum: 15 }
   validates :small_description,  presence: true, length: { minimum: 10 }
   include PublicActivity::Model
   tracked
