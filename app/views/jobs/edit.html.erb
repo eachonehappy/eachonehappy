@@ -1,4 +1,4 @@
-<div class="col-md-7">
+<div class="col-md-8">
   <div class="panel panel-default">
       <div class="panel-heading panel-heading-gray">Create a Job</div>
       <div class="panel-body">
@@ -46,17 +46,20 @@
           
       </div>
   </div>
+  <div>
+   <%= render 'shared/uberad' %>
+</div>
                
 </div>
 
- <div class="col-md-2" style="padding-left: 20px;" >
+ <div class="col-md-2" style="padding-left: 30px;" >
   <div class="row">
   <% (1..3).each do |i| %>
    <%= render 'shared/add' %>
     <% end %>
     </div>
   </div>
-  <div class="col-md-3" style="padding-left: 30px;" >
+  <div class="col-md-2" style="padding-left: 20px;" >
   <div class="row">
   <% (1..2).each do |i| %>
 

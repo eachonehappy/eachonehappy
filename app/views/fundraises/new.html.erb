@@ -1,4 +1,4 @@
-<div class="col-md-7">
+<div class="col-md-8">
 <% if @all_campaign.empty? %>
 <div class="ibox-title" style="background-color: white;">
       <h1 class="title pull-left" style="margin-top: 10px;
@@ -88,17 +88,20 @@
           
       </div>
   </div>
-  <% end %>             
+  <% end %>  
+  <div>
+   <%= render 'shared/uberad' %>
+</div>           
 </div>
 
-<div class="col-md-2" style="padding-left: 20px;" >
+<div class="col-md-2" style="padding-left: 30px;" >
   <div class="row">
   <% (1..3).each do |i| %>
    <%= render 'shared/add' %>
     <% end %>
     </div>
   </div>
-  <div class="col-md-3" style="padding-left: 30px;" >
+  <div class="col-md-2" style="padding-left: 20px;" >
   <div class="row">
   <% (1..2).each do |i| %>
 

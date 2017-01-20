@@ -212,14 +212,20 @@
           </div>
         <%end%>
         <%end%>
+        <div style="padding-left:30px">
+        <%= render 'shared/profile'%>
+         </div>
     </div> 
       <div class="col-md-6 " style="padding-left: 0px; padding-right: 3px;">
         <%= render :partial => 'shared/post', :collection => @organization_posts %>
       </div> 
     </div>                      
-  </div>                      
+  </div> 
+  <div style="padding-left:30px;">
+   <%= render 'shared/uberad' %>
+</div>                     
   </div>
-  <div class="col-md-3" style="padding-left: 30px;
+  <div class="col-md-2" style="padding-left: 30px;
     padding-right: 0px;">
     <div class="row">
   <% (1..5).each do |i| %>

@@ -1,11 +1,11 @@
 <% if message.user == current_user %>
 <div class="media" style="margin-top:0px;height: 50px;">
   <div class="pull-right media-object">
-  <div style="height:60px;width:60px;padding-top:1px;">
+  <div style="height:45px;width:45px;padding-top:1px;">
     <% if message.user.profile_image_url %> 
-      <%= image_tag(message.user.profile_image_url(:thumb), :class=>"img-responsive" ) %>
+      <%= image_tag(message.user.profile_image_url(:thumb), :class=>"img-circle img-responsive" ) %>
       <% else %>
-      <img src="/images/profile.png" alt="Bill" class="img-circle" />
+      <img src="/images/profile.png" alt="Bill" class="img-circle img-responsive" />
       <% end %>
     </div>
   </div>
@@ -25,11 +25,11 @@
 <% else %>
 <div class="media" style="margin-top:0px;height: 50px;">
   <div class="pull-left media-object">
-  <div style="height:60px;width:60px;padding-top:1px;">
+  <div style="height:45px;width:45px;padding-top:1px;">
     <% if message.user.profile_image_url %> 
       <%= image_tag(message.user.profile_image_url(:thumb), :class=>"img-responsive" ) %>
       <% else %>
-      <img src="/images/profile.png" alt="Bill" class="img-circle" />
+      <img src="/images/profile.png" alt="Bill" class="img-circle img-responsive" />
       <% end %>
     </div>
   </div>

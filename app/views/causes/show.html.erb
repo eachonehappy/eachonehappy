@@ -47,8 +47,11 @@
       </div>
     </div>
   </div>
+<div style="padding-left:30px;">
+   <%= render 'shared/uberad' %>
+</div>
   <% if @organizations.any? %>
-<div class="col-md-8" style="padding:0px;">
+<div class="col-md-8" style="padding:0px;padding-bottom:15px;">
 <div style="margin-right:3px;margin-left:3px">
     <h3 class="margin-none text-capitalize text-center" style="background-color:white;padding-bottom:0px;padding-top:5px;">Cause Organizations</h3>
     </div>
@@ -58,7 +61,7 @@
 </div>
 <% end %>
 <% if @campaigns.any? %>
-<div class="col-md-4" style="padding:0px;">
+<div class="col-md-4" style="padding:0px;padding-bottom:15px;">
 <div style="margin-right:3px;margin-left:3px">
     <h3 class="margin-none text-capitalize text-center" style="background-color:white;padding-bottom:0px;padding-top:5px;">Cause Campaigns</h3>
     </div>
@@ -67,8 +70,11 @@
 </div>
 </div>
 <% end %>
+<div style="padding-left:30px;">
+   <%= render 'shared/uberad' %>
 </div>
- <div class="col-md-3" style="padding-left: 10px;
+</div>
+ <div class="col-md-2" style="padding-left: 30px;
     padding-right: 0px;">
     <div class="row">
   <% (1..5).each do |i| %>

@@ -54,16 +54,22 @@
       </div>
     </div>
   </div>
+  <div style="padding-left:30px;">
+   <%= render 'shared/uberad' %>
+</div>
   <% if @fundraises.any? %>
 <div style="margin-right:3px;margin-left:3px">
   <h3 class="margin-none text-capitalize text-center" style="background-color:white;padding-bottom:0px;padding-top:5px;">Campaign Fundraises</h3>
   </div>
-    <div id="scrolling">
+    <div id="scrolling" style="padding-bottom: 10px;">
 <%= render :partial=> 'fundraises/fundraise', :collection => @fundraises %>
 </div>
 <%end%>
+<div style="padding-left:30px;">
+   <%= render 'shared/uberad' %>
 </div>
-<div class="col-md-3" style="padding-left: 10px;
+</div>
+<div class="col-md-2" style="padding-left: 30px;
     padding-right: 0px;">
     <div class="row">
   <% (1..5).each do |i| %>

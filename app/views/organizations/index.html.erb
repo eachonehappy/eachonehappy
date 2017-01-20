@@ -24,13 +24,18 @@
 	  <div class="clearfix"></div>   
 	</div>
 	<div class="timeline row" data-toggle="gridalicious" style="padding-top: 10px;">
-	 <%= render @organizations %>               
+	 <%= render @organizations %>  
+             
 	</div>
+   <div style="padding-left:30px;">
+   <%= render 'shared/uberad' %>
+</div>  
 </div>
- <div class="col-md-3" style="padding-left: 10px;
+ <div class="col-md-2" style="padding-left: 10px;
     padding-right: 0px;">
     <div class="row">
-  <% (1..5).each do |i| %>
+    <% @organizations_count = @organizations.count/2 + 1 %>
+  <% (1..@organizations_count).each do |i| %>
 
     <%= render 'shared/add' %>
   <% end %>
