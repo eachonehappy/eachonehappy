@@ -36,7 +36,7 @@
       <%end%>
       <%= link_to post_path(post),data: {  turbolinks: false } do %>
       <%if post.image_url %>
-    <%= image_tag post.image_url.to_s, :class=>"img-responsive", :style=> "padding: 10px;" %>
+    <%= image_tag post.image_url.to_s, :class=>"img-responsive", :style=> "padding: 5px;" %>
     <%end%>
     <% end %>
     <div class="collapse" id="post<%=post.id%>" style= "padding-left:10px;padding-bottom:5px;" >
