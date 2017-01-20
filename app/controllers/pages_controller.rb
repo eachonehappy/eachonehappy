@@ -24,7 +24,7 @@ class PagesController < ApplicationController
       @campaigns = Campaign.all.sort_by(&:likers_count).sort_by(&:created_at).last(20).reverse
     
     end
-    @major_causes = Cause.all.sort_by(&:likers_count).last(11)
+    @major_causes = Cause.all.sort_by(&:likers_count).last(10)
   end
 
   def about_us

@@ -164,6 +164,30 @@
                 </ul>
             </div>
         </div>
+        <% if @user == current_user %>
+        <% unless @pending_organizations.empty? %>
+          <div class="panel panel-default" style="margin-bottom: 10px;"">
+              <div class="panel-heading panel-heading-gray">
+                Pending Organization Join Requests
+              </div>
+              <div class="panel-body">
+                  <ul class="list-unstyled profile-about">
+                  <%@pending_organizations.each do |organization|%>
+                    
+                      <li>
+                          <div class="row" style="margin-bottom:3px;">
+                              <div class="col-sm-8"><%= link_to "#{organization.name}", organization_path(organization), :class=>"text-capitalize"%>
+                              </div>
+                              <div class="col-sm-4 text-capitalize"><%= link_to "accept" , accept_organization_path(:user_id => @user.id,:organization_id => organization.id), :method => :post, :class => "btn btn-primary btn-sm", data: { disable_with: 'Accepting' ,toggle_text: 'Member'}%>
+                            </div>
+                          </div>
+                      </li>
+                      <%end%>
+                  </ul>
+              </div>
+          </div>
+        <%end%>
+        <%end%>
         <% if @user.organizations.any? %>
         <h3 class="margin-none text-capitalize text-center" style="background-color:white;;padding-bottom:5px;">Organizations</h3>
         
@@ -173,9 +197,11 @@
         <%= render 'shared/profile'%>
         </div>
     </div> 
+    <% if @posts.any? %>
       <div class="col-md-6 " style="padding-left: 0px; padding-right: 3px;" id="scrolling">
         <%= render :partial => 'shared/post', :collection => @posts%>
       </div> 
+      <% end %>
     </div>                      
   </div>
   <div style="padding-left:30px;">
