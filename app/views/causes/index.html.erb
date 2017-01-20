@@ -42,8 +42,8 @@
  <div class="col-md-3" style="padding-left: 30px;
     padding-right: 0px;">
     <div class="row">
-    <% @causes_count = @causes.count/2 + 1 %>
-  <% (1..@causes_count).each do |i| %>
+  
+  <% (1..5).each do |i| %>
 
     <%= render 'shared/add' %>
   <% end %>

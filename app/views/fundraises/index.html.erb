@@ -38,8 +38,7 @@
  <div class="col-md-3" style="padding-left: 30px;
     padding-right: 0px;">
     <div class="row">
-    <% @fundraises_count = @fundraises.count/2 + 1 %>
-  <% (1..@fundraises_count).each do |i| %>
+  <% (1..5).each do |i| %>
 
     <%= render 'shared/add' %>
   <% end %>

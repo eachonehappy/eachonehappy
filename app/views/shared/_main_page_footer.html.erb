@@ -4,14 +4,16 @@
 
         <div class="container">
             <div class="row">
-           
+            <div class="col-md-2" >
+               <%= render 'shared/add' %>
+              </div>
                 <div class="col-md-5 col-sm-6">
                   
                     <h2 class="section-heading text-capitalize"><%= cause.subject %></h2>
                     <p class="lead"><%= cause.small_description %></p>
                     <p class="lead"><%= cause.description %></p>
                 </div>
-                <div class="col-md-5 col-md-offset-2 col-sm-6">
+                <div class="col-md-5 col-sm-6">
                     <% if cause.image_url %> 
                         <%= image_tag(cause.image_url(:normal), :class=>"img-responsive", :style=>"padding:5px;")%>
                       <% else %>
@@ -30,20 +32,22 @@
 
         <div class="container">
             <div class="row">
-                <div class="col-md-5 col-md-offset-1 col-sm-push-6  col-sm-6">
+                <div class="col-md-5 col-sm-push-5  col-sm-6">
                   
                     <h2 class="section-heading text-capitalize"><%= cause.subject %></h2>
                     <p class="lead"><%= cause.small_description %></p>
                     <p class="lead"><%= cause.description %></p>
                 </div>
-                <div class="col-md-5 col-sm-pull-6  col-sm-6">
+                <div class="col-md-5 col-sm-pull-5  col-sm-6">
                      <% if cause.image_url %> 
                         <%= image_tag(cause.image_url(:normal), :class=>"img-responsive", :style=>"padding:5px;")%>
                       <% else %>
                         <img src="/images/default.png" alt="image" class="img-responsive" />
                       <% end %>
                 </div>
-                
+                <div class="col-md-2" >
+               <%= render 'shared/add' %>
+              </div>
             </div>
 
         </div>
@@ -52,6 +56,5 @@
     </div>
   <% end %>  
 <% end %>
-
 
     
