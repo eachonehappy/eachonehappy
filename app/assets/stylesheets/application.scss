@@ -41,6 +41,11 @@
   overflow-y: auto;  
 }
 
+#scrolling-friends {
+  max-height: 160px;
+  overflow-y: auto;  
+}
+
 html {
     overflow-x: hidden;
 }

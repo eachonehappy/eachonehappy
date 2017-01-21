@@ -33,9 +33,19 @@
         <%= render 'layouts/main'%>
       </div>
     <%else%>
+    <div class="st-container">
+      <div class="st-pusher">
     <%= render 'shared/header'%>
+ 
+      <div class="st-content-inner" style="padding-top:0px;">
+     
       <%= yield %> 
       <%= render 'shared/footer'%>
+      
+ 
+      </div>
+      </div>
+      </div>
     <%end%>    
     <script>
       var colors = {

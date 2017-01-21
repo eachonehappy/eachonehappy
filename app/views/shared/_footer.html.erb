@@ -1,4 +1,4 @@
- <footer>
+ <footer class="hidden-xs">
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
@@ -22,6 +22,35 @@
                     </ul>
                     <p class="copyright text-muted small">Copyright &copy; takestand.in. All Rights Reserved</p>
                 </div>
+            </div>
+        </div>
+    </footer>
+     <footer class="visible-xs">
+        <div class="container">
+            <div class="row">
+               
+                    <ul class="list-inline">
+                       <li>
+                            <%= link_to 'About Us'.html_safe , about_us_path, data: { turbolinks: false, disable_with: 'Wait ...' }, class: 'btn btn-primary btn-sm', style: 'margin-left:5px;'%>
+                        </li>
+                       
+                        <li>
+                            <%= link_to 'Contact Us' , contact_us_path, data: { turbolinks: false, disable_with: 'Wait ...' }, class: 'btn btn-primary btn-sm'%>
+                        </li>
+                         <li>
+                            <%= link_to 'Volunteer' , volunteer_us_path, data: { turbolinks: false, disable_with: 'Wait ...' }, class: 'btn btn-primary btn-sm'%>
+                        </li>
+                        <br>
+                        <br>
+                         <li>
+                            <%= link_to 'Our goal' , our_goal_path, data: { turbolinks: false, disable_with: 'Wait ...' }, class: 'btn btn-primary btn-sm', style: 'margin-left:50px;'%>
+                        </li>
+                        <li>
+                            <%= link_to 'Privacy policy' , privacy_policy_path, data: { turbolinks: false, disable_with: 'Wait ...' }, class: 'btn btn-primary btn-sm'%>
+                        </li>
+                    </ul>
+                    <p class="copyright text-muted small">Copyright &copy; takestand.in. All Rights Reserved</p>
+               
             </div>
         </div>
     </footer>

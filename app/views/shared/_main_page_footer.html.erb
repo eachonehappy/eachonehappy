@@ -1,19 +1,53 @@
+ <div class="content-section-a">
+
+        <div class="container">
+            <div class="row">
+                <center>
+                <h2 class="section-heading text-capitalize">What Is Takestand</h2>
+                </center>
+                  <p class="lead">Takestand is a Social Platform for Social Cause, Our goal is to provide you a platform to help people who needs you. You will be rewarded money on promoting your activities on takestand, then you can donate that money to any fundraise.</p>
+            </div>
+
+        </div>
+        <!-- /.container -->
+
+    </div>
+
+ <div class="content-section-b">
+    <div class="container">
+        <div class="row">
+        <center>
+        <h2 class="section-heading text-capitalize">How It Works</h2>
+        </center>
+          <div class="col-md-4 col-xs-12" style="padding-bottom: 20px;color: #6e7882;" >
+          <div class="text-display-1">Start Or Join a Organization</div>
+          </div>
+          <br>
+          <br>
+          <div class="col-md-4 col-xs-12" style="padding-bottom: 20px;color: #6e7882;" >
+          <div class="text-display-1">Start a Campaign</div>
+          </div>
+          <div class="col-md-4 col-xs-12"  style="padding-bottom: 20px;color: #6e7882;">
+          <div class="text-display-1">Raise Funds & Promote</div>
+          </div> 
+        </div>
+    </div>
+</div>
+
 <% @major_causes.each do |cause|%>
   <% if @major_causes.index(cause).even? %>
      <div class="content-section-a">
 
         <div class="container">
             <div class="row">
-            <div class="col-md-2" >
-               <%= render 'shared/add' %>
-              </div>
+           
                 <div class="col-md-5 col-sm-6">
                   
                     <h2 class="section-heading text-capitalize"><%= cause.subject %></h2>
                     <p class="lead"><%= cause.small_description %></p>
                     <p class="lead"><%= cause.description %></p>
                 </div>
-                <div class="col-md-5 col-sm-6">
+                <div class="col-md-5 col-md-offset-2 col-sm-6">
                     <% if cause.image_url %> 
                         <%= image_tag(cause.image_url(:normal), :class=>"img-responsive", :style=>"padding:5px;")%>
                       <% else %>
@@ -32,22 +66,20 @@
 
         <div class="container">
             <div class="row">
-                <div class="col-md-5 col-sm-push-5  col-sm-6">
+                <div class="col-md-5 col-md-offset-1 col-sm-push-6  col-sm-6">
                   
                     <h2 class="section-heading text-capitalize"><%= cause.subject %></h2>
                     <p class="lead"><%= cause.small_description %></p>
                     <p class="lead"><%= cause.description %></p>
                 </div>
-                <div class="col-md-5 col-sm-pull-5  col-sm-6">
+                <div class="col-md-5 col-sm-pull-6  col-sm-6">
                      <% if cause.image_url %> 
                         <%= image_tag(cause.image_url(:normal), :class=>"img-responsive", :style=>"padding:5px;")%>
                       <% else %>
                         <img src="/images/default.png" alt="image" class="img-responsive" />
                       <% end %>
                 </div>
-                <div class="col-md-2" >
-               <%= render 'shared/add' %>
-              </div>
+                
             </div>
 
         </div>

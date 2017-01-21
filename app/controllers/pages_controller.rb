@@ -5,6 +5,8 @@ class PagesController < ApplicationController
 
   def home
     if user_signed_in?
+      @users = User.all - [current_user] - current_user.friends
+      @suggested_friends = @users.sort_by(&:followers_count).last(10).reverse
     	@post = Post.new
     	@comment = Comment.new
       @payment = Payment.new
@@ -15,13 +17,13 @@ class PagesController < ApplicationController
           @posts << post
         end  
       end
-    	@posts = @posts.sort_by(&:created_at).reverse
+    	@posts = @posts.sort_by(&:created_at).sort_by(&:likers_count).reverse
       if @posts.empty?
-        @posts = Post.all.sort_by(&:likers_count).sort_by(&:created_at).last(20).reverse
+        @posts = Post.all.sort_by(&:created_at).sort_by(&:likers_count).last(10).reverse
       end
     	@all_user = current_user.friends
-      @fundraises = Fundraise.all.sort_by(&:likers_count).sort_by(&:created_at).last(20).reverse
-      @campaigns = Campaign.all.sort_by(&:likers_count).sort_by(&:created_at).last(20).reverse
+      @fundraises = Fundraise.all.sort_by(&:created_at).sort_by(&:likers_count).last(10).reverse
+      @campaigns = Campaign.all.sort_by(&:created_at).sort_by(&:likers_count).last(10).reverse
     
     end
     @major_causes = Cause.all.sort_by(&:likers_count).last(10)

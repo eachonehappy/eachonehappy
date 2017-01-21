@@ -41,6 +41,37 @@
 <div class="col-md-7" style="padding-left: 10px;padding-left: 3px;
     padding-right: 5px;overflow: hidden;position: relative;">
   <div class="col-md-5" style="padding: 0px;" >
+    <div style="margin-left:3px;margin-right: 10px;">
+      <h3 class="margin-none text-capitalize text-center" style="background-color:white;padding-bottom:0px;padding-top:5px;">Find Friends</h3>
+    </div>
+    <ul  role="notification" style="background-color:white; padding-left:5px;margin-left:3px;margin-right: 10px;">
+      <div id="scrolling-friends">
+        <% @suggested_friends.each do |friend| %>
+        <li class="media" style="margin-top:0px;" >
+          <div class="pull-right friend-message" data-id="<%= friend.id %>", style= "padding-right:10px;padding-top:15px;">
+            <% if current_user.pending_friends.include?(friend) %>
+             <%= link_to "Sent",nil ,:class=>"btn btn-info btn-sm", remote: true, :disabled=> true %>
+             <% elsif current_user.requested_friends.include?(friend) %>
+            <%= link_to "Accept Request", accept_path(friend), :method => :post, :class=>"acceptfriend btn btn-primary  btn-sm", remote: true, data: { disable_with: 'accepting' ,toggle_text: 'You are friends', toggle_href: accept_path(friend), id: friend.id } %>
+            <%else%>
+            <%= link_to "Add Friend", invite_path(friend), :method => :post, :class=>"friend btn btn-info  btn-sm", remote: true, data: { disable_with: 'adding' ,toggle_text: 'Friend request send', toggle_href: invite_path(friend), id: friend.id } %>
+            <% end %>
+          </div>
+          <div class="media-left">
+            <img src="/images/profile.png" alt="people" class="img-circle" width="30">
+          </div>
+          <div class="media-body">
+            <%=link_to "#{full_name(friend)}" , user_path(friend), data: { turbolinks: false } %>
+          </div>
+        </li>
+        <%end%>
+       </div> 
+      <li class="media">
+      <center>
+      <%= link_to "Find More Friends", users_path , data: { turbolinks: false }%>
+        </center>
+      </li>
+    </ul>
     <% if @fundraises.any? %>
     <div style="margin-left:3px;margin-right: 10px;">
       <h3 class="margin-none text-capitalize text-center" style="background-color:white;padding-bottom:0px;padding-top:5px;">Top Fundraises</h3>
@@ -60,18 +91,17 @@
 	</div>
       <div class="col-md-3" style="padding-left: 20px;" >
   <div class="row">
-  <% @posts_count = @posts.count/2 + 1 %>
-  <% (1..@posts_count).each do |i| %>
+
    <%= render 'shared/add' %>
-    <% end %>
+   <%= render 'shared/uberad' %>
     </div>
   </div>
   <div class="col-md-4" style="padding-left: 30px;" >
   <div class="row">
-  <% (1..@posts_count).each do |i| %>
+  
 
     <%= render 'shared/add' %>
-  <% end %>
+
   </div>
   </div>
 

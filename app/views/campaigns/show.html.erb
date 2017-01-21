@@ -65,14 +65,11 @@
 <%= render :partial=> 'fundraises/fundraise', :collection => @fundraises %>
 </div>
 <%end%>
-<div style="padding-left:30px;">
-   <%= render 'shared/uberad' %>
-</div>
 </div>
 <div class="col-md-2" style="padding-left: 30px;
     padding-right: 0px;">
     <div class="row">
-  <% (1..5).each do |i| %>
+  <% (1..2).each do |i| %>
 
     <%= render 'shared/add' %>
   <% end %>
