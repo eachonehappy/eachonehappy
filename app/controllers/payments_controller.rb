@@ -29,6 +29,7 @@ class PaymentsController < ApplicationController
 	      render 'new'
 	    end
 	  else
+      flash[:success] = "You dont't have enough money in your wallet , Increase your wallet amount by promoting your activities."
 	  	redirect_to request.referer
 	  end  
   end
