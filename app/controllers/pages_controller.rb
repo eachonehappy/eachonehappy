@@ -50,5 +50,7 @@ class PagesController < ApplicationController
 
   def notification
     @activities = PublicActivity::Activity.order("created_at desc").where(owner_type: "User", owner_id: current_user.friends.map {|u| u.id})
+    @activities = @activities.reject{|activity| activity.key == "like.destroy" }
+    @activities = @activities.reject{|activity| activity.key == "follow.destroy" }
   end
 end
