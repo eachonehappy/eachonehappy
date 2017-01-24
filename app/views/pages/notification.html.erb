@@ -3,27 +3,28 @@
 <%= render 'shared/activities' %>
 </ul>
 </div>
-
+<% @activities_count = @activities.count/6 + 1 %>
 <div class="col-md-2" style="padding-left: 20px;" >
   <div class="row">
- 
+ <% (1..@activities_count).each do |i| %>
    <%= render 'shared/add' %>
-    
+  <% end %>  
     </div>
   </div>
   <div class="col-md-2" style="padding-left: 10px;" >
   <div class="row">
 
-
+<% (1..@activities_count).each do |i| %>
     <%= render 'shared/add' %>
- 
+ <% end %>
   </div>
   </div>
     <div class="col-md-2" style="padding-left: 10px;" >
   <div class="row">
  
-
+<% (1..@activities_count).each do |i| %>
     <%= render 'shared/add' %>
+<% end %>
+  </div>
+  </div>
 
-  </div>
-  </div>

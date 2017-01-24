@@ -88,22 +88,21 @@
       <%= render :partial => 'shared/campaign', :collection => @campaigns %>
   	</div>
 	  <% end %>
+    <div class="col-md-12" style="padding-top:10px;">
+    <% (1..2).each do |i| %>
+   <%= render 'shared/add' %>
+   <% end %>
+   </div>
 	</div>
-      <div class="col-md-3" style="padding-left: 20px;" >
+      <div class="col-md-7" style="padding-left: 20px;" >
   <div class="row">
 
-   <%= render 'shared/add' %>
+   <% (1..@posts.count).each do |i| %>
    <%= render 'shared/profile' %>
+   <% end %>
     </div>
   </div>
-  <div class="col-md-4" style="padding-left: 30px;" >
-  <div class="row">
   
-
-    <%= render 'shared/add' %>
-
-  </div>
-  </div>
 
 </div>
 <% else %>
