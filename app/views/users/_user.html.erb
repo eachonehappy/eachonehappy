@@ -5,12 +5,11 @@
       <% else %>
       <img src="/images/profile.png" width="35" alt="Bill" class="img-circle" />
       <% end %>
-      <%= link_to "#{user.first_name}  #{user.last_name}", user_path(user), :class=>"text-capitalize" ,data: {  turbolinks: false }%>
+      <%= link_to "#{full_name(user)}", user_path(user), :class=>"text-capitalize" ,data: {  turbolinks: false }%>
     </td>
-  <td><%= user.email%>
   </td>
   <td>
-  <div class="friend-message" data-id="<%= user.id %>">
+  <div class="friend-message pull-right" data-id="<%= user.id %>">
     <% if current_user.pending_friends.include?(user) %>
      <%= link_to "Friend request send",nil ,:class=>"btn btn-info", remote: true, :disabled=> true %>
      <% elsif current_user.requested_friends.include?(user) %>

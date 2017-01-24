@@ -31,7 +31,7 @@
   }
 }
 
- #scrolling {
+#scrolling {
   max-height: 800px;
   overflow-y: auto;
 }
@@ -45,9 +45,13 @@
   max-height: 160px;
   overflow-y: auto;  
 }
+ #scrolling-table {
+  max-height: 100%;
+  overflow-x: auto;
+}
 
 html {
-    overflow-x: hidden;
+    overflow-x: auto;
 }
 ::-webkit-scrollbar {
     width: 7px;  /* remove scrollbar space */

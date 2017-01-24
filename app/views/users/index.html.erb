@@ -1,18 +1,16 @@
-<div class="col-md-8" >
+<div class="col-md-8 col-xs-12" >
 <div class="panel panel-default">
     <!-- Data table -->
-    <table data-toggle="data-table" class="table" cellspacing="0" width="100%">
+    <table data-toggle="data-table" class="table" cellspacing="0" width="100%" id="scrolling-table">
       <thead>
         <tr>
           <th>Name</th>
-          <th>Email</th>
           <th>Action</th>
         </tr>
       </thead>
       <tfoot>
         <tr>
           <th>Name</th>
-          <th>Email</th>
           <th>Action</th>
         </tr>
       </tfoot>
@@ -23,7 +21,9 @@
     <!-- // Data table -->
   </div>
   <div>
+  <div class="hidden-xs">
    <%= render 'shared/uberad' %>
+   </div>
 </div>
   </div>
 
