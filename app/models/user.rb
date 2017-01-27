@@ -36,6 +36,13 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
   scope :online, lambda{ where("updated_at > ?", 10.minutes.ago) }
+
+  after_create :default_wallet
+
+  def default_wallet
+    self.wallet_amount = Stat.second.rate
+    self.save
+  end
   
   def name
     email.split('@')[0]

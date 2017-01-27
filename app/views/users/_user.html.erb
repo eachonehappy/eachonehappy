@@ -1,9 +1,9 @@
 <tr>
   <td>
     <% if user.profile_image_url %> 
-      <%= image_tag(user.profile_image_url(:thumb)) %>
+      <%= image_tag(user.profile_image_url(:thumb),:width=>"35") %>
       <% else %>
-      <img src="/images/profile.png" width="35" alt="Bill" class="img-circle" />
+      <img src="/images/profile.png" width="35" alt="Bill"/>
       <% end %>
       <%= link_to "#{full_name(user)}", user_path(user), :class=>"text-capitalize" ,data: {  turbolinks: false }%>
     </td>

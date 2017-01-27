@@ -1,11 +1,11 @@
-<div class="sidebar left sidebar-size-2 sidebar-offset-0 sidebar-skin-blue sidebar-visible-desktop" id=sidebar-menu data-type=collapse style="background-color:#cacaca;">
+<div class="sidebar left sidebar-size-2 sidebar-offset-0 sidebar-skin-blue sidebar-visible-desktop" id=sidebar-menu data-type=collapse style="background-color:#e2e2e2;border-right-width: 0px;">
   <div class="split-vertical">    
     <div class="split-vertical-body">
       <div class="split-vertical-cell">
         <div class="tab-content">
           <div class="tab-pane active" id="sidebar-tabs-menu">
             <div data-scrollable>
-              <ul class="sidebar-menu" style="padding-top: 10px;">
+              <ul class="sidebar-menu" style="padding-top: 10px;border-bottom-width: 0px;">
                 <li>
                 <%= link_to '<i class="fa fa-home"></i> <span>Home</span>'.html_safe, root_path, data: { turbolinks: false } %></li>
                 <li><%= link_to '<i class="fa fa-user"></i> <span>Profile</span>'.html_safe, user_path(current_user), data: { turbolinks: false } %></li>
@@ -14,7 +14,7 @@
                   <%= link_to '<i class="fa fa-group"></i>Find Friends'.html_safe, users_path, data: { turbolinks: false } %>
                 </li>
               </ul>
-              <ul class="sidebar-menu sm-active-item-bg">
+              <ul class="sidebar-menu sm-active-item-bg" style="border-bottom-width: 0px;">
                 <li class="padding">
                   <%= link_to '<i class="icon-circle-chevron-right pull-right"></i><b>Organizations</b>'.html_safe, organizations_path , data: { turbolinks: false }%>
                 </li>
