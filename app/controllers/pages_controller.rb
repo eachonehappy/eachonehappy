@@ -17,10 +17,10 @@ class PagesController < ApplicationController
           @posts << post
         end  
       end
-    	@posts = @posts.sort_by(&:created_at).sort_by(&:likers_count).reverse
-      if @posts.empty?
-        @posts = Post.all.sort_by(&:created_at).sort_by(&:likers_count).last(10).reverse
-      end
+      @posts_all = Post.all.sort_by(&:created_at).sort_by(&:likers_count).first(30).reverse
+    	@posts = @posts.sort_by(&:created_at).sort_by(&:likers_count).reverse + @posts_all
+     
+       
     	@all_user = current_user.friends
       @fundraises = Fundraise.all.sort_by(&:created_at).sort_by(&:likers_count).last(10).reverse
       @campaigns = Campaign.all.sort_by(&:created_at).sort_by(&:likers_count).last(10).reverse
