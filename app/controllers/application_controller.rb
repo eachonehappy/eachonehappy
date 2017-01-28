@@ -52,7 +52,7 @@ class ApplicationController < ActionController::Base
         current_user.save
       end 
       
-      @activities = @activities.last(20)
+      @activities = @activities.first(20)
       @chat_rooms = current_user.chat_rooms
       @messages = []
       @chat_rooms.each do |chat_room|
