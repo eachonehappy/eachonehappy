@@ -2,13 +2,8 @@ class JobsController < ApplicationController
 	before_action :authenticate_user!
   before_action :load_activities, only: [:index, :show, :new, :edit, :create]
 	def index
-    @jobs = Job.all
-    @user_jobs = []
-    @jobs.each do |job|
-     if job.mentions?(current_user)
-       @user_jobs << job
-     end
-    end
+    @user_jobs = current_user.jobs
+    
     if params[:format].present?
       if params[:format] == "all"
         @jobs = @user_jobs.sort_by(&:created_at).reverse
@@ -44,13 +39,11 @@ class JobsController < ApplicationController
     @job = Job.new(job_params)
     if job_params[:campaign_id].present? && params[:job][:user_ids].reject(&:empty?).present? 	
     	@job.campaign_id = job_params[:campaign_id]
-    	@job.job_users.build(:user_id => current_user.id)
       params[:job][:user_ids].reject(&:empty?).each do |user_id|
-        @user = User.find(user_id)
-      @job.mention!(@user)
+        @job.job_users.build(:user_id => user_id)
     end
-    unless params[:job][:user_ids].reject(&:empty?).include?(current_user.id)
-      @job.mention!(current_user)
+    unless params[:job][:user_ids].reject(&:empty?).include? "#{current_user.id}"
+      @job.job_users.build(:user_id => current_user.id)
     end
       if @job.save
         redirect_to jobs_path
@@ -80,7 +73,7 @@ class JobsController < ApplicationController
   end
 
   def edit
-    @all_user = User.all
+    @all_user = current_user.friends + [current_user]
     @job = Job.find(params[:id])
   end
 
@@ -88,11 +81,11 @@ class JobsController < ApplicationController
     @job = Job.find(params[:id])
     @job.subject = job_params[:subject]
     @job.description = job_params[:description]
-    if params[:job][:user_id].present?
-        params[:job][:user_id].reject(&:empty?).each do |user_id|
+    if params[:job][:user_ids].present?
+        params[:job][:user_ids].reject(&:empty?).each do |user_id|
         @user = User.find(user_id)
-          unless @job.mentions?(@user)
-            @job.mention!(@user)
+          unless @job.users.include?(@user)
+            @job.job_users.build(:user_id => user_id)
           end
         end
       end

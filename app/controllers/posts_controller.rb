@@ -43,7 +43,7 @@ class PostsController < ApplicationController
 
   def edit
     @post = Post.find(params[:id])
-    @all_user = User.all
+    @all_user = current_user.friends
   end
   
   def update

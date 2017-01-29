@@ -67,7 +67,7 @@ class FundraisesController < ApplicationController
   end
 
   def edit
-    @users = User.all
+    @users = current_user.friends
     @fundraise = Fundraise.find(params[:id])
   end
 

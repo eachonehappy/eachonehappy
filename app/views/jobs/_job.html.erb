@@ -1,9 +1,11 @@
 <tr>
   <td><%= job.subject %></td>
   <td><%=job.description%></td>
-  <td><%job.mentionees(User).each do |user|%>
+  <td><%job.users.each do |user|%>
   <% unless user == current_user%>
     <%= link_to "#{user.first_name} #{user.last_name}", user_path(user), data: { turbolinks: false }, :class => "text-capitalize",data: {  turbolinks: false }%>
+    <%else%>
+     <%= link_to "Myself", user_path(current_user), data: { turbolinks: false }, :class => "text-capitalize",data: {  turbolinks: false }%>
     <%end%>
     <%end%>
   </td>
