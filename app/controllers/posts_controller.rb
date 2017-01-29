@@ -58,7 +58,9 @@ class PostsController < ApplicationController
         @post.mention!(@user)
         end
       end
-      @post.image = post_params[:image]
+      if post_params[:image].present?
+        @post.image = post_params[:image]
+      end
       @post.description = post_params[:description]
       if @post.save
         redirect_to root_url
