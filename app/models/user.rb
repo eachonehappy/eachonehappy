@@ -27,8 +27,7 @@ class User < ApplicationRecord
   acts_as_follower
   acts_as_followable
   acts_as_mentionable
-  validates :first_name,  presence: true
-  validates :last_name,  presence: true
+  validates :full_name,  presence: true
   #validates :password, confirmation: true, length: { minimum: 6, maximum: 30 }
   #validates :password_confirmation, presence: true
   validates :email, presence: true, uniqueness: true, 

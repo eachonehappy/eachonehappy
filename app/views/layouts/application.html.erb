@@ -31,13 +31,14 @@
         <%= render 'layouts/main'%>
       </div>
     <%else%>
-    <div class="st-container">
+    <div class="st-container" style="padding-top:0px;">
       <div class="st-pusher">
-    <%= render 'shared/header'%>
- 
-      <div class="st-content-inner" style="padding-top:0px;">
+    
+      <%= render 'shared/header'%>
+      <div class="st-content-inner" style="padding-top:70px;">
      
       <%= yield %> 
+      
       <%= render 'shared/footer'%>
       
  

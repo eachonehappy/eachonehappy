@@ -1,17 +1,12 @@
-<div class="login" style="padding-bottom:100px;padding-top:40px;">
-  <div class="container-fluid">
-    <div class="brand-logo">
-      <i class="fa fa-pencil"></i>
-    </div>
-    <div class="row">
-      <h1>Create a new account</h1>
-      <div class="col-sm-4 col-sm-offset-4">
+
+      <h1>Sign Up</h1>
+      <div class="col-sm-10 col-sm-offset-1">
         <div class="panel panel-default">
           <div class="panel-body">
             <%= form_for(resource, as: resource_name, url: registration_path(resource_name), validate: true) do |f| %>
-              <div class="form-group">
+             <div class="form-group">
                 <%= f.text_field :full_name, autofocus: true, :class=>"form-control", :placeholder=>"Name", :type=>"text" %>
-              </div>    
+              </div>
               <div class="form-group">
                 <%= f.email_field :email,validate: { uniqueness: true }, autofocus: true, :class=>"form-control", :placeholder=>"Email", :type=>"text" %>
               </div>
@@ -21,27 +16,25 @@
               <div class="form-group">
                 <%= f.password_field :password_confirmation, autocomplete: "off", :class=>"form-control", :placeholder=>"password confirmation", :type=>"password" %>
               </div>
-                    <div class="form-group">
+              <div class="form-group">
                        
                         
                         <%= f.select :user_type, 
                           options_for_select([['I am a Individual','I am a Individual'],['I am a NGO','I am a NGO']]),
-                          {}, { :class=>"selectpicker" } %>
+                          {}, { :class=>"selectpicker","data-style"=>"btn-white" } %>
                                           </div>
+                
               
               <div class="text-center">
                 <%= f.submit "Create an Account", :class=>"btn btn-success",data: { disable_with: 'Creating Account' } %>
               </div>
             <% end %>
-             <%= link_to 'Already a Member? <b> Sign In </b>'.html_safe , new_user_session_path, :class=>"forgot-pass"%>
+             
           </div>
         </div>
       </div>
-    </div>
-  </div>
+   
 
-</div>
-
-     <%= render 'shared/main_page_footer'%>
+    
 
 

@@ -52,7 +52,7 @@
               <div class="form-group">
               <div for="inputEmail3" class="col-sm-3 control-label text-bold"><strong> Assigned to</strong></div>
                   <div class="col-sm-9">
-                <%= f.select(:user_ids, @all_user.collect {|c| [c.first_name, c.id]},{},
+                <%= f.select(:user_ids, @all_user.collect {|c| [c.full_name, c.id]},{},
                    { :multiple => true, :size => 5,:class=>"selectpicker","data-live-search" =>"true","multiple data-style"=>"btn-white" }
                  ) %>
               </div>

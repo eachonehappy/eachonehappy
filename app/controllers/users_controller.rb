@@ -25,9 +25,8 @@ class UsersController < ApplicationController
   def update
     @user = User.find(params[:id])
     if params[:user]    
-      if params[:user][:first_name].present? && params[:user][:last_name].present?
-        @user.first_name = params[:user][:first_name]
-        @user.last_name = params[:user][:last_name]
+      if params[:user][:full_name].present?
+        @user.full_name = params[:user][:full_name]
       elsif params[:user][:cover_image].present?
         @user.cover_image = params[:user][:cover_image]
       elsif params[:user][:profile_image].present?

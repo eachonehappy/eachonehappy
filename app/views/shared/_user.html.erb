@@ -5,7 +5,7 @@
     <% else %>
     <img src="/images/profile.png" width="35" alt="Bill" class="img-circle" />
     <% end %>
-  <%= link_to "#{user.first_name}  #{user.last_name}", user_path(user), :class=>"text-capitalize" ,data: {  turbolinks: false }%></td>
+  <%= link_to "#{user.full_name}", user_path(user), :class=>"text-capitalize" ,data: {  turbolinks: false }%></td>
   <td><%= user.email%>
   </td>
   <td>

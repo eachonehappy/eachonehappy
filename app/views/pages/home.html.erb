@@ -18,7 +18,7 @@
 			    <div class="form-group" >
 	          <label class="col-sm-3 control-label">Tag friends</label>
 	          <div class="col-sm-6">
-	            <%= f.select(:user_id, @all_user.collect {|c| [c.first_name, c.id]},{},
+	            <%= f.select(:user_id, @all_user.collect {|c| [c.full_name, c.id]},{},
 	               { :multiple => true, :size => 5,:class=>"selectpicker","data-live-search" =>"true","multiple data-style"=>"btn-white" }
 	             ) %>
 	          </div>
@@ -41,10 +41,30 @@
 <div class="col-md-7" style="padding-left: 10px;padding-left: 3px;
     padding-right: 5px;overflow: hidden;position: relative;">
   <div class="col-md-5" style="padding: 0px;" >
+    <% if @fundraises.any? %>
     <div style="margin-left:3px;margin-right: 10px;">
+      <h3 class="margin-none text-capitalize text-center" style="background-color:white;padding-bottom:0px;padding-top:5px;">Top Fundraises</h3>
+    </div>
+    <div id="scrolling">
+	  <%= render :partial => 'shared/fundraise', :collection => @fundraises %>
+	  </div>
+     <div style="margin-top:5px;margin-left:3px;">
+      <center>
+      <%= link_to "See All", fundraises_path , data: { turbolinks: false }, :class=>"media btn btn-primary btn-block"%>
+        </center>
+      </div>
+	  <% end %>
+    <div class="col-md-12" style="padding-top:10px;">
+    <% (1..2).each do |i| %>
+   <%= render 'shared/add' %>
+   <% end %>
+   </div>
+	</div>
+    <div class="col-md-7" style="padding: 5px;" >
+      <div style="margin-left:3px;margin-right: 10px;">
       <h3 class="margin-none text-capitalize text-center" style="background-color:white;padding-bottom:0px;padding-top:5px;">Find Friends</h3>
     </div>
-    <ul  role="notification" style="background-color:white; padding-left:5px;margin-left:3px;margin-right: 10px;">
+    <ul  role="notification" style="background-color:white; padding-left:5px;margin-left:3px;margin-right: 10px;margin-bottom:5px;">
       <div id="scrolling-friends">
         <% @suggested_friends.each do |friend| %>
         <li class="media" style="margin-top:0px;" >
@@ -66,35 +86,13 @@
         </li>
         <%end%>
        </div> 
-      <li class="media">
-      <center>
-      <%= link_to "Find More Friends", users_path , data: { turbolinks: false }%>
-        </center>
-      </li>
+      
     </ul>
-    <% if @fundraises.any? %>
-    <div style="margin-left:3px;margin-right: 10px;">
-      <h3 class="margin-none text-capitalize text-center" style="background-color:white;padding-bottom:0px;padding-top:5px;">Top Fundraises</h3>
-    </div>
-    <div id="scrolling">
-	  <%= render :partial => 'shared/fundraise', :collection => @fundraises %>
-	  </div>
-	  <% end %>
-	  <% if @campaigns.any? %>
-  	<div style="margin-right: 10px;margin-left:3px;margin-top:10px;">
-      <h3 class="margin-none text-capitalize text-center" style="background-color:white;padding-bottom:0px;padding-top:5px;">Top Campaign</h3>
-    </div>
-    <div id="scrolling">
-      <%= render :partial => 'shared/campaign', :collection => @campaigns %>
-  	</div>
-	  <% end %>
-    <div class="col-md-12" style="padding-top:10px;">
-    <% (1..2).each do |i| %>
-   <%= render 'shared/add' %>
-   <% end %>
-   </div>
-	</div>
-      <div class="col-md-7" style="padding-left: 20px;" >
+
+      <center>
+      <%= link_to "Find More Friends", users_path , data: { turbolinks: false }, :class=>"media btn btn-primary btn-block", :style=>"margin-right: 10px;margin-bottom:5px;"%>
+        </center>
+      
   <div class="row">
    <% (1..@posts.count).each do |i| %>
    <%= render 'shared/profile' %>
@@ -105,5 +103,18 @@
 
 </div>
 <% else %>
-<%= render 'devise/sessions/new' %>
+<div class="login" style="padding-bottom:100px;">
+  <div class="container-fluid">
+ 
+    <div class="row">
+<div class="col-md-6" style="padding-bottom:20px;">
+<%= render 'shared/signup' %>
+</div>
+<div class="col-md-6">
+<%= render 'shared/login' %>
+</div>
+ </div>
+  </div>
+</div> 
+<%= render 'shared/main_page_footer'%>
 <% end %>

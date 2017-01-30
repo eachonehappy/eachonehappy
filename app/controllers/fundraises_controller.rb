@@ -18,20 +18,16 @@ class FundraisesController < ApplicationController
   
   def new
     @fundraise = Fundraise.new
-    @all_organizations = current_user.organizations.joins(:organization_users).where(:organization_users => {:status => "accepted"})
-    @all_campaign = []
-    @all_organizations.each do |org|
-      org.campaigns.each do |campaign|
-        @all_campaign << campaign
-      end
-    end
+    @all_causes = Cause.all
     @users = current_user.friends
   end
   
   def create
     @fundraise = Fundraise.new(fundraise_params)
-    if fundraise_params[:campaign_id].present?	
-    	@fundraise.campaign_id = fundraise_params[:campaign_id]
+    if params[:fundraise][:cause_ids].reject(&:empty?).present?	
+    	params[:fundraise][:cause_ids].reject(&:empty?).each do |cause_id|
+      @fundraise.cause_fundraises.build(:cause_id => cause_id)
+      end
     	@fundraise.user_id = current_user.id
       if params[:fundraise][:user_id].reject(&:empty?).present?
         params[:fundraise][:user_id].reject(&:empty?).each do |user_id|
@@ -42,25 +38,13 @@ class FundraisesController < ApplicationController
       if @fundraise.save
         redirect_to @fundraise
       else
-        @all_organizations = current_user.organizations.joins(:organization_users).where(:organization_users => {:status => "accepted"})
-        @all_campaign = []
-        @all_organizations.each do |org|
-          org.campaigns.each do |campaign|
-            @all_campaign << campaign
-          end
-        end
+        @all_causes = Cause.all
         @users = current_user.friends
         render 'new'
       end
     else 
-      flash[:failure] = "Select Campaign"
-      @all_organizations = current_user.organizations.joins(:organization_users).where(:organization_users => {:status => "accepted"})
-      @all_campaign = []
-      @all_organizations.each do |org|
-        org.campaigns.each do |campaign|
-        @all_campaign << campaign
-        end
-      end
+      flash[:failure] = "Select atleast 1 Cause"
+      @all_causes = Cause.all
       @users = current_user.friends
       render 'new'
     end 
@@ -176,6 +160,6 @@ class FundraisesController < ApplicationController
   private
     
     def fundraise_params
-      params.require(:fundraise).permit(:subject, :target, :campaign_id, :small_description, :description, :image)
+      params.require(:fundraise).permit(:subject, :target, :cause_ids, :small_description, :description, :image)
     end
 end

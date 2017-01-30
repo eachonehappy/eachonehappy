@@ -4,7 +4,7 @@
       <img src="/images/people/50/guy-5.jpg" class="media-object">
     </a>
     <div class="media-body">
-      <a href="" class="comment-author"><%= comment.user.first_name %></a>
+      <a href="" class="comment-author"><%= comment.user.full_name %></a>
      <%if comment.mentionees(User).any?%>
           <%comment.mentionees(User).each do |user|%>
 

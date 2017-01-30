@@ -8,7 +8,7 @@
         <% end %>
     </a>
     <div class="media-body">
-      <a href="" class="comment-author"><%= comment.user.first_name %></a>
+      <a href="" class="comment-author"><%= comment.user.full_name %></a>
      <%if comment.mentionees(User).any?%>
           <%comment.mentionees(User).each do |user|%>
 

@@ -11,7 +11,7 @@
     <% end %>
   </div>
   <div class="media-body">
-    <%=link_to "#{activity.owner.first_name}", user_path(activity.owner), data: { turbolinks: false } %> 
+    <%=link_to "#{activity.owner.full_name}", user_path(activity.owner), data: { turbolinks: false } %> 
     <% if a.trackable %>
 	    commented on a <%= link_to "post", post_path(a.trackable.post), data: { turbolinks: false } %>
 	  <% else %>

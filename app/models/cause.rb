@@ -4,6 +4,8 @@ class Cause < ApplicationRecord
   has_many :cause_organizations
   has_many :campaigns
   belongs_to :user
+  has_many :fundraises, through: :cause_fundraises
+  has_many :cause_fundraises
   acts_as_followable
   acts_as_likeable
 	validates :subject,  presence: true

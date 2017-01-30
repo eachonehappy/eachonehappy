@@ -33,7 +33,7 @@
         </div>
     </div>
 </div>
-
+<% if @major_causes.present?%>
 <% @major_causes.each do |cause|%>
   <% if @major_causes.index(cause).even? %>
      <div class="content-section-a">
@@ -87,6 +87,7 @@
 
     </div>
   <% end %>  
+<% end %>
 <% end %>
 
     

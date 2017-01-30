@@ -11,7 +11,7 @@
     <% end %>
   </div>
   <div class="media-body">
-    <%=link_to "#{activity.owner.first_name}", user_path(activity.owner), data: { turbolinks: false } %> 
+    <%=link_to "#{activity.owner.full_name}", user_path(activity.owner), data: { turbolinks: false } %> 
     deleted campaign from his timeline.
     <br/>
     <span class="text-caption text-muted"><%= a.created_at.strftime('%H:%M:%S %-d %B %Y') %></span>

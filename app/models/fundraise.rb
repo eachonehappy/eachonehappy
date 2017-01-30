@@ -4,6 +4,8 @@ class Fundraise < ApplicationRecord
   belongs_to :user
   has_many :payments
   has_one :fundraise_payment_detail
+  has_many :causes, through: :cause_fundraises
+  has_many :cause_fundraises
   acts_as_followable
   acts_as_likeable
   acts_as_mentioner
