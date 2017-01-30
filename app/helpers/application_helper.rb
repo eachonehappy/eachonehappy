@@ -29,8 +29,6 @@ module ApplicationHelper
     return @user.first
   end
 
-
-
   def include_messages(room)
     room.include(:messages)
     

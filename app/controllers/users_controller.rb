@@ -14,8 +14,8 @@ class UsersController < ApplicationController
     @users = @user.friends - [current_user]
     @payment = Payment.new 
     @all_user = @user.friends
-    @organization_ids = current_user.organization_users.send_by_owner.map(&:organization_id) 
-    @pending_organizations = Organization.where( id: @organization_ids) 
+    #@organization_ids = current_user.organization_users.send_by_owner.map(&:organization_id) 
+    #@pending_organizations = Organization.where( id: @organization_ids) 
   end
 
   def edit
