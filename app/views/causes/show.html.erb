@@ -18,7 +18,7 @@
           
         </div>
         <div class="media-body">
-          <h4 class = "margin-none text-capitaize"><%=@cause.small_description%></h4><br>
+          <h4 class = "margin-none text-capitalize"><%=@cause.small_description%></h4><br>
           <p >Started by
             <%= link_to "#{full_name(@cause.user)}", user_path(@cause.user), :class=> "text-capitalize",data: {  turbolinks: false }%>
           </p>
@@ -28,7 +28,7 @@
         </div>
       </div>
       <br>
-      <h5 class = "margin-none text-capitaize"><%=@cause.description%></h5>
+      <h5 class = "margin-none text-capitalize"><%=@cause.description%></h5>
       <div class="collapse" id="1collapseExample<%=@cause.id%>" style= "padding-left:10px;padding-bottom:5px;padding-top:10px;" >
      <%= social_share_button_tag(@cause.description, :url => request.original_url ) %>  
      </div>
@@ -50,27 +50,7 @@
 <div style="padding-left:30px;">
    <%= render 'shared/uberad' %>
 </div>
-  <% if @organizations.any? %>
-<div class="col-md-8" style="padding:0px;padding-bottom:15px;">
-<div style="margin-right:3px;margin-left:3px">
-    <h3 class="margin-none text-capitalize text-center" style="background-color:white;padding-bottom:0px;padding-top:5px;">Cause Organizations</h3>
-    </div>
-    <div id="scrolling" style="margin-right:3px;margin-left:3px">
-  <%= render :partial=> 'organizations/organization', :collection => @organizations %>
-  </div>
-</div>
-<% end %>
-<% if @campaigns.any? %>
-<div class="col-md-4" style="padding:0px;padding-bottom:15px;">
-<div style="margin-right:3px;margin-left:3px">
-    <h3 class="margin-none text-capitalize text-center" style="background-color:white;padding-bottom:0px;padding-top:5px;">Cause Campaigns</h3>
-    </div>
-    <div id="scrolling">
-<%= render :partial=> 'shared/campaign', :collection => @campaigns %>
-</div>
-</div>
-<% end %>
-
+ 
 </div>
  <div class="col-md-3" style="padding-left: 0px;
     padding-right: 0px;">

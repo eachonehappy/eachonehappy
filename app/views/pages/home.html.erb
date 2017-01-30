@@ -92,11 +92,12 @@
       <center>
       <%= link_to "Find More Friends", users_path , data: { turbolinks: false }, :class=>"media btn btn-primary btn-block", :style=>"margin-right: 10px;margin-bottom:5px;"%>
         </center>
-      
+     <div style="padding-left: 20px;" > 
   <div class="row">
    <% (1..@posts.count).each do |i| %>
    <%= render 'shared/profile' %>
    <% end %>
+    </div>
     </div>
   </div>
   
