@@ -51,6 +51,7 @@ Rails.application.routes.draw do
 	get 'my_fundraises' => 'fundraises#my_fundraise'
 	put 'fundraise_status' => 'fundraises#fundraise_status'
 	get 'chat_rooms/:id/get_messages' => 'messages#get_messages'
+	get 'all_users' => 'pages#all_users'
 	#resources :friendships
 	# For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

@@ -1,11 +1,11 @@
 class PagesController < ApplicationController
-  before_action :authenticate_user!, only: [:notification]
-  before_action :load_activities, only: [:notification, :home]
+  before_action :authenticate_user!, only: [:notification,:all_users]
+  before_action :load_activities, only: [:notification, :home,:all_users]
   
 
   def home
     if user_signed_in?
-      @users = User.all - [current_user] - current_user.friends
+      @users = User.all - [current_user] - current_user.friends - current_user.requested_friends - current_user.pending_friends
       @suggested_friends = @users.sort_by(&:followers_count).last(10).reverse
     	@post = Post.new
     	@comment = Comment.new
@@ -46,6 +46,10 @@ class PagesController < ApplicationController
 
   def privacy_policy
     
+  end
+
+  def all_users
+    @users = User.all
   end
 
   def notification
