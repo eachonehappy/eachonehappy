@@ -41,17 +41,13 @@
 
 </div>
 
- <div class="col-md-3" style="padding-left: 0px;
-    padding-right: 0px;">
+ <div class="col-md-3" style="padding-left: 20px;
+    ">
     
-    <% @causes_count = @causes.count/2 + 1 %>
-  <% (1..@causes_count).each do |i| %>
-<div class="col-md-6">
-    <%= render 'shared/120x600' %>
-    </div>
-    <div class="col-md-6" style="padding-left: 5px;">
-    <%= render 'shared/120x600' %>
-      </div>
-  <% end %>
+ 
+
+    <%= render 'shared/add' %>
+  
+
 
     </div>  
